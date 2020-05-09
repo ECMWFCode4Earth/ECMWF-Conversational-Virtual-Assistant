@@ -1,0 +1,8 @@
+---
+micronaut:
+  application:
+    name: cva-retrieval-pipeline
+
+---
+#graphql:
+#  graphiql.enabled: true
