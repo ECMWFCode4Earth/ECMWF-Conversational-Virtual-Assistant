@@ -1,5 +1,6 @@
 package com._2horizon.cva.retrieval.confluence
 
+import com._2horizon.cva.retrieval.confluence.dto.content.ContentResponse
 import com._2horizon.cva.retrieval.confluence.dto.space.SpacesResponse
 import io.micronaut.context.annotation.Value
 import io.micronaut.context.event.ApplicationEventPublisher
@@ -16,23 +17,23 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-09.
  */
 @Singleton
-class ConfluenceSpacesRetriever(
+class ConfluenceContentRetriever(
     private val confluenceOperations: ConfluenceOperations,
     private val applicationEventPublisher: ApplicationEventPublisher,
-    @Value("\${app.feature.retrieval-pipeline.spaces-enabled:false}") private val retrievalPipelineSpacesEnabled: Boolean
+    @Value("\${app.feature.retrieval-pipeline.pages-enabled:false}") private val retrievalPipelinePagesEnabled: Boolean
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
     @EventListener
     fun onStartup(startupEvent: StartupEvent) {
-        if (retrievalPipelineSpacesEnabled) {
-            retrieveSpaces()
+        if (retrievalPipelinePagesEnabled) {
+            retrievePages("CKB")
         }
     }
 
-    private fun retrieveSpaces(): SpacesResponse {
-        val spacesResponse = confluenceOperations.spacesWithMetadataLabelsAndDescriptionAndIcon()
-            .orElseThrow { error("Couldn't retrieve spaces") }
+    private fun retrievePages(spaceKey:String): ContentResponse {
+        val spacesResponse = confluenceOperations.contentWithMetadataLabelsAndDescriptionAndIcon(spaceKey)
+            .orElseThrow { error("Couldn't retrieve content of $spaceKey") }
         log.debug("Got ${spacesResponse.size} spaces")
 
         applicationEventPublisher.publishEvent(spacesResponse)
@@ -40,4 +41,5 @@ class ConfluenceSpacesRetriever(
         return spacesResponse
     }
 }
+
 

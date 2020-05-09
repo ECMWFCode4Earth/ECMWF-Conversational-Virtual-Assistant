@@ -1,3 +1,9 @@
+#################################################################
+#  Confluence REST API Documentation
+#  https://docs.atlassian.com/ConfluenceServer/rest/7.3.1/#api/
+#################################################################
+###
+
 # SPACES https://docs.atlassian.com/ConfluenceServer/rest/7.2.0/#api/space-spaces
 GET https://confluence.ecmwf.int/rest/api/space?type=global&limit=100&expand=metadata.labels,description.view,description.plain,icon
 
@@ -27,4 +33,19 @@ Accept: application/json
 
 ###
 GET https://confluence.ecmwf.int/rest/api/content/143036940?expand=body.storage,metadata.labels,space,body.view,version,container
+Accept: application/json
+
+###
+# Returns information about a space.
+GET https://confluence.ecmwf.int/rest/api/space/CKB?expand=description
+Accept: application/json
+
+###
+# Get all pages in space
+GET https://confluence.ecmwf.int/rest/api/space/CKB/content?expand=history&limit=100&start=0
+Accept: application/json
+
+###
+# Get all pages in space
+GET https://confluence.ecmwf.int/rest/api/content?type=page&spaceKey=CKB&start=0&limit=10&expand=history,version,metadata.labels,body.view,body.view,body.storage
 Accept: application/json

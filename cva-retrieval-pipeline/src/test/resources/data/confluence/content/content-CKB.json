@@ -1,0 +1,1417 @@
+{
+  "results": [
+    {
+      "id": "55116796",
+      "type": "page",
+      "status": "current",
+      "title": "Copernicus Knowledge Base",
+      "history": {
+        "latest": true,
+        "createdBy": {
+          "type": "known",
+          "username": "usv",
+          "userKey": "081c38c044258fa20144259096070cae",
+          "profilePicture": {
+            "path": "/download/attachments/3145729/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Daniel Varela Santoalla",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c044258fa20144259096070cae"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "createdDate": "2016-02-04T17:39:04.084Z",
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/api/content/55116796/history"
+        },
+        "_expandable": {
+          "lastUpdated": "",
+          "previousVersion": "",
+          "contributors": "",
+          "nextVersion": ""
+        }
+      },
+      "version": {
+        "by": {
+          "type": "known",
+          "username": "usag",
+          "userKey": "081c38c0516239bb0151a074adbd0270",
+          "profilePicture": {
+            "path": "/images/icons/profilepics/default.svg",
+            "width": 48,
+            "height": 48,
+            "isDefault": true
+          },
+          "displayName": "Anabelle Guillory",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb0151a074adbd0270"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "when": "2020-04-27T17:04:41.759+01:00",
+        "message": "",
+        "number": 69,
+        "minorEdit": false,
+        "hidden": false,
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/experimental/content/55116796/version/69"
+        },
+        "_expandable": {
+          "content": "/rest/api/content/55116796"
+        }
+      },
+      "body": {
+        "storage": {
+          "value": "<ac:layout><ac:layout-section ac:type=\"two_equal\"><ac:layout-cell><p class=\"auto-cursor-target\"><br /></p><ac:structured-macro ac:name=\"panel\" ac:schema-version=\"1\" ac:macro-id=\"422980df-1e2f-40e3-8c07-e2159c295cd1\"><ac:parameter ac:name=\"title\">Latest C3S Announcement</ac:parameter><ac:rich-text-body><p><a href=\"https://climate.copernicus.eu/\"> <ac:image ac:align=\"left\" ac:thumbnail=\"true\" ac:width=\"185\"><ri:attachment ri:filename=\"c3s_logo.png\" /></ac:image> </a></p><p style=\"text-align: left;\"><br /></p><p style=\"text-align: left;\"><br /></p><p style=\"text-align: left;\"><ac:structured-macro ac:name=\"children\" ac:schema-version=\"2\" ac:macro-id=\"c35d495b-5de8-4d60-b5eb-a7d5fc5e7577\"><ac:parameter ac:name=\"page\"><ac:link><ri:page ri:space-key=\"CUSF\" ri:content-title=\"C3S Announcements\" /></ac:link></ac:parameter><ac:parameter ac:name=\"sort\">creation</ac:parameter><ac:parameter ac:name=\"reverse\">true</ac:parameter><ac:parameter ac:name=\"first\">2</ac:parameter></ac:structured-macro></p></ac:rich-text-body></ac:structured-macro></ac:layout-cell><ac:layout-cell><p class=\"auto-cursor-target\"><br /></p><ac:structured-macro ac:name=\"panel\" ac:schema-version=\"1\" ac:macro-id=\"aa2f2ced-f135-4604-ae07-2a3b7b33c5cc\"><ac:parameter ac:name=\"title\">Latest CAMS Announcement</ac:parameter><ac:rich-text-body><p><a href=\"https://atmosphere.copernicus.eu/\"> <ac:image ac:thumbnail=\"true\" ac:width=\"185\"><ri:attachment ri:filename=\"cams_logo.png\" /></ac:image></a></p><p><ac:structured-macro ac:name=\"children\" ac:schema-version=\"2\" ac:macro-id=\"4d083e8a-4913-4b06-821c-d86446035a52\"><ac:parameter ac:name=\"page\"><ac:link><ri:page ri:space-key=\"CUSF\" ri:content-title=\"CAMS Announcements\" /></ac:link></ac:parameter><ac:parameter ac:name=\"sort\">creation</ac:parameter><ac:parameter ac:name=\"reverse\">true</ac:parameter><ac:parameter ac:name=\"first\">2</ac:parameter></ac:structured-macro></p></ac:rich-text-body></ac:structured-macro></ac:layout-cell></ac:layout-section><ac:layout-section ac:type=\"two_equal\"><ac:layout-cell><p class=\"auto-cursor-target\"><br /></p><ac:structured-macro ac:name=\"roundrect\" ac:schema-version=\"1\" ac:macro-id=\"eb4eb05c-e210-47cf-8042-4f475931717d\"><ac:parameter ac:name=\"bgcolor\">#BAD2EE</ac:parameter><ac:parameter ac:name=\"width\">100%</ac:parameter><ac:parameter ac:name=\"height\">100%</ac:parameter><ac:rich-text-body><p><br /></p><p style=\"text-align: center;\"><ac:structured-macro ac:name=\"livesearch\" ac:schema-version=\"1\" ac:macro-id=\"445f587c-9831-4f1b-a98b-a7f72d3d073a\"><ac:parameter ac:name=\"spaceKey\"><ri:space ri:space-key=\"CKB\" /></ac:parameter><ac:parameter ac:name=\"size\">large</ac:parameter><ac:parameter ac:name=\"additional\">none</ac:parameter><ac:parameter ac:name=\"placeholder\">Find answers</ac:parameter><ac:parameter ac:name=\"type\">page</ac:parameter></ac:structured-macro></p><p><br /></p></ac:rich-text-body></ac:structured-macro><p><br /></p><ac:structured-macro ac:name=\"roundrect\" ac:schema-version=\"1\" ac:macro-id=\"7fb0c939-9819-4c37-ba4a-cb0e250281ea\"><ac:parameter ac:name=\"bgcolor\">#D1D128</ac:parameter><ac:parameter ac:name=\"width\">100%</ac:parameter><ac:parameter ac:name=\"height\">100%</ac:parameter><ac:rich-text-body><h2 style=\"text-align: center;\"><strong>Can't find the answer? </strong></h2><h2 style=\"text-align: center;\">Check our <span style=\"color: rgb(255,255,255);\"><span style=\"color: rgb(0,0,0);\"><span style=\"color: rgb(128,0,0);\"><strong><a href=\"https://confluence.ecmwf.int/display/CUSF/forum\">User Forum</a></strong></span></span></span> available 24/7</h2><h2 style=\"text-align: center;\">and ask the forum community for advice!<strong> <br /></strong></h2><p><br /></p></ac:rich-text-body></ac:structured-macro><p class=\"auto-cursor-target\"><br /></p></ac:layout-cell><ac:layout-cell><p class=\"auto-cursor-target\"><br /></p><ac:structured-macro ac:name=\"roundrect\" ac:schema-version=\"1\" ac:macro-id=\"ca69b38c-6a25-4998-ad3f-b83e42856b9a\"><ac:parameter ac:name=\"bgcolor\">#FFCF45</ac:parameter><ac:parameter ac:name=\"width\">100%</ac:parameter><ac:rich-text-body><h3 style=\"text-align: center;\">Browse by topic</h3><p style=\"text-align: center;\"><ac:structured-macro ac:name=\"listlabels\" ac:schema-version=\"1\" ac:macro-id=\"bc7203f1-05fb-42d1-b888-88dfa8eb8993\"><ac:parameter ac:name=\"excludedLabels\">kb-how-to-article,kb-troubleshooting-article</ac:parameter></ac:structured-macro></p><p style=\"text-align: left;\"><br /></p></ac:rich-text-body></ac:structured-macro><br /><br /><p><br /></p></ac:layout-cell></ac:layout-section><ac:layout-section ac:type=\"single\"><ac:layout-cell><p><span style=\"color: rgb(51,51,51);\"><a href=\"http://www.copernicus.eu\"><span style=\"color: rgb(51,51,51);\">&nbsp;</span></a></span><ac:image ac:align=\"center\"><ri:attachment ri:filename=\"new-footer-KB.JPG\" /></ac:image></p></ac:layout-cell></ac:layout-section></ac:layout>",
+          "representation": "storage",
+          "_expandable": {
+            "content": "/rest/api/content/55116796"
+          }
+        },
+        "view": {
+          "value": "<div class=\"contentLayout2\">\n<div class=\"columnLayout two-equal\" data-layout=\"two-equal\">\n<div class=\"cell normal\" data-type=\"normal\">\n<div class=\"innerCell\">\n<div class=\"panel\" style=\"border-width: 1px;\"><div class=\"panelHeader\" style=\"border-bottom-width: 1px;\"><b>Latest C3S Announcement</b></div><div class=\"panelContent\">\n<p><a href=\"https://climate.copernicus.eu/\" class=\"external-link\" rel=\"nofollow\"> <span class=\"confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size\"><img class=\"confluence-embedded-image confluence-thumbnail image-left\" width=\"185\" src=\"/download/thumbnails/55116796/c3s_logo.png?version=1&amp;modificationDate=1578668762649&amp;api=v2\" data-image-src=\"/download/attachments/55116796/c3s_logo.png?version=1&amp;modificationDate=1578668762649&amp;api=v2\" data-unresolved-comment-count=\"0\" data-linked-resource-id=\"165347150\" data-linked-resource-version=\"1\" data-linked-resource-type=\"attachment\" data-linked-resource-default-alias=\"c3s_logo.png\" data-base-url=\"https://confluence.ecmwf.int\" data-linked-resource-content-type=\"image/png\" data-linked-resource-container-id=\"55116796\" data-linked-resource-container-version=\"69\"></span> </a></p><p style=\"text-align: left;\"><br/></p><p style=\"text-align: left;\"><br/></p><p style=\"text-align: left;\"><ul class=\"childpages-macro conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"children\"><li><a href=\"/display/CUSF/ERA5.1%2C+a+re-run+of+ERA5+for+2000-2006+only%2C+now+available+through+CDS+API\">ERA5.1, a re-run of ERA5 for 2000-2006 only, now available through CDS API</a></li><li><a href=\"/display/CUSF/ESA+CCI+SST+data+access+restored\">ESA CCI SST data access restored</a></li></ul></p>\n</div></div></div>\n</div>\n<div class=\"cell normal\" data-type=\"normal\">\n<div class=\"innerCell\">\n<div class=\"panel\" style=\"border-width: 1px;\"><div class=\"panelHeader\" style=\"border-bottom-width: 1px;\"><b>Latest CAMS Announcement</b></div><div class=\"panelContent\">\n<p><a href=\"https://atmosphere.copernicus.eu/\" class=\"external-link\" rel=\"nofollow\"> <span class=\"confluence-embedded-file-wrapper confluence-embedded-manual-size\"><img class=\"confluence-embedded-image confluence-thumbnail\" width=\"185\" src=\"/download/thumbnails/55116796/cams_logo.png?version=1&amp;modificationDate=1578668771751&amp;api=v2\" data-image-src=\"/download/attachments/55116796/cams_logo.png?version=1&amp;modificationDate=1578668771751&amp;api=v2\" data-unresolved-comment-count=\"0\" data-linked-resource-id=\"165347152\" data-linked-resource-version=\"1\" data-linked-resource-type=\"attachment\" data-linked-resource-default-alias=\"cams_logo.png\" data-base-url=\"https://confluence.ecmwf.int\" data-linked-resource-content-type=\"image/png\" data-linked-resource-container-id=\"55116796\" data-linked-resource-container-version=\"69\"></span></a></p><p><ul class=\"childpages-macro conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"children\"><li><a href=\"/display/CUSF/Access+to+CAMS+Catalogue+restored\">Access to CAMS Catalogue restored</a></li><li><a href=\"/display/CUSF/European+Air+Quality+information+in+support+of+the+COVID-19+crisis+now+available+from+the+CAMS+website\">European Air Quality information in support of the COVID-19 crisis now available from the CAMS website</a></li></ul></p>\n</div></div></div>\n</div>\n</div>\n<div class=\"columnLayout two-equal\" data-layout=\"two-equal\">\n<div class=\"cell normal\" data-type=\"normal\">\n<div class=\"innerCell\">\n    \n    \n    \n\n    \n    \n\n\n\n\n<div class=\"round-rect-div  conf-macro output-block\" style=\"background-color: #BAD2EE; width: 100%; height: 100%; border-radius: 25px / 25px; \" data-hasbody=\"true\" data-macro-name=\"roundrect\">\n    <div class=\"round-rect-content round-top round-bot\" style=\"border-radius: 25px / 25px; \">\n        <p><br /></p><p style=\"text-align: center;\">    \n    \n\n\n</p><div class=\"search-macro search-macro-large conf-macro output-inline\" data-hasbody=\"false\" data-macro-name=\"livesearch\">\n    <div class=\"aui-dd-parent\"> </div>\n    <form class=\"aui aui-dd-parent\" name=\"livesearchForm\" method=\"GET\" action=\"/dosearchsite.action\">\n        <fieldset class=\"search-macro-fields\">\n            <div class=\"search-macro-query\">\n                <input class=\"text\" type=\"text\" name=\"queryString\" autocomplete=\"off\" placeholder=\"Find answers\" />\n                                <span class=\"aui-icon aui-icon-large aui-iconfont-search\">Suche</span>\n                            </div>\n                        <input type=\"hidden\" name=\"where\" value=\"CKB\" />\n            <input type=\"hidden\" name=\"additional\" value=\"none\" />\n            <input type=\"hidden\" name=\"labels\" value=\"\" />\n            <input type=\"hidden\" name=\"contentType\" value=\"page\" />\n        </fieldset>\n    </form>\n</div>\n<p> </p><p><br /></p>\n    </div>\n</div>\n<p><br/></p>    \n    \n    \n\n    \n    \n\n\n\n\n<div class=\"round-rect-div  conf-macro output-block\" style=\"background-color: #D1D128; width: 100%; height: 100%; border-radius: 25px / 25px; \" data-hasbody=\"true\" data-macro-name=\"roundrect\">\n    <div class=\"round-rect-content round-top round-bot\" style=\"border-radius: 25px / 25px; \">\n        <h2 style=\"text-align: center;\" id=\"CopernicusKnowledgeBase-Can'tfindtheanswer?\"><strong>Can't find the answer? </strong></h2><h2 style=\"text-align: center;\" id=\"CopernicusKnowledgeBase-CheckourUserForumavailable24/7\">Check our <span style=\"color: rgb(255,255,255);\"><span style=\"color: rgb(0,0,0);\"><span style=\"color: rgb(128,0,0);\"><strong><a href=\"https://confluence.ecmwf.int/display/CUSF/forum\" rel=\"nofollow\">User Forum</a></strong></span></span></span> available 24/7</h2><h2 style=\"text-align: center;\" id=\"CopernicusKnowledgeBase-andasktheforumcommunityforadvice!\">and ask the forum community for advice!<strong> <br /></strong></h2><p><br /></p>\n    </div>\n</div>\n</div>\n</div>\n<div class=\"cell normal\" data-type=\"normal\">\n<div class=\"innerCell\">\n    \n    \n    \n\n    \n    \n\n\n\n\n<div class=\"round-rect-div  conf-macro output-block\" style=\"background-color: #FFCF45; width: 100%;  border-radius: 25px / 25px; \" data-hasbody=\"true\" data-macro-name=\"roundrect\">\n    <div class=\"round-rect-content round-top round-bot\" style=\"border-radius: 25px / 25px; \">\n        <h3 style=\"text-align: center;\" id=\"CopernicusKnowledgeBase-Browsebytopic\">Browse by topic</h3><p style=\"text-align: center;\">\n\n    \n\n\n\n</p><div class=\"labelsAlphaList conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"listlabels\">\n        <ol><!--\n            --><li>\n            <div class=\"labelsAlphaKey\">A-B</div>\n            <ul class=\"labelList\">\n                                        <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/ads\">ads</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/aqi\">aqi</a></li>\n                        </ul>\n        </li><!--\n            --><li>\n            <div class=\"labelsAlphaKey\">C</div>\n            <ul class=\"labelList\">\n                                        <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/c3s\">c3s</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/cams\">cams</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/cds\">cds</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/cds-api\">cds-api</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/cera-20c\">cera-20c</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/citation\">citation</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/climate-projection\">climate-projection</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/cmip\">cmip</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/copernicus\">copernicus</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/cordex\">cordex</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/csv\">csv</a></li>\n                        </ul>\n        </li><!--\n            --><li>\n            <div class=\"labelsAlphaKey\">D-F</div>\n            <ul class=\"labelList\">\n                                        <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/download-data\">download-data</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/ecmwf\">ecmwf</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/elevation\">elevation</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/era-20c\">era-20c</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/era-20cm\">era-20cm</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/era-40\">era-40</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/era5\">era5</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/era5-land\">era5-land</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/era-interim\">era-interim</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/europe\">europe</a></li>\n                        </ul>\n        </li><!--\n            --><li>\n            <div class=\"labelsAlphaKey\">G-Q</div>\n            <ul class=\"labelList\">\n                                        <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/geopotential\">geopotential</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/gfas\">gfas</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/grib\">grib</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/known-issues\">known-issues</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/login\">login</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/model\">model</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/netcdf\">netcdf</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/panoply\">panoply</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/precipitation\">precipitation</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/python\">python</a></li>\n                        </ul>\n        </li><!--\n            --><li>\n            <div class=\"labelsAlphaKey\">R-Z</div>\n            <ul class=\"labelList\">\n                                        <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/resolution\">resolution</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/seasonal-forecast\">seasonal-forecast</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/temperature\">temperature</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/water_indicators\">water_indicators</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/web-api\">web-api</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/wind\">wind</a></li>\n                    <li><a class=\"label\" rel=\"nofollow\" href=\"/label/CKB/wrf\">wrf</a></li>\n                        </ul>\n        </li><!--\n        -->\n    </ol>\n</div>\n<p> </p><p style=\"text-align: left;\"><br /></p>\n    </div>\n</div>\n<br/><br/><p><br/></p></div>\n</div>\n</div>\n<div class=\"columnLayout single\" data-layout=\"single\">\n<div class=\"cell normal\" data-type=\"normal\">\n<div class=\"innerCell\">\n<p><span style=\"color: rgb(51,51,51);\"><a href=\"http://www.copernicus.eu\" class=\"external-link\" rel=\"nofollow\"><span style=\"color: rgb(51,51,51);\"> </span></a></span><span class=\"confluence-embedded-file-wrapper image-center-wrapper\"><img class=\"confluence-embedded-image image-center\" src=\"/download/attachments/55116796/new-footer-KB.JPG?version=1&amp;modificationDate=1537630272988&amp;api=v2\" data-image-src=\"/download/attachments/55116796/new-footer-KB.JPG?version=1&amp;modificationDate=1537630272988&amp;api=v2\" data-unresolved-comment-count=\"0\" data-linked-resource-id=\"118829721\" data-linked-resource-version=\"1\" data-linked-resource-type=\"attachment\" data-linked-resource-default-alias=\"new-footer-KB.JPG\" data-base-url=\"https://confluence.ecmwf.int\" data-linked-resource-content-type=\"image/jpeg\" data-linked-resource-container-id=\"55116796\" data-linked-resource-container-version=\"69\"></span></p></div>\n</div>\n</div>\n</div>",
+          "representation": "storage",
+          "_expandable": {
+            "webresource": "",
+            "content": "/rest/api/content/55116796"
+          }
+        },
+        "_expandable": {
+          "editor": "",
+          "export_view": "",
+          "styled_view": "",
+          "anonymous_export_view": ""
+        }
+      },
+      "metadata": {
+        "labels": {
+          "results": [],
+          "start": 0,
+          "limit": 200,
+          "size": 0,
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/content/55116796/label"
+          }
+        },
+        "_expandable": {
+          "currentuser": "",
+          "frontend": "",
+          "editorHtml": "",
+          "properties": ""
+        }
+      },
+      "extensions": {
+        "position": 1
+      },
+      "_links": {
+        "webui": "/display/CKB/Copernicus+Knowledge+Base",
+        "edit": "/pages/resumedraft.action?draftId=55116796",
+        "tinyui": "/x/-ANJAw",
+        "self": "https://confluence.ecmwf.int/rest/api/content/55116796"
+      },
+      "_expandable": {
+        "container": "/rest/api/space/CKB",
+        "operations": "",
+        "children": "/rest/api/content/55116796/child",
+        "restrictions": "/rest/api/content/55116796/restriction/byOperation",
+        "ancestors": "",
+        "descendants": "/rest/api/content/55116796/descendant",
+        "space": "/rest/api/space/CKB"
+      }
+    },
+    {
+      "id": "55121920",
+      "type": "page",
+      "status": "current",
+      "title": "What are NetCDF files and how can I read them",
+      "history": {
+        "latest": true,
+        "createdBy": {
+          "type": "known",
+          "username": "uskh",
+          "userKey": "081c38c0516239bb015190f3de240203",
+          "profilePicture": {
+            "path": "/download/attachments/53514087/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Karl Hennermann",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb015190f3de240203"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "createdDate": "2016-02-18T16:30:56.355Z",
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/api/content/55121920/history"
+        },
+        "_expandable": {
+          "lastUpdated": "",
+          "previousVersion": "",
+          "contributors": "",
+          "nextVersion": ""
+        }
+      },
+      "version": {
+        "by": {
+          "type": "known",
+          "username": "usmg",
+          "userKey": "081c39166c66b21c016caebf22390307",
+          "profilePicture": {
+            "path": "/download/attachments/149333426/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Michela Giusti",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c39166c66b21c016caebf22390307"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "when": "2020-02-05T14:05:46.723Z",
+        "message": "",
+        "number": 45,
+        "minorEdit": false,
+        "hidden": false,
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/experimental/content/55121920/version/45"
+        },
+        "_expandable": {
+          "content": "/rest/api/content/55121920"
+        }
+      },
+      "body": {
+        "storage": {
+          "value": "<p class=\"auto-cursor-target\"><ac:structured-macro ac:name=\"toc\" ac:schema-version=\"1\" ac:macro-id=\"a2808b97-0405-428c-a9b7-f78b0cc73551\" /></p><ac:structured-macro ac:name=\"info\" ac:schema-version=\"1\" ac:macro-id=\"d7ebccfa-0247-4099-81fa-b223416eb615\"><ac:rich-text-body><p class=\"field-item even\">At ECMWF the only supported file format for most meteorological data is the <ac:link><ri:page ri:content-title=\"What are GRIB files\" /><ac:plain-text-link-body><![CDATA[GRIB format]]></ac:plain-text-link-body></ac:link>. Some ECMWF data is also available in NetCDF format, but NetCDF is not formally supported by ECMWF.</p><p>For this reason, before downloading data check if your processing software supports the GRIB format. If it does, use the GRIB format. If your software supports only NetCDF, use the NetCDF format.</p></ac:rich-text-body></ac:structured-macro><div class=\"field field-name-body field-type-text-with-summary field-label-hidden\"><h2><strong>Basics</strong></h2><p><strong>NetCDF</strong> (Network Common Data Form) is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. NetCDF is commonly used to store and distribute scientific data. The NetCDF software was developed at the Unidata Program Center in Boulder, Colorado, USA (<a href=\"http://www.unidata.ucar.edu/publications/factsheets/current/factsheet_netcdf.pdf\">Unidata NetCDF Factsheet</a>; Also see <a href=\"https://en.wikipedia.org/wiki/NetCDF\">Wikipedia article</a>). NetCDF files usually have the extension .nc. To read NetCDF files there are graphical tools like Matlab, IDL, ArcGIS, <a href=\"http://meteora.ucsd.edu/%7Epierce/ncview_home_page.html\">NCView</a>, <a href=\"http://cms.ncas.ac.uk/documents/xconv/\">Xconv</a> and developer tools like the <a class=\"external-link\" rel=\"nofollow\" href=\"http://unidata.github.io/netcdf4-python/\">Unidata NetCDF4 module for Python</a><span class=\"error\"> and </span><a href=\"http://xarray.pydata.org/en/stable/index.html\">Xarray</a>. Please see your preferred tools' documentation for further information.</p><p class=\"field-items\">For climate and forecast data stored in NetCDF format there are (non-mandatory) conventions on metadata (<a href=\"http://cfconventions.org/\">CF Convention)</a>. CF compliant metadata in NetCDF files can be interpreted by <a href=\"https://software.ecmwf.int/wiki/display/METV/Metview\">Metview</a>, <a href=\"http://meteora.ucsd.edu/%7Epierce/ncview_home_page.html\">NCView</a>, <a href=\"http://cms.ncas.ac.uk/documents/xconv/\">Xconv</a> and other tools.</p><p>The latest version of the NetCDF format is NetCDF 4 (aka NetCDF <em>enhanced</em>, introduced in 2008), but NetCDF 3 (NetCDF <em>classic)</em> is also still widely used.</p><p>NetCDF files can be converted<a href=\"http://www.unidata.ucar.edu/software/netcdf/docs/faq.html#How-do-I-convert-netCDF-data-to-ASCII-or-text\"> to ASCII or text</a> see the following link for more details: <a href=\"https://confluence.ecmwf.int/display/CKB/How+to+convert+NetCDF+to+CSV\">How to convert NetCDF to CSV</a></p><h2><strong>Writing your own NetCDF decoder or encoder<br /></strong></h2><p><strong>To decode NetCDF</strong> files there is an official NetCDF Application Programming Interface (<strong>API</strong>) with interfaces in Fortran, C, C++, and Java <a href=\"http://www.unidata.ucar.edu/software/netcdf/docs/netcdf_apis.html\">available from Unidata</a>. The API also comes with some useful command-line tools (e.g. ncdump -h <em>file.nc</em> gives a nice summary of file contents - see <a href=\"http://www.unidata.ucar.edu/software/netcdf/docs/netcdf_utilities_guide.html#ncdump_guide\">ncdump guide</a>).</p><p><strong>For writing NetCDF</strong> files, please check through Unidata <a href=\"https://www.unidata.ucar.edu/software/netcdf/workshops/2009/bestpractices/index.html\">6 Best Practices</a> (6.8 Packed Data Values and 6.9 Missing Data Values are of particular interest).</p><h2><strong> Scale_factor and Add_offset</strong></h2><p>The Scale_factor and Add_offset attributes in NetCDF files are a mechanism to reduce the storage space needed for NetCDF files, so essentially a data packing mechanism. So the data in the netCDF files have been packed into short integers (16 bits or NC_SHORT) to save space.&nbsp;Each netCDF variable that has been packed in this way has an 'add_offset' and 'scale_factor' attribute associated with it.</p><p>When reading and writing NetCDF files software applications compliant with <a href=\"http://www.unidata.ucar.edu/software/netcdf/docs/attribute_conventions.html\">Unidata specifications</a> should deal with Scale_factor and Add_offset automatically, making unpacking (read) and packing (write) completely transparent to the user. This means the user always sees the unpacked data values and doesn't have to deal with Scale_factor and Add_offset. The software application might display the values of Scale_factor and Add_offset for reference, similar to a ZIP compression software displaying the compression factor.<br />For example:</p><ul><li>Matlab (<a href=\"http://uk.mathworks.com/help/matlab/ref/ncread.html\">ncread</a>, <a href=\"http://uk.mathworks.com/help/matlab/ref/ncwrite.html\">ncwrite</a><span class=\"error\">) applies Scale_factor and Add_offset automatically</span></li><li><span class=\"error\"><span class=\"error\">R (</span></span><a href=\"https://www.rdocumentation.org/packages/ncdf4/versions/1.16/topics/ncvar_get\">ncvar_get</a><span class=\"error\">)<span class=\"error\"> applies Scale_factor and Add_offset automatically</span><br /></span></li><li><a href=\"http://www.giss.nasa.gov/tools/panoply/\">Panoply</a> applies <span class=\"error\">Scale_factor and Add_offset automatically</span>. It also displays the values of <span class=\"error\">Scale_factor and Add_offset</span>, causing many users to believe they have to calculate something - no, you don't.</li><li><a href=\"https://software.ecmwf.int/wiki/display/METV/Metview\">Metview</a> from version 5 onwards <span class=\"error\">applies<span class=\"error\"><span class=\"error\"> Scale_factor and Add_offset </span></span>automatically; Metview 4.x does not.</span></li><li>The <a href=\"http://unidata.github.io/netcdf4-python/\">Unidata NetCDF4 module for Python</a><span class=\"error\"> (which is an interface to the NetCDF C library)</span> <span class=\"error\">applies Scale_factor and Add_offset automatically</span></li></ul><p>The above is how application software <em>should</em> be implemented, i.e. to show unpacked data values. Some software applications might be implemented differently and display the packed data values. In this case the user has to calculate the unpacked values using Scale_factor and Add_offset, using these formulae:</p><ul><li><em>unpacked_data_value = (packed_data_value * scale_factor) + add_offset</em></li><li><em>packed_data_value = nint((unpacked_data_value - add_offset) / scale_factor)</em></li></ul><p>In any case we recommend you check your processing software's documentation on how it deals with Scale_factor and Add_offset.</p></div><h2>Related articles</h2><p><ac:structured-macro ac:name=\"contentbylabel\" ac:schema-version=\"3\" ac:macro-id=\"3f4eb5c6-224a-41f1-9aa4-875595079348\"><ac:parameter ac:name=\"showLabels\">false</ac:parameter><ac:parameter ac:name=\"max\">5</ac:parameter><ac:parameter ac:name=\"spaces\">CKB</ac:parameter><ac:parameter ac:name=\"showSpace\">false</ac:parameter><ac:parameter ac:name=\"sort\">title</ac:parameter><ac:parameter ac:name=\"type\">page</ac:parameter><ac:parameter ac:name=\"cql\">label in (&quot;download&quot;,&quot;cams&quot;,&quot;c3s&quot;,&quot;data&quot;,&quot;netcdf&quot;) and type = &quot;page&quot; and space = &quot;CKB&quot;</ac:parameter><ac:parameter ac:name=\"labels\">cams c3s data download</ac:parameter></ac:structured-macro></p><ac:structured-macro ac:name=\"details\" ac:schema-version=\"1\" ac:macro-id=\"4b3a6ba1-de55-4f7c-81f8-6f3271689eb6\"><ac:parameter ac:name=\"hidden\">true</ac:parameter><ac:rich-text-body><p class=\"auto-cursor-target\"><br /></p><table class=\"wrapped\"><tbody><tr><th>Related issues</th><td><br /></td></tr></tbody></table><p class=\"auto-cursor-target\"><br /></p></ac:rich-text-body></ac:structured-macro><p class=\"auto-cursor-target\"><br /></p>",
+          "representation": "storage",
+          "_expandable": {
+            "content": "/rest/api/content/55121920"
+          }
+        },
+        "view": {
+          "value": "<p class=\"auto-cursor-target\"><div class=\"toc-macro client-side-toc-macro  conf-macro output-block\" data-headerelements=\"H1,H2,H3,H4,H5,H6,H7\" data-hasbody=\"false\" data-macro-name=\"toc\"> </div></p><div class=\"confluence-information-macro confluence-information-macro-information conf-macro output-block\" data-hasbody=\"true\" data-macro-name=\"info\"><span class=\"aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon\"> </span><div class=\"confluence-information-macro-body\"><p class=\"field-item even\">At ECMWF the only supported file format for most meteorological data is the <a href=\"/display/CKB/What+are+GRIB+files\">GRIB format</a>. Some ECMWF data is also available in NetCDF format, but NetCDF is not formally supported by ECMWF.</p><p>For this reason, before downloading data check if your processing software supports the GRIB format. If it does, use the GRIB format. If your software supports only NetCDF, use the NetCDF format.</p></div></div><div class=\"field field-name-body field-type-text-with-summary field-label-hidden\"><h2 id=\"WhatareNetCDFfilesandhowcanIreadthem-Basics\"><strong>Basics</strong></h2><p><strong>NetCDF</strong> (Network Common Data Form) is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. NetCDF is commonly used to store and distribute scientific data. The NetCDF software was developed at the Unidata Program Center in Boulder, Colorado, USA (<a href=\"http://www.unidata.ucar.edu/publications/factsheets/current/factsheet_netcdf.pdf\" class=\"external-link\" rel=\"nofollow\">Unidata NetCDF Factsheet</a>; Also see <a href=\"https://en.wikipedia.org/wiki/NetCDF\" class=\"external-link\" rel=\"nofollow\">Wikipedia article</a>). NetCDF files usually have the extension .nc. To read NetCDF files there are graphical tools like Matlab, IDL, ArcGIS, <a href=\"http://meteora.ucsd.edu/%7Epierce/ncview_home_page.html\" class=\"external-link\" rel=\"nofollow\">NCView</a>, <a href=\"http://cms.ncas.ac.uk/documents/xconv/\" class=\"external-link\" rel=\"nofollow\">Xconv</a> and developer tools like the <a class=\"external-link\" rel=\"nofollow\" href=\"http://unidata.github.io/netcdf4-python/\">Unidata NetCDF4 module for Python</a><span class=\"error\"> and </span><a href=\"http://xarray.pydata.org/en/stable/index.html\" class=\"external-link\" rel=\"nofollow\">Xarray</a>. Please see your preferred tools' documentation for further information.</p><p class=\"field-items\">For climate and forecast data stored in NetCDF format there are (non-mandatory) conventions on metadata (<a href=\"http://cfconventions.org/\" class=\"external-link\" rel=\"nofollow\">CF Convention)</a>. CF compliant metadata in NetCDF files can be interpreted by <a href=\"https://software.ecmwf.int/wiki/display/METV/Metview\" class=\"external-link\" rel=\"nofollow\">Metview</a>, <a href=\"http://meteora.ucsd.edu/%7Epierce/ncview_home_page.html\" class=\"external-link\" rel=\"nofollow\">NCView</a>, <a href=\"http://cms.ncas.ac.uk/documents/xconv/\" class=\"external-link\" rel=\"nofollow\">Xconv</a> and other tools.</p><p>The latest version of the NetCDF format is NetCDF 4 (aka NetCDF <em>enhanced</em>, introduced in 2008), but NetCDF 3 (NetCDF <em>classic)</em> is also still widely used.</p><p>NetCDF files can be converted<a href=\"http://www.unidata.ucar.edu/software/netcdf/docs/faq.html#How-do-I-convert-netCDF-data-to-ASCII-or-text\" class=\"external-link\" rel=\"nofollow\"> to ASCII or text</a> see the following link for more details: <a href=\"https://confluence.ecmwf.int/display/CKB/How+to+convert+NetCDF+to+CSV\" rel=\"nofollow\">How to convert NetCDF to CSV</a></p><h2 id=\"WhatareNetCDFfilesandhowcanIreadthem-WritingyourownNetCDFdecoderorencoder\"><strong>Writing your own NetCDF decoder or encoder<br/></strong></h2><p><strong>To decode NetCDF</strong> files there is an official NetCDF Application Programming Interface (<strong>API</strong>) with interfaces in Fortran, C, C++, and Java <a href=\"http://www.unidata.ucar.edu/software/netcdf/docs/netcdf_apis.html\" class=\"external-link\" rel=\"nofollow\">available from Unidata</a>. The API also comes with some useful command-line tools (e.g. ncdump -h <em>file.nc</em> gives a nice summary of file contents - see <a href=\"http://www.unidata.ucar.edu/software/netcdf/docs/netcdf_utilities_guide.html#ncdump_guide\" class=\"external-link\" rel=\"nofollow\">ncdump guide</a>).</p><p><strong>For writing NetCDF</strong> files, please check through Unidata <a href=\"https://www.unidata.ucar.edu/software/netcdf/workshops/2009/bestpractices/index.html\" class=\"external-link\" rel=\"nofollow\">6 Best Practices</a> (6.8 Packed Data Values and 6.9 Missing Data Values are of particular interest).</p><h2 id=\"WhatareNetCDFfilesandhowcanIreadthem-Scale_factorandAdd_offset\"><strong> Scale_factor and Add_offset</strong></h2><p>The Scale_factor and Add_offset attributes in NetCDF files are a mechanism to reduce the storage space needed for NetCDF files, so essentially a data packing mechanism. So the data in the netCDF files have been packed into short integers (16 bits or NC_SHORT) to save space. Each netCDF variable that has been packed in this way has an 'add_offset' and 'scale_factor' attribute associated with it.</p><p>When reading and writing NetCDF files software applications compliant with <a href=\"http://www.unidata.ucar.edu/software/netcdf/docs/attribute_conventions.html\" class=\"external-link\" rel=\"nofollow\">Unidata specifications</a> should deal with Scale_factor and Add_offset automatically, making unpacking (read) and packing (write) completely transparent to the user. This means the user always sees the unpacked data values and doesn't have to deal with Scale_factor and Add_offset. The software application might display the values of Scale_factor and Add_offset for reference, similar to a ZIP compression software displaying the compression factor.<br/>For example:</p><ul><li>Matlab (<a href=\"http://uk.mathworks.com/help/matlab/ref/ncread.html\" class=\"external-link\" rel=\"nofollow\">ncread</a>, <a href=\"http://uk.mathworks.com/help/matlab/ref/ncwrite.html\" class=\"external-link\" rel=\"nofollow\">ncwrite</a><span class=\"error\">) applies Scale_factor and Add_offset automatically</span></li><li><span class=\"error\"><span class=\"error\">R (</span></span><a href=\"https://www.rdocumentation.org/packages/ncdf4/versions/1.16/topics/ncvar_get\" class=\"external-link\" rel=\"nofollow\">ncvar_get</a><span class=\"error\">)<span class=\"error\"> applies Scale_factor and Add_offset automatically</span><br/></span></li><li><a href=\"http://www.giss.nasa.gov/tools/panoply/\" class=\"external-link\" rel=\"nofollow\">Panoply</a> applies <span class=\"error\">Scale_factor and Add_offset automatically</span>. It also displays the values of <span class=\"error\">Scale_factor and Add_offset</span>, causing many users to believe they have to calculate something - no, you don't.</li><li><a href=\"https://software.ecmwf.int/wiki/display/METV/Metview\" class=\"external-link\" rel=\"nofollow\">Metview</a> from version 5 onwards <span class=\"error\">applies<span class=\"error\"><span class=\"error\"> Scale_factor and Add_offset </span></span>automatically; Metview 4.x does not.</span></li><li>The <a href=\"http://unidata.github.io/netcdf4-python/\" class=\"external-link\" rel=\"nofollow\">Unidata NetCDF4 module for Python</a><span class=\"error\"> (which is an interface to the NetCDF C library)</span> <span class=\"error\">applies Scale_factor and Add_offset automatically</span></li></ul><p>The above is how application software <em>should</em> be implemented, i.e. to show unpacked data values. Some software applications might be implemented differently and display the packed data values. In this case the user has to calculate the unpacked values using Scale_factor and Add_offset, using these formulae:</p><ul><li><em>unpacked_data_value = (packed_data_value * scale_factor) + add_offset</em></li><li><em>packed_data_value = nint((unpacked_data_value - add_offset) / scale_factor)</em></li></ul><p>In any case we recommend you check your processing software's documentation on how it deals with Scale_factor and Add_offset.</p></div><h2 id=\"WhatareNetCDFfilesandhowcanIreadthem-Relatedarticles\">Related articles</h2><p>\n\n\n\n\n\n\n\n\n\n\n\n<ul class=\"content-by-label conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"contentbylabel\">\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/Access+to+CAMS+global+forecast+data\">Access to CAMS global forecast data</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=177483157\">ADS: What is the Atmosphere Data Store (ADS)?</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=129134800\">C3S global reanalysis ERA5: wind values are far too low on pressure levels at the poles in the Climate Data Store (CDS)</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=127305868\">C3S global reanalysis ERA5: wrong values of U/V components on pressure levels in the Climate Data Store (CDS)</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/C3S+Seasonal+Forecast+known+issues\">C3S Seasonal Forecast known issues</a>\n                \n                        \n                    </div>\n    </li>\n    </ul>\n</p>",
+          "representation": "storage",
+          "_expandable": {
+            "webresource": "",
+            "content": "/rest/api/content/55121920"
+          }
+        },
+        "_expandable": {
+          "editor": "",
+          "export_view": "",
+          "styled_view": "",
+          "anonymous_export_view": ""
+        }
+      },
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "cams",
+              "id": "47710250"
+            },
+            {
+              "prefix": "global",
+              "name": "c3s",
+              "id": "47710251"
+            },
+            {
+              "prefix": "global",
+              "name": "netcdf",
+              "id": "37814286"
+            },
+            {
+              "prefix": "global",
+              "name": "download-data",
+              "id": "60260379"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4,
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/content/55121920/label"
+          }
+        },
+        "_expandable": {
+          "currentuser": "",
+          "frontend": "",
+          "editorHtml": "",
+          "properties": ""
+        }
+      },
+      "extensions": {
+        "position": 3
+      },
+      "_links": {
+        "webui": "/display/CKB/What+are+NetCDF+files+and+how+can+I+read+them",
+        "edit": "/pages/resumedraft.action?draftId=55121920",
+        "tinyui": "/x/ABhJAw",
+        "self": "https://confluence.ecmwf.int/rest/api/content/55121920"
+      },
+      "_expandable": {
+        "container": "/rest/api/space/CKB",
+        "operations": "",
+        "children": "/rest/api/content/55121920/child",
+        "restrictions": "/rest/api/content/55121920/restriction/byOperation",
+        "ancestors": "",
+        "descendants": "/rest/api/content/55121920/descendant",
+        "space": "/rest/api/space/CKB"
+      }
+    },
+    {
+      "id": "55122386",
+      "type": "page",
+      "status": "current",
+      "title": "How to read or decode a GRIB file",
+      "history": {
+        "latest": true,
+        "createdBy": {
+          "type": "known",
+          "username": "uskh",
+          "userKey": "081c38c0516239bb015190f3de240203",
+          "profilePicture": {
+            "path": "/download/attachments/53514087/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Karl Hennermann",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb015190f3de240203"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "createdDate": "2016-02-19T14:42:51.390Z",
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/api/content/55122386/history"
+        },
+        "_expandable": {
+          "lastUpdated": "",
+          "previousVersion": "",
+          "contributors": "",
+          "nextVersion": ""
+        }
+      },
+      "version": {
+        "by": {
+          "type": "known",
+          "username": "usmg",
+          "userKey": "081c39166c66b21c016caebf22390307",
+          "profilePicture": {
+            "path": "/download/attachments/149333426/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Michela Giusti",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c39166c66b21c016caebf22390307"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "when": "2019-09-13T16:36:30.345+01:00",
+        "message": "",
+        "number": 26,
+        "minorEdit": false,
+        "hidden": false,
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/experimental/content/55122386/version/26"
+        },
+        "_expandable": {
+          "content": "/rest/api/content/55122386"
+        }
+      },
+      "body": {
+        "storage": {
+          "value": "<p>Common GUI tools for reading and visualising GRIB files are:</p><ul><li><a href=\"http://www.giss.nasa.gov/tools/panoply/\">Panoply</a> by NASA</li><li><a href=\"https://software.ecmwf.int/wiki/display/METV/Metview\">MetView</a> by ECMWF</li><li><a href=\"http://www.unidata.ucar.edu/software/idv/\">Integrated Data Viewer (IDV)</a> by UCAR unidata</li><li><a href=\"http://www.zygrib.org\">zyGRIB</a></li><li><a href=\"http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/multidimensional-raster-types.htm\">ArcGIS</a> by ESRI</li></ul><p>For users comfortable with command line tools:</p><ul><li><ac:link><ri:page ri:space-key=\"ECC\" ri:content-title=\"ecCodes Home\" /><ac:link-body><span class=\"confluence-link\">ecCodes</span></ac:link-body></ac:link> by ECMWF<br /><ul><li>Supports GRIB to NetCDF conversion (grib_to_netcdf -o netcdf_file grib_file)</li><li>Supports GRIB to JSON (grib_dump -j &lt;gribfile&gt;)</li><li>See tools and code examples for <ac:link><ri:page ri:space-key=\"ECC\" ri:content-title=\"API examples\" /><ac:plain-text-link-body><![CDATA[Fortran, Python and C]]></ac:plain-text-link-body></ac:link></li></ul></li><li><a href=\"https://code.zmaw.de/projects/cdo/embedded/index.html#x1-390002.1\">CDO info operators</a> (info, infon, sinfo, sinfon)</li><li><a href=\"http://nco.sourceforge.net\">NCO</a></li><li><a href=\"http://cola.gmu.edu/grads/\">GrADS</a></li><li><a href=\"http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/\">wgrib2</a>, only for GRIB edition 2, wgrib2 can not decode GRIB edition 1 files</li><li><a href=\"http://www.exelisvis.co.uk/ProductsServices/IDL.aspx\">IDL</a></li><li>the <a rel=\"nofollow\" href=\"http://www.gdal.org/frmt_grib.html\" class=\"external-link\">GDAL library</a>, with limited support for coordinate systems, georeferencing and metadata. In particular irregular (non-cartesian) coordinate systems might not be decoded correctly.</li></ul><p>More tools are listed in <a href=\"https://en.wikipedia.org/wiki/GRIB#Software\">this Wikipedia article</a>.</p><p><strong>Known issues</strong></p><p>GRIBs from the <a href=\"http://www.regional.atmosphere.copernicus.eu\">CAMS Regional service</a> require specific procedures, <ac:link><ri:page ri:content-title=\"Regional (European) CAMS data: Convert from GRIB2 to NetCDF\" /><ac:plain-text-link-body><![CDATA[please see here.]]></ac:plain-text-link-body></ac:link></p><h2>How to extract data from GRIB to text<strong><br /></strong></h2><p>This example shows how to extract data from a GRIB file to generic text.<strong><br /></strong></p><p>Preparation:</p><ol><li>Get a computer running Linux</li><li>On your Linux computer install <a href=\"https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home\" rel=\"nofollow\" class=\"external-link\">ECMWF's ecCodes software</a></li><li>Get data in GRIB format, for example from the CAMS or C3S Service. For this use case we assume the file contains forecast data, and surface data (ie. a single layer, no atmospheric layers above the surface)</li></ol><h3><strong>Example 1: List data from GRIB<br /></strong></h3><ac:structured-macro ac:name=\"code\" ac:schema-version=\"1\" ac:macro-id=\"cbb34861-d917-44ec-a416-bff553e5da0e\"><ac:parameter ac:name=\"language\">bash</ac:parameter><ac:plain-text-body><![CDATA[grib_get_data -p dataDate,dataTime,validityDate,validityTime my_file.grib ]]></ac:plain-text-body></ac:structured-macro><p>... giving this output:</p><ac:structured-macro ac:name=\"code\" ac:schema-version=\"1\" ac:macro-id=\"3c1d01a8-5cb2-4a5c-9b1f-e84c0be52e7a\"><ac:parameter ac:name=\"language\">bash</ac:parameter><ac:plain-text-body><![CDATA[Latitude, Longitude, Value, dataDate, dataTime, validityDate, validityTime\n   69.950  -24.950 6.7796034626e-08 20160117 0 20160117 0\n   69.950  -24.850 6.8240265944e-08 20160117 0 20160117 0\n   69.950  -24.750 6.8275508864e-08 20160117 0 20160117 0\n   69.950  -24.650 6.8133954540e-08 20160117 0 20160117 0\n...]]></ac:plain-text-body></ac:structured-macro><p>dataDate and dataTime indicate the date/time we forecast <em>from</em>. validityDate and validityTime indicate the date/time we forecast <em>for</em>.</p><p>Note that the keys dataDate, dataTime, validityDate, validityTime are available in CAMS/C3S <em>forecast</em> data. Analysis data has different keys.</p><p>For further options please see the <ac:link><ri:page ri:space-key=\"ECC\" ri:content-title=\"GRIB tools\" /><ac:plain-text-link-body><![CDATA[documentation of the ecCodes command line GRIB tools]]></ac:plain-text-link-body></ac:link></p><h3><strong>Example 2: List data for closest point(s)</strong></h3><p>For a given coordinate, for example (lat=46.87 / lon=8.73), list data of the closest model point:</p><ac:structured-macro ac:name=\"code\" ac:schema-version=\"1\" ac:macro-id=\"f5df87b6-c0fd-40bf-a787-87ebbd510951\"><ac:parameter ac:name=\"language\">bash</ac:parameter><ac:plain-text-body><![CDATA[grib_ls -l 46.87,8.73,1 -p dataDate,dataTime,validityDate,validityTime my_file.grib]]></ac:plain-text-body></ac:structured-macro><p>... giving this output:</p><ac:structured-macro ac:name=\"code\" ac:schema-version=\"1\" ac:macro-id=\"25536335-cb0b-4497-b4f6-e89b5b01b00f\"><ac:parameter ac:name=\"language\">bash</ac:parameter><ac:plain-text-body><![CDATA[my_file.grib\ndataDate      dataTime      validityDate  validityTime   value \n20160117      0             20160117      0             3.37724e-08   \n20160117      0             20160117      100           3.24475e-08   \n20160117      0             20160117      200           3.3837e-08     \n...\n20160117      0             20160117      2200          3.2791e-08    \n20160117      0             20160117      2300          3.61387e-08   \n20160117      0             20160118      0             3.96635e-08   \n25 of 25 messages in my_grib_file.grib\n\n25 of 25 total messages in 1 files\nInput Point: latitude=46.87  longitude=8.73\nGrid Point chosen #1 index=162037 latitude=46.85 longitude=8.75 distance=2.69 (Km)\nOther grid Points\n- 1 - index=162037 latitude=46.85 longitude=8.75 distance=2.69 (Km)\n- 2 - index=162036 latitude=46.85 longitude=8.65 distance=6.47 (Km)\n- 3 - index=161337 latitude=46.95 longitude=8.75 distance=9.02 (Km)\n- 4 - index=161336 latitude=46.95 longitude=8.65 distance=10.77 (Km)]]></ac:plain-text-body></ac:structured-macro><p>For further options please see the <ac:link><ri:page ri:space-key=\"ECC\" ri:content-title=\"GRIB tools\" /><ac:plain-text-link-body><![CDATA[documentation of the ecCodes command line GRIB tools]]></ac:plain-text-link-body></ac:link></p><h3>Tips</h3><p>-F option to format values as decimals instead of scientific:</p><ac:structured-macro ac:name=\"code\" ac:schema-version=\"1\" ac:macro-id=\"236cbea2-9328-402b-a3d8-d29bba16ed7f\"><ac:parameter ac:name=\"language\">bash</ac:parameter><ac:plain-text-body><![CDATA[grib_ls -F %f my_file.grib]]></ac:plain-text-body></ac:structured-macro><p>Redirect the output to a text file:</p><ac:structured-macro ac:name=\"code\" ac:schema-version=\"1\" ac:macro-id=\"8f2eddea-5816-41f9-9f58-be067cbad501\"><ac:parameter ac:name=\"language\">bash</ac:parameter><ac:plain-text-body><![CDATA[grib_get_data my_file.grib > my_file.txt]]></ac:plain-text-body></ac:structured-macro><p>List only the first or last 10 lines of an output (aka pipe):</p><ac:structured-macro ac:name=\"code\" ac:schema-version=\"1\" ac:macro-id=\"b50d6509-8687-484f-8613-3332eaa06522\"><ac:parameter ac:name=\"language\">bash</ac:parameter><ac:plain-text-body><![CDATA[grib_get_data my_file.grib | head -n10\ngrib_get_data my_file.grib | tail -n10]]></ac:plain-text-body></ac:structured-macro><p>&nbsp;</p><h2>Related articles</h2><p><ac:structured-macro ac:name=\"contentbylabel\" ac:schema-version=\"3\" ac:macro-id=\"3a8fcb2e-eccc-4b44-80c5-2b95f247dd4d\"><ac:parameter ac:name=\"showLabels\">false</ac:parameter><ac:parameter ac:name=\"max\">5</ac:parameter><ac:parameter ac:name=\"spaces\">CKB</ac:parameter><ac:parameter ac:name=\"showSpace\">false</ac:parameter><ac:parameter ac:name=\"sort\">title</ac:parameter><ac:parameter ac:name=\"type\">page</ac:parameter><ac:parameter ac:name=\"cql\">label = &quot;grib&quot; and type = &quot;page&quot; and space = &quot;CKB&quot;</ac:parameter><ac:parameter ac:name=\"labels\">cams c3s data download</ac:parameter></ac:structured-macro></p><ac:structured-macro ac:name=\"details\" ac:schema-version=\"1\" ac:macro-id=\"f967e3fd-91f2-4c03-9da0-1dc6044ad7ca\"><ac:parameter ac:name=\"hidden\">true</ac:parameter><ac:rich-text-body><p class=\"auto-cursor-target\"><br /></p><table class=\"wrapped\"><colgroup><col /><col /></colgroup><tbody><tr><th>Related issues</th><td>&nbsp;</td></tr></tbody></table><p class=\"auto-cursor-target\"><br /></p></ac:rich-text-body></ac:structured-macro><p class=\"auto-cursor-target\"><br /></p>",
+          "representation": "storage",
+          "_expandable": {
+            "content": "/rest/api/content/55122386"
+          }
+        },
+        "view": {
+          "value": "<p>Common GUI tools for reading and visualising GRIB files are:</p><ul><li><a href=\"http://www.giss.nasa.gov/tools/panoply/\" class=\"external-link\" rel=\"nofollow\">Panoply</a> by NASA</li><li><a href=\"https://software.ecmwf.int/wiki/display/METV/Metview\" class=\"external-link\" rel=\"nofollow\">MetView</a> by ECMWF</li><li><a href=\"http://www.unidata.ucar.edu/software/idv/\" class=\"external-link\" rel=\"nofollow\">Integrated Data Viewer (IDV)</a> by UCAR unidata</li><li><a href=\"http://www.zygrib.org\" class=\"external-link\" rel=\"nofollow\">zyGRIB</a></li><li><a href=\"http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/multidimensional-raster-types.htm\" class=\"external-link\" rel=\"nofollow\">ArcGIS</a> by ESRI</li></ul><p>For users comfortable with command line tools:</p><ul><li><a href=\"/display/ECC/ecCodes+Home\"><span class=\"confluence-link\">ecCodes</span></a> by ECMWF<br/><ul><li>Supports GRIB to NetCDF conversion (grib_to_netcdf -o netcdf_file grib_file)</li><li>Supports GRIB to JSON (grib_dump -j &lt;gribfile&gt;)</li><li>See tools and code examples for <a href=\"/display/ECC/API+examples\">Fortran, Python and C</a></li></ul></li><li><a href=\"https://code.zmaw.de/projects/cdo/embedded/index.html#x1-390002.1\" class=\"external-link\" rel=\"nofollow\">CDO info operators</a> (info, infon, sinfo, sinfon)</li><li><a href=\"http://nco.sourceforge.net\" class=\"external-link\" rel=\"nofollow\">NCO</a></li><li><a href=\"http://cola.gmu.edu/grads/\" class=\"external-link\" rel=\"nofollow\">GrADS</a></li><li><a href=\"http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/\" class=\"external-link\" rel=\"nofollow\">wgrib2</a>, only for GRIB edition 2, wgrib2 can not decode GRIB edition 1 files</li><li><a href=\"http://www.exelisvis.co.uk/ProductsServices/IDL.aspx\" class=\"external-link\" rel=\"nofollow\">IDL</a></li><li>the <a rel=\"nofollow\" href=\"http://www.gdal.org/frmt_grib.html\" class=\"external-link\">GDAL library</a>, with limited support for coordinate systems, georeferencing and metadata. In particular irregular (non-cartesian) coordinate systems might not be decoded correctly.</li></ul><p>More tools are listed in <a href=\"https://en.wikipedia.org/wiki/GRIB#Software\" class=\"external-link\" rel=\"nofollow\">this Wikipedia article</a>.</p><p><strong>Known issues</strong></p><p>GRIBs from the <a href=\"http://www.regional.atmosphere.copernicus.eu\" class=\"external-link\" rel=\"nofollow\">CAMS Regional service</a> require specific procedures, <a href=\"/display/CKB/Regional+%28European%29+CAMS+data%3A+Convert+from+GRIB2+to+NetCDF\">please see here.</a></p><h2 id=\"HowtoreadordecodeaGRIBfile-HowtoextractdatafromGRIBtotext\">How to extract data from GRIB to text<strong><br/></strong></h2><p>This example shows how to extract data from a GRIB file to generic text.<strong><br/></strong></p><p>Preparation:</p><ol><li>Get a computer running Linux</li><li>On your Linux computer install <a href=\"https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home\" rel=\"nofollow\" class=\"external-link\">ECMWF's ecCodes software</a></li><li>Get data in GRIB format, for example from the CAMS or C3S Service. For this use case we assume the file contains forecast data, and surface data (ie. a single layer, no atmospheric layers above the surface)</li></ol><h3 id=\"HowtoreadordecodeaGRIBfile-Example1:ListdatafromGRIB\"><strong>Example 1: List data from GRIB<br/></strong></h3><div class=\"code panel pdl conf-macro output-block\" style=\"border-width: 1px;\" data-hasbody=\"true\" data-macro-name=\"code\"><div class=\"codeContent panelContent pdl\">\n<pre class=\"syntaxhighlighter-pre\" data-syntaxhighlighter-params=\"brush: bash; gutter: false; theme: Confluence\" data-theme=\"Confluence\">grib_get_data -p dataDate,dataTime,validityDate,validityTime my_file.grib </pre>\n</div></div><p>... giving this output:</p><div class=\"code panel pdl conf-macro output-block\" style=\"border-width: 1px;\" data-hasbody=\"true\" data-macro-name=\"code\"><div class=\"codeContent panelContent pdl\">\n<pre class=\"syntaxhighlighter-pre\" data-syntaxhighlighter-params=\"brush: bash; gutter: false; theme: Confluence\" data-theme=\"Confluence\">Latitude, Longitude, Value, dataDate, dataTime, validityDate, validityTime\n   69.950  -24.950 6.7796034626e-08 20160117 0 20160117 0\n   69.950  -24.850 6.8240265944e-08 20160117 0 20160117 0\n   69.950  -24.750 6.8275508864e-08 20160117 0 20160117 0\n   69.950  -24.650 6.8133954540e-08 20160117 0 20160117 0\n...</pre>\n</div></div><p>dataDate and dataTime indicate the date/time we forecast <em>from</em>. validityDate and validityTime indicate the date/time we forecast <em>for</em>.</p><p>Note that the keys dataDate, dataTime, validityDate, validityTime are available in CAMS/C3S <em>forecast</em> data. Analysis data has different keys.</p><p>For further options please see the <a href=\"/display/ECC/GRIB+tools\">documentation of the ecCodes command line GRIB tools</a></p><h3 id=\"HowtoreadordecodeaGRIBfile-Example2:Listdataforclosestpoint(s)\"><strong>Example 2: List data for closest point(s)</strong></h3><p>For a given coordinate, for example (lat=46.87 / lon=8.73), list data of the closest model point:</p><div class=\"code panel pdl conf-macro output-block\" style=\"border-width: 1px;\" data-hasbody=\"true\" data-macro-name=\"code\"><div class=\"codeContent panelContent pdl\">\n<pre class=\"syntaxhighlighter-pre\" data-syntaxhighlighter-params=\"brush: bash; gutter: false; theme: Confluence\" data-theme=\"Confluence\">grib_ls -l 46.87,8.73,1 -p dataDate,dataTime,validityDate,validityTime my_file.grib</pre>\n</div></div><p>... giving this output:</p><div class=\"code panel pdl conf-macro output-block\" style=\"border-width: 1px;\" data-hasbody=\"true\" data-macro-name=\"code\"><div class=\"codeContent panelContent pdl\">\n<pre class=\"syntaxhighlighter-pre\" data-syntaxhighlighter-params=\"brush: bash; gutter: false; theme: Confluence\" data-theme=\"Confluence\">my_file.grib\ndataDate      dataTime      validityDate  validityTime   value \n20160117      0             20160117      0             3.37724e-08   \n20160117      0             20160117      100           3.24475e-08   \n20160117      0             20160117      200           3.3837e-08     \n...\n20160117      0             20160117      2200          3.2791e-08    \n20160117      0             20160117      2300          3.61387e-08   \n20160117      0             20160118      0             3.96635e-08   \n25 of 25 messages in my_grib_file.grib\n\n25 of 25 total messages in 1 files\nInput Point: latitude=46.87  longitude=8.73\nGrid Point chosen #1 index=162037 latitude=46.85 longitude=8.75 distance=2.69 (Km)\nOther grid Points\n- 1 - index=162037 latitude=46.85 longitude=8.75 distance=2.69 (Km)\n- 2 - index=162036 latitude=46.85 longitude=8.65 distance=6.47 (Km)\n- 3 - index=161337 latitude=46.95 longitude=8.75 distance=9.02 (Km)\n- 4 - index=161336 latitude=46.95 longitude=8.65 distance=10.77 (Km)</pre>\n</div></div><p>For further options please see the <a href=\"/display/ECC/GRIB+tools\">documentation of the ecCodes command line GRIB tools</a></p><h3 id=\"HowtoreadordecodeaGRIBfile-Tips\">Tips</h3><p>-F option to format values as decimals instead of scientific:</p><div class=\"code panel pdl conf-macro output-block\" style=\"border-width: 1px;\" data-hasbody=\"true\" data-macro-name=\"code\"><div class=\"codeContent panelContent pdl\">\n<pre class=\"syntaxhighlighter-pre\" data-syntaxhighlighter-params=\"brush: bash; gutter: false; theme: Confluence\" data-theme=\"Confluence\">grib_ls -F %f my_file.grib</pre>\n</div></div><p>Redirect the output to a text file:</p><div class=\"code panel pdl conf-macro output-block\" style=\"border-width: 1px;\" data-hasbody=\"true\" data-macro-name=\"code\"><div class=\"codeContent panelContent pdl\">\n<pre class=\"syntaxhighlighter-pre\" data-syntaxhighlighter-params=\"brush: bash; gutter: false; theme: Confluence\" data-theme=\"Confluence\">grib_get_data my_file.grib &gt; my_file.txt</pre>\n</div></div><p>List only the first or last 10 lines of an output (aka pipe):</p><div class=\"code panel pdl conf-macro output-block\" style=\"border-width: 1px;\" data-hasbody=\"true\" data-macro-name=\"code\"><div class=\"codeContent panelContent pdl\">\n<pre class=\"syntaxhighlighter-pre\" data-syntaxhighlighter-params=\"brush: bash; gutter: false; theme: Confluence\" data-theme=\"Confluence\">grib_get_data my_file.grib | head -n10\ngrib_get_data my_file.grib | tail -n10</pre>\n</div></div><p> </p><h2 id=\"HowtoreadordecodeaGRIBfile-Relatedarticles\">Related articles</h2><p>\n\n\n\n\n\n\n\n\n\n\n\n<ul class=\"content-by-label conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"contentbylabel\">\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ECCODES+ERROR+%3A+Wrong+number+of+fields+...+Try+using+the+-T+option\">ECCODES ERROR : Wrong number of fields ... Try using the -T option</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ERA5%3A+What+is+the+spatial+reference\">ERA5: What is the spatial reference</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=81014955\">Extract data from GRIB/NetCDF for a specific location and time</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/How+to+convert+GRIB+to+CSV\">How to convert GRIB to CSV</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/How+to+merge+multiple+GRIB+or+NetCDF+files\">How to merge multiple GRIB or NetCDF files</a>\n                \n                        \n                    </div>\n    </li>\n    </ul>\n</p>",
+          "representation": "storage",
+          "_expandable": {
+            "webresource": "",
+            "content": "/rest/api/content/55122386"
+          }
+        },
+        "_expandable": {
+          "editor": "",
+          "export_view": "",
+          "styled_view": "",
+          "anonymous_export_view": ""
+        }
+      },
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "cams",
+              "id": "47710250"
+            },
+            {
+              "prefix": "global",
+              "name": "c3s",
+              "id": "47710251"
+            },
+            {
+              "prefix": "global",
+              "name": "grib",
+              "id": "19857510"
+            },
+            {
+              "prefix": "global",
+              "name": "download-data",
+              "id": "60260379"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4,
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/content/55122386/label"
+          }
+        },
+        "_expandable": {
+          "currentuser": "",
+          "frontend": "",
+          "editorHtml": "",
+          "properties": ""
+        }
+      },
+      "extensions": {
+        "position": 1
+      },
+      "_links": {
+        "webui": "/display/CKB/How+to+read+or+decode+a+GRIB+file",
+        "edit": "/pages/resumedraft.action?draftId=55122386",
+        "tinyui": "/x/0hlJAw",
+        "self": "https://confluence.ecmwf.int/rest/api/content/55122386"
+      },
+      "_expandable": {
+        "container": "/rest/api/space/CKB",
+        "operations": "",
+        "children": "/rest/api/content/55122386/child",
+        "restrictions": "/rest/api/content/55122386/restriction/byOperation",
+        "ancestors": "",
+        "descendants": "/rest/api/content/55122386/descendant",
+        "space": "/rest/api/space/CKB"
+      }
+    },
+    {
+      "id": "56658345",
+      "type": "page",
+      "status": "current",
+      "title": "What is ERA-Interim",
+      "history": {
+        "latest": true,
+        "createdBy": {
+          "type": "known",
+          "username": "uskh",
+          "userKey": "081c38c0516239bb015190f3de240203",
+          "profilePicture": {
+            "path": "/download/attachments/53514087/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Karl Hennermann",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb015190f3de240203"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "createdDate": "2016-03-08T12:37:10.402Z",
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/api/content/56658345/history"
+        },
+        "_expandable": {
+          "lastUpdated": "",
+          "previousVersion": "",
+          "contributors": "",
+          "nextVersion": ""
+        }
+      },
+      "version": {
+        "by": {
+          "type": "known",
+          "username": "usmg",
+          "userKey": "081c39166c66b21c016caebf22390307",
+          "profilePicture": {
+            "path": "/download/attachments/149333426/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Michela Giusti",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c39166c66b21c016caebf22390307"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "when": "2020-02-06T12:38:00.386Z",
+        "message": "",
+        "number": 35,
+        "minorEdit": false,
+        "hidden": false,
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/experimental/content/56658345/version/35"
+        },
+        "_expandable": {
+          "content": "/rest/api/content/56658345"
+        }
+      },
+      "body": {
+        "storage": {
+          "value": "<p class=\"auto-cursor-target\"><br /></p><ac:structured-macro ac:name=\"note\" ac:schema-version=\"1\" ac:macro-id=\"be45c3eb-38ab-41e8-ad79-3f1aa9d912fe\"><ac:parameter ac:name=\"title\">ERA-Interim production stopped on 31st August 2019</ac:parameter><ac:rich-text-body><p>For the time being and until further notice, ERA-Interim (1st January 1979 to 31st August 2019) shall continue to be accessible through the <a href=\"https://apps.ecmwf.int/datasets/data/interim-full-daily/levtype=sfc/\">ECMWF Web API</a>. Keeping in mind that ERA-Interim is published with an offset of about three months from the dataset's reference date, ERA-Interim August 2019 data will be made available towards the end of October 2019.</p><p>ERA5 is now available from the <a href=\"https://cds.climate.copernicus.eu/cdsapp#!/home\">Climate Data Store (CDS)</a> (<a href=\"https://confluence.ecmwf.int/pages/viewpage.action?pageId=74764925\">What are the changes from ERA-Interim to ERA5?</a>) and users are strongly advised to migrate to ERA5 (<a href=\"https://confluence.ecmwf.int/display/CKB/How+to+migrate+from+ECMWF+Web+API+to+CDS+API\">How to migrate from ECMWF Web API to CDS API</a>).</p></ac:rich-text-body></ac:structured-macro><p>ERA-Interim is a climate reanalysis dataset, covering the period from 1979 to 31st August 2019. ERA stands for 'ECMWF Re-Analysis' and refers to a series of research projects at <a rel=\"nofollow\" href=\"http://www.ecmwf.int\" class=\"external-link\">ECMWF</a> which produced various datasets (ERA-Interim, ERA-40, etcetera).</p><p>ERA-Interim data is open access and free to download for all uses from the ECMWF data archive. Please see our guidelines on <a href=\"https://confluence.ecmwf.int/display/CKB/How+to+download+ERA-Interim+data+from+the+ECMWF+data+archive\">How to download ERA-Interim data from the ECMWF data archive</a>.</p><p>ERA-Interim uses a fixed version of a numerical weather prediction (NWP) system (IFS - CY31r2) to produce reanalysed data. The fixed version ensures that no spurious trends are caused by an evolving NWP system, though the changing observing system can create such trends. The NWP system blends, or assimilates observations with a previous forecast to obtain the best fit to both. The result of this blending is called an analysis and is the starting point for the next forecast. In this manner, data is produced at increasingly later times.</p><p>The ERA-Interim dataset contains atmospheric and surface parameters:</p><ul><li>6-hourly atmospheric fields&nbsp;on model levels, pressure levels, potential temperature and potential vorticity</li><li>3-hourly surface fields and daily vertical integrals</li><li>Monthly averages of daily means</li><li><p>Synoptic monthly averages at 00 UTC, 06 UTC, 12 UTC, 18 UTC</p></li></ul><p>ERA-Interim&nbsp;data is archived in the GRIB file format.</p><p>Please see <ac:link><ri:page ri:space-key=\"CKB\" ri:content-title=\"ERA-Interim: documentation\" /><ac:plain-text-link-body><![CDATA[ERA-Interim documentation]]></ac:plain-text-link-body></ac:link> for full details (including list of parameters).</p><p>For further details please see:</p><p>Berrisford, P., P. K&aring;llberg,&nbsp; S. Kobayashi,&nbsp;D. Dee, S. Uppala, A. J. Simmons, P. Poli,&nbsp; and H. Sato, 2011: Atmospheric conservation properties in ERA-Interim. <em>Q.J.R. Meteorol. Soc.</em>, <strong>137</strong>:&nbsp;1381&ndash;1399. doi:&nbsp;<a href=\"https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/qj.864\" class=\"external-link\" rel=\"nofollow\">10.1002/qj.864</a></p><p><br /></p><h2>Related articles</h2><p><ac:structured-macro ac:name=\"contentbylabel\" ac:schema-version=\"3\" ac:macro-id=\"da3dd7ad-68c2-418e-abc7-7ac9aebf959c\"><ac:parameter ac:name=\"showLabels\">false</ac:parameter><ac:parameter ac:name=\"max\">5</ac:parameter><ac:parameter ac:name=\"spaces\">CKB</ac:parameter><ac:parameter ac:name=\"showSpace\">false</ac:parameter><ac:parameter ac:name=\"sort\">modified</ac:parameter><ac:parameter ac:name=\"reverse\">true</ac:parameter><ac:parameter ac:name=\"type\">page</ac:parameter><ac:parameter ac:name=\"cql\">label = &quot;era-interim&quot; and type = &quot;page&quot; and space = &quot;CKB&quot;</ac:parameter><ac:parameter ac:name=\"labels\">era5</ac:parameter></ac:structured-macro></p>",
+          "representation": "storage",
+          "_expandable": {
+            "content": "/rest/api/content/56658345"
+          }
+        },
+        "view": {
+          "value": "<div class=\"confluence-information-macro confluence-information-macro-note conf-macro output-block\" data-hasbody=\"true\" data-macro-name=\"note\"><p class=\"title\">ERA-Interim production stopped on 31st August 2019</p><span class=\"aui-icon aui-icon-small aui-iconfont-warning confluence-information-macro-icon\"> </span><div class=\"confluence-information-macro-body\"><p>For the time being and until further notice, ERA-Interim (1st January 1979 to 31st August 2019) shall continue to be accessible through the <a href=\"https://apps.ecmwf.int/datasets/data/interim-full-daily/levtype=sfc/\" class=\"external-link\" rel=\"nofollow\">ECMWF Web API</a>. Keeping in mind that ERA-Interim is published with an offset of about three months from the dataset's reference date, ERA-Interim August 2019 data will be made available towards the end of October 2019.</p><p>ERA5 is now available from the <a href=\"https://cds.climate.copernicus.eu/cdsapp#!/home\" class=\"external-link\" rel=\"nofollow\">Climate Data Store (CDS)</a> (<a href=\"https://confluence.ecmwf.int/pages/viewpage.action?pageId=74764925\" rel=\"nofollow\">What are the changes from ERA-Interim to ERA5?</a>) and users are strongly advised to migrate to ERA5 (<a href=\"https://confluence.ecmwf.int/display/CKB/How+to+migrate+from+ECMWF+Web+API+to+CDS+API\" rel=\"nofollow\">How to migrate from ECMWF Web API to CDS API</a>).</p></div></div><p>ERA-Interim is a climate reanalysis dataset, covering the period from 1979 to 31st August 2019. ERA stands for 'ECMWF Re-Analysis' and refers to a series of research projects at <a rel=\"nofollow\" href=\"http://www.ecmwf.int\" class=\"external-link\">ECMWF</a> which produced various datasets (ERA-Interim, ERA-40, etcetera).</p><p>ERA-Interim data is open access and free to download for all uses from the ECMWF data archive. Please see our guidelines on <a href=\"https://confluence.ecmwf.int/display/CKB/How+to+download+ERA-Interim+data+from+the+ECMWF+data+archive\" rel=\"nofollow\">How to download ERA-Interim data from the ECMWF data archive</a>.</p><p>ERA-Interim uses a fixed version of a numerical weather prediction (NWP) system (IFS - CY31r2) to produce reanalysed data. The fixed version ensures that no spurious trends are caused by an evolving NWP system, though the changing observing system can create such trends. The NWP system blends, or assimilates observations with a previous forecast to obtain the best fit to both. The result of this blending is called an analysis and is the starting point for the next forecast. In this manner, data is produced at increasingly later times.</p><p>The ERA-Interim dataset contains atmospheric and surface parameters:</p><ul><li>6-hourly atmospheric fields on model levels, pressure levels, potential temperature and potential vorticity</li><li>3-hourly surface fields and daily vertical integrals</li><li>Monthly averages of daily means</li><li><p>Synoptic monthly averages at 00 UTC, 06 UTC, 12 UTC, 18 UTC</p></li></ul><p>ERA-Interim data is archived in the GRIB file format.</p><p>Please see <a href=\"/display/CKB/ERA-Interim%3A+documentation\">ERA-Interim documentation</a> for full details (including list of parameters).</p><p>For further details please see:</p><p>Berrisford, P., P. Kållberg,  S. Kobayashi, D. Dee, S. Uppala, A. J. Simmons, P. Poli,  and H. Sato, 2011: Atmospheric conservation properties in ERA-Interim. <em>Q.J.R. Meteorol. Soc.</em>, <strong>137</strong>: 1381–1399. doi: <a href=\"https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/qj.864\" class=\"external-link\" rel=\"nofollow\">10.1002/qj.864</a></p><p><br/></p><h2 id=\"WhatisERAInterim-Relatedarticles\">Related articles</h2><p>\n\n\n\n\n\n\n\n\n\n\n\n<ul class=\"content-by-label conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"contentbylabel\">\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ERA-Interim%3A+How+to+calculate+daily+total+precipitation\">ERA-Interim: How to calculate daily total precipitation</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ERA5%3A+daily+ocean+waves+10m+wind+speed+and+direction+renamed+ocean+surface+stress+equivalent+10m+neutral+wind+speed+and+direction\">ERA5: daily ocean waves 10m wind speed and direction renamed ocean surface stress equivalent 10m neutral wind speed and direction</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ERA-Interim%3A+documentation\">ERA-Interim: documentation</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/How+to+download+ERA-Interim+data+from+the+ECMWF+data+archive\">How to download ERA-Interim data from the ECMWF data archive</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/Transformation+or+regridding+of+ECMWF+Reanalyses+data\">Transformation or regridding of ECMWF Reanalyses data</a>\n                \n                        \n                    </div>\n    </li>\n    </ul>\n</p>",
+          "representation": "storage",
+          "_expandable": {
+            "webresource": "",
+            "content": "/rest/api/content/56658345"
+          }
+        },
+        "_expandable": {
+          "editor": "",
+          "export_view": "",
+          "styled_view": "",
+          "anonymous_export_view": ""
+        }
+      },
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "era-interim",
+              "id": "46301380"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 1,
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/content/56658345/label"
+          }
+        },
+        "_expandable": {
+          "currentuser": "",
+          "frontend": "",
+          "editorHtml": "",
+          "properties": ""
+        }
+      },
+      "extensions": {
+        "position": 0
+      },
+      "_links": {
+        "webui": "/display/CKB/What+is+ERA-Interim",
+        "edit": "/pages/resumedraft.action?draftId=56658345",
+        "tinyui": "/x/qYlgAw",
+        "self": "https://confluence.ecmwf.int/rest/api/content/56658345"
+      },
+      "_expandable": {
+        "container": "/rest/api/space/CKB",
+        "operations": "",
+        "children": "/rest/api/content/56658345/child",
+        "restrictions": "/rest/api/content/56658345/restriction/byOperation",
+        "ancestors": "",
+        "descendants": "/rest/api/content/56658345/descendant",
+        "space": "/rest/api/space/CKB"
+      }
+    },
+    {
+      "id": "56659291",
+      "type": "page",
+      "status": "current",
+      "title": "What are GRIB files",
+      "history": {
+        "latest": true,
+        "createdBy": {
+          "type": "known",
+          "username": "usag",
+          "userKey": "081c38c0516239bb0151a074adbd0270",
+          "profilePicture": {
+            "path": "/images/icons/profilepics/default.svg",
+            "width": 48,
+            "height": 48,
+            "isDefault": true
+          },
+          "displayName": "Anabelle Guillory",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb0151a074adbd0270"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "createdDate": "2016-03-09T16:37:09.932Z",
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/api/content/56659291/history"
+        },
+        "_expandable": {
+          "lastUpdated": "",
+          "previousVersion": "",
+          "contributors": "",
+          "nextVersion": ""
+        }
+      },
+      "version": {
+        "by": {
+          "type": "known",
+          "username": "usmg",
+          "userKey": "081c39166c66b21c016caebf22390307",
+          "profilePicture": {
+            "path": "/download/attachments/149333426/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Michela Giusti",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c39166c66b21c016caebf22390307"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "when": "2020-02-05T13:58:47.065Z",
+        "message": "Confirmed: ok",
+        "number": 16,
+        "minorEdit": false,
+        "hidden": false,
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/experimental/content/56659291/version/16"
+        },
+        "_expandable": {
+          "content": "/rest/api/content/56659291"
+        }
+      },
+      "body": {
+        "storage": {
+          "value": "<p class=\"auto-cursor-target\"><br /></p><ac:structured-macro ac:name=\"info\" ac:schema-version=\"1\" ac:macro-id=\"70ca8974-f06f-4c36-93dd-145c2fd042b3\"><ac:rich-text-body>Before downloading data check if your processing software supports the GRIB and/or NetCDF formats. If your software supports both, use GRIB as first choice. If your software supports only NetCDF or if you run into problems with GRIB, use the NetCDF format.</ac:rich-text-body></ac:structured-macro><p><strong><br /></strong></p><p>The <strong>GRIB</strong> file format is designed for storing and distributing weather data. GRIB files are widely used in meteorological applications (<a href=\"https://en.wikipedia.org/wiki/GRIB\">Wikipedia article</a>, including a list of software to read GRIB files).</p><p>GRIB stands for &quot;General Regularly distributed Information in Binary form&quot; and is a <a href=\"https://www.wmo.int/pages/index_en.html\">WMO</a> (World Meteorological Organisation) standard format for archiving and exchanging gridded data. GRIB is a binary format, and the data is packed to increase storage efficiency. GRIB data is also self-describing, meaning that the information needed to read the file is present within the file. GRIB files usually have the extension .grib, .grb or .gb.</p><p>Currently there are two different coding standards: <strong>GRIB edition 1</strong> (commonly referred to as <a href=\"http://www.wmo.int/pages/prog/www/WMOCodes/Guides/GRIB/GRIB1-Contents.html\">GRIB1</a>) and <strong>GRIB edition 2</strong> (<a href=\"http://www.wmo.int/pages/prog/www/WMOCodes.html\">GRIB2</a>). Note that a GRIB file can contain a mix of editions 1 and 2. Major differences are in the structure of the messages, in GRIB2, several variables are defined with more precision (e.g. in GRIB1, latitudes and longitudes are in milli-degrees while in GRIB2, they are in micro-degrees). Also in GRIB2, longitude values must lie between 0 and 360 degrees), encoding of the parameter is very different and in GRIB2, the description of the data is template/table based. See WMO &quot;<a href=\"https://www.wmo.int/pages/prog/www/WMOCodes/Guides/GRIB/Introduction_GRIB1-GRIB2.pdf\">Introduction to GRIB Edition 1 and GRIB Edition 2</a>&quot; documentation for further details.</p><p>The ECMWF model (the Integrated <ac:inline-comment-marker ac:ref=\"02f485ac-c119-4460-ad49-9cc5257e6fbb\"><ac:inline-comment-marker ac:ref=\"f15fcfc6-54e5-4886-9625-66fc26b49c8b\">Forecasting</ac:inline-comment-marker></ac:inline-comment-marker> System, IFS) currently outputs model-level fields in GRIB2 while pressure and surface level outputs are produced in GRIB1. <strong>ERA-Interim</strong>, a climate reanalysis dataset provided by ECMWF, is produced in the GRIB edition 1 format. The ERA-Interim data is then made available for download in its native GRIB format, and also in a version converted from GRIB to NetCDF. Note that due to limitations of the NetCDF specifications, the NetCDF version contains fewer parameters (variables) and incomplete metadata (information about the data). The NetCDF format is not formally supported by ECMWF.</p><p class=\"field field-name-body field-type-text-with-summary field-label-hidden\">ECMWF provides and supports <strong>ecCodes</strong>, an Application Program Interface accessible from C, FORTRAN and Python programs developed for encoding and decoding GRIB 1 and GRIB 2 files. <ac:link><ri:page ri:space-key=\"ECC\" ri:content-title=\"ecCodes Home\" /><ac:plain-text-link-body><![CDATA[ecCodes]]></ac:plain-text-link-body></ac:link> also provides a useful set of command line tools to give quick access to GRIB messages within the files. <strong>MetView</strong> is a software tool which allows to read, process and visualise GRIB 1 and GRIB 2 formatted data (see <a href=\"https://software.ecmwf.int/wiki/display/METV/Metview\">Metview</a> documentation).</p><h2>Related articles</h2><p><ac:structured-macro ac:name=\"contentbylabel\" ac:schema-version=\"3\" ac:macro-id=\"88a92a81-68ee-421b-9cd9-f068cc814ab7\"><ac:parameter ac:name=\"showLabels\">false</ac:parameter><ac:parameter ac:name=\"max\">5</ac:parameter><ac:parameter ac:name=\"spaces\">CKB</ac:parameter><ac:parameter ac:name=\"showSpace\">false</ac:parameter><ac:parameter ac:name=\"sort\">title</ac:parameter><ac:parameter ac:name=\"type\">page</ac:parameter><ac:parameter ac:name=\"cql\">label = &quot;grib&quot; and type = &quot;page&quot; and space = &quot;CKB&quot;</ac:parameter><ac:parameter ac:name=\"labels\">cams c3s data download</ac:parameter></ac:structured-macro></p><p>&nbsp;</p>",
+          "representation": "storage",
+          "_expandable": {
+            "content": "/rest/api/content/56659291"
+          }
+        },
+        "view": {
+          "value": "<div class=\"confluence-information-macro confluence-information-macro-information conf-macro output-block\" data-hasbody=\"true\" data-macro-name=\"info\"><span class=\"aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon\"> </span><div class=\"confluence-information-macro-body\">Before downloading data check if your processing software supports the GRIB and/or NetCDF formats. If your software supports both, use GRIB as first choice. If your software supports only NetCDF or if you run into problems with GRIB, use the NetCDF format.</div></div><p><strong><br/></strong></p><p>The <strong>GRIB</strong> file format is designed for storing and distributing weather data. GRIB files are widely used in meteorological applications (<a href=\"https://en.wikipedia.org/wiki/GRIB\" class=\"external-link\" rel=\"nofollow\">Wikipedia article</a>, including a list of software to read GRIB files).</p><p>GRIB stands for &quot;General Regularly distributed Information in Binary form&quot; and is a <a href=\"https://www.wmo.int/pages/index_en.html\" class=\"external-link\" rel=\"nofollow\">WMO</a> (World Meteorological Organisation) standard format for archiving and exchanging gridded data. GRIB is a binary format, and the data is packed to increase storage efficiency. GRIB data is also self-describing, meaning that the information needed to read the file is present within the file. GRIB files usually have the extension .grib, .grb or .gb.</p><p>Currently there are two different coding standards: <strong>GRIB edition 1</strong> (commonly referred to as <a href=\"http://www.wmo.int/pages/prog/www/WMOCodes/Guides/GRIB/GRIB1-Contents.html\" class=\"external-link\" rel=\"nofollow\">GRIB1</a>) and <strong>GRIB edition 2</strong> (<a href=\"http://www.wmo.int/pages/prog/www/WMOCodes.html\" class=\"external-link\" rel=\"nofollow\">GRIB2</a>). Note that a GRIB file can contain a mix of editions 1 and 2. Major differences are in the structure of the messages, in GRIB2, several variables are defined with more precision (e.g. in GRIB1, latitudes and longitudes are in milli-degrees while in GRIB2, they are in micro-degrees). Also in GRIB2, longitude values must lie between 0 and 360 degrees), encoding of the parameter is very different and in GRIB2, the description of the data is template/table based. See WMO &quot;<a href=\"https://www.wmo.int/pages/prog/www/WMOCodes/Guides/GRIB/Introduction_GRIB1-GRIB2.pdf\" class=\"external-link\" rel=\"nofollow\">Introduction to GRIB Edition 1 and GRIB Edition 2</a>&quot; documentation for further details.</p><p>The ECMWF model (the Integrated <span class=\"inline-comment-marker\" data-ref=\"02f485ac-c119-4460-ad49-9cc5257e6fbb\"><span class=\"inline-comment-marker\" data-ref=\"f15fcfc6-54e5-4886-9625-66fc26b49c8b\">Forecasting</span></span> System, IFS) currently outputs model-level fields in GRIB2 while pressure and surface level outputs are produced in GRIB1. <strong>ERA-Interim</strong>, a climate reanalysis dataset provided by ECMWF, is produced in the GRIB edition 1 format. The ERA-Interim data is then made available for download in its native GRIB format, and also in a version converted from GRIB to NetCDF. Note that due to limitations of the NetCDF specifications, the NetCDF version contains fewer parameters (variables) and incomplete metadata (information about the data). The NetCDF format is not formally supported by ECMWF.</p><p class=\"field field-name-body field-type-text-with-summary field-label-hidden\">ECMWF provides and supports <strong>ecCodes</strong>, an Application Program Interface accessible from C, FORTRAN and Python programs developed for encoding and decoding GRIB 1 and GRIB 2 files. <a href=\"/display/ECC/ecCodes+Home\">ecCodes</a> also provides a useful set of command line tools to give quick access to GRIB messages within the files. <strong>MetView</strong> is a software tool which allows to read, process and visualise GRIB 1 and GRIB 2 formatted data (see <a href=\"https://software.ecmwf.int/wiki/display/METV/Metview\" class=\"external-link\" rel=\"nofollow\">Metview</a> documentation).</p><h2 id=\"WhatareGRIBfiles-Relatedarticles\">Related articles</h2><p>\n\n\n\n\n\n\n\n\n\n\n\n<ul class=\"content-by-label conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"contentbylabel\">\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ECCODES+ERROR+%3A+Wrong+number+of+fields+...+Try+using+the+-T+option\">ECCODES ERROR : Wrong number of fields ... Try using the -T option</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ERA5%3A+What+is+the+spatial+reference\">ERA5: What is the spatial reference</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=81014955\">Extract data from GRIB/NetCDF for a specific location and time</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/How+to+convert+GRIB+to+CSV\">How to convert GRIB to CSV</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/How+to+merge+multiple+GRIB+or+NetCDF+files\">How to merge multiple GRIB or NetCDF files</a>\n                \n                        \n                    </div>\n    </li>\n    </ul>\n</p><p> </p>",
+          "representation": "storage",
+          "_expandable": {
+            "webresource": "",
+            "content": "/rest/api/content/56659291"
+          }
+        },
+        "_expandable": {
+          "editor": "",
+          "export_view": "",
+          "styled_view": "",
+          "anonymous_export_view": ""
+        }
+      },
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "grib",
+              "id": "19857510"
+            },
+            {
+              "prefix": "global",
+              "name": "netcdf",
+              "id": "37814286"
+            },
+            {
+              "prefix": "global",
+              "name": "download-data",
+              "id": "60260379"
+            },
+            {
+              "prefix": "global",
+              "name": "c3s",
+              "id": "47710251"
+            },
+            {
+              "prefix": "global",
+              "name": "cams",
+              "id": "47710250"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 5,
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/content/56659291/label"
+          }
+        },
+        "_expandable": {
+          "currentuser": "",
+          "frontend": "",
+          "editorHtml": "",
+          "properties": ""
+        }
+      },
+      "extensions": {
+        "position": 0
+      },
+      "_links": {
+        "webui": "/display/CKB/What+are+GRIB+files",
+        "edit": "/pages/resumedraft.action?draftId=56659291",
+        "tinyui": "/x/W41gAw",
+        "self": "https://confluence.ecmwf.int/rest/api/content/56659291"
+      },
+      "_expandable": {
+        "container": "/rest/api/space/CKB",
+        "operations": "",
+        "children": "/rest/api/content/56659291/child",
+        "restrictions": "/rest/api/content/56659291/restriction/byOperation",
+        "ancestors": "",
+        "descendants": "/rest/api/content/56659291/descendant",
+        "space": "/rest/api/space/CKB"
+      }
+    },
+    {
+      "id": "56659592",
+      "type": "page",
+      "status": "current",
+      "title": "What data and charts are available through CAMS (Copernicus Atmosphere Monitoring Service)?",
+      "history": {
+        "latest": true,
+        "createdBy": {
+          "type": "known",
+          "username": "usag",
+          "userKey": "081c38c0516239bb0151a074adbd0270",
+          "profilePicture": {
+            "path": "/images/icons/profilepics/default.svg",
+            "width": 48,
+            "height": 48,
+            "isDefault": true
+          },
+          "displayName": "Anabelle Guillory",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb0151a074adbd0270"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "createdDate": "2016-03-10T11:39:00.547Z",
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/api/content/56659592/history"
+        },
+        "_expandable": {
+          "lastUpdated": "",
+          "previousVersion": "",
+          "contributors": "",
+          "nextVersion": ""
+        }
+      },
+      "version": {
+        "by": {
+          "type": "known",
+          "username": "usmg",
+          "userKey": "081c39166c66b21c016caebf22390307",
+          "profilePicture": {
+            "path": "/download/attachments/149333426/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Michela Giusti",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c39166c66b21c016caebf22390307"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "when": "2020-04-20T14:12:55.937+01:00",
+        "message": "",
+        "number": 78,
+        "minorEdit": false,
+        "hidden": false,
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/experimental/content/56659592/version/78"
+        },
+        "_expandable": {
+          "content": "/rest/api/content/56659592"
+        }
+      },
+      "body": {
+        "storage": {
+          "value": "<p><ac:structured-macro ac:name=\"toc\" ac:schema-version=\"1\" ac:macro-id=\"a04e1f09-85de-43a8-a2df-dca8a54d37f0\" /></p><p>The various datasets listed below are available for download and as <ac:link ac:anchor=\"Charts-List\"><ri:content-entity ri:content-id=\"83395361\" /><ac:plain-text-link-body><![CDATA[charts/plots]]></ac:plain-text-link-body></ac:link> together with documentation through the <a href=\"https://ads.atmosphere.copernicus.eu/#!/home\">Atmosphere Data Store (ADS)</a> and <a href=\"http://atmosphere.copernicus.eu/catalogue#/\">CAMS Catalogue</a>. The latest <ac:link><ri:attachment ri:filename=\"CAMS Service Product Portfolio - July 2018_1.pdf\" /><ac:plain-text-link-body><![CDATA[CAMS Product Portfolio]]></ac:plain-text-link-body></ac:link> is also available.</p><p>CAMS data is <strong>open and free of charge</strong> (see <a href=\"http://apps.ecmwf.int/datasets/data/cams-nrealtime/licence/\">Copernicus Licence</a> for details).</p><h2>Global CAMS data:</h2><ac:structured-macro ac:name=\"info\" ac:schema-version=\"1\" ac:macro-id=\"f9de11ff-6ba9-4dc2-9c00-b1aaba44db5a\"><ac:parameter ac:name=\"icon\">false</ac:parameter><ac:rich-text-body><ol><li><strong>Latest&nbsp;three days</strong> of Real-Time CAMS global <strong>daily</strong> <strong> analysis and forecast data</strong> are available through the <a href=\"https://confluence.ecmwf.int/display/CKB/FTP+access+to+CAMS+global+data\">FTP dissemination service</a>.<br /><br /></li><li>CAMS Global <strong>archived analysis and forecast daily data</strong> (6 hourly analysis and 3 hourly up-to 5 days forecast data since 05/07/2012, available with a 5-day delay, approximately 40km horizontal resolution (T511 spectral) on 60 vertical levels from the surface up to 0.1 hPa; increased to 137 levels on 09/07/2019 onwards as part of the <span style=\"color: rgb(23,43,77);\"> <span style=\"color: rgb(23,43,77);\">IFS cycle 46r1 upgrade - see&nbsp;<a style=\"text-decoration: none;\" href=\"https://confluence.ecmwf.int/display/COPSRV/Implementation+of+IFS+cycle+46r1\">&nbsp;Implementation of IFS cycle 46r1</a> <span style=\"letter-spacing: 0.0px;\">&nbsp;for details).</span> </span> </span>&nbsp;These data are available for download through:<br /><ul><li>the ECMWF data server web interface:<a href=\"http://apps.ecmwf.int/datasets/data/cams-nrealtime/levtype=sfc/\"> http://apps.ecmwf.int/datasets/data/cams-nrealtime/levtype=sfc/</a> , one month at a time</li><li><ac:link><ri:space ri:space-key=\"WEBAPI\" /><ac:plain-text-link-body><![CDATA[WebAPI]]></ac:plain-text-link-body></ac:link>, allowing users to download Global CAMS data in a programmatic way (using Python - example scripts are available)<br /><br /></li></ul></li><li>CAMS global delayed-mode analyses and real-time forecasts of CO<sub>2</sub> and CH<sub>4</sub>: On request only - Contact CAMS User Support service (copernicus-support@ecmwf.int)<br /><br /></li><li><strong> <ac:link><ri:page ri:space-key=\"CKB\" ri:content-title=\"CAMS: Reanalysis data documentation\" /><ac:plain-text-link-body><![CDATA[CAMS Global archived reanalysis data]]></ac:plain-text-link-body></ac:link> </strong> (3-hourly and monthly), 2003-2018, annual releases planned thereafter (i.e. 2019 data available in 2020), approximately 80 km (T255 spectral) on 60 vertical levels from the surface up to 0.1 hPa for the analysed species) are available for download through: <br /><ul><li>ADS interactive web interface download forms: <a href=\"https://ads.atmosphere.copernicus.eu/cdsapp/admin#!/dataset/cams-global-reanalysis-eac4?tab=form\">CAMS global reanalysis (EAC4) 3-hourly data</a> and <a href=\"https://ads.atmosphere.copernicus.eu/cdsapp/admin#!/dataset/cams-global-reanalysis-eac4-monthly?tab=form\">CAMS global reanalysis (EAC4) monthly averaged fields</a></li><li><ac:link><ri:page ri:content-title=\"How to migrate to CDS API on the Atmosphere Data Store (ADS)\" /><ac:plain-text-link-body><![CDATA[CDS API]]></ac:plain-text-link-body></ac:link> allowing users to download Global CAMS data in a programmatic way.</li></ul></li><li>CAMS Global <strong>archived </strong> <ac:link><ri:page ri:space-key=\"CKB\" ri:content-title=\"MACC: Reanalysis of global atmospheric composition (2003 - 2012)\" /><ac:plain-text-link-body><![CDATA[MACC Reanalysis]]></ac:plain-text-link-body></ac:link>, 2003-2012, approximately 80 km (T255 spectral) on 60 vertical levels from the surface up to 0.1 hPa for the analysed species) are available for download through:<ul><li>the web using the ECMWF data server web interface:<a href=\"http://apps.ecmwf.int/datasets/data/macc-reanalysis/levtype=sfc/\"> http://apps.ecmwf.int/datasets/data/macc-reanalysis/levtype=sfc/</a> , one month at a time</li><li><ac:link><ri:space ri:space-key=\"WEBAPI\" /><ac:plain-text-link-body><![CDATA[WebAPI]]></ac:plain-text-link-body></ac:link>, which is the method allowing users to download Global CAMS data in a programmatic way (using Python - example scripts are available).</li></ul></li></ol><p class=\"with-breadcrumbs\">See<a href=\"https://confluence.ecmwf.int/pages/viewpage.action?pageId=83396018\"> What are the changes from the MACC Reanalysis to the CAMS interim Reanalysis, to the CAMS Reanalysis?</a></p></ac:rich-text-body></ac:structured-macro><h2>Regional CAMS data (European domain, <span>25W/30N/45E/72N since 12<sup>th</sup> June 2019. Before this date, the domain coverage was smaller i.e. 25W/30N/45E/70N</span>):</h2><ac:structured-macro ac:name=\"info\" ac:schema-version=\"1\" ac:macro-id=\"569d5ad3-3534-480c-96cb-d590c2153c23\"><ac:parameter ac:name=\"icon\">false</ac:parameter><ac:rich-text-body><ol><li><strong>All CAMS regional <strong> analysis</strong> and <strong>forecast</strong> daily data (archived since 04/2017 to the present</strong>, approximately 10km horizontal resolution from surface up to 5000m) are available for download either through:<br /><ul><li><a href=\"https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-europe-air-quality-forecasts?tab=overview\">Atmosphere Data store (ADS) web interface</a></li><li><ac:link><ri:page ri:content-title=\"How to migrate to CDS API on the Atmosphere Data Store (ADS)\" /><ac:plain-text-link-body><![CDATA[CDS API service]]></ac:plain-text-link-body></ac:link>, which is the method allowing users to download Regional CAMS data in a programmatic way (using Python).<br /><br /></li></ul></li><li><strong>CAMS regional reanalyses data</strong> are available <a href=\"http://www.regional.atmosphere.copernicus.eu/index.php?category=data_access&amp;subensemble=reanalysis_products\">online</a>.</li></ol></ac:rich-text-body></ac:structured-macro><h2>Supplementary Products: Solar and UV Radiation data:</h2><ac:structured-macro ac:name=\"info\" ac:schema-version=\"1\" ac:macro-id=\"c9887cee-fa3d-4f10-8843-0106831e2c87\"><ac:parameter ac:name=\"icon\">false</ac:parameter><ac:rich-text-body><ol><li><strong>Solar radiation (2004 - present with up to 2 days delay)</strong> - global clear-sky solar irradiance and Meteosat satellite field-of-view coverage total-sky surface solar irradiation<ul><li>interactive access through&nbsp;<a href=\"https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-solar-radiation-timeseries?tab=form\">Atmosphere Data store (ADS) web interface</a></li><li>automated way via <ac:link><ri:page ri:content-title=\"How to migrate to CDS API on the Atmosphere Data Store (ADS)\" /><ac:plain-text-link-body><![CDATA[CDS API service]]></ac:plain-text-link-body></ac:link></li></ul></li><li><strong>Global UV radiation archived data </strong>(<a href=\"https://confluence.ecmwf.int/pages/viewpage.action?pageId=153391793\">see forum</a>) <br /><ul><li><strong>Latest&nbsp;three days</strong> of near-real-time (NRT) CAMS global UV data are available through the <a href=\"https://confluence.ecmwf.int/display/CKB/FTP+access+to+CAMS+global+data\">FTP Dissemination server</a>.</li><li><strong>Archived data</strong> (since 01/06/2016, available with a 5-day delay) are available for download through:<ul><li>the web using the ECMWF data server web interface:<a href=\"http://apps.ecmwf.int/datasets/data/cams-nrealtime/levtype=sfc/\"> http://apps.ecmwf.int/datasets/data/cams-nrealtime/levtype=sfc/</a> , one month at a time</li><li><a href=\"https://software.ecmwf.int/wiki/display/WEBAPI/ECMWF+Web+API+Home\">WebAPI</a>, which is the method allowing users to download Global CAMS data in a programmatic way (using Python - example scripts are available).</li></ul></li></ul></li></ol></ac:rich-text-body></ac:structured-macro><h2>Supplementary Products: Emission products, climate forcings and Greenhouse Gases (GHG) flux inversions data:</h2><ac:structured-macro ac:name=\"info\" ac:schema-version=\"1\" ac:macro-id=\"d2a20081-9d86-4695-a2d9-ffc07cf78cb2\"><ac:parameter ac:name=\"icon\">false</ac:parameter><ac:rich-text-body><ol><li><strong>Anthropogenic emissions</strong> (2003-2009 <a href=\"http://eccad.aeris-data.fr/#DatasetPlace:\">European data</a> and 1960-2020 <a href=\"http://eccad.aeris-data.fr/#DatasetPlace:\">global data through ECCAD</a>)</li><li>2003-2012 <strong>Climate forcings</strong> (e.g. aerosol direct/indirect forcing) through the ECMWF data server web interface: <a href=\"http://apps.ecmwf.int/datasets/data/cams-climate-forcings/\">http://apps.ecmwf.int/datasets/data/cams-climate-forcings/</a></li><li><strong>GFAS (<span>Global Fire Assimilation System</span>)</strong><ul><li><strong>Latest seven days</strong> of GFAS data are available through the <a href=\"https://confluence.ecmwf.int/display/CKB/FTP+access+to+CAMS+GFAS+data\">FTP Dissemination server</a>.</li><li><strong>GFAS</strong> <strong> archived data</strong> (2003 to yesterday) are available for download through:<ul><li>the web using the ECMWF data server web interface:<a href=\"https://apps.ecmwf.int/datasets/data/cams-gfas/\"> http://apps.ecmwf.int/datasets/data/cams-gfas/</a></li><li><a href=\"https://software.ecmwf.int/wiki/display/WEBAPI/ECMWF+Web+API+Home\">WebAPI</a>, which is the method allowing users to download CAMS data in a programmatic way (using Python - example scripts are available).</li></ul></li></ul></li><li><p class=\"page-header\"><strong>CAMS global inversion-optimised greenhouse gas fluxes and concentrations</strong></p></li></ol><ul><li style=\"list-style-type: none;background-image: none;\"><ul><li>Carbon Dioxide (1979-2018), Methane (1990-2018) and Nitrous Oxide (1996-2017) through:<ul><li><a href=\"https://ads.atmosphere.copernicus.eu/cdsapp/admin#!/dataset/cams-global-greenhouse-gas-inversion?tab=form\">Atmosphere Data Store (ADS) interactive web interface</a></li><li><ac:link><ri:page ri:content-title=\"How to migrate to CDS API on the Atmosphere Data Store (ADS)\" /><ac:plain-text-link-body><![CDATA[CDS API service]]></ac:plain-text-link-body></ac:link> for automated downloads</li></ul></li></ul></li></ul></ac:rich-text-body></ac:structured-macro><h2>Supplementary Products: Policy Support products:</h2><ac:structured-macro ac:name=\"info\" ac:schema-version=\"1\" ac:macro-id=\"dc6244ba-f358-4cc5-b521-2cda42959459\"><ac:parameter ac:name=\"icon\">false</ac:parameter><ac:rich-text-body><ol><li><strong>Control scenarios</strong><ol><li><a href=\"https://policy.atmosphere.copernicus.eu/PolicyScenarios.php\">Policy scenarios</a> (forecasts and emission scenario impacts for Ozone, Nitrogen Dioxide, PM10 and PM2.5)</li><li><a href=\"https://policy.atmosphere.copernicus.eu/CAMS_ACT.php\">Air control tololbox</a> (ACT) offering a flexible framework to explore the benefit of emission reduction strategies.</li></ol></li><li><strong>Source contribution to EU cities</strong><ol><li><a href=\"https://policy.atmosphere.copernicus.eu/DailySourceAllocation.php?date=2019-09-18\">Daily forecasts</a></li><li><a href=\"https://policy.atmosphere.copernicus.eu/EpisodesAnalysis.php\">Previous episodes analysis</a></li></ol></li><li><a href=\"https://policy.atmosphere.copernicus.eu/Reports.php\">CAMS Air Quality Reports</a></li></ol></ac:rich-text-body></ac:structured-macro><h2><ac:structured-macro ac:name=\"anchor\" ac:schema-version=\"1\" ac:macro-id=\"a0b6e9a7-945a-4620-a492-97c03c26d9b6\"><ac:parameter ac:name=\"\">Charts-List</ac:parameter></ac:structured-macro>CAMS Charts:</h2><ac:structured-macro ac:name=\"info\" ac:schema-version=\"1\" ac:macro-id=\"fc1506d0-967e-4522-a0c9-eb9f418c00fa\"><ac:parameter ac:name=\"icon\">false</ac:parameter><ac:rich-text-body><ul><li><a href=\"http://atmosphere.copernicus.eu/charts/cams/\">CAMS Forecast, Analysis and satellite monitoring Charts</a></li><li><p style=\"display: inline;\"><a href=\"http://atmosphere.copernicus.eu/charts/cams_monitoring/\">CAMS Monitoring Plots</a></p></li></ul></ac:rich-text-body></ac:structured-macro><p><br /></p><p><br /></p><p><br /></p><p><br /></p>",
+          "representation": "storage",
+          "_expandable": {
+            "content": "/rest/api/content/56659592"
+          }
+        },
+        "view": {
+          "value": "<p><div class=\"toc-macro client-side-toc-macro  conf-macro output-block\" data-headerelements=\"H1,H2,H3,H4,H5,H6,H7\" data-hasbody=\"false\" data-macro-name=\"toc\"> </div></p><p>The various datasets listed below are available for download and as <a href=\"/pages/viewpage.action?pageId=83395361#WhatdataandchartsareavailablethroughCAMS(CopernicusAtmosphereMonitoringService)?-Charts-List\">charts/plots</a> together with documentation through the <a href=\"https://ads.atmosphere.copernicus.eu/#!/home\" class=\"external-link\" rel=\"nofollow\">Atmosphere Data Store (ADS)</a> and <a href=\"http://atmosphere.copernicus.eu/catalogue#/\" class=\"external-link\" rel=\"nofollow\">CAMS Catalogue</a>. The latest <a href=\"/download/attachments/56659592/CAMS%20Service%20Product%20Portfolio%20-%20July%202018_1.pdf?version=1&amp;modificationDate=1536947556393&amp;api=v2\" data-linked-resource-id=\"118818158\" data-linked-resource-version=\"1\" data-linked-resource-type=\"attachment\" data-linked-resource-default-alias=\"CAMS Service Product Portfolio - July 2018_1.pdf\" data-nice-type=\"PDF Document\" data-linked-resource-content-type=\"application/pdf\" data-linked-resource-container-id=\"56659592\" data-linked-resource-container-version=\"78\">CAMS Product Portfolio</a> is also available.</p><p>CAMS data is <strong>open and free of charge</strong> (see <a href=\"http://apps.ecmwf.int/datasets/data/cams-nrealtime/licence/\" class=\"external-link\" rel=\"nofollow\">Copernicus Licence</a> for details).</p><h2 id=\"WhatdataandchartsareavailablethroughCAMS(CopernicusAtmosphereMonitoringService)?-GlobalCAMSdata:\">Global CAMS data:</h2><div class=\"confluence-information-macro has-no-icon confluence-information-macro-information conf-macro output-block\" data-hasbody=\"true\" data-macro-name=\"info\"><div class=\"confluence-information-macro-body\"><ol><li><strong>Latest three days</strong> of Real-Time CAMS global <strong>daily</strong> <strong> analysis and forecast data</strong> are available through the <a href=\"https://confluence.ecmwf.int/display/CKB/FTP+access+to+CAMS+global+data\" rel=\"nofollow\">FTP dissemination service</a>.<br /><br /></li><li>CAMS Global <strong>archived analysis and forecast daily data</strong> (6 hourly analysis and 3 hourly up-to 5 days forecast data since 05/07/2012, available with a 5-day delay, approximately 40km horizontal resolution (T511 spectral) on 60 vertical levels from the surface up to 0.1 hPa; increased to 137 levels on 09/07/2019 onwards as part of the <span style=\"color: rgb(23,43,77);\"> <span style=\"color: rgb(23,43,77);\">IFS cycle 46r1 upgrade - see <a style=\"text-decoration: none;\" href=\"https://confluence.ecmwf.int/display/COPSRV/Implementation+of+IFS+cycle+46r1\" rel=\"nofollow\"> Implementation of IFS cycle 46r1</a> <span style=\"letter-spacing: 0.0px;\"> for details).</span> </span> </span> These data are available for download through:<br /><ul><li>the ECMWF data server web interface:<a href=\"http://apps.ecmwf.int/datasets/data/cams-nrealtime/levtype=sfc/\" class=\"external-link\" rel=\"nofollow\"> http://apps.ecmwf.int/datasets/data/cams-nrealtime/levtype=sfc/</a> , one month at a time</li><li><a href=\"/display/WEBAPI\">WebAPI</a>, allowing users to download Global CAMS data in a programmatic way (using Python - example scripts are available)<br /><br /></li></ul></li><li>CAMS global delayed-mode analyses and real-time forecasts of CO<sub>2</sub> and CH<sub>4</sub>: On request only - Contact CAMS User Support service (copernicus-support@ecmwf.int)<br /><br /></li><li><strong> <a href=\"/display/CKB/CAMS%3A+Reanalysis+data+documentation\">CAMS Global archived reanalysis data</a> </strong> (3-hourly and monthly), 2003-2018, annual releases planned thereafter (i.e. 2019 data available in 2020), approximately 80 km (T255 spectral) on 60 vertical levels from the surface up to 0.1 hPa for the analysed species) are available for download through: <br /><ul><li>ADS interactive web interface download forms: <a href=\"https://ads.atmosphere.copernicus.eu/cdsapp/admin#!/dataset/cams-global-reanalysis-eac4?tab=form\" class=\"external-link\" rel=\"nofollow\">CAMS global reanalysis (EAC4) 3-hourly data</a> and <a href=\"https://ads.atmosphere.copernicus.eu/cdsapp/admin#!/dataset/cams-global-reanalysis-eac4-monthly?tab=form\" class=\"external-link\" rel=\"nofollow\">CAMS global reanalysis (EAC4) monthly averaged fields</a></li><li><a href=\"/pages/viewpage.action?pageId=177480803\">CDS API</a> allowing users to download Global CAMS data in a programmatic way.</li></ul></li><li>CAMS Global <strong>archived </strong> <a href=\"/pages/viewpage.action?pageId=81010554\">MACC Reanalysis</a>, 2003-2012, approximately 80 km (T255 spectral) on 60 vertical levels from the surface up to 0.1 hPa for the analysed species) are available for download through:<ul><li>the web using the ECMWF data server web interface:<a href=\"http://apps.ecmwf.int/datasets/data/macc-reanalysis/levtype=sfc/\" class=\"external-link\" rel=\"nofollow\"> http://apps.ecmwf.int/datasets/data/macc-reanalysis/levtype=sfc/</a> , one month at a time</li><li><a href=\"/display/WEBAPI\">WebAPI</a>, which is the method allowing users to download Global CAMS data in a programmatic way (using Python - example scripts are available).</li></ul></li></ol><p class=\"with-breadcrumbs\">See<a href=\"https://confluence.ecmwf.int/pages/viewpage.action?pageId=83396018\" rel=\"nofollow\"> What are the changes from the MACC Reanalysis to the CAMS interim Reanalysis, to the CAMS Reanalysis?</a></p></div></div><h2 id=\"WhatdataandchartsareavailablethroughCAMS(CopernicusAtmosphereMonitoringService)?-RegionalCAMSdata(Europeandomain,25W/30N/45E/72Nsince12thJune2019.Beforethisdate,thedomaincoveragewassmalleri.e.25W/30N/45E/70N):\">Regional CAMS data (European domain, <span>25W/30N/45E/72N since 12<sup>th</sup> June 2019. Before this date, the domain coverage was smaller i.e. 25W/30N/45E/70N</span>):</h2><div class=\"confluence-information-macro has-no-icon confluence-information-macro-information conf-macro output-block\" data-hasbody=\"true\" data-macro-name=\"info\"><div class=\"confluence-information-macro-body\"><ol><li><strong>All CAMS regional <strong> analysis</strong> and <strong>forecast</strong> daily data (archived since 04/2017 to the present</strong>, approximately 10km horizontal resolution from surface up to 5000m) are available for download either through:<br /><ul><li><a href=\"https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-europe-air-quality-forecasts?tab=overview\" class=\"external-link\" rel=\"nofollow\">Atmosphere Data store (ADS) web interface</a></li><li><a href=\"/pages/viewpage.action?pageId=177480803\">CDS API service</a>, which is the method allowing users to download Regional CAMS data in a programmatic way (using Python).<br /><br /></li></ul></li><li><strong>CAMS regional reanalyses data</strong> are available <a href=\"http://www.regional.atmosphere.copernicus.eu/index.php?category=data_access&amp;subensemble=reanalysis_products\" class=\"external-link\" rel=\"nofollow\">online</a>.</li></ol></div></div><h2 id=\"WhatdataandchartsareavailablethroughCAMS(CopernicusAtmosphereMonitoringService)?-SupplementaryProducts:SolarandUVRadiationdata:\">Supplementary Products: Solar and UV Radiation data:</h2><div class=\"confluence-information-macro has-no-icon confluence-information-macro-information conf-macro output-block\" data-hasbody=\"true\" data-macro-name=\"info\"><div class=\"confluence-information-macro-body\"><ol><li><strong>Solar radiation (2004 - present with up to 2 days delay)</strong> - global clear-sky solar irradiance and Meteosat satellite field-of-view coverage total-sky surface solar irradiation<ul><li>interactive access through <a href=\"https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-solar-radiation-timeseries?tab=form\" class=\"external-link\" rel=\"nofollow\">Atmosphere Data store (ADS) web interface</a></li><li>automated way via <a href=\"/pages/viewpage.action?pageId=177480803\">CDS API service</a></li></ul></li><li><strong>Global UV radiation archived data </strong>(<a href=\"https://confluence.ecmwf.int/pages/viewpage.action?pageId=153391793\" rel=\"nofollow\">see forum</a>) <br /><ul><li><strong>Latest three days</strong> of near-real-time (NRT) CAMS global UV data are available through the <a href=\"https://confluence.ecmwf.int/display/CKB/FTP+access+to+CAMS+global+data\" rel=\"nofollow\">FTP Dissemination server</a>.</li><li><strong>Archived data</strong> (since 01/06/2016, available with a 5-day delay) are available for download through:<ul><li>the web using the ECMWF data server web interface:<a href=\"http://apps.ecmwf.int/datasets/data/cams-nrealtime/levtype=sfc/\" class=\"external-link\" rel=\"nofollow\"> http://apps.ecmwf.int/datasets/data/cams-nrealtime/levtype=sfc/</a> , one month at a time</li><li><a href=\"https://software.ecmwf.int/wiki/display/WEBAPI/ECMWF+Web+API+Home\" class=\"external-link\" rel=\"nofollow\">WebAPI</a>, which is the method allowing users to download Global CAMS data in a programmatic way (using Python - example scripts are available).</li></ul></li></ul></li></ol></div></div><h2 id=\"WhatdataandchartsareavailablethroughCAMS(CopernicusAtmosphereMonitoringService)?-SupplementaryProducts:Emissionproducts,climateforcingsandGreenhouseGases(GHG)fluxinversionsdata:\">Supplementary Products: Emission products, climate forcings and Greenhouse Gases (GHG) flux inversions data:</h2><div class=\"confluence-information-macro has-no-icon confluence-information-macro-information conf-macro output-block\" data-hasbody=\"true\" data-macro-name=\"info\"><div class=\"confluence-information-macro-body\"><ol><li><strong>Anthropogenic emissions</strong> (2003-2009 <a href=\"http://eccad.aeris-data.fr/#DatasetPlace:\" class=\"external-link\" rel=\"nofollow\">European data</a> and 1960-2020 <a href=\"http://eccad.aeris-data.fr/#DatasetPlace:\" class=\"external-link\" rel=\"nofollow\">global data through ECCAD</a>)</li><li>2003-2012 <strong>Climate forcings</strong> (e.g. aerosol direct/indirect forcing) through the ECMWF data server web interface: <a href=\"http://apps.ecmwf.int/datasets/data/cams-climate-forcings/\" class=\"external-link\" rel=\"nofollow\">http://apps.ecmwf.int/datasets/data/cams-climate-forcings/</a></li><li><strong>GFAS (<span>Global Fire Assimilation System</span>)</strong><ul><li><strong>Latest seven days</strong> of GFAS data are available through the <a href=\"https://confluence.ecmwf.int/display/CKB/FTP+access+to+CAMS+GFAS+data\" rel=\"nofollow\">FTP Dissemination server</a>.</li><li><strong>GFAS</strong> <strong> archived data</strong> (2003 to yesterday) are available for download through:<ul><li>the web using the ECMWF data server web interface:<a href=\"https://apps.ecmwf.int/datasets/data/cams-gfas/\" class=\"external-link\" rel=\"nofollow\"> http://apps.ecmwf.int/datasets/data/cams-gfas/</a></li><li><a href=\"https://software.ecmwf.int/wiki/display/WEBAPI/ECMWF+Web+API+Home\" class=\"external-link\" rel=\"nofollow\">WebAPI</a>, which is the method allowing users to download CAMS data in a programmatic way (using Python - example scripts are available).</li></ul></li></ul></li><li><p class=\"page-header\"><strong>CAMS global inversion-optimised greenhouse gas fluxes and concentrations</strong></p></li></ol><ul><li style=\"list-style-type: none;background-image: none;\"><ul><li>Carbon Dioxide (1979-2018), Methane (1990-2018) and Nitrous Oxide (1996-2017) through:<ul><li><a href=\"https://ads.atmosphere.copernicus.eu/cdsapp/admin#!/dataset/cams-global-greenhouse-gas-inversion?tab=form\" class=\"external-link\" rel=\"nofollow\">Atmosphere Data Store (ADS) interactive web interface</a></li><li><a href=\"/pages/viewpage.action?pageId=177480803\">CDS API service</a> for automated downloads</li></ul></li></ul></li></ul></div></div><h2 id=\"WhatdataandchartsareavailablethroughCAMS(CopernicusAtmosphereMonitoringService)?-SupplementaryProducts:PolicySupportproducts:\">Supplementary Products: Policy Support products:</h2><div class=\"confluence-information-macro has-no-icon confluence-information-macro-information conf-macro output-block\" data-hasbody=\"true\" data-macro-name=\"info\"><div class=\"confluence-information-macro-body\"><ol><li><strong>Control scenarios</strong><ol><li><a href=\"https://policy.atmosphere.copernicus.eu/PolicyScenarios.php\" class=\"external-link\" rel=\"nofollow\">Policy scenarios</a> (forecasts and emission scenario impacts for Ozone, Nitrogen Dioxide, PM10 and PM2.5)</li><li><a href=\"https://policy.atmosphere.copernicus.eu/CAMS_ACT.php\" class=\"external-link\" rel=\"nofollow\">Air control tololbox</a> (ACT) offering a flexible framework to explore the benefit of emission reduction strategies.</li></ol></li><li><strong>Source contribution to EU cities</strong><ol><li><a href=\"https://policy.atmosphere.copernicus.eu/DailySourceAllocation.php?date=2019-09-18\" class=\"external-link\" rel=\"nofollow\">Daily forecasts</a></li><li><a href=\"https://policy.atmosphere.copernicus.eu/EpisodesAnalysis.php\" class=\"external-link\" rel=\"nofollow\">Previous episodes analysis</a></li></ol></li><li><a href=\"https://policy.atmosphere.copernicus.eu/Reports.php\" class=\"external-link\" rel=\"nofollow\">CAMS Air Quality Reports</a></li></ol></div></div><h2 id=\"WhatdataandchartsareavailablethroughCAMS(CopernicusAtmosphereMonitoringService)?-Charts-ListCAMSCharts:\"><span class=\"confluence-anchor-link conf-macro output-inline\" id=\"WhatdataandchartsareavailablethroughCAMS(CopernicusAtmosphereMonitoringService)?-Charts-List\" data-hasbody=\"false\" data-macro-name=\"anchor\"> </span>CAMS Charts:</h2><div class=\"confluence-information-macro has-no-icon confluence-information-macro-information conf-macro output-block\" data-hasbody=\"true\" data-macro-name=\"info\"><div class=\"confluence-information-macro-body\"><ul><li><a href=\"http://atmosphere.copernicus.eu/charts/cams/\" class=\"external-link\" rel=\"nofollow\">CAMS Forecast, Analysis and satellite monitoring Charts</a></li><li><p style=\"display: inline;\"><a href=\"http://atmosphere.copernicus.eu/charts/cams_monitoring/\" class=\"external-link\" rel=\"nofollow\">CAMS Monitoring Plots</a></p></li></ul></div></div><p><br/></p><p><br/></p><p><br/></p><p><br/></p>",
+          "representation": "storage",
+          "_expandable": {
+            "webresource": "",
+            "content": "/rest/api/content/56659592"
+          }
+        },
+        "_expandable": {
+          "editor": "",
+          "export_view": "",
+          "styled_view": "",
+          "anonymous_export_view": ""
+        }
+      },
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "cams",
+              "id": "47710250"
+            },
+            {
+              "prefix": "global",
+              "name": "copernicus",
+              "id": "46301230"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 2,
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/content/56659592/label"
+          }
+        },
+        "_expandable": {
+          "currentuser": "",
+          "frontend": "",
+          "editorHtml": "",
+          "properties": ""
+        }
+      },
+      "extensions": {
+        "position": 0
+      },
+      "_links": {
+        "webui": "/pages/viewpage.action?pageId=56659592",
+        "edit": "/pages/resumedraft.action?draftId=56659592",
+        "tinyui": "/x/iI5gAw",
+        "self": "https://confluence.ecmwf.int/rest/api/content/56659592"
+      },
+      "_expandable": {
+        "container": "/rest/api/space/CKB",
+        "operations": "",
+        "children": "/rest/api/content/56659592/child",
+        "restrictions": "/rest/api/content/56659592/restriction/byOperation",
+        "ancestors": "",
+        "descendants": "/rest/api/content/56659592/descendant",
+        "space": "/rest/api/space/CKB"
+      }
+    },
+    {
+      "id": "56659628",
+      "type": "page",
+      "status": "current",
+      "title": "What is the difference between ERA-Interim (1979-2019) and ERA-40 (1957-2002)",
+      "history": {
+        "latest": true,
+        "createdBy": {
+          "type": "known",
+          "username": "usag",
+          "userKey": "081c38c0516239bb0151a074adbd0270",
+          "profilePicture": {
+            "path": "/images/icons/profilepics/default.svg",
+            "width": 48,
+            "height": 48,
+            "isDefault": true
+          },
+          "displayName": "Anabelle Guillory",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb0151a074adbd0270"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "createdDate": "2016-03-10T12:27:25.663Z",
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/api/content/56659628/history"
+        },
+        "_expandable": {
+          "lastUpdated": "",
+          "previousVersion": "",
+          "contributors": "",
+          "nextVersion": ""
+        }
+      },
+      "version": {
+        "by": {
+          "type": "known",
+          "username": "usmg",
+          "userKey": "081c39166c66b21c016caebf22390307",
+          "profilePicture": {
+            "path": "/download/attachments/149333426/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Michela Giusti",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c39166c66b21c016caebf22390307"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "when": "2020-02-05T16:32:58.028Z",
+        "message": "Confirmed: ok",
+        "number": 9,
+        "minorEdit": false,
+        "hidden": false,
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/experimental/content/56659628/version/9"
+        },
+        "_expandable": {
+          "content": "/rest/api/content/56659628"
+        }
+      },
+      "body": {
+        "storage": {
+          "value": "<ac:structured-macro ac:name=\"note\" ac:schema-version=\"1\" ac:macro-id=\"be45c3eb-38ab-41e8-ad79-3f1aa9d912fe\"><ac:parameter ac:name=\"title\">ERA-Interim production stopped on 31st August 2019</ac:parameter><ac:rich-text-body><p>For the time being and until further notice, ERA-Interim (1st January 1979 to 31st August 2019) shall continue to be accessible through the <a href=\"https://apps.ecmwf.int/datasets/data/interim-full-daily/levtype=sfc/\">ECMWF Web API</a>. Keeping in mind that ERA-Interim is published with an offset of about three months from the dataset's reference date, ERA-Interim August 2019 data will be made available towards the end of October 2019.</p><p>ERA5 is now available from the <a href=\"https://cds.climate.copernicus.eu/cdsapp#!/home\">Climate Data Store (CDS)</a> (<a href=\"https://confluence.ecmwf.int/pages/viewpage.action?pageId=74764925\">What are the changes from ERA-Interim to ERA5?</a>) and users are strongly advised to migrate to ERA5 (<a href=\"https://confluence.ecmwf.int/display/CKB/How+to+migrate+from+ECMWF+Web+API+to+CDS+API\">How to migrate from ECMWF Web API to CDS API</a>).</p></ac:rich-text-body></ac:structured-macro><p><br /></p><p>Through systematic increases of computing power, 4-dimensional variational assimilation (4D-Var) became feasible and part of ECMWF operations since 1997, paving the way to base <strong>ERA-Interim on 4D-Var</strong> (rather than 3D-Var as in ERA-40).</p><p>Enhanced computing power also allowed <strong>horizontal resolution</strong> to be increased from T159 (N80)<strong> to T255 (N128)</strong>, and the latest cycle of the atmospheric model (IFS <a href=\"http://www.ecmwf.int/search/elibrary/part?solrsort=sort_label%20asc&amp;title=part&amp;secondary_title=31r1\">CY31r1</a> and CY31r2) to be used, taking advantage of <strong>improved model physics</strong>.</p><p>ERA-interim retains the same 60 model levels used for ERA-40 with the highest level being 0.1 hectopascal.</p><p>In addition, data assimilation of ERA-Interim also benefits from quality control that draws on experience from ERA-40, variational bias correction of satellite radiance data, and more extensive use of radiances with an improved fast radiative transfer model.</p><p>See <a href=\"http://www.ecmwf.int/sites/default/files/elibrary/2004/10595-era-40-archive-revised-october-2007.pdf\">ECMWF publication on ERA-40 </a>for further details. An open-access&nbsp;<a href=\"http://onlinelibrary.wiley.com/doi/10.1002/qj.828/abstract\">journal article</a><a href=\"http://onlinelibrary.wiley.com/doi/10.1002/qj.828/abstract\">&nbsp;describing the ERA-Interim</a> reanalysis is available from the Quarterly Journal of the Royal Meteorological Society</p><h2>Related articles</h2><p><ac:placeholder>Related articles appear here based on the labels you select. Click to edit the macro and add or change labels.</ac:placeholder></p><p><ac:structured-macro ac:name=\"contentbylabel\" ac:schema-version=\"3\" ac:macro-id=\"8016c4f9-f5e0-4fb4-8dd7-0493374a94b4\"><ac:parameter ac:name=\"showLabels\">false</ac:parameter><ac:parameter ac:name=\"max\">5</ac:parameter><ac:parameter ac:name=\"spaces\">CKB</ac:parameter><ac:parameter ac:name=\"showSpace\">false</ac:parameter><ac:parameter ac:name=\"sort\">title</ac:parameter><ac:parameter ac:name=\"type\">page</ac:parameter><ac:parameter ac:name=\"cql\">label in (&quot;era-interim&quot;,&quot;era-40&quot;) and type = &quot;page&quot; and space = &quot;CKB&quot;</ac:parameter><ac:parameter ac:name=\"labels\">data C3S cams</ac:parameter></ac:structured-macro></p>",
+          "representation": "storage",
+          "_expandable": {
+            "content": "/rest/api/content/56659628"
+          }
+        },
+        "view": {
+          "value": "<div class=\"confluence-information-macro confluence-information-macro-note conf-macro output-block\" data-hasbody=\"true\" data-macro-name=\"note\"><p class=\"title\">ERA-Interim production stopped on 31st August 2019</p><span class=\"aui-icon aui-icon-small aui-iconfont-warning confluence-information-macro-icon\"> </span><div class=\"confluence-information-macro-body\"><p>For the time being and until further notice, ERA-Interim (1st January 1979 to 31st August 2019) shall continue to be accessible through the <a href=\"https://apps.ecmwf.int/datasets/data/interim-full-daily/levtype=sfc/\" class=\"external-link\" rel=\"nofollow\">ECMWF Web API</a>. Keeping in mind that ERA-Interim is published with an offset of about three months from the dataset's reference date, ERA-Interim August 2019 data will be made available towards the end of October 2019.</p><p>ERA5 is now available from the <a href=\"https://cds.climate.copernicus.eu/cdsapp#!/home\" class=\"external-link\" rel=\"nofollow\">Climate Data Store (CDS)</a> (<a href=\"https://confluence.ecmwf.int/pages/viewpage.action?pageId=74764925\" rel=\"nofollow\">What are the changes from ERA-Interim to ERA5?</a>) and users are strongly advised to migrate to ERA5 (<a href=\"https://confluence.ecmwf.int/display/CKB/How+to+migrate+from+ECMWF+Web+API+to+CDS+API\" rel=\"nofollow\">How to migrate from ECMWF Web API to CDS API</a>).</p></div></div><p><br/></p><p>Through systematic increases of computing power, 4-dimensional variational assimilation (4D-Var) became feasible and part of ECMWF operations since 1997, paving the way to base <strong>ERA-Interim on 4D-Var</strong> (rather than 3D-Var as in ERA-40).</p><p>Enhanced computing power also allowed <strong>horizontal resolution</strong> to be increased from T159 (N80)<strong> to T255 (N128)</strong>, and the latest cycle of the atmospheric model (IFS <a href=\"http://www.ecmwf.int/search/elibrary/part?solrsort=sort_label%20asc&amp;title=part&amp;secondary_title=31r1\" class=\"external-link\" rel=\"nofollow\">CY31r1</a> and CY31r2) to be used, taking advantage of <strong>improved model physics</strong>.</p><p>ERA-interim retains the same 60 model levels used for ERA-40 with the highest level being 0.1 hectopascal.</p><p>In addition, data assimilation of ERA-Interim also benefits from quality control that draws on experience from ERA-40, variational bias correction of satellite radiance data, and more extensive use of radiances with an improved fast radiative transfer model.</p><p>See <a href=\"http://www.ecmwf.int/sites/default/files/elibrary/2004/10595-era-40-archive-revised-october-2007.pdf\" class=\"external-link\" rel=\"nofollow\">ECMWF publication on ERA-40 </a>for further details. An open-access <a href=\"http://onlinelibrary.wiley.com/doi/10.1002/qj.828/abstract\" class=\"external-link\" rel=\"nofollow\">journal article</a><a href=\"http://onlinelibrary.wiley.com/doi/10.1002/qj.828/abstract\" class=\"external-link\" rel=\"nofollow\"> describing the ERA-Interim</a> reanalysis is available from the Quarterly Journal of the Royal Meteorological Society</p><h2 id=\"WhatisthedifferencebetweenERAInterim(19792019)andERA40(19572002)-Relatedarticles\">Related articles</h2><p></p><p>\n\n\n\n\n\n\n\n\n\n\n\n<ul class=\"content-by-label conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"contentbylabel\">\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=155337749\">Differences between ERA-Interim and ERA-Interim/Land</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/Does+downloading+data+at+higher+resolution+improve+the+output\">Does downloading data at higher resolution improve the output</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ERA-Interim\">ERA-Interim</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=151531438\">ERA-Interim - Q&amp;A</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ERA-Interim+known+issues\">ERA-Interim known issues</a>\n                \n                        \n                    </div>\n    </li>\n    </ul>\n</p>",
+          "representation": "storage",
+          "_expandable": {
+            "webresource": "",
+            "content": "/rest/api/content/56659628"
+          }
+        },
+        "_expandable": {
+          "editor": "",
+          "export_view": "",
+          "styled_view": "",
+          "anonymous_export_view": ""
+        }
+      },
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "era-interim",
+              "id": "46301380"
+            },
+            {
+              "prefix": "global",
+              "name": "era-40",
+              "id": "46301378"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 2,
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/content/56659628/label"
+          }
+        },
+        "_expandable": {
+          "currentuser": "",
+          "frontend": "",
+          "editorHtml": "",
+          "properties": ""
+        }
+      },
+      "extensions": {
+        "position": 1
+      },
+      "_links": {
+        "webui": "/pages/viewpage.action?pageId=56659628",
+        "edit": "/pages/resumedraft.action?draftId=56659628",
+        "tinyui": "/x/rI5gAw",
+        "self": "https://confluence.ecmwf.int/rest/api/content/56659628"
+      },
+      "_expandable": {
+        "container": "/rest/api/space/CKB",
+        "operations": "",
+        "children": "/rest/api/content/56659628/child",
+        "restrictions": "/rest/api/content/56659628/restriction/byOperation",
+        "ancestors": "",
+        "descendants": "/rest/api/content/56659628/descendant",
+        "space": "/rest/api/space/CKB"
+      }
+    },
+    {
+      "id": "56661212",
+      "type": "page",
+      "status": "current",
+      "title": "What is the IFS",
+      "history": {
+        "latest": true,
+        "createdBy": {
+          "type": "known",
+          "username": "uskh",
+          "userKey": "081c38c0516239bb015190f3de240203",
+          "profilePicture": {
+            "path": "/download/attachments/53514087/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Karl Hennermann",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb015190f3de240203"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "createdDate": "2016-03-14T11:05:43.360Z",
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/api/content/56661212/history"
+        },
+        "_expandable": {
+          "lastUpdated": "",
+          "previousVersion": "",
+          "contributors": "",
+          "nextVersion": ""
+        }
+      },
+      "version": {
+        "by": {
+          "type": "known",
+          "username": "usmg",
+          "userKey": "081c39166c66b21c016caebf22390307",
+          "profilePicture": {
+            "path": "/download/attachments/149333426/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Michela Giusti",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c39166c66b21c016caebf22390307"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "when": "2020-02-05T14:53:16.007Z",
+        "message": "",
+        "number": 17,
+        "minorEdit": false,
+        "hidden": false,
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/experimental/content/56661212/version/17"
+        },
+        "_expandable": {
+          "content": "/rest/api/content/56661212"
+        }
+      },
+      "body": {
+        "storage": {
+          "value": "<p>The IFS (Integrated Forecasting System) is a global data assimilation and forecasting system, developed by ECMWF. Initially the IFS was developed only for weather forecasting, but it evolved into a generic global model and now includes the modelling of the atmospheric composition (greenhouse gases, aerosols, and chemical species). The atmospheric composition outputs from the IFS are released as CAMS Global near-real-time data.</p><p>Until about 2017 the term C-IFS (Composition Integrated Forecasting System) was also in use, referring to the part of the IFS designed to produce atmospheric composition data (as opposed to weather data). However, the IFS is in fact a single system, so the term C-IFS should not be used.</p><p>For further details see the <a href=\"http://www.ecmwf.int/en/research/modelling-and-prediction\">ECMWF pages on modelling and prediction</a> and this paper:</p><p>Flemming, J., Huijnen, V., Arteta, J., Bechtold, P., Beljaars, A. Blechschmidt, A.-M., Diamantakis, M., Engelen, R. J., Gaudel, A., Inness, A., Jones, L., Josse, B., Katragkou, E., Marecal, V., Peuch, V.-H., Richter, A., Schultz, M. G., Stein, O., and Tsikerdekis, A.: Tropospheric chemistry in the Integrated Forecasting System of ECMWF, Geosci. Model Dev., 8, 975-1003, <a href=\"http://doi.org/10.5194/gmd-8-975-2015\" rel=\"nofollow\" class=\"external-link\">doi:10.5194/gmd-8-975-2015</a>, 2015.</p><h2>Related articles</h2><p><ac:placeholder>Related articles appear here based on the labels you select. Click to edit the macro and add or change labels.</ac:placeholder></p><p><ac:structured-macro ac:name=\"contentbylabel\" ac:schema-version=\"3\" ac:macro-id=\"b11913f5-cfee-450c-a579-7523bf05c9c7\"><ac:parameter ac:name=\"showLabels\">false</ac:parameter><ac:parameter ac:name=\"max\">5</ac:parameter><ac:parameter ac:name=\"spaces\">CKB</ac:parameter><ac:parameter ac:name=\"showSpace\">false</ac:parameter><ac:parameter ac:name=\"sort\">title</ac:parameter><ac:parameter ac:name=\"type\">page</ac:parameter><ac:parameter ac:name=\"cql\">label in (&quot;cams&quot;,&quot;model&quot;) and type = &quot;page&quot; and space = &quot;CKB&quot;</ac:parameter><ac:parameter ac:name=\"labels\">data C3S cams</ac:parameter></ac:structured-macro></p>",
+          "representation": "storage",
+          "_expandable": {
+            "content": "/rest/api/content/56661212"
+          }
+        },
+        "view": {
+          "value": "<p>The IFS (Integrated Forecasting System) is a global data assimilation and forecasting system, developed by ECMWF. Initially the IFS was developed only for weather forecasting, but it evolved into a generic global model and now includes the modelling of the atmospheric composition (greenhouse gases, aerosols, and chemical species). The atmospheric composition outputs from the IFS are released as CAMS Global near-real-time data.</p><p>Until about 2017 the term C-IFS (Composition Integrated Forecasting System) was also in use, referring to the part of the IFS designed to produce atmospheric composition data (as opposed to weather data). However, the IFS is in fact a single system, so the term C-IFS should not be used.</p><p>For further details see the <a href=\"http://www.ecmwf.int/en/research/modelling-and-prediction\" class=\"external-link\" rel=\"nofollow\">ECMWF pages on modelling and prediction</a> and this paper:</p><p>Flemming, J., Huijnen, V., Arteta, J., Bechtold, P., Beljaars, A. Blechschmidt, A.-M., Diamantakis, M., Engelen, R. J., Gaudel, A., Inness, A., Jones, L., Josse, B., Katragkou, E., Marecal, V., Peuch, V.-H., Richter, A., Schultz, M. G., Stein, O., and Tsikerdekis, A.: Tropospheric chemistry in the Integrated Forecasting System of ECMWF, Geosci. Model Dev., 8, 975-1003, <a href=\"http://doi.org/10.5194/gmd-8-975-2015\" rel=\"nofollow\" class=\"external-link\">doi:10.5194/gmd-8-975-2015</a>, 2015.</p><h2 id=\"WhatistheIFS-Relatedarticles\">Related articles</h2><p></p><p>\n\n\n\n\n\n\n\n\n\n\n\n<ul class=\"content-by-label conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"contentbylabel\">\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/Access+to+CAMS+global+forecast+data\">Access to CAMS global forecast data</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=177483157\">ADS: What is the Atmosphere Data Store (ADS)?</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=151531060\">CAMS - Q&amp;A</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/CAMS+global+sea+salt+aerosol+mixing+ratios\">CAMS global sea salt aerosol mixing ratios</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/CAMS+Monthly+Mean+Aerosol+Climatology+for+global+models\">CAMS Monthly Mean Aerosol Climatology for global models</a>\n                \n                        \n                    </div>\n    </li>\n    </ul>\n</p>",
+          "representation": "storage",
+          "_expandable": {
+            "webresource": "",
+            "content": "/rest/api/content/56661212"
+          }
+        },
+        "_expandable": {
+          "editor": "",
+          "export_view": "",
+          "styled_view": "",
+          "anonymous_export_view": ""
+        }
+      },
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "cams",
+              "id": "47710250"
+            },
+            {
+              "prefix": "global",
+              "name": "model",
+              "id": "42205230"
+            },
+            {
+              "prefix": "global",
+              "name": "ecmwf",
+              "id": "3506180"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3,
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/content/56661212/label"
+          }
+        },
+        "_expandable": {
+          "currentuser": "",
+          "frontend": "",
+          "editorHtml": "",
+          "properties": ""
+        }
+      },
+      "extensions": {
+        "position": 0
+      },
+      "_links": {
+        "webui": "/display/CKB/What+is+the+IFS",
+        "edit": "/pages/resumedraft.action?draftId=56661212",
+        "tinyui": "/x/3JRgAw",
+        "self": "https://confluence.ecmwf.int/rest/api/content/56661212"
+      },
+      "_expandable": {
+        "container": "/rest/api/space/CKB",
+        "operations": "",
+        "children": "/rest/api/content/56661212/child",
+        "restrictions": "/rest/api/content/56661212/restriction/byOperation",
+        "ancestors": "",
+        "descendants": "/rest/api/content/56661212/descendant",
+        "space": "/rest/api/space/CKB"
+      }
+    },
+    {
+      "id": "56661594",
+      "type": "page",
+      "status": "current",
+      "title": "Does downloading data at higher resolution improve the output",
+      "history": {
+        "latest": true,
+        "createdBy": {
+          "type": "known",
+          "username": "uskh",
+          "userKey": "081c38c0516239bb015190f3de240203",
+          "profilePicture": {
+            "path": "/download/attachments/53514087/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Karl Hennermann",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb015190f3de240203"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "createdDate": "2016-03-14T16:36:25.620Z",
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/api/content/56661594/history"
+        },
+        "_expandable": {
+          "lastUpdated": "",
+          "previousVersion": "",
+          "contributors": "",
+          "nextVersion": ""
+        }
+      },
+      "version": {
+        "by": {
+          "type": "known",
+          "username": "usmg",
+          "userKey": "081c39166c66b21c016caebf22390307",
+          "profilePicture": {
+            "path": "/download/attachments/149333426/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Michela Giusti",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c39166c66b21c016caebf22390307"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "when": "2020-02-05T13:56:19.832Z",
+        "message": "",
+        "number": 22,
+        "minorEdit": false,
+        "hidden": false,
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/experimental/content/56661594/version/22"
+        },
+        "_expandable": {
+          "content": "/rest/api/content/56661594"
+        }
+      },
+      "body": {
+        "storage": {
+          "value": "<p>Most CAMS and C3S data is produced and archived not on a Cartesian grid (a two-dimensional rectangular grid), but on a reduced Gaussian grid - think of it as a globe with a series of evenly spaced data points along each parallel (line of constant latitude), and parallels spaced at slightly irregular intervals. Near the poles you have only a few data points along a parallel, but close to the equator you have many data points along a parallel.</p><p>When you download CAMS data, C3S data and other data from ECMWF, you can obtain the output data on its archived grid or on a Cartesian lat/long grid at a custom resolution.</p><p>You can specify a higher output resolution than the archived resolution, but the resulting data will not contain any more information than the original, it has merely been interpolated<sup>[1]</sup> to a higher resolution. This makes the output look smoother, but does not increase the accuracy or the precision of the data. However, if you choose to interpolate to a coarser resolution than the archived resolution you should be aware that the data can be aliased, unless care was taken to avoid this.</p><p><br /></p><p>For <strong>ERA-Interim</strong> atmospheric data the point interval on the native Gaussian grid is about 0.75 degrees. You can specify a custom grid on <a href=\"http://apps.ecmwf.int\">the data server web interface,</a> or using the <ac:link><ri:page ri:space-key=\"WEBAPI\" ri:content-title=\"ECMWF Web API Home\" /><ac:plain-text-link-body><![CDATA[ECMWF WebAPI]]></ac:plain-text-link-body></ac:link> or using the <ac:link><ri:page ri:space-key=\"UDOC\" ri:content-title=\"MARS command and request syntax\" /><ac:plain-text-link-body><![CDATA[MARS client]]></ac:plain-text-link-body></ac:link> (if you have access to it).&nbsp; On the web interface the default grid for ERA-Interim is lat/long, with a default resolution of 0.75x0.75 degrees (about 80km), approximating the irregular grid spacing on the native Gaussian grid.</p><p>ERA-Interim Ocean-Wave data are natively stored on the wave model&rsquo;s reduced 1.0 degrees latitude/longitude grid.</p><p><br /></p><p class=\"confluence-link\">For <strong>ERA5</strong> HRES atmospheric data the point interval on the native Gaussian grid is about 0.28 degrees. You can download ERA5 data using <span class=\"confluence-link\"> Python and </span><a href=\"https://confluence.ecmwf.int/display/CKB/How+to+download+ERA5#HowtodownloadERA5-StepB:DownloadERA5datalistedinCDSthroughCDSAPI\">specify a custom grid and resolution in your script</a>. You should set the horizontal resolution to slightly lower than 0.28 degrees (about 30km), for example to 0.25 degrees, approximating the irregular grid spacing on the native Gaussian grid.</p><p class=\"confluence-link\">ERA5 HRES Ocean-Wave data are natively stored on the wave model&rsquo;s reduced 0.36 degrees latitude/longitude grid.</p><p class=\"confluence-link\"><br /></p><p><sup>[1]</sup> When data is interpolated, all continuous fields (e.g. precipitation, temperature) are interpolated by bilinear interpolation, and discrete fields (e.g. vegetation, precipitation type, soil type) and Wave 2D spectra are interpolated by nearest-neighbour. For more information about our grids and interpolations see in this presentation <a href=\"https://software.ecmwf.int/wiki/download/attachments/55122669/intro-interpolation-2016.pdf?api=v2\" class=\"external-link\" rel=\"nofollow\">https://software.ecmwf.int/wiki/download/attachments/55122669/intro-interpolation-2016.pdf?api=v2</a></p><p><br /></p><h2>Related articles</h2><p><ac:structured-macro ac:name=\"contentbylabel\" ac:schema-version=\"3\" ac:macro-id=\"721bfde2-4dc3-4a69-8e88-3dd15ade6b9b\"><ac:parameter ac:name=\"showLabels\">false</ac:parameter><ac:parameter ac:name=\"max\">5</ac:parameter><ac:parameter ac:name=\"spaces\">CKB</ac:parameter><ac:parameter ac:name=\"showSpace\">false</ac:parameter><ac:parameter ac:name=\"sort\">title</ac:parameter><ac:parameter ac:name=\"reverse\">true</ac:parameter><ac:parameter ac:name=\"type\">page</ac:parameter><ac:parameter ac:name=\"cql\">label in (&quot;era-interim&quot;,&quot;download&quot;,&quot;spatial&quot;) and type = &quot;page&quot; and space = &quot;CKB&quot;</ac:parameter><ac:parameter ac:name=\"labels\">data C3S cams</ac:parameter></ac:structured-macro></p><ac:structured-macro ac:name=\"details\" ac:schema-version=\"1\" ac:macro-id=\"e75a0c9e-7eb9-467e-b47a-9e7599bd4825\"><ac:parameter ac:name=\"hidden\">true</ac:parameter><ac:rich-text-body><p class=\"auto-cursor-target\"><br /></p><table class=\"wrapped\"><tbody><tr><th>Related issues</th><td><br /></td></tr></tbody></table><p class=\"auto-cursor-target\"><br /></p></ac:rich-text-body></ac:structured-macro><p class=\"auto-cursor-target\"><br /></p>",
+          "representation": "storage",
+          "_expandable": {
+            "content": "/rest/api/content/56661594"
+          }
+        },
+        "view": {
+          "value": "<p>Most CAMS and C3S data is produced and archived not on a Cartesian grid (a two-dimensional rectangular grid), but on a reduced Gaussian grid - think of it as a globe with a series of evenly spaced data points along each parallel (line of constant latitude), and parallels spaced at slightly irregular intervals. Near the poles you have only a few data points along a parallel, but close to the equator you have many data points along a parallel.</p><p>When you download CAMS data, C3S data and other data from ECMWF, you can obtain the output data on its archived grid or on a Cartesian lat/long grid at a custom resolution.</p><p>You can specify a higher output resolution than the archived resolution, but the resulting data will not contain any more information than the original, it has merely been interpolated<sup>[1]</sup> to a higher resolution. This makes the output look smoother, but does not increase the accuracy or the precision of the data. However, if you choose to interpolate to a coarser resolution than the archived resolution you should be aware that the data can be aliased, unless care was taken to avoid this.</p><p><br/></p><p>For <strong>ERA-Interim</strong> atmospheric data the point interval on the native Gaussian grid is about 0.75 degrees. You can specify a custom grid on <a href=\"http://apps.ecmwf.int\" class=\"external-link\" rel=\"nofollow\">the data server web interface,</a> or using the <a href=\"/display/WEBAPI/ECMWF+Web+API+Home\">ECMWF WebAPI</a> or using the <a href=\"/display/UDOC/MARS+command+and+request+syntax\">MARS client</a> (if you have access to it).  On the web interface the default grid for ERA-Interim is lat/long, with a default resolution of 0.75x0.75 degrees (about 80km), approximating the irregular grid spacing on the native Gaussian grid.</p><p>ERA-Interim Ocean-Wave data are natively stored on the wave model’s reduced 1.0 degrees latitude/longitude grid.</p><p><br/></p><p class=\"confluence-link\">For <strong>ERA5</strong> HRES atmospheric data the point interval on the native Gaussian grid is about 0.28 degrees. You can download ERA5 data using <span class=\"confluence-link\"> Python and </span><a href=\"https://confluence.ecmwf.int/display/CKB/How+to+download+ERA5#HowtodownloadERA5-StepB:DownloadERA5datalistedinCDSthroughCDSAPI\" rel=\"nofollow\">specify a custom grid and resolution in your script</a>. You should set the horizontal resolution to slightly lower than 0.28 degrees (about 30km), for example to 0.25 degrees, approximating the irregular grid spacing on the native Gaussian grid.</p><p class=\"confluence-link\">ERA5 HRES Ocean-Wave data are natively stored on the wave model’s reduced 0.36 degrees latitude/longitude grid.</p><p class=\"confluence-link\"><br/></p><p><sup>[1]</sup> When data is interpolated, all continuous fields (e.g. precipitation, temperature) are interpolated by bilinear interpolation, and discrete fields (e.g. vegetation, precipitation type, soil type) and Wave 2D spectra are interpolated by nearest-neighbour. For more information about our grids and interpolations see in this presentation <a href=\"https://software.ecmwf.int/wiki/download/attachments/55122669/intro-interpolation-2016.pdf?api=v2\" class=\"external-link\" rel=\"nofollow\">https://software.ecmwf.int/wiki/download/attachments/55122669/intro-interpolation-2016.pdf?api=v2</a></p><p><br/></p><h2 id=\"Doesdownloadingdataathigherresolutionimprovetheoutput-Relatedarticles\">Related articles</h2><p>\n\n\n\n\n\n\n\n\n\n\n\n<ul class=\"content-by-label conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"contentbylabel\">\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=56659628\">What is the difference between ERA-Interim (1979-2019) and ERA-40 (1957-2002)</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/What+is+ERA-Interim\">What is ERA-Interim</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=74764925\">What are the changes from ERA-Interim to ERA5?</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/Transformation+or+regridding+of+ECMWF+Reanalyses+data\">Transformation or regridding of ECMWF Reanalyses data</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/Model+grid+box+and+time+step\">Model grid box and time step</a>\n                \n                        \n                    </div>\n    </li>\n    </ul>\n</p>",
+          "representation": "storage",
+          "_expandable": {
+            "webresource": "",
+            "content": "/rest/api/content/56661594"
+          }
+        },
+        "_expandable": {
+          "editor": "",
+          "export_view": "",
+          "styled_view": "",
+          "anonymous_export_view": ""
+        }
+      },
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "era-interim",
+              "id": "46301380"
+            },
+            {
+              "prefix": "global",
+              "name": "resolution",
+              "id": "46301278"
+            },
+            {
+              "prefix": "global",
+              "name": "download-data",
+              "id": "60260379"
+            },
+            {
+              "prefix": "global",
+              "name": "era5",
+              "id": "58687498"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4,
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/content/56661594/label"
+          }
+        },
+        "_expandable": {
+          "currentuser": "",
+          "frontend": "",
+          "editorHtml": "",
+          "properties": ""
+        }
+      },
+      "extensions": {
+        "position": 2
+      },
+      "_links": {
+        "webui": "/display/CKB/Does+downloading+data+at+higher+resolution+improve+the+output",
+        "edit": "/pages/resumedraft.action?draftId=56661594",
+        "tinyui": "/x/WpZgAw",
+        "self": "https://confluence.ecmwf.int/rest/api/content/56661594"
+      },
+      "_expandable": {
+        "container": "/rest/api/space/CKB",
+        "operations": "",
+        "children": "/rest/api/content/56661594/child",
+        "restrictions": "/rest/api/content/56661594/restriction/byOperation",
+        "ancestors": "",
+        "descendants": "/rest/api/content/56661594/descendant",
+        "space": "/rest/api/space/CKB"
+      }
+    },
+    {
+      "id": "56662352",
+      "type": "page",
+      "status": "current",
+      "title": "What is the difference between analyses, forecasts and accumulated forecasts?",
+      "history": {
+        "latest": true,
+        "createdBy": {
+          "type": "known",
+          "username": "uskh",
+          "userKey": "081c38c0516239bb015190f3de240203",
+          "profilePicture": {
+            "path": "/download/attachments/53514087/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Karl Hennermann",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb015190f3de240203"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "createdDate": "2016-03-15T17:56:21.992Z",
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/api/content/56662352/history"
+        },
+        "_expandable": {
+          "lastUpdated": "",
+          "previousVersion": "",
+          "contributors": "",
+          "nextVersion": ""
+        }
+      },
+      "version": {
+        "by": {
+          "type": "known",
+          "username": "usmg",
+          "userKey": "081c39166c66b21c016caebf22390307",
+          "profilePicture": {
+            "path": "/download/attachments/149333426/user-avatar",
+            "width": 48,
+            "height": 48,
+            "isDefault": false
+          },
+          "displayName": "Michela Giusti",
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/user?key=081c39166c66b21c016caebf22390307"
+          },
+          "_expandable": {
+            "status": ""
+          }
+        },
+        "when": "2020-02-05T10:41:16.621Z",
+        "message": "Confirmed: ok",
+        "number": 11,
+        "minorEdit": false,
+        "hidden": false,
+        "_links": {
+          "self": "https://confluence.ecmwf.int/rest/experimental/content/56662352/version/11"
+        },
+        "_expandable": {
+          "content": "/rest/api/content/56662352"
+        }
+      },
+      "body": {
+        "storage": {
+          "value": "<p>ECMWF data can be differentiated into 3 main categories: analyses, &quot;instantaneous&quot; forecasts and accumulated forecasts.</p><ul><li>Analyses are produced by combining short-range forecast data with observations to produce the best fit to both. The data are available a few times per day.</li><li>&quot;Instantaneous&quot; forecast data are produced by the forecast model, starting from an analysis, and are available at various forecast steps (hours) from the analysis date/time. These data are relevant to a particular validity date/time (forecast start date/time plus step), see the article on <ac:link><ri:page ri:content-title=\"Parameters valid at the specified time\" /></ac:link>.</li><li>Accumulated forecast parameters are accumulated over particular periods. In some datasets the period will be from the beginning of the forecast (eg in ERA-Interim), while in ERA5 the period is since the previous post processing (archiving). You can divide values by the length of the accumulation period to calculate averages over the accumulation period.</li><li>Minimum or maximum forecast parameters are the minimum or maximum during a particular period.</li></ul><p>Some parameters are only analysed, some are only forecast (e.g. radiative fluxes) and some are both analysed and forecast (e.g. temperature, winds and pressure).</p><h2>Related articles</h2><p><ac:placeholder>Related articles appear here based on the labels you select. Click to edit the macro and add or change labels.</ac:placeholder></p><p><ac:structured-macro ac:name=\"contentbylabel\" ac:schema-version=\"3\" ac:macro-id=\"1c773262-40dc-486d-9d72-498a6ddb79c2\"><ac:parameter ac:name=\"showLabels\">false</ac:parameter><ac:parameter ac:name=\"max\">5</ac:parameter><ac:parameter ac:name=\"spaces\">CKB</ac:parameter><ac:parameter ac:name=\"showSpace\">false</ac:parameter><ac:parameter ac:name=\"sort\">modified</ac:parameter><ac:parameter ac:name=\"reverse\">true</ac:parameter><ac:parameter ac:name=\"type\">page</ac:parameter><ac:parameter ac:name=\"cql\">label in (&quot;ecmwf&quot;,&quot;data&quot;) and type = &quot;page&quot; and space = &quot;CKB&quot;</ac:parameter><ac:parameter ac:name=\"labels\">data ecmwf</ac:parameter></ac:structured-macro></p><p class=\"auto-cursor-target\"><br /></p>",
+          "representation": "storage",
+          "_expandable": {
+            "content": "/rest/api/content/56662352"
+          }
+        },
+        "view": {
+          "value": "<p>ECMWF data can be differentiated into 3 main categories: analyses, &quot;instantaneous&quot; forecasts and accumulated forecasts.</p><ul><li>Analyses are produced by combining short-range forecast data with observations to produce the best fit to both. The data are available a few times per day.</li><li>&quot;Instantaneous&quot; forecast data are produced by the forecast model, starting from an analysis, and are available at various forecast steps (hours) from the analysis date/time. These data are relevant to a particular validity date/time (forecast start date/time plus step), see the article on <a href=\"/display/CKB/Parameters+valid+at+the+specified+time\">Parameters valid at the specified time</a>.</li><li>Accumulated forecast parameters are accumulated over particular periods. In some datasets the period will be from the beginning of the forecast (eg in ERA-Interim), while in ERA5 the period is since the previous post processing (archiving). You can divide values by the length of the accumulation period to calculate averages over the accumulation period.</li><li>Minimum or maximum forecast parameters are the minimum or maximum during a particular period.</li></ul><p>Some parameters are only analysed, some are only forecast (e.g. radiative fluxes) and some are both analysed and forecast (e.g. temperature, winds and pressure).</p><h2 id=\"Whatisthedifferencebetweenanalyses,forecastsandaccumulatedforecasts?-Relatedarticles\">Related articles</h2><p></p><p>\n\n\n\n\n\n\n\n\n\n\n\n<ul class=\"content-by-label conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"contentbylabel\">\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/Transformation+or+regridding+of+ECMWF+Reanalyses+data\">Transformation or regridding of ECMWF Reanalyses data</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/What+is+the+relationship+between+ECMWF+and+Copernicus\">What is the relationship between ECMWF and Copernicus</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/Model+grid+box+and+time+step\">Model grid box and time step</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ECMWF+Model+Documentation\">ECMWF Model Documentation</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Seite\">Seite:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/Parameters+valid+at+the+specified+time\">Parameters valid at the specified time</a>\n                \n                        \n                    </div>\n    </li>\n    </ul>\n</p>",
+          "representation": "storage",
+          "_expandable": {
+            "webresource": "",
+            "content": "/rest/api/content/56662352"
+          }
+        },
+        "_expandable": {
+          "editor": "",
+          "export_view": "",
+          "styled_view": "",
+          "anonymous_export_view": ""
+        }
+      },
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "ecmwf",
+              "id": "3506180"
+            },
+            {
+              "prefix": "global",
+              "name": "download-data",
+              "id": "60260379"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 2,
+          "_links": {
+            "self": "https://confluence.ecmwf.int/rest/api/content/56662352/label"
+          }
+        },
+        "_expandable": {
+          "currentuser": "",
+          "frontend": "",
+          "editorHtml": "",
+          "properties": ""
+        }
+      },
+      "extensions": {
+        "position": 5
+      },
+      "_links": {
+        "webui": "/pages/viewpage.action?pageId=56662352",
+        "edit": "/pages/resumedraft.action?draftId=56662352",
+        "tinyui": "/x/UJlgAw",
+        "self": "https://confluence.ecmwf.int/rest/api/content/56662352"
+      },
+      "_expandable": {
+        "container": "/rest/api/space/CKB",
+        "operations": "",
+        "children": "/rest/api/content/56662352/child",
+        "restrictions": "/rest/api/content/56662352/restriction/byOperation",
+        "ancestors": "",
+        "descendants": "/rest/api/content/56662352/descendant",
+        "space": "/rest/api/space/CKB"
+      }
+    }
+  ],
+  "start": 0,
+  "limit": 10,
+  "size": 10,
+  "_links": {
+    "self": "https://confluence.ecmwf.int/rest/api/content?spaceKey=CKB&expand=history,version,metadata.labels,body.view,body.view,body.storage&type=page",
+    "next": "/rest/api/content?spaceKey=CKB&expand=history,version,metadata.labels,body.view,body.view,body.storage&limit=10&start=10&type=page",
+    "base": "https://confluence.ecmwf.int",
+    "context": ""
+  }
+}

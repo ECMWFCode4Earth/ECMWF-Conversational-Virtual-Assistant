@@ -16,7 +16,7 @@ class SpacesResponseSerializationTest extends Specification {
     @Inject
     ObjectMapper objectMapper
     
-    def "Should read the global spaces json string into"() {
+    def "Should read the global spaces json string into SpacesResponse"() {
         given:
         String json = new File("./src/test/resources/data/confluence/spaces/global-space.json").text
 

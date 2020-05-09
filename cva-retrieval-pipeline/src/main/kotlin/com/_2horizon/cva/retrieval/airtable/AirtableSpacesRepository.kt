@@ -10,6 +10,7 @@ import dev.fuxing.airtable.exceptions.AirtableApiException
 import dev.fuxing.airtable.fields.AttachmentField
 import dev.fuxing.airtable.formula.AirtableFormula
 import dev.fuxing.airtable.formula.LogicalOperator
+import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
 import io.micronaut.runtime.event.annotation.EventListener
 import org.slf4j.LoggerFactory
@@ -19,6 +20,7 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-09.
  */
 @Singleton
+@Requires(property = "app.airtable.retrieval.spaces.base")
 class AirtableSpacesRepository(
     @Value("\${app.airtable.retrieval.spaces.base}") private val spacesBase: String,
     api: AirtableApi
