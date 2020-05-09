@@ -1,5 +1,5 @@
 # SPACES https://docs.atlassian.com/ConfluenceServer/rest/7.2.0/#api/space-spaces
-GET https://confluence.ecmwf.int/rest/api/space?type=global&limit=100&expand=metadata.labels,description.view,description.plain
+GET https://confluence.ecmwf.int/rest/api/space?type=global&limit=100&expand=metadata.labels,description.view,description.plain,icon
 
 
 ###

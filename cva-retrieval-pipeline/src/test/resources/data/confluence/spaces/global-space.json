@@ -1,0 +1,2254 @@
+{
+  "results": [
+    {
+      "id": 41287694,
+      "key": "AEOL",
+      "name": "Aeolus",
+      "icon": {
+        "path": "/download/attachments/40803794/AEOL?version=2&modificationDate=1412952769221&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Aeolus is an ESA-funded project. This space allow the public download of the software products.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Aeolus is an ESA-funded project. This space allow the public download of the software products.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/AEOL",
+        "self": "https://confluence.ecmwf.int/rest/api/space/AEOL"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/40803795"
+      }
+    },
+    {
+      "id": 33292289,
+      "key": "ATLAS",
+      "name": "Atlas",
+      "icon": {
+        "path": "/download/attachments/32703683/ATLAS?version=2&modificationDate=1399466014586&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Atlas is a ECMWF library for parallel data-structures supporting unstructured grids and function spaces. ",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Atlas is a ECMWF library for parallel data-structures supporting unstructured grids and function spaces. ",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/ATLAS",
+        "self": "https://confluence.ecmwf.int/rest/api/space/ATLAS"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/32703684"
+      }
+    },
+    {
+      "id": 36372482,
+      "key": "BUFR",
+      "name": "BUFRDC",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "ECMWF BUFRDC software is used for encoding and decoding WMO FM-94 BUFR code messages.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "ECMWF BUFRDC software is used for encoding and decoding WMO FM-94 BUFR code messages.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/BUFR",
+        "self": "https://confluence.ecmwf.int/rest/api/space/BUFR"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/35753138"
+      }
+    },
+    {
+      "id": 156270593,
+      "key": "CKDMIP",
+      "name": "CKDMIP: Correlated K-Distribution Model Intercomparison Project",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Improving the treatment of gases in radiation schemes: the Correlated\r\nK-Distribution Model Intercomparison Project (CKDMIP)",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Improving the treatment of gases in radiation schemes: the Correlated\r<br>\nK-Distribution Model Intercomparison Project (CKDMIP)",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "external",
+              "id": "57180216"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/CKDMIP",
+        "self": "https://confluence.ecmwf.int/rest/api/space/CKDMIP"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/155325048"
+      }
+    },
+    {
+      "id": 55672833,
+      "key": "CKB",
+      "name": "Copernicus Knowledge Base",
+      "icon": {
+        "path": "/download/attachments/55116794/CKB?version=4&modificationDate=1459258108435&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Knowledge base for CAMS and C3S users",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Knowledge base for CAMS and C3S users",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "copernicus",
+              "id": "49872899"
+            },
+            {
+              "prefix": "team",
+              "name": "knowledge-bases",
+              "id": "55607300"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/CKB",
+        "self": "https://confluence.ecmwf.int/rest/api/space/CKB"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/55116796"
+      }
+    },
+    {
+      "id": 55672836,
+      "key": "COPSRV",
+      "name": "Copernicus Services",
+      "icon": {
+        "path": "/download/attachments/55128328/COPSRV?version=1&modificationDate=1456761795086&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "copernicus",
+              "id": "49872899"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/COPSRV",
+        "self": "https://confluence.ecmwf.int/rest/api/space/COPSRV"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/55128329"
+      }
+    },
+    {
+      "id": 131203088,
+      "key": "CUSF",
+      "name": "Copernicus User Support Forum",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 1
+        }
+      },
+      "_links": {
+        "webui": "/display/CUSF",
+        "self": "https://confluence.ecmwf.int/rest/api/space/CUSF"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/133257478"
+      }
+    },
+    {
+      "id": 3735562,
+      "key": "ECAC",
+      "name": "ECaccess",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "ECaccess provides a portal for registered users to access the ECMWF computing and archiving facilities with single step authentication from anywhere on the Internet",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "ECaccess provides a portal for registered users to access the ECMWF computing and archiving facilities with single step authentication from anywhere on the Internet",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "devel",
+              "id": "3506181"
+            },
+            {
+              "prefix": "global",
+              "name": "ecmwf",
+              "id": "3506180"
+            },
+            {
+              "prefix": "team",
+              "name": "computing",
+              "id": "48365605"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 5
+        }
+      },
+      "_links": {
+        "webui": "/display/ECAC",
+        "self": "https://confluence.ecmwf.int/rest/api/space/ECAC"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/3473433"
+      }
+    },
+    {
+      "id": 25559051,
+      "key": "ECC",
+      "name": "ecCodes",
+      "icon": {
+        "path": "/download/attachments/25107921/ECC?version=1&modificationDate=1430408233705&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "ecCodes software development project",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "ecCodes software development project",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/ECC",
+        "self": "https://confluence.ecmwf.int/rest/api/space/ECC"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/25107922"
+      }
+    },
+    {
+      "id": 7766018,
+      "key": "ECFLOW",
+      "name": "ecFlow",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "ecFlow is a work flow package that enables users to run a large number of programs (with dependencies on each other and on time) in a controlled environment. It provides reasonable tolerance for hardware and software failures, combined with good restart capabilities.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "ecFlow is a work flow package that enables users to run a large number of programs (with dependencies on each other and on time) in a controlled environment. It provides reasonable tolerance for hardware and software failures, combined with good restart capabilities.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "package-public",
+              "id": "28639335"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/ECFLOW",
+        "self": "https://confluence.ecmwf.int/rest/api/space/ECFLOW"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/7372847"
+      }
+    },
+    {
+      "id": 69861390,
+      "key": "ECRAD",
+      "name": "ECMWF Radiation Scheme",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Offline version of the ECRAD radiation scheme",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Offline version of the ECRAD radiation scheme",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/ECRAD",
+        "self": "https://confluence.ecmwf.int/rest/api/space/ECRAD"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/70945505"
+      }
+    },
+    {
+      "id": 23560203,
+      "key": "WEBAPI",
+      "name": "ECMWF Web API",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "package-public",
+              "id": "28639335"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/WEBAPI",
+        "self": "https://confluence.ecmwf.int/rest/api/space/WEBAPI"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/22907869"
+      }
+    },
+    {
+      "id": 3735557,
+      "key": "EMOS",
+      "name": "EMOSLIB",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "The EMOSLIB library includes Interpolation software and GRIB, BUFR, CREX encoding/decoding routines",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "The EMOSLIB library includes Interpolation software and GRIB, BUFR, CREX encoding/decoding routines",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "devel",
+              "id": "3506181"
+            },
+            {
+              "prefix": "global",
+              "name": "ecmwf",
+              "id": "3506180"
+            },
+            {
+              "prefix": "global",
+              "name": "package-public",
+              "id": "28639335"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 6
+        }
+      },
+      "_links": {
+        "webui": "/display/EMOS",
+        "self": "https://confluence.ecmwf.int/rest/api/space/EMOS"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/3473423"
+      }
+    },
+    {
+      "id": 78970881,
+      "key": "FCKIT",
+      "name": "fcKit",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Support for Atlas, OOPS, IFS, FVM, ESCAPE dwarfs, and other Fortran software that can benefit from it later.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Support for Atlas, OOPS, IFS, FVM, ESCAPE dwarfs, and other Fortran software that can benefit from it later.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/FCKIT",
+        "self": "https://confluence.ecmwf.int/rest/api/space/FCKIT"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/78284180"
+      }
+    },
+    {
+      "id": 32276483,
+      "key": "FCST",
+      "name": "Forecast User",
+      "icon": {
+        "path": "/download/attachments/31917939/FCST?version=1&modificationDate=1396520745811&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/FCST",
+        "self": "https://confluence.ecmwf.int/rest/api/space/FCST"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/31917940"
+      }
+    },
+    {
+      "id": 131203082,
+      "key": "FUG",
+      "name": "Forecast User Guide",
+      "icon": {
+        "path": "/download/attachments/133235862/FUG?version=1&modificationDate=1526036987016&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "documentation",
+              "id": "106954784"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/FUG",
+        "self": "https://confluence.ecmwf.int/rest/api/space/FUG"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/131397322"
+      }
+    },
+    {
+      "id": 950273,
+      "key": "GRIB",
+      "name": "GRIB-API",
+      "icon": {
+        "path": "/download/attachments/589870/GRIB?version=6&modificationDate=1347029083081&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "The ECMWF GRIB API is an application program interface accessible from C, FORTRAN and Python programs developed for encoding and decoding WMO FM-92 GRIB edition 1 and edition 2 messages.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "The ECMWF GRIB API is an application program interface accessible from C, FORTRAN and Python programs developed for encoding and decoding WMO FM-92 GRIB edition 1 and edition 2 messages.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "devel",
+              "id": "3506181"
+            },
+            {
+              "prefix": "global",
+              "name": "ecmwf",
+              "id": "3506180"
+            },
+            {
+              "prefix": "global",
+              "name": "package-public",
+              "id": "28639335"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 6
+        }
+      },
+      "_links": {
+        "webui": "/display/GRIB",
+        "self": "https://confluence.ecmwf.int/rest/api/space/GRIB"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/589871"
+      }
+    },
+    {
+      "id": 27918339,
+      "key": "LDAS",
+      "name": "LDAS",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Land Data Assimilation System",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Land Data Assimilation System",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/LDAS",
+        "self": "https://confluence.ecmwf.int/rest/api/space/LDAS"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/27398058"
+      }
+    },
+    {
+      "id": 128155652,
+      "key": "LEXIS",
+      "name": "LEXIS Project",
+      "icon": {
+        "path": "/download/attachments/127317710/LEXIS?version=1&modificationDate=1546435480812&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "internal",
+              "id": "57180215"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/LEXIS",
+        "self": "https://confluence.ecmwf.int/rest/api/space/LEXIS"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/127317711"
+      }
+    },
+    {
+      "id": 3735560,
+      "key": "MAGP",
+      "name": "Magics",
+      "icon": {
+        "path": "/download/attachments/3473428/MAGP?version=9&modificationDate=1344433403776&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Magics++ is the latest generation of the ECMWF's Meteorological plotting software. ",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Magics++ is the latest generation of the ECMWF&#39;s Meteorological plotting software. ",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "devel",
+              "id": "3506181"
+            },
+            {
+              "prefix": "global",
+              "name": "ecmwf",
+              "id": "3506180"
+            },
+            {
+              "prefix": "global",
+              "name": "package-public",
+              "id": "28639335"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 6
+        }
+      },
+      "_links": {
+        "webui": "/display/MAGP",
+        "self": "https://confluence.ecmwf.int/rest/api/space/MAGP"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/3473429"
+      }
+    },
+    {
+      "id": 3735561,
+      "key": "METV",
+      "name": "Metview",
+      "icon": {
+        "path": "/download/attachments/3473430/METV?version=1&modificationDate=1336986067088&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Metview is an interactive meteorological application, which enables operational and research meteorologists to access, manipulate and visualise meteorological data.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Metview is an interactive meteorological application, which enables operational and research meteorologists to access, manipulate and visualise meteorological data.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "devel",
+              "id": "3506181"
+            },
+            {
+              "prefix": "global",
+              "name": "ecmwf",
+              "id": "3506180"
+            },
+            {
+              "prefix": "global",
+              "name": "package-public",
+              "id": "28639335"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 6
+        }
+      },
+      "_links": {
+        "webui": "/display/METV",
+        "self": "https://confluence.ecmwf.int/rest/api/space/METV"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/3473431"
+      }
+    },
+    {
+      "id": 61898756,
+      "key": "ODBAPI",
+      "name": "ODB API",
+      "icon": {
+        "path": "/download/attachments/61116726/ODBAPI?version=1&modificationDate=1477062611353&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/ODBAPI",
+        "self": "https://confluence.ecmwf.int/rest/api/space/ODBAPI"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/61116727"
+      }
+    },
+    {
+      "id": 20316161,
+      "key": "OIFS",
+      "name": "OpenIFS",
+      "icon": {
+        "path": "/download/attachments/19661476/OIFS?version=2&modificationDate=1354118056736&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "OpenIFS project",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "OpenIFS project",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "fcm",
+              "id": "21069830"
+            },
+            {
+              "prefix": "global",
+              "name": "openifs",
+              "id": "21069826"
+            },
+            {
+              "prefix": "global",
+              "name": "package-public",
+              "id": "28639335"
+            },
+            {
+              "prefix": "global",
+              "name": "xcdp",
+              "id": "21069827"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 8
+        }
+      },
+      "_links": {
+        "webui": "/display/OIFS",
+        "self": "https://confluence.ecmwf.int/rest/api/space/OIFS"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/19661477"
+      }
+    },
+    {
+      "id": 78970891,
+      "key": "OIFSUF",
+      "name": "OpenIFS User Forums",
+      "icon": {
+        "path": "/download/attachments/79981096/OIFSUF?version=1&modificationDate=1503418991770&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "external",
+              "id": "57180216"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/OIFSUF",
+        "self": "https://confluence.ecmwf.int/rest/api/space/OIFSUF"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/79981097"
+      }
+    },
+    {
+      "id": 13762565,
+      "key": "RMDNG",
+      "name": "RMDCN NG",
+      "icon": {
+        "path": "/download/attachments/13207736/RMDNG?version=1&modificationDate=1369917887437&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "RMDCN Next Generation",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "RMDCN Next Generation",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "computing",
+              "id": "48365605"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/RMDNG",
+        "self": "https://confluence.ecmwf.int/rest/api/space/RMDNG"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/53513613"
+      }
+    },
+    {
+      "id": 147587074,
+      "key": "ROMSAF",
+      "name": "ROM SAF reanalysis",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 1
+        }
+      },
+      "_links": {
+        "webui": "/display/ROMSAF",
+        "self": "https://confluence.ecmwf.int/rest/api/space/ROMSAF"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/146645263"
+      }
+    },
+    {
+      "id": 40730625,
+      "key": "S2S",
+      "name": "S2S",
+      "icon": {
+        "path": "/download/attachments/40109628/S2S?version=1&modificationDate=1481640843622&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "A WWRP/THORPEX-WCRP joint research project has been established to improve forecast skill and understanding on the subseasonal to seasonal timescale, and promote its uptake by operational centres and exploitation by the applications community. ",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "A WWRP/THORPEX-WCRP joint research project has been established to improve forecast skill and understanding on the subseasonal to seasonal timescale, and promote its uptake by operational centres and exploitation by the applications community. ",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/S2S",
+        "self": "https://confluence.ecmwf.int/rest/api/space/S2S"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/40109629"
+      }
+    },
+    {
+      "id": 3735553,
+      "key": "SUP",
+      "name": "Software Support",
+      "icon": {
+        "path": "/download/attachments/3473413/SUP?version=2&modificationDate=1334132498783&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Main space for Software Support framework",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Main space for Software Support framework",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "package-public",
+              "id": "28639335"
+            },
+            {
+              "prefix": "global",
+              "name": "support",
+              "id": "3506179"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "package",
+              "id": "13533221"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 5
+        }
+      },
+      "_links": {
+        "webui": "/display/SUP",
+        "self": "https://confluence.ecmwf.int/rest/api/space/SUP"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/3473414"
+      }
+    },
+    {
+      "id": 28606476,
+      "key": "TCBUF",
+      "name": "TAC2BUFR",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Space for a collaborative discussion on the status and challenges of the migration from Traditional Alphanumeric Codes (TAC) to BUFR. The aim is to share the information on the status of the BUFR data as seen by the users and to provide feedback to WMO and the producers to improve the usability of the data.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Space for a collaborative discussion on the status and challenges of the migration from Traditional Alphanumeric Codes (TAC) to BUFR. The aim is to share the information on the status of the BUFR data as seen by the users and to provide feedback to WMO and the producers to improve the usability of the data.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/TCBUF",
+        "self": "https://confluence.ecmwf.int/rest/api/space/TCBUF"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/28316060"
+      }
+    },
+    {
+      "id": 15695874,
+      "key": "TIGGE",
+      "name": "TIGGE",
+      "icon": {
+        "path": "/download/attachments/15467556/TIGGE?version=3&modificationDate=1481641265315&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "The TIGGE dataset consists of ensemble forecast data from ten global NWP centres, starting from October 2006, which has been made available for scientific research. TIGGE was established as a key component of THORPEX: a World Weather Research Programme to accelerate the improvements in the accuracy of 1-day to 2 week high-impact weather forecasts for the benefit of humanity. Although the decade-long THORPEX programme finishes at the end of 2014, TIGGE will continue for a further 5 years, when its future will be reviewed.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "The TIGGE dataset consists of ensemble forecast data from ten global NWP centres, starting from October 2006, which has been made available for scientific research. TIGGE was established as a key component of THORPEX: a World Weather Research Programme to accelerate the improvements in the accuracy of 1-day to 2 week high-impact weather forecasts for the benefit of humanity. Although the decade-long THORPEX programme finishes at the end of 2014, TIGGE will continue for a further 5 years, when its future will be reviewed.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "project-public",
+              "id": "28639337"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/TIGGE",
+        "self": "https://confluence.ecmwf.int/rest/api/space/TIGGE"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/15467557"
+      }
+    },
+    {
+      "id": 41287685,
+      "key": "TIGL",
+      "name": "TIGGE-LAM",
+      "icon": {
+        "path": "/download/attachments/40797617/TIGL?version=4&modificationDate=1481641231321&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "TIGGE-LAM is an extension of the THORPEX Interactive Grand Global Ensemble (TIGGE) to include weather forecasts from limited area model (LAM) ensembles.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "TIGGE-LAM is an extension of the THORPEX Interactive Grand Global Ensemble (TIGGE) to include weather forecasts from limited area model (LAM) ensembles.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/TIGL",
+        "self": "https://confluence.ecmwf.int/rest/api/space/TIGL"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/40797573"
+      }
+    },
+    {
+      "id": 18776066,
+      "key": "OPTR",
+      "name": "Training",
+      "icon": {
+        "path": "/download/attachments/18286370/OPTR?version=3&modificationDate=1351172801638&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Wiki to support training activities",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Wiki to support training activities",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "computing",
+              "id": "48365605"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/OPTR",
+        "self": "https://confluence.ecmwf.int/rest/api/space/OPTR"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/46598522"
+      }
+    },
+    {
+      "id": 41287683,
+      "key": "UER",
+      "name": "UERRA",
+      "icon": {
+        "path": "/download/attachments/40796582/UER?version=2&modificationDate=1481641182786&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Uncertainties in Ensembles of Regional ReAnalysis (UERRA) is a project related to meteorological observations funded under EU - Framework Programme 7. It includes recovery of historical (last century) data, estimating uncertainties in the re-analyses and user friendly data services. It aims to contribute to the future Copernicus climate change service.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Uncertainties in Ensembles of Regional ReAnalysis (UERRA) is a project related to meteorological observations funded under EU - Framework Programme 7. It includes recovery of historical (last century) data, estimating uncertainties in the re-analyses and user friendly data services. It aims to contribute to the future Copernicus climate change service.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/UER",
+        "self": "https://confluence.ecmwf.int/rest/api/space/UER"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/40796583"
+      }
+    },
+    {
+      "id": 180289539,
+      "key": "ULY",
+      "name": "ULYSSES",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "copernicus",
+              "id": "49872899"
+            },
+            {
+              "prefix": "team",
+              "name": "external",
+              "id": "57180216"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/ULY",
+        "self": "https://confluence.ecmwf.int/rest/api/space/ULY"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/179739752"
+      }
+    },
+    {
+      "id": 17760257,
+      "key": "UDOC",
+      "name": "User Documentation",
+      "icon": {
+        "path": "/download/attachments/17531264/UDOC?version=1&modificationDate=1361566647073&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Knowledge base for both ECMWF and MS/CS users",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Knowledge base for both ECMWF and MS/CS users",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "administration",
+              "id": "48365607"
+            },
+            {
+              "prefix": "team",
+              "name": "computing",
+              "id": "48365605"
+            },
+            {
+              "prefix": "team",
+              "name": "copernicus",
+              "id": "49872899"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "knowledge-bases",
+              "id": "55607300"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            },
+            {
+              "prefix": "team",
+              "name": "research",
+              "id": "48365608"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 7
+        }
+      },
+      "_links": {
+        "webui": "/display/UDOC",
+        "self": "https://confluence.ecmwf.int/rest/api/space/UDOC"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/17531265"
+      }
+    },
+    {
+      "id": 93814793,
+      "key": "WSIM",
+      "name": "WIGOS Station Identifiers (WSI) Migration",
+      "icon": {
+        "path": "/images/logo/default-space-logo.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "The traditional station number will be migrated to WIGOS station identifiers. This project coordinates this effort with external users from EUMETNET, GODEX, WMO, etc",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "The traditional station number will be migrated to WIGOS station identifiers. This project coordinates this effort with external users from EUMETNET, GODEX, WMO, etc",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "external",
+              "id": "57180216"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/WSIM",
+        "self": "https://confluence.ecmwf.int/rest/api/space/WSIM"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/95061887"
+      }
+    },
+    {
+      "id": 24838164,
+      "key": "WLD",
+      "name": "WMO Lead Centre for Deterministic NWP Verification (LC-DNV)",
+      "icon": {
+        "path": "/download/attachments/24316357/WLD?version=1&modificationDate=1362057556486&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Wiki to support ECMWF function as the WMO Lead Centre for Deterministic NWP Verification (LC-DNV)",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Wiki to support ECMWF function as the WMO Lead Centre for Deterministic NWP Verification (LC-DNV)",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "global",
+              "name": "project-public",
+              "id": "28639337"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 4
+        }
+      },
+      "_links": {
+        "webui": "/display/WLD",
+        "self": "https://confluence.ecmwf.int/rest/api/space/WLD"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/24316358"
+      }
+    },
+    {
+      "id": 78970889,
+      "key": "WLW",
+      "name": "WMO Lead Centre for Wave Forecast Verification (LC-WFV)",
+      "icon": {
+        "path": "/download/attachments/79975114/WLW?version=1&modificationDate=1502785072702&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "Wiki to support ECMWF function as the WMO Lead Centre for Wave Forecast Verification (LC-WFV)",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "Wiki to support ECMWF function as the WMO Lead Centre for Wave Forecast Verification (LC-WFV)",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "project",
+              "id": "13533224"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/WLW",
+        "self": "https://confluence.ecmwf.int/rest/api/space/WLW"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/79975115"
+      }
+    },
+    {
+      "id": 75530252,
+      "key": "YOPP",
+      "name": "YOPP",
+      "icon": {
+        "path": "/download/attachments/77203857/YOPP?version=1&modificationDate=1494345995390&api=v2",
+        "width": 48,
+        "height": 48,
+        "isDefault": false
+      },
+      "description": {
+        "plain": {
+          "value": "The Year Of Polar Prediction (YOPP) is a part of the WMO Polar Prediction Project (PPP). The role of ECMWF is to create and host a data archive of selected meteorological fields from ECMWF IFS model for YOPP purposes.",
+          "representation": "plain"
+        },
+        "view": {
+          "value": "The Year Of Polar Prediction (YOPP) is a part of the WMO Polar Prediction Project (PPP). The role of ECMWF is to create and host a data archive of selected meteorological fields from ECMWF IFS model for YOPP purposes.",
+          "representation": "view"
+        }
+      },
+      "type": "global",
+      "metadata": {
+        "labels": {
+          "results": [
+            {
+              "prefix": "team",
+              "name": "external",
+              "id": "57180216"
+            },
+            {
+              "prefix": "team",
+              "name": "forecast",
+              "id": "48365606"
+            },
+            {
+              "prefix": "team",
+              "name": "public",
+              "id": "57180217"
+            }
+          ],
+          "start": 0,
+          "limit": 200,
+          "size": 3
+        }
+      },
+      "_links": {
+        "webui": "/display/YOPP",
+        "self": "https://confluence.ecmwf.int/rest/api/space/YOPP"
+      },
+      "_expandable": {
+        "homepage": "/rest/api/content/77203858"
+      }
+    }
+  ],
+  "start": 0,
+  "limit": 100,
+  "size": 39,
+  "_links": {
+    "self": "https://confluence.ecmwf.int/rest/api/space?expand=metadata.labels,description.view,description.plain,icon&type=global",
+    "base": "https://confluence.ecmwf.int",
+    "context": ""
+  }
+}
