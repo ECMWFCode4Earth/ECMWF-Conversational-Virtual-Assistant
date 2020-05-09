@@ -2,6 +2,7 @@ package com._2horizon.cva.retrieval.confluence
 
 import com._2horizon.cva.retrieval.confluence.dto.space.SpacesResponse
 import io.micronaut.context.annotation.Value
+import io.micronaut.context.event.ApplicationEventPublisher
 import io.micronaut.context.event.StartupEvent
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.annotation.Client
@@ -17,6 +18,7 @@ import javax.inject.Singleton
 @Singleton
 class ConfluenceSpacesRetriever(
     private val confluenceOperations: ConfluenceOperations,
+    private val applicationEventPublisher: ApplicationEventPublisher,
     @Value("\${app.feature.retrieval-pipeline.enabled:false}") private val retrievalPipelineEnabled: Boolean
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
@@ -32,6 +34,9 @@ class ConfluenceSpacesRetriever(
         val spacesResponse = confluenceOperations.spacesWithMetadataLabelsAndDescriptionAndIcon()
             .orElseThrow { error("Couldn't retrieve spaces") }
         log.debug("Got ${spacesResponse.size} spaces")
+
+        applicationEventPublisher.publishEvent(spacesResponse)
+
         return spacesResponse
     }
 }
@@ -41,10 +46,9 @@ class ConfluenceSpacesRetriever(
 interface ConfluenceOperations {
 
     @Get(
-        "/space?type={type}&limit={limit}&expand=metadata.labels,description.view,description.plain,icon"
+        "/space?limit={limit}&expand=metadata.labels,description.view,description.plain,icon"
     )
     fun spacesWithMetadataLabelsAndDescriptionAndIcon(
-        type: String = "global",
         limit: Int = 100
     ): Optional<SpacesResponse>
 }

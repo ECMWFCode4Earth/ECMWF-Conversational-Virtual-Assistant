@@ -2,6 +2,7 @@ rootProject.name = "ECMWF-virtual-assistant"
 
 include(
     "cva-common",
+    "cva-airtable",
     "cva-retrieval-pipeline"
 
 )
