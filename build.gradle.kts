@@ -10,9 +10,36 @@ subprojects {
     }
 }
 
+val kotlinVersion: String by project
+
 plugins {
     java
+    kotlin("jvm") apply false
+    kotlin("kapt") apply false
+    kotlin("plugin.jpa") apply false
+    kotlin("plugin.allopen") apply false
+    kotlin("plugin.noarg") apply false
+    id("name.remal.check-dependency-updates") apply false
+    id("com.github.johnrengelman.shadow") apply false
+    id("org.jlleitschuh.gradle.ktlint-idea") apply false
+    id("com.google.cloud.tools.jib") apply false
     jacoco
+}
+
+subprojects {
+    if (name.startsWith("cva")) {
+        apply(plugin = "org.jetbrains.kotlin.jvm")
+        apply(plugin = "name.remal.check-dependency-updates")
+        apply(plugin = "org.jlleitschuh.gradle.ktlint-idea")
+    }
+    if (name.startsWith("cva-r")) {
+        apply(plugin = "org.jetbrains.kotlin.kapt")
+        apply(plugin = "org.jetbrains.kotlin.kapt")
+        apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
+        apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
+        apply(plugin = "com.github.johnrengelman.shadow")
+        apply(plugin = "com.google.cloud.tools.jib")
+    }
 }
 
 tasks {

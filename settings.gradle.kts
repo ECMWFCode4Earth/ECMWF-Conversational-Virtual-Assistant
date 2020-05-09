@@ -18,5 +18,7 @@ pluginManagement {
         resolve("org.jetbrains.kotlin.plugin.noarg", "org.jetbrains.kotlin.jvm")
         resolve("com.github.johnrengelman.shadow")
         resolve("name.remal.check-dependency-updates")
+        resolve("com.google.cloud.tools.jib")
+        resolve("org.jlleitschuh.gradle.ktlint-idea")
     }
 }

@@ -12,19 +12,16 @@ val junitVersion: String by project
 val hamcrestVersion: String by project
 val checkDependencyUpdatesVersion: String by project
 val jacksonKotlinVersion: String by project
+val objenesisVersion: String by project
+val spockVersion: String by project
 
 
 plugins {
     groovy
     application
-    id("com.github.johnrengelman.shadow")
-    kotlin("jvm")
-    kotlin("kapt")
-    kotlin("plugin.jpa")
-    kotlin("plugin.allopen")
-    kotlin("plugin.noarg")
-    id("name.remal.check-dependency-updates")
 }
+
+version = "0.1"
 
 application {
     mainClassName = "com._2horizon.cva.retrieval.Application"
@@ -65,17 +62,18 @@ dependencies {
     testImplementation("io.micronaut.test:micronaut-test-junit5")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
     testImplementation("org.hamcrest:hamcrest:$hamcrestVersion")
-    testImplementation("org.spockframework:spock-core") {
+    testImplementation("org.spockframework:spock-core:$spockVersion") {
         exclude("org.codehaus.groovy", "groovy-all")
     }
     testImplementation("io.micronaut:micronaut-inject-groovy")
     testImplementation("io.micronaut.test:micronaut-test-spock")
+    testImplementation("org.objenesis:objenesis:$objenesisVersion")
 }
 
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = JavaVersion.VERSION_11.toString()
             freeCompilerArgs = listOf("-Xjsr305=strict")
         }
     }
