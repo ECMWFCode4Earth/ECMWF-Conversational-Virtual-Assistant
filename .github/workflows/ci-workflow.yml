@@ -23,12 +23,12 @@ jobs:
       - name: 'Check Java Version'
         run: |
           java --version
-      - name: 'Run Tests'
+      - name: 'Run cva-retrieval-pipeline Tests'
         run: |
-          ./gradlew test
-      - name: 'Publish Test Report'
+          ./gradlew cva-retrieval-pipeline:test
+      - name: 'Publish cva-retrieval-pipeline Test Report'
         if: always()
         uses: actions/upload-artifact@v2-preview
         with:
-          name: 'test-report'
-          path: build/reports/tests/test/*
+          name: 'cva-retrieval-pipeline-test-report'
+          path: cva-retrieval-pipeline/build/reports/tests/test/*
