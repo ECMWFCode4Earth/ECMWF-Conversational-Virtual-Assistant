@@ -20,3 +20,4 @@ config/application*
 .env
 local.properties
 .gradletasknamecache
+kube-tmp
