@@ -24,7 +24,7 @@ interface ConfluenceOperations {
     @Get("/content?type=page&spaceKey={spaceKey}&start={start}&limit={limit}&expand=history,version,metadata.labels,body.view,body.storage")
     fun contentWithMetadataLabelsAndDescriptionAndIcon(
         spaceKey:String,
-        limit: Int = 100,
+        limit: Int = 10,
         start: Int = 0
     ): Optional<ContentResponse>
 }

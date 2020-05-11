@@ -1,67 +1,70 @@
 package com._2horizon.cva.retrieval.airtable
 
 import com._2horizon.cva.retrieval.confluence.dto.space.MetadataLabels
-import com._2horizon.cva.retrieval.confluence.dto.space.Space
-import com._2horizon.cva.retrieval.event.ConfluenceSpacesEvent
+import com._2horizon.cva.retrieval.event.ConfluenceContentEvent
 import dev.fuxing.airtable.AirtableApi
 import dev.fuxing.airtable.AirtableRecord
 import dev.fuxing.airtable.AirtableTable
 import dev.fuxing.airtable.exceptions.AirtableApiException
-import dev.fuxing.airtable.fields.AttachmentField
 import dev.fuxing.airtable.formula.AirtableFormula
 import dev.fuxing.airtable.formula.LogicalOperator
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
 import io.micronaut.runtime.event.annotation.EventListener
+import org.jsoup.Jsoup
 import org.slf4j.LoggerFactory
+import java.time.format.DateTimeFormatter
 import javax.inject.Singleton
 
 /**
  * Created by Frank Lieber (liefra) on 2020-05-09.
  */
 @Singleton
-@Requires(property = "app.airtable.retrieval.spaces.base")
-class AirtableSpacesRepository(
-    @Value("\${app.airtable.retrieval.spaces.base}") private val spacesBase: String,
+@Requires(property = "app.airtable.retrieval.content.base")
+class AirtableContentRepository(
+    @Value("\${app.airtable.retrieval.content.base}") private val contentBase: String,
     api: AirtableApi
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
-    private val spacesTable = api.base(spacesBase).table("Spaces")
-    private val labelsTable = api.base(spacesBase).table("Labels")
+    private val contentTable = api.base(contentBase).table("Content")
+    private val labelsTable = api.base(contentBase).table("Labels")
 
     @EventListener
-    fun spacesReceived(spacesEvent: ConfluenceSpacesEvent) {
-        log.debug("ConfluenceSpacesEvent received")
+    fun spacesReceived(contentEvent: ConfluenceContentEvent) {
+        log.debug("ConfluenceContentEvent received")
 
-        val labels = spacesEvent.spacesList.map { it.metadata.labels.results }.flatten().toSet()
+        val labels = contentEvent.contentList.map { it.metadata.labels.results }.flatten().toSet()
         saveUnknownLabels(labels)
 
-        spacesEvent.spacesList.forEach { space: Space ->
+        contentEvent.contentList.forEach { content ->
 
-            // only process unknown spaces
-            if (lookupSpace(space.id) != null) {
+            // only process unknown pagess
+            if (lookupContent(content.id) != null) {
                 return@forEach
             }
 
             val record = AirtableRecord().apply {
-                putField("Key", space.key)
-                putField("ID", space.id)
-                putField("Name", space.name)
-                putField("Description", space.description.plain.value)
-                putField("Type", space.type)
-                putField("Link", space.links.self)
-                putField("Homepage", "https://confluence.ecmwf.int${space.expandable.homepage}")
-                putField("Labels", space.metadata.labels.results.map { label -> lookupLabel(label)!!.id }.toSet())
-                putFieldAttachments(
-                    "Icon",
-                    listOf(AttachmentField().apply { url = "https://confluence.ecmwf.int${space.icon.path}" })
-                )
+                putField("ID", content.id)
+                putField("Title", content.title)
+                putField("CreatedDate", content.history.createdDate.format(DateTimeFormatter.ISO_DATE_TIME))
+                putField("CreatedBy", content.history.createdBy.displayName)
+                putField("UpdatedDate", content.version.`when`.format(DateTimeFormatter.ISO_DATE_TIME))
+                putField("UpdatedBy", content.version.user.displayName)
+                putField("Version", content.version.number)
+                putField("Type", content.type)
+                putField("Status", content.status)
+                putField("Link", "https://confluence.ecmwf.int/pages/viewpage.action?pageId=${content.id}")
+                putField("BodyStorage", content.body.storage.value)
+                putField("BodyView", content.body.view.value)
+                putField("BodyCount", Jsoup.parse(content.body.view.value).text().count())
+                putField("Labels", content.metadata.labels.results.map { label -> lookupLabel(label)!!.id }.toSet())
+
             }
 
             try {
-                log.info("Going to save ${space.key}")
-                spacesTable.post(record)
+                log.info("Going to save ${content.id}")
+                contentTable.post(record)
             } catch (ex: AirtableApiException) {
                 log.warn("Couldn't save because ${ex.type}: ${ex.message}")
             }
@@ -87,7 +90,7 @@ class AirtableSpacesRepository(
         }
     }
 
-    private fun lookupSpace(spaceID: Int) = spacesTable.list { querySpec: AirtableTable.QuerySpec ->
+    private fun lookupContent(spaceID: Int) = contentTable.list { querySpec: AirtableTable.QuerySpec ->
         querySpec.filterByFormula(
             LogicalOperator.EQ,
             AirtableFormula.Object.field("ID"),

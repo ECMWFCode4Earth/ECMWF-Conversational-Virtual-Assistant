@@ -1,6 +1,8 @@
 package com._2horizon.cva.retrieval.confluence
 
+import com._2horizon.cva.retrieval.confluence.dto.space.Space
 import com._2horizon.cva.retrieval.confluence.dto.space.SpacesResponse
+import com._2horizon.cva.retrieval.event.ConfluenceSpacesEvent
 import io.micronaut.context.annotation.Value
 import io.micronaut.context.event.ApplicationEventPublisher
 import io.micronaut.context.event.StartupEvent
@@ -30,14 +32,19 @@ class ConfluenceSpacesRetriever(
         }
     }
 
-    private fun retrieveSpaces(): SpacesResponse {
+    private fun retrieveSpaces(): ConfluenceSpacesEvent {
         val spacesResponse = confluenceOperations.spacesWithMetadataLabelsAndDescriptionAndIcon()
             .orElseThrow { error("Couldn't retrieve spaces") }
-        log.debug("Got ${spacesResponse.size} spaces")
 
-        applicationEventPublisher.publishEvent(spacesResponse)
+        val spaces = spacesResponse.spaces
 
-        return spacesResponse
+        log.debug("Got ${spaces.size} spaces")
+
+        val confluenceSpacesEvent = ConfluenceSpacesEvent(spaces)
+
+        applicationEventPublisher.publishEvent(confluenceSpacesEvent)
+
+        return confluenceSpacesEvent
     }
 }
 

@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
 val airtableVersion: String by project
+val jsoupVersion: String by project
 
 
 plugins {
@@ -27,8 +28,12 @@ dependencies {
 
     implementation(project(":cva-common"))
     implementation(project(":cva-airtable"))
+    
     // https://github.com/fuxingloh/airtable
     implementation("dev.fuxing:airtable-api:$airtableVersion")
+
+    // https://jsoup.org/
+    implementation("org.jsoup:jsoup:$jsoupVersion")
 
     implementation("io.swagger.core.v3:swagger-annotations")
     implementation("io.micronaut.graphql:micronaut-graphql")

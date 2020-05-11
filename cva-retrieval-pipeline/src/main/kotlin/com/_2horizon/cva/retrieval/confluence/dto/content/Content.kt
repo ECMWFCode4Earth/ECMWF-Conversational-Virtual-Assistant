@@ -11,7 +11,7 @@ data class Content(
     @JsonProperty("history")
     val history: History,
     @JsonProperty("id")
-    val id: String,
+    val id: Int,
     @JsonProperty("metadata")
     val metadata: Metadata,
     @JsonProperty("status")

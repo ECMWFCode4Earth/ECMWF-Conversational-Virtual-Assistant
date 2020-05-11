@@ -28,7 +28,7 @@ GET https://confluence.ecmwf.int/rest/api/content?spaceKey=UDOC&title=ecCodes+Fr
 Accept: application/json
 
 ###
-GET https://confluence.ecmwf.int/rest/api/content/146654213
+GET https://confluence.ecmwf.int/rest/api/content/140385202?expand=history,version,metadata.labels,body.view,body.view,body.storage
 Accept: application/json
 
 ###
@@ -42,10 +42,10 @@ Accept: application/json
 
 ###
 # Get all pages in space
-GET https://confluence.ecmwf.int/rest/api/space/CKB/content?expand=history&limit=100&start=0
+GET https://confluence.ecmwf.int/rest/api/space/CKB/content?expand=history&limit=500&start=0
 Accept: application/json
 
 ###
 # Get all pages in space
-GET https://confluence.ecmwf.int/rest/api/content?type=page&spaceKey=CKB&start=0&limit=10&expand=history,version,metadata.labels,body.view,body.view,body.storage
+GET https://confluence.ecmwf.int/rest/api/content?type=page&spaceKey=CKB&start=0&limit=1&expand=history,version,metadata.labels,body.view,body.view,body.storage
 Accept: application/json

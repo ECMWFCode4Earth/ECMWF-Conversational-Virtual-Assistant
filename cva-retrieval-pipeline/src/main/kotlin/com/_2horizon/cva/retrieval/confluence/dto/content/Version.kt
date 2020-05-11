@@ -2,6 +2,7 @@ package com._2horizon.cva.retrieval.confluence.dto.content
 
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.time.OffsetDateTime
 
 data class Version(
     @JsonProperty("by")
@@ -17,5 +18,5 @@ data class Version(
     @JsonProperty("number")
     val number: Int,
     @JsonProperty("when")
-    val whenX: String
+    val `when`: OffsetDateTime
 )

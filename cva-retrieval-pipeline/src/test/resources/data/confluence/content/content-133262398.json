@@ -1,0 +1,140 @@
+{
+  "id": "133262398",
+  "type": "page",
+  "status": "current",
+  "title": "ERA5: How to calculate wind speed and wind direction from u and v components of the wind?",
+  "history": {
+    "latest": true,
+    "createdBy": {
+      "type": "known",
+      "username": "usag",
+      "userKey": "081c38c0516239bb0151a074adbd0270",
+      "profilePicture": {
+        "path": "/images/icons/profilepics/default.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": true
+      },
+      "displayName": "Anabelle Guillory",
+      "_links": {
+        "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb0151a074adbd0270"
+      },
+      "_expandable": {
+        "status": ""
+      }
+    },
+    "createdDate": "2019-03-19T15:12:30.898Z",
+    "_links": {
+      "self": "https://confluence.ecmwf.int/rest/api/content/133262398/history"
+    },
+    "_expandable": {
+      "lastUpdated": "",
+      "previousVersion": "",
+      "contributors": "",
+      "nextVersion": ""
+    }
+  },
+  "version": {
+    "by": {
+      "type": "known",
+      "username": "usag",
+      "userKey": "081c38c0516239bb0151a074adbd0270",
+      "profilePicture": {
+        "path": "/images/icons/profilepics/default.svg",
+        "width": 48,
+        "height": 48,
+        "isDefault": true
+      },
+      "displayName": "Anabelle Guillory",
+      "_links": {
+        "self": "https://confluence.ecmwf.int/rest/api/user?key=081c38c0516239bb0151a074adbd0270"
+      },
+      "_expandable": {
+        "status": ""
+      }
+    },
+    "when": "2020-02-27T16:57:44.565Z",
+    "message": "Confirmed: OK by Paul B. on 18/02/20",
+    "number": 6,
+    "minorEdit": false,
+    "hidden": false,
+    "_links": {
+      "self": "https://confluence.ecmwf.int/rest/experimental/content/133262398/version/6"
+    },
+    "_expandable": {
+      "content": "/rest/api/content/133262398"
+    }
+  },
+  "body": {
+    "storage": {
+      "value": "<p>The meteorological wind direction is the direction from which the wind is blowing.</p><p><ac:image ac:thumbnail=\"true\" ac:height=\"250\"><ri:attachment ri:filename=\"wind-speed.png\" /></ac:image></p><p>Wind direction increases clockwise such that a northerly wind is 0&deg;, an easterly wind is 90&deg;, a southerly wind is 180&deg;, and a westerly wind is 270&deg;. <br />Because trigonometry uses a polar coordinate system in which 0&deg; is along the x axis, the meteorological angle definition can wreak havoc on typical angle calculations. <br />Fortunately, it is still easy to compute the wind components, u and v, given the meteorological wind angle. Let &Phi; be the meteorological wind direction angle, then the following equations can be applied:</p><p><ac:image ac:align=\"left\" ac:thumbnail=\"true\" ac:height=\"134\"><ri:attachment ri:filename=\"wind-formula.png\" /></ac:image></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p>Note that &Phi; must be in radians. If &Phi; is in degrees, multiply the angle by &pi;/180 before using the trig function.</p><p>It is also possible to compute &Phi; from u and v using the atan2 function. The atan2 arguments vary by type of software. <br /><br />On a spreadsheet, use the following equation to get an answer in degrees:</p><p><ac:image ac:thumbnail=\"true\" ac:height=\"58\"><ri:attachment ri:filename=\"wind-direction.png\" /></ac:image></p><h2>Related articles</h2><p><ac:placeholder>Related articles appear here based on the labels you select. Click to edit the macro and add or change labels.</ac:placeholder></p><p><ac:structured-macro ac:name=\"contentbylabel\" ac:schema-version=\"3\" ac:macro-id=\"e2bdb250-f4fe-4d8e-becf-ba0277ea3753\"><ac:parameter ac:name=\"showLabels\">false</ac:parameter><ac:parameter ac:name=\"max\">5</ac:parameter><ac:parameter ac:name=\"spaces\">CKB</ac:parameter><ac:parameter ac:name=\"showSpace\">false</ac:parameter><ac:parameter ac:name=\"sort\">modified</ac:parameter><ac:parameter ac:name=\"reverse\">true</ac:parameter><ac:parameter ac:name=\"type\">page</ac:parameter><ac:parameter ac:name=\"cql\">label = &quot;era5&quot; and type = &quot;page&quot; and space = &quot;CKB&quot;</ac:parameter><ac:parameter ac:name=\"labels\"> era-interim</ac:parameter></ac:structured-macro></p><p><br /></p><p class=\"auto-cursor-target\"><br /></p><p><br /></p><p class=\"auto-cursor-target\"><br /></p>",
+      "representation": "storage",
+      "_expandable": {
+        "content": "/rest/api/content/133262398"
+      }
+    },
+    "view": {
+      "value": "<p>The meteorological wind direction is the direction from which the wind is blowing.</p><p><span class=\"confluence-embedded-file-wrapper confluence-embedded-manual-size\"><img class=\"confluence-embedded-image confluence-thumbnail\" height=\"250\" src=\"/download/thumbnails/133262398/wind-speed.png?version=1&amp;modificationDate=1571321440171&amp;api=v2\" data-image-src=\"/download/attachments/133262398/wind-speed.png?version=1&amp;modificationDate=1571321440171&amp;api=v2\" data-unresolved-comment-count=\"0\" data-linked-resource-id=\"155332215\" data-linked-resource-version=\"1\" data-linked-resource-type=\"attachment\" data-linked-resource-default-alias=\"wind-speed.png\" data-base-url=\"https://confluence.ecmwf.int\" data-linked-resource-content-type=\"image/png\" data-linked-resource-container-id=\"133262398\" data-linked-resource-container-version=\"6\"></span></p><p>Wind direction increases clockwise such that a northerly wind is 0°, an easterly wind is 90°, a southerly wind is 180°, and a westerly wind is 270°. <br/>Because trigonometry uses a polar coordinate system in which 0° is along the x axis, the meteorological angle definition can wreak havoc on typical angle calculations. <br/>Fortunately, it is still easy to compute the wind components, u and v, given the meteorological wind angle. Let Φ be the meteorological wind direction angle, then the following equations can be applied:</p><p><span class=\"confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size\"><img class=\"confluence-embedded-image confluence-thumbnail image-left\" height=\"134\" src=\"/download/thumbnails/133262398/wind-formula.png?version=1&amp;modificationDate=1553008643602&amp;api=v2\" data-image-src=\"/download/attachments/133262398/wind-formula.png?version=1&amp;modificationDate=1553008643602&amp;api=v2\" data-unresolved-comment-count=\"0\" data-linked-resource-id=\"133262401\" data-linked-resource-version=\"1\" data-linked-resource-type=\"attachment\" data-linked-resource-default-alias=\"wind-formula.png\" data-base-url=\"https://confluence.ecmwf.int\" data-linked-resource-content-type=\"image/png\" data-linked-resource-container-id=\"133262398\" data-linked-resource-container-version=\"6\"></span></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p>Note that Φ must be in radians. If Φ is in degrees, multiply the angle by π/180 before using the trig function.</p><p>It is also possible to compute Φ from u and v using the atan2 function. The atan2 arguments vary by type of software. <br/><br/>On a spreadsheet, use the following equation to get an answer in degrees:</p><p><span class=\"confluence-embedded-file-wrapper confluence-embedded-manual-size\"><img class=\"confluence-embedded-image confluence-thumbnail\" height=\"58\" src=\"/download/thumbnails/133262398/wind-direction.png?version=1&amp;modificationDate=1553008992258&amp;api=v2\" data-image-src=\"/download/attachments/133262398/wind-direction.png?version=1&amp;modificationDate=1553008992258&amp;api=v2\" data-unresolved-comment-count=\"0\" data-linked-resource-id=\"133262409\" data-linked-resource-version=\"1\" data-linked-resource-type=\"attachment\" data-linked-resource-default-alias=\"wind-direction.png\" data-base-url=\"https://confluence.ecmwf.int\" data-linked-resource-content-type=\"image/png\" data-linked-resource-container-id=\"133262398\" data-linked-resource-container-version=\"6\"></span></p><h2 id=\"ERA5:Howtocalculatewindspeedandwinddirectionfromuandvcomponentsofthewind?-Relatedarticles\">Related articles</h2><p></p><p>\n\n\n\n\n\n\n\n\n\n\n\n<ul class=\"content-by-label conf-macro output-block\" data-hasbody=\"false\" data-macro-name=\"contentbylabel\">\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Page\">Page:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/The+family+of+ERA5+datasets\">The family of ERA5 datasets</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Page\">Page:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ERA5%3A+data+documentation\">ERA5: data documentation</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Page\">Page:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/pages/viewpage.action?pageId=85402030\">ERA5 terminology: analysis and forecast; time and steps; instantaneous and accumulated and mean rates and min/max parameters</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Page\">Page:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/How+to+download+ERA5\">How to download ERA5</a>\n                \n                        \n                    </div>\n    </li>\n        <li>\n        <div>\n                <span class=\"icon aui-icon content-type-page\" title=\"Page\">Page:</span>        </div>\n\n        <div class=\"details\">\n                        <a href=\"/display/CKB/ERA5%3A+large+10m+winds\">ERA5: large 10m winds</a>\n                \n                        \n                    </div>\n    </li>\n    </ul>\n</p><p><br/></p><p><br/></p>",
+      "representation": "storage",
+      "_expandable": {
+        "webresource": "",
+        "content": "/rest/api/content/133262398"
+      }
+    },
+    "_expandable": {
+      "editor": "",
+      "export_view": "",
+      "styled_view": "",
+      "anonymous_export_view": ""
+    }
+  },
+  "metadata": {
+    "labels": {
+      "results": [
+        {
+          "prefix": "global",
+          "name": "era5",
+          "id": "58687498"
+        },
+        {
+          "prefix": "global",
+          "name": "wind",
+          "id": "19857543"
+        }
+      ],
+      "start": 0,
+      "limit": 200,
+      "size": 2,
+      "_links": {
+        "self": "https://confluence.ecmwf.int/rest/api/content/133262398/label"
+      }
+    },
+    "_expandable": {
+      "currentuser": "",
+      "frontend": "",
+      "editorHtml": "",
+      "properties": ""
+    }
+  },
+  "extensions": {
+    "position": 1
+  },
+  "_links": {
+    "webui": "/pages/viewpage.action?pageId=133262398",
+    "edit": "/pages/resumedraft.action?draftId=133262398&draftShareId=54663b36-8a7a-4f88-99e3-5d9aa728f2b0",
+    "tinyui": "/x/PmzxBw",
+    "collection": "/rest/api/content",
+    "base": "https://confluence.ecmwf.int",
+    "context": "",
+    "self": "https://confluence.ecmwf.int/rest/api/content/133262398"
+  },
+  "_expandable": {
+    "container": "/rest/api/space/CKB",
+    "operations": "",
+    "children": "/rest/api/content/133262398/child",
+    "restrictions": "/rest/api/content/133262398/restriction/byOperation",
+    "ancestors": "",
+    "descendants": "/rest/api/content/133262398/descendant",
+    "space": "/rest/api/space/CKB"
+  }
+}
