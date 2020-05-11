@@ -26,6 +26,7 @@ class ConfluenceContentRetriever(
         if (retrievalPipelinePagesEnabled) {
             confluenceSpacesRetriever.retrieveSpaces().spacesList
                 .filter { it.type == "global" }
+                .filter { it.key != "ECC" }
                 .forEach { space -> retrievePages(space.key) }
         }
     }
