@@ -16,6 +16,7 @@ import javax.inject.Singleton
 class ConfluenceContentRetriever(
     private val confluenceOperations: ConfluenceOperations,
     private val applicationEventPublisher: ApplicationEventPublisher,
+    private val confluenceSpacesRetriever: ConfluenceSpacesRetriever,
     @Value("\${app.feature.retrieval-pipeline.pages-enabled:false}") private val retrievalPipelinePagesEnabled: Boolean
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
@@ -23,7 +24,9 @@ class ConfluenceContentRetriever(
     @EventListener
     fun onStartup(startupEvent: StartupEvent) {
         if (retrievalPipelinePagesEnabled) {
-            retrievePages("CKB")
+            confluenceSpacesRetriever.retrieveSpaces().spacesList
+                .filter { it.type == "global" }
+                .forEach { space -> retrievePages(space.key) }
         }
     }
 
@@ -47,7 +50,7 @@ class ConfluenceContentRetriever(
             }
         }
 
-        val confluenceContentEvent = ConfluenceContentEvent(pages)
+        val confluenceContentEvent = ConfluenceContentEvent(spaceKey, pages)
         applicationEventPublisher.publishEvent(confluenceContentEvent)
 
         return confluenceContentEvent

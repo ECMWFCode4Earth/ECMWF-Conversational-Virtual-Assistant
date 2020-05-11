@@ -32,7 +32,7 @@ class ConfluenceSpacesRetriever(
         }
     }
 
-    private fun retrieveSpaces(): ConfluenceSpacesEvent {
+    internal fun retrieveSpaces(): ConfluenceSpacesEvent {
         val spacesResponse = confluenceOperations.spacesWithMetadataLabelsAndDescriptionAndIcon()
             .orElseThrow { error("Couldn't retrieve spaces") }
 

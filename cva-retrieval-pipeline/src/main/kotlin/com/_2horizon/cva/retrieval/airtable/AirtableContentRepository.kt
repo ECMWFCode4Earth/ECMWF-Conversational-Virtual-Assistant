@@ -46,6 +46,7 @@ class AirtableContentRepository(
 
             val record = AirtableRecord().apply {
                 putField("ID", content.id)
+                putField("SpaceKey", contentEvent.spaceKey)
                 putField("Title", content.title)
                 putField("CreatedDate", content.history.createdDate.format(DateTimeFormatter.ISO_DATE_TIME))
                 putField("CreatedBy", content.history.createdBy.displayName)
