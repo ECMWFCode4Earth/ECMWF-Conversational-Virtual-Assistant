@@ -8,6 +8,7 @@ subprojects {
     repositories {
         mavenCentral()
         jcenter()
+        maven("https://jitpack.io")
         maven("https://jcenter.bintray.com")
     }
 }
