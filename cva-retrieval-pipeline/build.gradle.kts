@@ -4,6 +4,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val airtableVersion: String by project
 val jsoupVersion: String by project
+val smileNlpKtVersion: String by project
+val smileCoreVersion: String by project
 
 
 plugins {
@@ -34,6 +36,12 @@ dependencies {
 
     // https://jsoup.org/
     implementation("org.jsoup:jsoup:$jsoupVersion")
+
+    // https://github.com/londogard/smile-nlp-kt
+    implementation("com.londogard:smile-nlp-kt:$smileNlpKtVersion")
+
+    implementation("com.github.haifengl:smile-core:$smileCoreVersion")
+    implementation("com.github.haifengl:smile-nlp:$smileCoreVersion")
 
     implementation("io.swagger.core.v3:swagger-annotations")
     implementation("io.micronaut.graphql:micronaut-graphql")
