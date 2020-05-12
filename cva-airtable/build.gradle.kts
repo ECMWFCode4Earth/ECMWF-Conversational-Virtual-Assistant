@@ -28,7 +28,7 @@ dependencies {
     implementation(project(":cva-common"))
 
     // https://github.com/fuxingloh/airtable
-    implementation("dev.fuxing:airtable-api:$airtableVersion")
+    api("dev.fuxing:airtable-api:$airtableVersion")
 
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
 

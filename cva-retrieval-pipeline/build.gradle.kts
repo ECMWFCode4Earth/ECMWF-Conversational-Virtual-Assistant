@@ -29,9 +29,6 @@ dependencies {
     implementation(project(":cva-common"))
     implementation(project(":cva-airtable"))
     
-    // https://github.com/fuxingloh/airtable
-    implementation("dev.fuxing:airtable-api:$airtableVersion")
-
     // https://jsoup.org/
     implementation("org.jsoup:jsoup:$jsoupVersion")
 
