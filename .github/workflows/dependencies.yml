@@ -1,0 +1,26 @@
+name: Check Dependency Updates
+
+on:
+  schedule:
+    - cron:  '0 0 1 * *'
+
+jobs:
+  build:
+    name: Check dependencies
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: 'Check cva-common dependency updates'
+        run: |
+          ./gradlew cva-common:checkDependencyUpdates
+
+      - name: 'Check cva-airtable dependency updates'
+        run: |
+          ./gradlew cva-airtable:checkDependencyUpdates
+
+      - name: 'Check cva-retrieval-pipeline dependency updates'
+        run: |
+          ./gradlew cva-retrieval-pipeline:checkDependencyUpdates

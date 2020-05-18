@@ -1,4 +1,4 @@
-name: ECMWF-virtual-assistant
+name: ECMWF-virtual-assistant-tests
 on:
   push:
     branches:
