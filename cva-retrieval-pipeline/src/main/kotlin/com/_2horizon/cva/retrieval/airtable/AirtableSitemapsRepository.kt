@@ -47,8 +47,6 @@ class AirtableSitemapsRepository(
                     putField("Seg5", urlSegments.getOrElse(5) { "" })
                     putField("Seg6", urlSegments.getOrElse(6) { "" })
                     putField("Seg7", urlSegments.getOrElse(7) { "" })
-                    putField("Seg8", urlSegments.getOrElse(8) { "" })
-                    putField("Seg9", urlSegments.getOrElse(9) { "" })
                     putField("Lastmod", sitemap.lastmod?.format(DateTimeFormatter.ISO_DATE_TIME))
                     putField("Changefreq", sitemap.changefreq)
                 }
