@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+    <records>
+        <record>
+            <source-app name="Biblio" version="7.x">Drupal-Biblio</source-app>
+            <ref-type>13</ref-type>
+            <contributors>
+                <authors>
+                    <author>
+                        <style face="normal" font="default" size="100%">Dethloff, K</style>
+                    </author>
+                </authors>
+            </contributors>
+            <titles>
+                <title>
+                    <style face="normal" font="default" size="100%">
+                        Global implications of Arctic climate processes and feedbacks
+                    </style>
+                </title>
+                <secondary-title>
+                    <style face="normal" font="default" size="100%">ECMWF Annual Seminar 2006</style>
+                </secondary-title>
+                <tertiary-title>
+                    <style face="normal" font="default" size="100%">ECMWF Annual Seminar</style>
+                </tertiary-title>
+            </titles>
+            <keywords>
+                <keyword>
+                    <style face="normal" font="default" size="100%">annual seminar</style>
+                </keyword>
+            </keywords>
+            <dates>
+                <year>
+                    <style face="normal" font="default" size="100%">2006</style>
+                </year>
+                <pub-dates>
+                    <date>
+                        <style face="normal" font="default" size="100%">2006</style>
+                    </date>
+                </pub-dates>
+            </dates>
+            <urls>
+                <web-urls>
+                    <url>
+                        <style face="normal" font="default" size="100%">https://www.ecmwf.int/node/15680</style>
+                    </url>
+                </web-urls>
+            </urls>
+            <language>
+                <style face="normal" font="default" size="100%">eng</style>
+            </language>
+            <custom1>
+                <style face="normal" font="default" size="100%">Events</style>
+            </custom1>
+        </record>
+    </records>
+</xml>

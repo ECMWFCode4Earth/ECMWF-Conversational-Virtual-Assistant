@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+    <records>
+        <record>
+            <source-app name="Biblio" version="7.x">Drupal-Biblio</source-app>
+            <ref-type>13</ref-type>
+            <contributors>
+                <authors>
+                    <author>
+                        <style face="normal" font="default" size="100%">Christopher D. Roberts</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">Antje Weisheimer</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">Stephanie Johnson</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">Tim Stockdale</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">Magdalena Alonso-Balmaseda</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">Philip Browne</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">Andrew Dawson</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">Martin Leutbecher</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">Frédéric Vitart</style>
+                    </author>
+                </authors>
+            </contributors>
+            <titles>
+                <title>
+                    <style face="normal" font="default" size="100%">
+                        Reduced-resolution ocean configurations for efficient testing with the ECMWF coupled model
+                    </style>
+                </title>
+                <secondary-title>
+                    <style face="normal" font="default" size="100%">ECMWF Technical Memoranda</style>
+                </secondary-title>
+            </titles>
+            <dates>
+                <year>
+                    <style face="normal" font="default" size="100%">2020</style>
+                </year>
+                <pub-dates>
+                    <date>
+                        <style face="normal" font="default" size="100%">01/2020</style>
+                    </date>
+                </pub-dates>
+            </dates>
+            <urls>
+                <web-urls>
+                    <url>
+                        <style face="normal" font="default" size="100%">https://www.ecmwf.int/node/19325</style>
+                    </url>
+                </web-urls>
+            </urls>
+            <number>
+                <style face="normal" font="default" size="100%">858</style>
+            </number>
+            <language>
+                <style face="normal" font="default" size="100%">eng</style>
+            </language>
+            <abstract>
+                <style face="normal" font="default" size="100%">&lt;p&gt;
+                    Since June 2018, all operational configurations of the Integrated Forecasting System (IFS) have been
+                    coupled to an ocean/sea-ice model, which has substantially increased the computational cost of
+                    research and development activities at ECMWF. The purpose of this memorandum is to assess whether
+                    some aspects of model development and testing at ECMWF can be undertaken with lower resolution ocean&lt;br&gt;configurations
+                    without comprising the scientific integrity of the results. Although the higher resolution ocean
+                    configuration outperforms its lower resolution counterpart, there are many aspects of model testing
+                    and development for which the absolute model performance is less relevant than the difference (i.e.
+                    Δ) between two experiments. This study considers whether Δ estimated using a lower resolution ocean
+                    model (i.e. ΔLRO) can be considered an appropriate proxy for Δ estimated using a higher resolution&lt;br&gt;ocean
+                    model (i.e. ΔHRO) for a variety of deterministic and probabilistic metrics at different lead times.
+                    In general, ΔLRO is an extremely good proxy for ΔHRO in medium-range forecasts (days 1-15), provided
+                    that ocean initial conditions used in lower and higher resolution systems are as consistent as
+                    possible. ΔLRO is also good proxy for ΔHRO in extended-range forecasts (weeks 1-4), particularly for
+                    metrics that are computed from forecast anomalies relative to a hindcast climatology. At
+                    extended-range lead times, we find a stronger sensitivity to changes in atmospheric resolution (50
+                    km to 31 km) than changes in ocean resolution (100 km to 25 km). At seasonal (and longer)
+                    timescales, ΔLRO is a useful proxy for ΔHRO for some metrics (e.g. changes to the model
+                    climatology), but the approximation begins to break down due to a divergence of SST biases in lower
+                    and higher resolution systems. Finally, although lower resolution ocean configurations will continue
+                    to be a useful tool for research and development purposes at ECMWF, there will always be cases where
+                    it is necessary to use the highest resolution ocean model that is affordable.&lt;/p&gt;
+                </style>
+            </abstract>
+        </record>
+    </records>
+</xml>
