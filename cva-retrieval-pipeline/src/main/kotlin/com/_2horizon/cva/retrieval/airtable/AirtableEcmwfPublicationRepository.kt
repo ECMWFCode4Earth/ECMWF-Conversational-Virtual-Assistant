@@ -122,11 +122,11 @@ open class AirtableEcmwfPublicationRepository(
         )
     }.firstOrNull()
 
-    private fun lookupAuthor(keyword: String) = authorsTable.list { querySpec: AirtableTable.QuerySpec ->
+    private fun lookupAuthor(author: String) = authorsTable.list { querySpec: AirtableTable.QuerySpec ->
         querySpec.filterByFormula(
             LogicalOperator.EQ,
             AirtableFormula.Object.field("Name"),
-            AirtableFormula.Object.value(keyword)
+            AirtableFormula.Object.value(author)
         )
     }.firstOrNull()
 }
