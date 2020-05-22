@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+    <records>
+        <record>
+            <source-app name="Biblio" version="7.x">Drupal-Biblio</source-app>
+            <ref-type>19</ref-type>
+            <contributors>
+                <authors>
+                    <author>
+                        <style face="normal" font="default" size="100%">Ervin Zsótér</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">Shaun Harrigan</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">C. Baugh</style>
+                    </author>
+                    <author>
+                        <style face="normal" font="default" size="100%">C. Prudhomme</style>
+                    </author>
+                </authors>
+            </contributors>
+            <titles>
+                <title>
+                    <style face="normal" font="default" size="100%">New products for the Global Flood Awareness System
+                    </style>
+                </title>
+                <secondary-title>
+                    <style face="normal" font="default" size="100%">ECMWF Newsletter</style>
+                </secondary-title>
+            </titles>
+            <dates>
+                <year>
+                    <style face="normal" font="default" size="100%">2020</style>
+                </year>
+                <pub-dates>
+                    <date>
+                        <style face="normal" font="default" size="100%">01/2020</style>
+                    </date>
+                </pub-dates>
+            </dates>
+            <urls>
+                <web-urls>
+                    <url>
+                        <style face="normal" font="default" size="100%">https://www.ecmwf.int/node/19365</style>
+                    </url>
+                </web-urls>
+            </urls>
+            <pages>
+                <style face="normal" font="default" size="100%">32-35</style>
+            </pages>
+            <language>
+                <style face="normal" font="default" size="100%">eng</style>
+            </language>
+            <issue>
+                <style face="normal" font="default" size="100%">162</style>
+            </issue>
+            <section>
+                <style face="normal" font="default" size="100%">Meteorology</style>
+            </section>
+        </record>
+    </records>
+</xml>

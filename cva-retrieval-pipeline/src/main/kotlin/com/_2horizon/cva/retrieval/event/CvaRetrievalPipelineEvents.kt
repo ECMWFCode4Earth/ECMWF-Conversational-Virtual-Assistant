@@ -2,6 +2,7 @@ package com._2horizon.cva.retrieval.event
 
 import com._2horizon.cva.retrieval.confluence.dto.content.Content
 import com._2horizon.cva.retrieval.confluence.dto.space.Space
+import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
 import com._2horizon.cva.retrieval.sitemap.Sitemap
 
 /**
@@ -10,3 +11,4 @@ import com._2horizon.cva.retrieval.sitemap.Sitemap
 data class ConfluenceContentEvent( val spaceKey:String, val contentList: List<Content>)
 data class ConfluenceSpacesEvent(val spacesList: List<Space>)
 data class SitemapEvent(val sitemapsList: List<Sitemap>)
+data class EcmwfPublicationEvent(val ecmwfPublicationDTO: EcmwfPublicationDTO)

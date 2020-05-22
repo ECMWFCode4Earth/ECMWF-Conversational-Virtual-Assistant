@@ -1,7 +1,6 @@
 package com._2horizon.cva.retrieval.ecmwf.publications
 
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
-import com._2horizon.cva.retrieval.sitemap.SitemapRetrievalService
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.slf4j.LoggerFactory
@@ -14,18 +13,18 @@ import javax.inject.Singleton
 class EcmwfPublicationsBibEndNoteCrawlService {
     private val log = LoggerFactory.getLogger(javaClass)
 
-    fun downloadAndExtractBibEndNote(publicationId:Int): EcmwfPublicationDTO {
+    fun downloadAndExtractBibEndNote(nodeId: Int): EcmwfPublicationDTO {
 
-        val url = "https://www.ecmwf.int/en/elibrary/export/xml/$publicationId"
+        val url = "https://www.ecmwf.int/en/elibrary/export/xml/$nodeId"
 
         log.debug("Going to request BibEndNote $url")
 
         val xml = Jsoup.connect(url).get()
 
-        return extractEcmwfPublicationDTO(xml)
+        return extractEcmwfPublicationDTO(xml, nodeId)
     }
 
-    private fun extractEcmwfPublicationDTO(xml: Document): EcmwfPublicationDTO {
+    private fun extractEcmwfPublicationDTO(xml: Document, nodeId: Int): EcmwfPublicationDTO {
         val contributors = xml.getElementsByTag("author").map { it.text() }
         val keywords = xml.getElementsByTag("keyword").map { it.text() }
         val title = xml.getElementsByTag("title").first().text()
@@ -37,6 +36,10 @@ class EcmwfPublicationsBibEndNoteCrawlService {
         val pubDates = xml.getElementsByTag("date").map { it.text() }
         val language = xml.getElementsByTag("language").first().text()
 
+        val pages = xml.getElementsByTag("pages").firstOrNull()?.text()
+        val issue = xml.getElementsByTag("issue").firstOrNull()?.text()
+        val section = xml.getElementsByTag("section").firstOrNull()?.text()
+
         val custom1 = xml.getElementsByTag("custom1").firstOrNull()?.text()
         val custom2 = xml.getElementsByTag("custom2").firstOrNull()?.text()
         val custom3 = xml.getElementsByTag("custom3").firstOrNull()?.text()
@@ -44,6 +47,7 @@ class EcmwfPublicationsBibEndNoteCrawlService {
         val custom5 = xml.getElementsByTag("custom5").firstOrNull()?.text()
 
         return EcmwfPublicationDTO(
+            nodeId = nodeId,
             contributors = contributors,
             keywords = keywords,
             title = title,
@@ -54,6 +58,10 @@ class EcmwfPublicationsBibEndNoteCrawlService {
             year = year,
             pubDates = pubDates,
             language = language,
+            pages = pages,
+            issue = issue,
+            section = section,
+
             custom1 = custom1,
             custom2 = custom2,
             custom3 = custom3,
