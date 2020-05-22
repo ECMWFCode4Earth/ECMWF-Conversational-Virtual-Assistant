@@ -19,9 +19,9 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-09.
  */
 @Singleton
-@Requires(property = "app.airtable.retrieval.sitemaps.ecmwf-base")
+@Requires(property = "app.airtable.retrieval.ecmwf.sitemaps")
 class AirtableSitemapsRepository(
-    @Value("\${app.airtable.retrieval.sitemaps.ecmwf-base}") private val sitemapsBase: String,
+    @Value("\${app.airtable.retrieval.ecmwf.sitemaps}") private val sitemapsBase: String,
     api: AirtableApi
 ) {
     private val log = LoggerFactory.getLogger(javaClass)

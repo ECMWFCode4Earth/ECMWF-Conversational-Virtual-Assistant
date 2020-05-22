@@ -20,9 +20,9 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-09.
  */
 @Singleton
-@Requires(property = "app.airtable.retrieval.content.base")
+@Requires(property = "app.airtable.retrieval.confluence.content")
 class AirtableContentRepository(
-    @Value("\${app.airtable.retrieval.content.base}") private val contentBase: String,
+    @Value("\${app.airtable.retrieval.confluence.content}") private val contentBase: String,
     api: AirtableApi
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
