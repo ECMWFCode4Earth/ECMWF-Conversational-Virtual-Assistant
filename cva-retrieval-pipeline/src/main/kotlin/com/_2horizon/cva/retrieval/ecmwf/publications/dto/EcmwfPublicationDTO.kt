@@ -12,7 +12,7 @@ data class  EcmwfPublicationDTO(
     val number:String?,
     val secondaryTitle:String?,
     val tertiaryTitle:String?,
-    val year:Int,
+    val year:Int?,
     val pubDates:List<String>,
     val language:String,
     val pages:String?,

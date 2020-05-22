@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+    <records>
+        <record>
+            <source-app name="Biblio" version="7.x">Drupal-Biblio</source-app>
+            <ref-type>13</ref-type>
+            <contributors>
+                <authors>
+                    <author>
+                        <style face="normal" font="default" size="100%">Kamga, A</style>
+                    </author>
+                </authors>
+            </contributors>
+            <titles>
+                <title>
+                    <style face="normal" font="default" size="100%">
+                        Short, medium range and seasonal forecasts verification methods for the AMMA-EU project
+                    </style>
+                </title>
+            </titles>
+            <keywords>
+                <keyword>
+                    <style face="normal" font="default" size="100%">verification methods</style>
+                </keyword>
+                <keyword>
+                    <style face="normal" font="default" size="100%">workshop</style>
+                </keyword>
+            </keywords>
+            <urls>
+                <web-urls>
+                    <url>
+                        <style face="normal" font="default" size="100%">https://www.ecmwf.int/node/15444</style>
+                    </url>
+                </web-urls>
+            </urls>
+            <language>
+                <style face="normal" font="default" size="100%">eng</style>
+            </language>
+            <custom1>
+                <style face="normal" font="default" size="100%">Events</style>
+            </custom1>
+        </record>
+    </records>
+</xml>
