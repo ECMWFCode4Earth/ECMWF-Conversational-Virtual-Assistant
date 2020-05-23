@@ -14,12 +14,22 @@ class SmileNlpServiceTest extends Specification {
 
     @Unroll
     def "Should get convert text to the correct number of sentences"() {
+        given:
+        String text = new File("./src/test/resources/data/nlp/sampletext/bbc/${textId}.txt").text
+
+
         when:
-        List<String> sentences = service.textToSentences()
+        List<String> sentences = service.textToSentences(text)
 
         then:
-        sentences.size() == 11
+        sentences.size() == 16
+
+        where:
+        textId | s
+        '001'  | 0
     }
+
+
 
 
 }
