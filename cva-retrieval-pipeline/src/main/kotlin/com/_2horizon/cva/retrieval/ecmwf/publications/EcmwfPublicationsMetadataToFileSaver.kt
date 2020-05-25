@@ -26,7 +26,7 @@ open class EcmwfPublicationsMetadataToFileSaver(
 
         val pubDTO = ecmwfPublicationEvent.ecmwfPublicationDTO
 
-        File("$publicationsPath/${pubDTO.nodeId}.json").writeText(
+        File("$publicationsPath/json/${pubDTO.nodeId}.json").writeText(
             objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(pubDTO)
         )
     }

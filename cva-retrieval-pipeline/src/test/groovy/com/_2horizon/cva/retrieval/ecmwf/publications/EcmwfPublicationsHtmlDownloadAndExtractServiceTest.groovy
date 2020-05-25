@@ -34,17 +34,38 @@ class EcmwfPublicationsHtmlDownloadAndExtractServiceTest extends Specification {
     }
 
     @Unroll
-    def "Should get download And convert Html of #publicationId into publication type"() {
+    def "Should convert local publication Html file of #publicationId into publication PDF link"() {
+        given:
+        Document html = Jsoup.parse(new File("./src/test/resources/data/ecmwf/publications/html/${publicationId}.html").text, 'https://www.ecmwf.int')
+
         when:
-        String publicationType = service.downloadAndExtractPublicationType(publicationId)
+        def publicationPDFs = service.extractEcmwfPublicationPDF(html)
 
         then:
-        publicationType == pubType
+        publicationPDFs.size() == size
+        if (publicationPDFs.size() > 0)
+            publicationPDFs.first() == pdfLink
+
+        where:
+        publicationId | size | pdfLink
+        15680         | 1    | 'https://www.ecmwf.int/file/30392/download?token=OWy1zLKC'
+        19325         | 1    | 'https://www.ecmwf.int/file/285919/download?token=iqRJ4EhB'
+        19275         | 0    | null
+    }
+
+
+    @Unroll
+    def "Should get download publication Html and create Jsoup document"() {
+        when:
+        Document document = service.downloadPublicationHtml(publicationId)
+
+        then:
+        document.hasText()
 
         where:
         publicationId | pubType
-        15680         | 'Presentation'
-        19325         | 'Technical memorandum'
+        15680         | ''
+        19325         | ''
     }
 
 

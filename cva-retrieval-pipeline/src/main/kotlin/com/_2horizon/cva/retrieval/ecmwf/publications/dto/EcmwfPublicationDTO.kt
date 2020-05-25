@@ -23,5 +23,6 @@ data class  EcmwfPublicationDTO(
     val custom3:String?,
     val custom4:String?,
     val custom5:String?,
-    val publicationType:String? = null
+    val publicationType:String? = null ,
+    val publicationPDF:String? = null
 )

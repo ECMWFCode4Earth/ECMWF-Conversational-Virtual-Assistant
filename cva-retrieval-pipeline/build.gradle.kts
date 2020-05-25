@@ -6,6 +6,8 @@ val airtableVersion: String by project
 val jsoupVersion: String by project
 val smileNlpKtVersion: String by project
 val smileCoreVersion: String by project
+val commonsIoVersion: String by project
+val pdfBoxVersion: String by project
 
 
 plugins {
@@ -33,6 +35,13 @@ dependencies {
     
     // https://jsoup.org/
     implementation("org.jsoup:jsoup:$jsoupVersion")
+
+    // http://commons.apache.org/proper/commons-io/
+    implementation("commons-io:commons-io:$commonsIoVersion")
+
+    // https://pdfbox.apache.org/
+    implementation("org.apache.pdfbox:pdfbox:$pdfBoxVersion")
+
 
     // https://github.com/londogard/smile-nlp-kt
     implementation("com.londogard:smile-nlp-kt:$smileNlpKtVersion")

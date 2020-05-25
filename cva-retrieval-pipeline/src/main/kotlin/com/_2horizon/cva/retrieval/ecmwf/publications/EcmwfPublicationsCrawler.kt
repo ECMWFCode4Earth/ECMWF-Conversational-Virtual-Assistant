@@ -43,7 +43,8 @@ class EcmwfPublicationsCrawler(
         check(publicationSitemaps.size > 7000) { "Wrong publicationSitemaps size with ${publicationSitemaps.size}" }
 
         return publicationSitemaps
-            .filter { it.first < 13729 }
+            // .filter { it.first < 13729 }
+            .take(100)
             .map { sitemapPair ->
 
                 val nodeId = sitemapPair.first
@@ -53,9 +54,12 @@ class EcmwfPublicationsCrawler(
                 val ecmwfPublicationDTO =
                     publicationsBibEndNoteDownloadAndExtractService.downloadAndExtractBibEndNote(nodeId)
 
-                val publicationType = publicationsHtmlDownloadAndExtractService.downloadAndExtractPublicationType(nodeId)
+                val (publicationPDF, publicationType) = publicationsHtmlDownloadAndExtractService
+                    .downloadAndExtractPublicationTypeAndPDF(nodeId)
 
-                val pubDTO = ecmwfPublicationDTO.copy(publicationType = publicationType)
+                val pubDTO =
+                    ecmwfPublicationDTO.copy(publicationType = publicationType, publicationPDF = publicationPDF)
+
                 applicationEventPublisher.publishEvent(EcmwfPublicationEvent(pubDTO))
                 pubDTO
             }

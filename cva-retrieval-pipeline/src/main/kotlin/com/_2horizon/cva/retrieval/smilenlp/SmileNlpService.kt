@@ -1,6 +1,7 @@
 package com._2horizon.cva.retrieval.smilenlp
 
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
+import com._2horizon.cva.retrieval.extract.pdf.PDFToTextService
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.londogard.smile.extensions.bag
 import com.londogard.smile.extensions.keywords
@@ -27,6 +28,7 @@ import javax.inject.Singleton
 @Singleton
 class SmileNlpService(
     private val objectMapper: ObjectMapper,
+    private val pdfToTextService: PDFToTextService,
     @Value("\${app.retrieval.ecmwf.publications-path}") private val publicationsPath: String
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
@@ -131,5 +133,10 @@ class SmileNlpService(
             .eachCount()
             .map { abrev -> Pair(abrev.key, abrev.value) }.toList()
             .sortedByDescending { it.second }
+    }
+
+    fun analysePdf(pdf:File){
+        val pdfText = pdfToTextService.convertToText(pdf)
+        textToSentences(pdfText)
     }
 }

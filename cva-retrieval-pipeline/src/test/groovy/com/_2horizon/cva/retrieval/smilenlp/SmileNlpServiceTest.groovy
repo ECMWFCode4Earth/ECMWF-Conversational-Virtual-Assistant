@@ -1,6 +1,6 @@
 package com._2horizon.cva.retrieval.smilenlp
 
-
+import com._2horizon.cva.retrieval.extract.pdf.PDFToTextService
 import io.micronaut.context.annotation.Property
 import io.micronaut.test.annotation.MicronautTest
 import spock.lang.Ignore
@@ -46,8 +46,8 @@ class SmileNlpServiceTest extends Specification {
         def sortedBigrams = t.second
 
         then:
-        sortedTopTerms.size()>1000
-        sortedBigrams.size()>1000
+        sortedTopTerms.size() > 1000
+        sortedBigrams.size() > 1000
     }
 
 
@@ -57,8 +57,22 @@ class SmileNlpServiceTest extends Specification {
         def t = service.getAllTextInBrackets()
 
         then:
-        t.size()==911
+        t.size() == 911
 
+    }
+
+    @Unroll
+    def "Should convert local publication PDF file of #publicationId into text"() {
+        when:
+        List<String> sentences = service.analysePdf(new File("./src/test/resources/data/ecmwf/publications/pdf/${publicationId}.pdf"))
+
+        then:
+        sentences.size() == 1
+
+        where:
+        publicationId | start
+        19307         | 'Part III: Dynamics and Numerical Procedures'
+        19516         | 'COMPUTING'
     }
 
 
