@@ -1,35 +1,63 @@
 package com._2horizon.cva.retrieval.smilenlp
 
-import spock.lang.Shared
+
+import io.micronaut.context.annotation.Property
+import io.micronaut.test.annotation.MicronautTest
 import spock.lang.Specification
 import spock.lang.Unroll
+
+import javax.inject.Inject
 
 /**
  * Created by Frank Lieber (liefra) on 2020-05-11.
  */
+@MicronautTest
+@Property(name = "app.retrieval.ecmwf.publications-path", value = "/Users/liefra/data/02Projects/ECMWF/100-dev/local-file-store/ecmwf/publications")
 class SmileNlpServiceTest extends Specification {
 
-    @Shared
-    SmileNlpService service = new SmileNlpService()
+    @Inject
+    SmileNlpService service
 
     @Unroll
     def "Should get convert text to the correct number of sentences"() {
         given:
-        String text = new File("./src/test/resources/data/nlp/sampletext/bbc/${textId}.txt").text
+        String text = new File("./src/test/resources/data/nlp/sampletext/ecmwf/${textId}.txt").text
 
 
         when:
         List<String> sentences = service.textToSentences(text)
 
         then:
-        sentences.size() == 16
+        sentences.size() == s
 
         where:
-        textId | s
-        '001'  | 0
+        textId  | s
+        '19362' | 599
+        '19367' | 68
+    }
+
+    // TODO: Not very useful like this
+    def "Should analyseEcmwfPublications"() {
+        when:
+        def t = service.analyseEcmwfPublications()
+        def sortedTopTerms = t.first
+        def sortedBigrams = t.second
+
+        then:
+        sortedTopTerms.size()>1000
+        sortedBigrams.size()>1000
     }
 
 
+    // TODO: Not very useful like this
+    def "Should getAllTextInBrackets"() {
+        when:
+        def t = service.getAllTextInBrackets()
+
+        then:
+        t.size()==911
+
+    }
 
 
 }

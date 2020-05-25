@@ -1,0 +1,1298 @@
+859
+Global stratospheric
+temperature bias and
+other stratospheric
+aspects of ERA5 and
+ERA5.1
+Adrian Simmons, Cornel Soci, Julien Nicolas, Bill Bell,
+Paul Berrisford, Rossana Dragani, Johannes Flemming,
+Leo Haimberger1, Sean Healy, Hans Hersbach,
+András Horányi, Antje Inness, Joaquín Muñoz-Sabater,
+Raluca Radu and Dinand Schepers
+(1 Universität Wien)
+January 2020
+
+Series: ECMWF Technical Memoranda
+A full list of ECMWF Publications can be found on our web site under:
+http://www.ecmwf.int/en/research/publications
+Contact: library@ecmwf.int
+
+© Copyright 2020
+European Centre for Medium Range Weather Forecasts
+Shinfield Park, Reading, Berkshire RG2 9AX, England
+Literary and scientific copyrights belong to ECMWF and are reserved in all countries. This publication is not to
+be reprinted or translated in whole or in part without the written permission of the Director. Appropriate noncommercial use will normally be granted under the condition that reference is made to ECMWF.
+The information within this publication is given in good faith and considered to be true, but ECMWF accepts
+no liability for error, omission and for loss or damage arising from its use.
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Abstract
+The ERA5 analyses of lower stratospheric temperature exhibit a pronounced cold bias for the years
+from 2000 to 2006. This is due to specifying background error covariances for the data assimilation
+that were inappropriate prior to availability during 2006 of GNSS radio occultation data in sufficient
+numbers to constrain a cold bias of the assimilating ERA5 model. A new set of analyses, termed
+ERA5.1, has thus been produced for the period from 2000 to 2006 using the background error
+covariances that were used to produce the ERA5 analyses for the years 1979 to 1999. ERA5.1 also
+includes the more restrictive ensemble assimilation of SBUV ozone data that was used in production
+of ERA5 for 1979 to 1999.
+ERA5.1 provides analyses with better global-mean temperatures in the stratosphere and uppermost
+troposphere than provided by ERA5. ERA5.1 stands up well in comparison with ERA-Interim and
+other reanalyses in the lower stratosphere, although there are also lower-stratospheric temperature
+differences between ERA5 and other reanalyses in the 1980s and 1990s. These are due in part to
+differences in radiosonde temperature bias adjustment. The pronounced near-tropopause cold bias
+of ERA5 from 2000 to 2006 has implications for the representation of stratospheric humidity, for
+which ERA5.1 performs better, though by no means perfectly. ERA5.1 does not exhibit the
+spuriously high values of ozone that occur close to the South Pole in the polar nights of 2003 and
+2004 in the ERA5 analyses. Synoptic evolution in the extratropical stratosphere is seen to be very
+similar in two cases involving splitting of the stratospheric polar vortex and secondary vortex
+formation by dynamical instability. ERA5.1’s representation of the QBO agrees slightly better with
+radiosonde wind data than that of ERA5. The dataset formed by merging ERA5.1 with ERA5 is
+generally more homogeneous over time than ERA5 alone. It nevertheless is problematic for globalmean upper stratospheric temperature for all but the most recent ten or so years.
+ERA5.1 is very close to ERA5 in the lower and middle troposphere.
+
+1
+
+Introduction
+
+The low-frequency variability and trends of temperature at large spatial scales from the ERA-Interim
+reanalysis (Dee et al., 2011) have been shown by Simmons et al. (2014) to be quite well constrained in
+the lower stratosphere by ERA-Interim’s assimilation of sounding data from radiosondes and spacebased measurements of infrared and microwave radiances. Biases in the radiance data from different
+instruments were adjusted variationally as the assimilation progressed, anchored by radiosonde data
+whose biases had been adjusted independently prior to assimilation. Additional anchoring was provided
+by assimilation of the GNSS radio occultation (RO) data available for later years.
+ERA-Interim temperatures were shown to be more uncertain for the middle stratosphere, where
+disagreement among various reanalyses were larger than at lower levels. They were more problematic
+still in the upper stratosphere, where there were jumps in values at times of instrumental change that
+stemmed from a decision not to adjust (other than for scan-angle) the biases of data from the highest
+sounding channel of the SSU instrument prior to August 1998, and the biases of data from the highest
+sounding channel of the AMSU-A instrument from August 1998 onwards. Despite this, a reasonable
+depiction of cooling near the stratopause in excess of 1K/decade on average, modulated by the 11-year
+solar cycle, was inferred from ERA-Interim by making homogenising adjustments similar to those
+derived by McLandress et al. (2014).
+ERA5 is ECMWF’s latest comprehensive atmospheric reanalysis, and the first that was produced fully
+under the auspices of the Copernicus Climate Change Service. It succeeds ERA-Interim, whose data
+cover the period from the beginning of 1979 to August 2019 and which is no longer in production. ERA5
+
+Technical Memorandum No.859
+
+1
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+currently produces analyses within a few days of real time, and a back extension that will complete the
+data record from 1950 to the present day is nearly finished.
+ERA5 improves on ERA-Interim in many ways. It is nevertheless poorer than ERA-Interim in
+representing large-scale lower stratospheric temperature from 2000 to 2006. It is also generally more
+problematic in its representation of upper stratospheric temperature. Issues were identified during
+production of ERA5, but could not be fully addressed prior to public release of the reanalyses, initially
+for the period from 2000 onwards and later from 1979 onwards. Initial accounts of the issues have been
+provided by Hersbach et al. (2018) and Shepherd et al. (2018).
+ERA5 is produced using a version of ECMWF's Integrated Forecast System (IFS), CY41r2, that was in
+operational use in 2016. ERA-Interim was produced using an IFS version from 2006, CY31r2. The highresolution assimilating model used for ERA5 has a horizontal grid resolution of about 31 km, compared
+with 78 km for ERA-Interim. ERA5 uses the same 137-level vertical resolution as ECMWF’s highresolution operational assimilation rather than the 60 levels of ERA-Interim. ERA5’s high-resolution
+(HRES) data assimilation uses background-error estimates that utilise the output from a ten-member
+ensemble data assimilation (EDA) using a lower horizontal resolution of about 63 km. ERA5 also uses
+new analyses of sea-surface temperature and sea-ice concentration, variations in radiative forcing
+derived from CMIP-5 specifications, and various new and reprocessed observational data records. It
+provides hourly output fields and a more complete observational feedback archive than ERA-Interim.
+Some further information is given in section 2 of this report. A comprehensive account of ERA5 is
+provided by Hersbach et al. (2020) and further details can be found in supporting online documentation.
+The choice of the static climatological background-error covariance matrix, Bcli, is one factor influencing
+differences in lower stratospheric temperatures between ERA5 and ERA-Interim. The original Bcli, used
+in producing the ERA5 analyses released for the period from 2000 onwards, was developed for CY41r2
+using data assimilations for a recent training period. It was, however, found to give unacceptably poor
+results in both troposphere and stratosphere for 1979, and an alternative Bcli derived using a training
+period covering most of 1979 was developed and shown to give better performance for that year.
+Following comparisons of analyses produced for spells using the two versions of Bcli, the 1979 version
+was used to produce all the analyses from 1979 to 1999 that have now been released for public use.
+Other factors contributing to differences in lower stratospheric temperatures between ERA5 and ERAInterim include: (i) a larger lower stratospheric cold background-model bias in CY41r2 compared with
+CY31r2, a bias exacerbated by the higher horizontal resolution of ERA5, (ii) a change in the bias
+adjustment of radiosonde data from ERA-Interim to ERA5 and (iii) the assimilation of substantial
+amounts of RO data from mid-2006 onwards. These factors also influence the bias adjustment of satellite
+radiance data. Higher in the stratosphere the background-model bias switches from cold to warm.
+This report updates and extends the results presented earlier. It includes in particular new results from
+an extension of the pre-2000 production stream of ERA5 using the 1979 Bcli. This extension covers the
+period until the end of 2006, beyond which time the amount of RO data assimilated is sufficient to
+reduce substantially the sensitivity of large-scale stratospheric temperatures to the choice of Bcli. Data
+from this extension are termed ERA5.1 data, and will be made publicly available as an alternative to the
+ERA5 data.
+ERA5.1 differs from ERA5 in one other respect. The pre-2000 ERA5 production stream employed a
+more restrictive assimilation of SBUV ozone data than was employed from 2000 onwards. This was
+introduced as an expedient way of avoiding very poor behaviour of the EDA in the polar night, behaviour
+that was not well understood (Hersbach et al., 2020). EDA performance had been better in the earlier
+
+2
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+production for the better-observed period from 2000 onwards, especially from early August 2004
+onwards when data from the Microwave Limb Sounder (MLS) on NASA’s Aura satellite was available.
+ERA5.1 used the same restrictive assimilation of SBUV data as the pre-2000 ERA5.
+The following section of this report provides further information on the data assimilation system used
+to produce ERA5 and ERA5.1. It covers in particular the construction and characteristics of the 1979
+Bcli and its comparison with the 41r2 Bcli. Section 3 presents the main comparison of ERA5 and ERA5.1
+for lower stratospheric temperature, and upper stratospheric temperature is discussed in Section 4.
+Section 5 shows how the representation of stratospheric water vapour is improved in ERA5.1 due to its
+improved temperatures in the tropical upper troposphere and lower stratosphere. Changes in ozone
+analyses are discussed in Section 6, which includes some general discussion of the representation of the
+ozone hole by ERA5. Section 7 illustrates the representation of vortex dynamics in the extratropical
+stratosphere, and Section 8 covers the representation of the Quasi-Biennial Oscillation. Section 9
+presents examples of the similarity between ERA5 and ERA5.1 in the middle and lower troposphere.
+Some concluding remarks are given in Section 10.
+
+2
+
+Construction of the 1979 background error covariance matrix
+
+The ERA5 atmospheric analysis system uses a hybrid incremental four-dimensional variational (4DVar) data assimilation method (Isaksen et al, 2010; Bonavita et al, 2016) with a 12-hourly cycle. The
+hybrid method comprises updating the background-error covariance matrix (B) using a weighted sum
+of a static, climatological, component (Bcli) and a dynamic, ensemble-based flow-dependent estimate of
+B (BEDA) representing the errors of the day.
+The ERA5 ensemble component is a 10-member Ensemble Data Assimilation (EDA) system. Each
+member is run with an outer loop at a horizontal resolution of 63km (linear spectral truncation TL319)
+and two inner loops for minimization, respectively at 156 km (TL127) and 125km (TL159) resolutions.
+Each member except the control is run with random perturbations added to the observations and the sea
+surface temperature and sea ice fields. The perturbations to the observations are sampled from a normal
+distribution with zero mean and variance equal to the expected variances of the observation errors,
+whereas for the sea surface temperature and the sea ice cover the perturbations are sampled from
+climatological error patterns. The non-linear forecast model used to cycle the analysis is run with
+perturbed physical tendencies at the same horizontal (TL319) resolution as used for the outer loop.
+The flow-dependent covariances resulting from the EDA are used as input to the deterministic (HRES)
+4D-Var analysis, which is performed with three inner-loops, respectively at 208km (TL95), 125 km
+(TL159), and 78km (TL255) horizontal resolution. The outer loops and the background forecast model
+are run at 31km (TL639). Both the EDA and the HRES have 137 levels in the vertical, extending from
+the modelled earth-surface up to 1 Pa. In this report, references to ERA5 usually relate to the analyses
+and products from the HRES data assimilation system.
+The incremental hybrid 4D-Var data assimilation system produces analyses by combining available
+observations with prior information from a short-range forecast. Unlike the data assimilation system and
+forecast model, which are essentially unchanged over the production phase, the global observing system
+changes over time and in space. New types or locations of observation are introduced and the number
+and quality of data from pre-existing types and locations of observation vary over time. In data-sparse
+regions or in the absence of observations, the analysis depends mostly on the quality of the background
+forecast. Thus, a key element of the ERA5 data assimilation system is the background error covariance
+matrix (B) which describes the probability density function of the forecast errors and determines how
+
+Technical Memorandum No.859
+
+3
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+the background departures (i.e. the differences between the observations and corresponding background
+forecasts) are spread in model space and between variables. In the IFS data assimilation system, B is
+modelled as in Fisher (2003):
+B = LT ΣT C Σ L
+
+(1)
+
+where L is the balance operator and Σ the standard deviation of background errors, estimated based on
+the short-range forecasts of the day from the EDA members. C is the background error correlation
+operator of the unbalanced model state variables (vorticity, divergence, temperature and surface
+pressure, specific humidity and ozone) modelled in a wavelet space. The wavelet formulation allows the
+background error correlations to be scale- and location-dependent. In the current hybrid formulation, B
+is computed as a linear combination of the climatological part, Bcli, and the dynamical part, BEDA,
+generated using short-range forecasts from the EDA, and can be expressed as
+
+B  (1   )Bcli   B EDA
+
+(2)
+
+where  is a weighting factor that increases with the total wavenumber from 0.15 up to TL95 to 0.74 at
+TL255, meaning that Bcli has contributes less to the final B at shorter scales than at longer ones. The
+original climatological background error covariance matrix (41r2 Bcli) used in producing the ERA5
+analyses for the period from 2000 onwards was developed for CY41r2 using data assimilations for a
+relatively recent training period, prior to starting to use CY41r2 in operations. It was, however, found
+to give unacceptably poor results in both the troposphere and stratosphere for 1979, and an alternative
+climatological B (1979 Bcli) was generated and shown to give better performance for that year.
+The 1979 Bcli was generated in two steps. Firstly, the hybrid 10-member EDA system was run with
+reduced flow-dependence over a period spanning most of 1979. The aim was to build a large sample of
+perturbed short-range forecasts and capture various weather regimes. In the reduced flow-dependent
+regime, B is computed as
+n -1
+n
+B n  (1   )B EDA
+  B EDA
+
+(3)
+
+where n is the analysis cycle. BEDA is set to the 41r2 Bcli for n=1. Here,  increases with wavenumber
+from 0.03 for the largest scales to 0.33 for the smallest ones. This ensures that the climatological
+influence essentially vanishes after a period of about one month. Finally, the 1979 Bcli was generated
+using 10 samples per EDA analysis cycle representing the forecast errors of the day from 63 days taken
+with a step of 3.5 days (to evenly sample 00 and 12 UTC cycles) throughout the training period.
+For ozone, the use of the 1979 Bcli as originally constructed led to anomalous values that were so wrong
+that it was decided to keep the 41r2 Bcli component for this variable. This was connected with the
+subsequently discovered EDA problems in the polar night that had to be addressed expediently by the
+restricted assimilation of SBUV data.
+The structure of the estimated covariance matrices can be explored by analysing for each model state
+variable, for example, the horizontal and vertical correlations as functions of model levels or the total
+wavenumber, or the vertical profiles of their standard deviation errors. Figure 1 shows the background
+error horizontal correlation lengths for unbalanced temperature (left panel) and vorticity (right panel)
+errors at 10 hPa for the ERA-Interim Bcli and for the 41r2 Bcli, and 1979 Bcli used in ERA5. Values are
+presented for two locations, one in the tropical Pacific (7ºS, 160ºW) and one in the South Pacific (60ºS,
+160ºW). Particularly in the tropical Pacific, the horizontal correlation length scales for temperature are
+longer for the 1979 Bcli (with an associated e-folding distance of 425 km) than for the 41r2 Bcli (e-folding
+
+4
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+distance 260 km), although much shorter than for the ERA-Interim Bcli (e-folding distance 960 km). The
+plots in the right panel show the horizontal correlation length scales for vorticity at the two selected
+locations. These scales are about 40% longer for the 1979 Bcli (e-folding distance 240 km) than for the
+41r2 Bcli (e-folding distance 170 km). The horizontal correlation length scales for both temperature and
+vorticity errors vary in the vertical being, as expected, longer in the stratosphere than in troposphere (not
+shown).
+
+Figure 1 Horizontal correlations of temperature (left) and vorticity (right) errors as function of
+distance at 10 hPa for the ERA-Interim Bcli (black), 41r2 Bcli (red), and 1979 Bcli (blue) at locations
+respectively in the tropical Pacific (solid line) and in the South Pacific (dashed line). The horizontal
+dotted line represents the e-folding distance.
+
+3
+
+Lower-stratospheric temperature
+
+Panel (a) of Figure 2 presents time series of the fits of the ERA5 and ERA-Interim background forecasts
+to bias-adjusted radiosonde data. Observation-background differences are shown for monthly averages
+over all assimilated radiosonde data from 40 to 60 hPa. Results for ERA5.1 are also shown.
+The narrower background error covariance structures of the 41r2 Bcli, together with the specification of
+larger observation errors for radiosonde temperature data in CY41r2 compared with CY31r2, cause the
+ERA5 analysis to make a smaller adjustment of larger scales than ERA-Interim when presented with
+radiosonde data that differ from the cold-biased background. Figure 2 shows that the ERA5 background
+is substantially colder than bias-adjusted lower stratospheric radiosonde data from 2000 to 2006, much
+more so than the ERA-Interim background is. In contrast, ERA5.1 fits the radiosonde data about as well
+as ERA-Interim, and as well as ERA5 prior to the year 2000, for this lower stratospheric layer. The
+ERA5 fit to the radiosonde data using the 41r2 Bcli is better once substantial amounts of RO data are
+assimilated, from mid-2006 onwards, but is still a little poorer than the corresponding ERA-Interim fit,
+more so for the latest years when the amount of RO data falls as the COSMIC constellation of GPS
+receivers declines. Similar results are found for analysis fits (not shown).
+The upward spike in the ERA-Interim radiosonde fit in mid-1979 is due to a slow adaptation to a change
+in calibration of the MSU radiances from TIROS-N; the radiance bias correction was adjusted for ERA5
+to account for this special case. A further spike at the beginning of 1985 in the ERA-Interim fit is also
+
+Technical Memorandum No.859
+
+5
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+not present in ERA5. Also evident in Figure 2(a) is a poorer fit for ERA-Interim following the volcanic
+eruption of Mt Pinatubo in June 1991. As discussed by Dee and Uppala (2009) and Simmons et al.
+(2014), ERA-Interim underestimated the lower stratospheric warming due to the eruption because the
+absence of the resulting stratospheric aerosol in the ERA-Interim background model meant that some of
+the temperature signal in the MSU radiance data was misinterpreted as a change in bias of the data. The
+ERA5 model does include variations in aerosol due to major volcanic eruptions, and the ERA5
+background forecasts and analyses accordingly match better the warming due to Pinatubo seen in the
+radiosonde data. ERA5 also fits the radiosonde data a little better in the period following the eruption of
+El Chichón in March 1982.
+
+Figure 2 (a) Monthly average observation-background differences for all assimilated bias-adjusted
+radiosonde temperature data (K) between 40 and 60 hPa, for ERA-Interim and ERA5 from January
+1979 to August 2019, and ERA5.1 from January 2000 to December 2006. (b) Corresponding
+estimates of radiosonde temperature biases applied in ERA-Interim and ERA5/ERA5.1. (c) Monthly
+average estimated biases of brightness temperatures (K) from MSU-4 and AMSU-A9, for ERA5 and
+ERA5.1, plotted relative to corresponding estimates from ERA-Interim.
+Differences between the ERA5 and ERA-Interim time series of global-mean temperature and estimated
+biases of satellite radiance data depend not only on the extent to which the bias-adjusted radiosonde data
+are fitted but also on the differences in the radiosonde bias adjustments, which in ERA5 are based on
+the RICH scheme of Haimberger et al. (2012) with additional adjustment for solar elevation. The
+
+6
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+adjustments averaged monthly over all assimilated radiosonde data for the 40-60 hPa layer are shown
+in panel (b) of Figure 2. These adjustments are what is subtracted from the raw radiosonde temperatures
+prior to the data assimilation and calculation of data fits such as shown in panel (a).
+Differences are quite small from the mid 1990s onwards but reach as large as 0.3 K in the mid-1980s. It
+should also be noted that ERA-Interim and the JRA-55 (Kobayashi et al., 2015) and MERRA-2 (Gelaro
+et al., 2017) reanalyses all use variants of the RAOBCORE adjustment scheme (Haimberger, 2007;
+Haimberger et al., 2008). The smaller lower stratospheric temperature bias adjustment applied in ERA5
+for the 1980s makes its temperatures higher than those from these other reanalyses during this period,
+as shown later. This consequence of choosing the RICH rather than the RAOBCORE scheme for ERA5
+was expected from the outset, as Haimberger et al. (2012) had found larger lower-stratospheric cooling
+over the period 1979-2011 in time series derived directly from radiosonde data that had been adjusted
+by the RICH rather than the RAOBCORE method.
+Panel (c) of Figure 2 shows time series of the differences between ERA5 and ERA-Interim estimates of
+the globally averaged radiance biases from various satellites, for channel 4 of the MSU instrument and
+channel 9 of AMSU-A, whose weighting functions peak in the lower stratosphere. Differences are not
+shown for the AMSU-A instrument on the EOS-Aqua satellite as its data were recalibrated prior to use
+in ERA5, which shifted brightness temperatures additionally by about 0.5 K. Differences for the first
+few months of Metop-A data are also not shown, for the same reason. The plotted differences are
+evidently larger in the 2000-2006 period when the 41r2 Bcli was used and little or no RO data were
+available. In contrast, ERA5.1 produces bias estimates that are more similar to those from ERA-Interim,
+and more consistent with those from ERA5 before the year 2000 and from 2007 onwards. The lower,
+more-local weight given to radiosonde data by the 41r2 Bcli means that prior to the availability of
+sufficient RO data, the use of this Bcli prevents radiosonde data from firmly anchoring the radiance bias
+estimation. The anchoring is instead provided by the cold-biased model; the satellite data are thus
+wrongly estimated by ERA5 to have a larger warm bias than inferred by ERA-Interim. Differences prior
+to the 1990s arise mainly because of differences in the bias-adjusted radiosonde data that anchor the
+radiance bias estimation in ERA5 as well as ERA-Interim in this period, due in ERA5 to the broader
+stratospheric covariance structures of the 1979 Bcli. Shorter-term differences can be linked to the 1979
+and 1985 spikes in the ERA-Interim fits to radiosonde data, and the poorer ERA-Interim radiosonde fits
+following the eruptions of El Chichón and Mt Pinatubo.
+Sensitivity of radiosonde temperature fits to the choice of Bcli extends down to the tropopause and
+tropical upper troposphere, being still evident around the 300 hPa level in both global and tropical
+averages, but barely visible lower in the troposphere. Figure 3 shows the global average fits for the 85125 hPa, 125-175 hPa and 175-225 hPa layers. The cold bias in ERA5 from 2000 to 2006 is relatively
+large in the first two of these layers, and is smaller in ERA5.1 as expected. It can also be seen that the
+ERA-Interim fits dip to negative values (corresponding to background forecasts that are on average
+warmer than the observations) between 2007 and 2009. During this period ERA-Interim assimilated
+operationally processed RO data from the COSMIC constellation of satellites whereas ERA5
+assimilated reprocessed COSMIC data that benefitted from changes made operationally in November
+2009.
+Differences between the ERA5 and ERA5.1 radiosonde fits are smaller for the 175-225 hPa layer. Here
+the ERA-Interim fits worsen between 1998 and 2000 as increasing numbers of warm-biased temperature
+observations from commercial aircraft are assimilated. ERA5 and ERA5.1 include a bias-adjustment
+scheme for aircraft temperatures. This appears to be largely successful, in that the combination of
+ERA5.1 for 2000-2006 and ERA5 for other years has a smaller warm bias relative to radiosonde data
+
+Technical Memorandum No.859
+
+7
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+than ERA-Interim from the late 1990s until close to the present day. This is not the case for ERA5 alone,
+as ERA5 has a small net cold bias relative to radiosonde data for 2000-2006. The remaining warm bias
+of the ERA5/ERA5.1 combination around 200hPa from the late 1990s onwards appears to be due to
+incomplete correction of the biases in aircraft data. Observing-system experiments using lower
+resolution exhibit an increase of several tenths of a Kelvin in 200hPa temperatures in regions with dense
+aircraft data when comparing an ERA5-like assimilation for 2007-2015 using full data with a
+corresponding assimilation using no aircraft data and no radiance data other than the anchoring radiances
+from the high-sounding AMSU-A14 channel on multiple satellites. The regions concerned include the
+USA and Europe, where radiosonde data density is also relatively high.
+
+Figure 3 Monthly average observation-background differences for all assimilated bias-adjusted
+radiosonde temperature data (K) between (a) 85 and 125 hPa, (b) 125 and 175 hPa, and (c) 175 and
+225 hPa, for ERA-Interim and ERA5 from January 1979 to August 2019, and ERA5.1 from January
+2000 to December 2006.
+The left-hand panels of Figure 4 show global-mean temperatures at 50 hPa, 70 hPa and 100 hPa from
+ERA5 and ERA5.1, and from the JRA-55 and MERRA-2 reanalyses, each plotted relative to the globalmean temperature from ERA-Interim. The ERA-Interim temperatures are shown in the right-hand
+panels. All these reanalyses assimilate RO temperature data, and these data are sufficient in number
+following the launch of the COSMIC receivers in 2006 to ensure close agreement between the reanalyses
+
+8
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+in subsequent years. The exception to this is a pronounced spike in late 2013 in panel (e). This stems
+from the ERA-Interim reanalysis, and is due to a technical problem in the ERA-Interim production
+system that resulted in RO data not being assimilated for a short period. The difficulty ERA-Interim had
+with the MSU calibration change in mid-1979 also leaves its mark in the differences between its
+temperatures and those from ERA5 and JRA-55.
+The values of ERA5 relative to each of the other analyses are out of line from 2000 to 2006, as can also
+be seen in the time series of lower stratospheric temperature from several datasets presented by Christy
+et al. (2019). Relative to ERA-Interim there is an evident discontinuity at the beginning of the year 2000
+due to the merging of the production streams that used different Bcli. No such discontinuity is seen for
+JRA-55 or MERRA-2. ERA5.1 continues the pre-2000 ERA5 time series, and joins reasonably well (but
+not perfectly) with the ERA5 values from the period with substantial amounts of RO data.
+
+Figure 4 Monthly global-mean temperatures (°C) of MERRA-2, JRA-55 and ERA5 and ERA5.1
+relative to ERA-Interim, and of ERA-Interim itself, from January 1979 (1980 for MERRA-2) to August
+2019, at (a, b) 50 hPa, (c, d) 70 hPa and (e, f) 100 hPa.
+All reanalyses show an annual cycle in global-mean temperature with a range of 2-3 K at the 70 hPa
+level, and weaker cycles at 50 and 100 hPa, as illustrated in the right-hand panels of Figure 4 for ERAInterim. Fueglistaler et al. (2011) have discussed why this is the case. The annual cycles seen in the
+plots of differences from ERA-Interim indicate differences in amplitude of the analysed annual cycles,
+with a range up to around 0.5 K in the 1980s and 1990s for JRA-55 at 50 hPa, and MERRA-2 at 70 and
+100 hPa.
+Otherwise, ERA5 is a little warmer than ERA-Interim in the 1980s at 50 and 70 hPa, by up to a few
+tenths of a Kelvin. It has a slightly larger net cooling over the whole period of reanalysis at these levels,
+and is slightly colder than ERA-Interim in the final years of the period. This is also as shown by Christy
+
+Technical Memorandum No.859
+
+9
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+et al. (2019), and is consistent with ERA5’s use of a smaller radiosonde bias adjustment in the first half
+of the period, discussed earlier, and with a residual effect of the cold bias of the ERA5 background
+model. Aside from the 2000-2006 period, JRA-55 is generally colder than both ERA-Interim and ERA5
+at 50 hPa, particularly in the second half of the 1980s, whereas MERRA-2 is close to ERA5 at this level.
+In contrast MERRA-2 is the coldest of these reanalyses at 70 hPa in the 1980s and 1990s. Differences
+at the 50 and 70 hPa levels are nevertheless much smaller than the analysed change in temperature that
+occurs over these decades.
+Differences between the reanalyses are larger at 100 hPa, prior to 2006. Here they are of the same order
+of magnitude as the variations over time in the reanalyses themselves. Each of the other reanalyses is
+warmer than ERA-Interim, but each has a trend over this period towards smaller differences from ERAInterim. This implies a small net cooling over time at 100 hPa in the 1980s and 1990s, followed by a
+slight warming over time that can be seen for ERA-Interim in panel (f) of Figure 4. The cooling trend
+in the first two decades is largest for ERA5.
+Geographical variations at the 50 hPa level are illustrated in the example presented in Figure 5. Panels
+(a) and (b) present differences between ERA5 and ERA-Interim averages for the years 1999 and 2000,
+showing clearly a shift between the years from mostly positive to mostly negative values. The
+corresponding differences between ERA5.1 and ERA-Interim for the year 2000 (panel (c)) do not show
+the general shift to negative values, but the differences in geographical patterns seen for ERA5 are also
+present for ERA5.1. Panel (d) confirms this, showing less-pronounced geographical variation in the
+differences in temperature between ERA5 and ERA5.1.
+
+Figure 5 Annual-mean 50 hPa temperature differences (K) for (a) ERA5 - ERA-Interim for 1999, (b)
+ERA5 - ERA-Interim for 2000, (c) ERA5.1 - ERA-Interim for 2000, and (d) ERA5 - ERA5.1 for 2000.
+A relatively large difference between ERA5/ERA5.1 and ERA-Interim over China can be seen for both
+1999 and 2000 in Figure 5. Unlike much other radiosonde data, observations from most Chinese
+radiosondes are estimated to be biased cold at 50 hPa, and the cold bias estimated for use in ERA5 is
+larger than the cold bias estimated for ERA-Interim. The adjusted Chinese radiosonde temperatures
+assimilated in ERA5 are thus higher than the adjusted temperatures assimilated in ERA-Interim,
+resulting in warmer analyses in ERA5 and ERA5.1 than in ERA-Interim at 50 hPa over China. The
+
+10
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+larger bias estimate used in ERA5 is due to its use of the RICH scheme, which uses data only from
+reference stations outside China for adjustment of the time series of Chinese radiosonde data. The
+influence of the Chinese stations on the reference series created for adjustments should thus be minimal.
+The RAOBCORE adjustments used in ERA-Interim used the background from the earlier ERA-40
+reanalysis as a reference for the years illustrated in Figure 5, and the adjustments thus include some
+dependence on the radiosonde network being corrected. This makes residual cold biases over China
+more likely for the adjusted data assimilated by ERA-Interim.
+
+4
+
+Upper-stratospheric temperature
+
+The situation in the upper stratosphere is more complicated, as there are also differences between ERA5
+and ERA-Interim due to ERA5’s use of revised fast radiative transfer calculations for SSU data and use
+of unadjusted (apart from scan-angle correction) SSU-3 as well as AMSU-A14 data as an anchor for the
+bias adjustment of other radiance data when both SSU and AMSU-A data are available. Time series for
+the upper stratosphere nevertheless show substantial shifts associated with the change in Bcli.
+Panels (a) and (b) of Figure 6 show the background fits to radiosonde data for ERA5, ERA5.1 and ERAInterim, averaged over all assimilated data from (a) above 7 hPa, and (b) 7 to 15 hPa. The ERA5 fits
+again show a marked change between 1999 and 2000, but at these levels the shift is from a colder to a
+warmer background, as the bias of the assimilating model changes from cold to warm at around 20 hPa.
+The ERA5.1 fits are much more in line with those of the pre-2000 ERA5. The ERA5 fits to radiosonde
+data do show differences following the start of assimilation of AMSU-A data in August 1998, more so
+than ERA-Interim, but this shift is much smaller than the shift associated with the change in Bcli.
+Panel (c) of Figure 6 shows time series of the differences between the ERA5/ERA5.1 and ERA-Interim
+estimates of the globally averaged radiance biases from various satellites, for the SSU-2 and AMSUA13 channels. These are the highest sounding channels for which full radiance bias adjustment is
+applied. In this case the largest shift in values is associated with the 1998 introduction of AMSU-A data,
+but the ERA5 bias estimates shift back towards their original values when Bcli changes at the end of
+1999. The ERA5 estimates subsequently change more gradually over a period during which increasing
+amounts of AMSU-A data and then much more RO data become available. The ERA5.1 bias estimates
+in contrast show only a gradual change from the 1999 ERA5 values, and match quite well the post-2006
+ERA5 values. It may be inferred from this that enough balloons ascend into the lower reaches of the
+region sensed by these deep high-sounding channels for radiosonde data to anchor the radiance data
+when the 1979 Bcli is used, and that this anchoring is reasonably consistent with the anchoring provided
+later in the period by substantial amounts of RO data when the 41r2 Bcli is used.
+Time series of global-mean temperature anomalies relative to 1981-2010 from ERA-Interim, ERA5,
+ERA5.1 and JRA-55 are presented in Figure 7 for six pressure levels from 1 to 10 hPa. Corresponding
+absolute values, with twelve-month running averages applied to mask the annual cycle, are shown in
+Figure 8. JRA-55 differs from the ERA reanalyses in that radiance bias correction is applied fully to all
+SSU and AMSU-A channels, an option that could be chosen because the JRA-55 assimilating model
+has relatively little temperature bias in the uppermost stratosphere. The ERA reanalyses apply only scanangle adjustments to SSU-3 and/or AMSU-A14 radiances because the near-stratopause biases of their
+assimilating models are larger than the likely biases of the highest-sounding radiance data. The JRA-55
+temperatures consequently evolve quite smoothly over time, with only a relatively small disruption
+apparent for about two years following the introduction of AMSU-A data. Conversely, several issues
+affect ERA-Interim, and more so ERA5, in the upper stratosphere. ERA5.1 addresses only one of them.
+
+Technical Memorandum No.859
+
+11
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Figure 6 (a) Monthly average observation-background differences for all assimilated bias-adjusted
+radiosonde temperature data (K) above 7 hPa, for ERA-Interim and ERA5 from January 1979 to
+August 2019, and ERA5.1 from January 2000 to December 2006. (b) As (a), but for data from 7 to 15
+hPa. (c) Monthly average estimated biases of brightness temperatures (K) from SSU-2 and AMSUA13, for ERA5 and ERA5.1, plotted relative to corresponding estimates from ERA-Interim.
+Several issues occur early in the period considered here. No SSU-3 data is available from the TIROS-N
+satellite launched in late 1978, and it is not until the end of June 1979 that SSU-3 data become available,
+from NOAA-6. The ERA5 analyses thus inherit the warm bias of the assimilating model at the 1, 2 and
+3 hPa levels for the first half of 1979. This also happens in ERA-Interim, but the ERA5 temperatures
+are several degrees higher than those of ERA-Interim for these levels and months. Temperatures drop
+sharply once SSU-3 data are assimilated. Similarly, an upward spike in both the ERA-Interim and ERA5 temperature analyses for 1 hPa occurs early in 1985, when very few SSU-3 data are available between
+mid-February and mid-March. ERA-Interim also displays an upward spike at 2 and 3 hPa, but ERA5
+behaviour is more problematic, not only at these levels but down to 10 hPa. The ERA5 temperature falls
+considerably from November 1984 to February 1985, the period in which the supply of SSU data
+switches from being only from NOAA-7 to only from NOAA-9. Values for a year or more before this
+period and for two years or so after it appear out of line with expectations based on ERA-Interim and
+JRA-55, which are generally closer to each other than either is to ERA5 from 2 to 7 hPa. The cause of
+this poor behaviour of ERA5 has yet to be understood.
+
+12
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Figure 7 Global-mean temperature anomalies (K) relative to 1981-2010 at 1, 2, 3, 5, 7 and 10 hPa
+from JRA-55, ERA-Interim and ERA5 analyses from January 1979 to August 2019 and ERA5.1
+analyses from January 2000 to December 2006. The anomaly for ERA5.1 is with respect to the ERA5
+average for 1981-2010.
+Two further issues occur around the middle of the period. A sharp rise in 1 hPa temperature of around
+5K occurs in ERA-Interim when the anchoring upper stratospheric radiance data are switched suddenly
+in August 1998 from SSU-3 (from NOAA-11 and NOAA-14) to AMSU-A14 (from NOAA-15). The
+initial rise is smaller in ERA5 as the anchoring from August 1998 comes from the two SSU instruments
+and the NOAA-15 AMSU-A. The change in anchoring is spread out in ERA5, as the SSU-3 data from
+NOAA-10 cease at the end of 2002, and those from NOAA-12 cease in May 2006. The number of
+satellites providing AMSU-A14 data increases to three over this period.
+
+Technical Memorandum No.859
+
+13
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Figure 8 Twelve-month running averages of global-mean temperatures (ºC) at 1, 2, 3, 5, 7 and 10 hPa
+from JRA-55, ERA-Interim and ERA5 analyses from January 1979 to August 2019 and ERA5.1
+analyses from January 2000 to December 2006.
+ERA5 also changes sharply due to the change in Bcli at the beginning of 2000. The results from ERA5.1
+show that the Bcli change causes temperature to fall by some 3K at 1 hPa, and rise by a similar amount
+at 5 and 7 hPa, with a smaller rise at 10 hPa. The temperature differences between ERA5 and ERA5.1
+subsequently decrease.
+The larger annual cycle seen for ERA5 compared with ERA-Interim and JRA-55 in the later years of
+the anomaly plot likely stems from deficiencies in the 1981-2010 climatology resulting from the various
+issues in ERA5 noted above.
+
+14
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+The absolute temperature differences between ERA5 and JRA-55 are substantial early in the period, as
+large as 6 to 8K at 2 and 3 hPa. Although they decrease over time, they nevertheless average 4 to 5K at
+2 and 3 hPa over the final few years. ERA5 and ERA-Interim are relatively similar from 2010 onwards,
+although differences still reach around 2K at 1 and 2 hPa. Variations over time are also similar for these
+later years. ERA5 should thus provide a reasonable continuation beyond August 2019 of the globalaverage upper stratospheric temperatures from ERA-Interim, provided offsets are applied based on mean
+differences over the final ten years or so of overlap.
+
+5
+
+Water vapour
+
+Figures 3 and 4 have shown that ERA5.1 has higher global-average temperatures than ERA5 and ERAInterim at and around 100 hPa. This is also the case when the averaging is restricted to the tropical zone,
+where assimilation of RO data has been shown by Poli et al. (2010) to have a warming impact on ERAInterim. A warmer tropical tropopause is the likely cause of ERA5.1 being moister than ERA5 in the
+tropical stratosphere, as is illustrated by the time series of tropical monthly average water vapour at
+pressure levels from 10 to 100 hPa presented in Figure 9. The analyses of stratospheric water vapour
+may also be affected by changes in meridional circulation in the background forecasts, in particular
+those that result from the differences between ERA5.1 and ERA5 in static stability and in the forcing
+during assimilation cycles caused by imposing the analysed changes to the model background.
+The ERA5 analyses produced using the 41r2 Bcli from 2000 onwards come from a production stream
+that ran from the beginning of the “spin-up” year of 1999. Stratospheric water vapour in ERA5
+accordingly drops suddenly at the beginning of 2000, as the 1999 ERA5 values come from a longrunning production stream using the 1979 Bcli. The latter production stream continues beyond 1999 to
+produce the moister ERA5.1 analyses. This can be seen in Figure 9. The discontinuity in ERA5 at the
+beginning of 2000 and the continuity provided by ERA5.1 are evident. Also clear are the generally drier
+ERA-Interim values prior to its assimilation of COSMIC RO data near the end of 2006. The phase of
+the annual cycle in humidity also differs between ERA-Interim and ERA5 at upper levels. ERA5 has a
+slower (and more realistic) upward progression of the annual variations of water vapour in the tropical
+stratosphere. ERA5.1 differs only a little from ERA5 in this regard. In addition, its differences in
+magnitude from ERA5 decline over time, as indeed is the case for 100 hPa temperatures.
+Figure 10 illustrates differences in meridional cross-sections of zonally averaged water vapour for the
+month of November. This month was chosen as it displays clearly for the tropics the effects both of the
+earlier boreal summer moistening and of the onset of the boreal winter drying of the lowermost
+stratosphere. Each panel shows an average over five years, 2000-2004 in the upper panels and 20072011 in the lower panel. The first period was chosen because of the availability of data from ERA5.1,
+the second because it spanned the first five years of assimilation of substantial amounts of RO data in
+both ERA-Interim and ERA5. In addition, measurements made by the MLS on the Aura satellite are
+available for evaluation (but not assimilated) for the second period. The upper panels show sections for
+ERA-Interim, ERA5 and ERA5.1, and the lower panels show ERA-Interim, ERA5 and the SWOOSH
+MLS retrievals produced by Davis et al. (2016).
+The upper panels of Figure 10 show that for 2000-2004 ERA-Interim is drier in the stratosphere than
+both ERA5 and ERA5.1, apart from the immediate vicinity of the stratopause and in the polar middle
+and upper stratosphere. In turn, ERA5 is drier than ERA5.1 in most of the tropical stratosphere, and
+everywhere in the lower stratosphere apart from where dehydration has occurred in the cold Antarctic
+polar-night vortex. The implied ascent of dry air in the tropics is least slow for ERA-Interim, and slowest
+for ERA5.1. The ERA5.1 cross-section is that most similar to the one provided by the Aura MLS data
+
+Technical Memorandum No.859
+
+15
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+for 2007-2011, although the observations indicate a much slower tropical ascent rate than do any of the
+ERA analyses. ERA5 for 2007-2011 is more similar to ERA5.1 for 2000-2004 than it is to ERA5 for
+2000-2004. ERA-Interim is moister for 2007-2011 than for 2000-2004 in much of the stratosphere, but
+is still too dry in the lower stratosphere. The moister upper stratosphere in the Aura MLS dataset suggests
+that the parameterized moistening by methane oxidation in ERA-Interim and ERA5/5.1 is not large
+enough. Indeed, one of the changes made to the ECMWF model after the ERA5 version was fixed early
+in 2016 was the introduction of an increased rate of methane oxidation, which became operational in
+June 2018.
+
+Figure 9 Monthly-mean water vapour (mole fraction in ppm) from 20ºN to 20ºS from 1997 to 2010 for
+ERA-Interim and ERA5 from 1997 to 2010, and for ERA5.1 from January 2000 to December 2006.
+
+16
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Figure 10 Pressure-latitude cross-sections of four-year-average zonal-mean water vapour (mole
+fraction in ppm) for the month of November for (a) ERA-Interim, (b) ERA5 and (c) ERA5.1, for 20002004, and for (d) ERA-Interim, (e) ERA5 and (f) Aura MLS retrievals, for 2007-2011.
+
+6
+
+Ozone
+
+6.1
+
+General aspects
+
+Hersbach et al. (2020) provide some details of the assimilation of ozone in ERA5 and ERA5.1, including
+a table and figure showing the satellite instruments from which data were assimilated and the periods of
+data use. They also discuss a poorly understood issue in EDA performance that necessitated changes in
+data use in the pre-2000 ERA5 production stream.
+Figure 11 displays monthly time series of global-mean ozone partial pressure at six pressure levels
+between 5 and 100 hPa from the HRES and EDA systems of both ERA5 and ERA5.1. As elsewhere in
+this report, the two HRES systems are referred to simply as ERA5 and ERA5.1 in the following
+discussion. The EDA values plotted are those for the ensemble mean.
+ERA5 and the ERA5 EDA exhibit marked differences prior to 2000, with a much larger annual cycle in
+the EDA at 30 and 50 hPa and marked differences in average values at higher and lower levels, at 10
+and 100 hPa in particular. From 2000 onwards, however, the ERA5 EDA becomes virtually identical to
+ERA5. This convergence is seen more clearly in the corresponding 12-month running means presented
+in Figure 12, which also includes a measure of the spread of the EDA. Prior to 2000 the spread of the
+EDA is far from encompassing the ERA5 values at 10 and 100hPa. The spread can also be seen to be
+lower for recent years than for the period prior to 2000.
+
+Technical Memorandum No.859
+
+17
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Figure 11 Monthly global-mean ozone partial pressure (mPa) at 5, 10, 30, 50, 70 and 100 hPa from
+the HRES and EDA ensemble-mean ERA5 analyses from January 1979 to November 2019, and
+corresponding ERA5.1 analyses from January 2000 to December 2006.
+The primary reason for the differences between the two systems prior to 2000 is that SBUV data
+covering the levels from 5 to 100hPa were assimilated in ERA5 during this period but were not used in
+the EDA in the final production system. The decision to do so was made after it was found that
+assimilating SBUV data in the initial pre-2000 production streams significantly inflated the spread
+among EDA members in the polar night, and consequently caused unrealistically large ozone anomalies
+there in the HRES analyses.
+
+18
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Figure 12 Twelve-month running averages of global-mean ozone partial pressure (mPa) at 5, 10, 30,
+50, 70 and 100 hPa from the HRES and EDA ensemble mean ERA5 analyses, from January 1979 to
+November 2019. The average spread of the EDA analyses is indicated by shading bands which show
+the range of values less than one standard deviation from the ensemble mean. Corresponding results
+for ERA5.1 from January 2000 to December 2006 are also shown.
+In Figures 11 and 12, the time series from ERA5.1 and ERA5 look very similar overall, although some
+differences appear more clearly at 10 and 5 hPa. It must be noted, however, that the range of the vertical
+axis at these two pressure levels is only a fifth of that at other levels. Differences in the parameterized
+forcing of ozone due to the quite substantial differences in upper stratospheric temperature between
+ERA5 and ERA5.1 may be a significant factor here. Another factor may be the global background error
+variances, lower in ERA5.1 than in ERA5, implying a relatively improved fit to ozone observations in
+ERA5 compared with ERA5.1.
+
+Technical Memorandum No.859
+
+19
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+The most problematic issue highlighted in Figures 11 and 12 is the behaviour of the ERA5.1 EDA,
+particularly at 70 hPa. At this level, the ERA5.1 EDA analyses have large positive ozone anomalies
+from 2002 to 2004. Their peak magnitude occurs between August 2003 and August 2004 and clearly
+exceeds the normal range of variability seen in other years. In terms of assimilated observations, these
+twelve months are characterized by a reduced number of ozone profile observations as they fall between
+the end of the GOME instrument on ERS-2 and the introduction of the MLS on Aura.
+The differences in configuration and assimilated observations between the ERA5 and ERA5.1 EDAs
+can shed light on the origin of the large anomalies. They are as follows:
+ The ERA5 EDA uses the 41r2 Bcli whereas the ERA5.1 EDA uses the 1979 Bcli, although as
+noted earlier the two Bcli matrices use the same structure functions for ozone.
+ SBUV data were assimilated in the ERA5 EDA but not in the ERA5.1 EDA, as ERA5.1
+continued the pre-2000 ERA5 production stream that did not assimilate these data.
+ GOME data above 5 hPa were also used in the ERA5 EDA but not in the ERA5.1 EDA.
+ The global background error standard deviations of ozone and vorticity were tapered (reduced
+in amplitude) above 1 hPa in the ERA5.1 EDA, whereas tapering was implemented in the ERA5
+EDA only from July 2005 onwards.
+As SBUV data were not assimilated in the ERA5.1 EDA, no ozone profile observations of any type
+were assimilated in this EDA between August 2003 and August 2004. It was thus hypothesised that the
+large anomalies were generated by the ozone chemistry scheme in the period when the analysis was
+poorly constrained or not constrained at all by assimilated ozone profiles, in particular from SBUV. This
+was confirmed by running a short EDA experiment spanning June to September 2004 that was identical
+to the ERA5.1 EDA but in which SBUV data were allowed to be assimilated at levels below 5 hPa. The
+large anomalies disappeared and the ozone time series at 70 hPa (not shown) were much more in line
+with those seen in the ERA5 EDA.
+The anomalous performance of the ERA5.1 EDA up to August 2004 does not appear to have a
+significant detrimental impact on the corresponding HRES analyses. This is presumably because the
+anomalous behaviour is common to all members of the EDA, with little impact on the spread of the
+ensemble and thus the HRES assimilation.
+
+6.2
+
+Representation of the ozone hole
+
+ERA5 provides a complete record of ozone over the Antarctic since 1979, covering the emergence of
+the ozone hole as a significant springtime feature in the early 1980s and the substantial variations from
+year to year since then. Results are reasonably robust for the total column, which is in general wellconstrained directly by observations. The main exception to this is the polar night prior to 2005, where
+ozone data were available only from instruments measuring in the infra-red.
+Figure 13 presents plots of the area of the ozone hole as a function of time for each year from 1982 to
+2019, based on ERA5 analyses. It complements a plot for the shorter period from 2003 onwards
+presented at https://atmosphere.copernicus.eu/monitoring-ozone-layer, based on the Copernicus
+Atmospheric Monitoring Service (CAMS) reanalysis (Inness et al., 2019) up to the end of 2018, and
+CAMS near-real-time analyses for 2019. The area of the ozone hole is defined here to be the area south
+of 30ºS for which the daily average total column ozone is less than 220 Dobson units.
+Five individual years have been highlighted in Figure 13. 1982 is one of them, and was chosen to be the
+first in the sequence of years presented as it is the first year in which the ozone hole area exceeds ten
+million km2, albeit only briefly and marginally, in early October. 2002 and 2019 are two years with
+
+20
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+extreme dynamical disruptions of the polar vortex, as illustrated in the following section. In 2002 the
+ozone hole grows to reach about twenty million km2 soon after the middle of September, but decreases
+rapidly in net area as it breaks into two towards the end of the month, declining to the smallest lateSeptember value of all the years in this data record. It recovers a little in October, but disappears
+unusually early, a few days after 1 November. The 2019 ozone hole, in contrast, suffers from extrusion
+of material from the polar vortex in August and September, compounded by relatively warm
+temperatures that inhibit the parameterized chemical destruction of ozone. The ozone hole does not
+reach an area of ten million km2 for the first time since 1981. Although a little larger than the residual
+2002 hole in late September and early October, it declines in the second half of October and, as in 2002,
+disappears early in November.
+
+Figure 13 Area (millions of sq km) of the ozone hole, from ERA5 analyses from July to December of
+each year from 1982 to 2019.
+The years 2000 and 2015 are also highlighted in Figure 13. This is partly to illustrate the range of
+variability, as the ozone hole covered an unusually large area in both of these years, relatively early in
+the season in 2000 and late in the season in 2015. It also serves to draw attention to the especially early
+growth of the hole in 2000, including an unusually large area in July, as depicted by ERA5. While there
+is no reason for particular doubt about the representation of the ozone hole in 2000 from September
+onwards, differences between ERA5.1 and ERA5 show that values for July and August are more open
+to question.
+The left-hand panels of Figure 14 show the area of the ozone hole separately for the years from 2000 to
+2006, for ERA5, ERA5.1 and (from 2003) the CAMS reanalysis. For 2000, 2001 and 2002, ERA5.1 has
+distinctly higher ozone in July and August than ERA5, by some 20-30 Dobson units in July, but
+decreasing in August. By early September the ozone hole is of similar area in the two reanalyses, and
+this is true for the remaining months of the year, for all years and for the CAMS as well as the ERA
+reanalyses. July and August values are much more similar from one reanalysis to another for the years
+2003 to 2006. These results are indicative of the effective constraint provided by assimilated UV data
+from September each year and by the assimilated microwave data for all months from early August 2004
+onwards. They also demonstrate that the way SBUV data for elsewhere in the stratosphere are
+assimilated influences analyses for the Antarctic polar night, where such data are absent.
+
+Technical Memorandum No.859
+
+21
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Figure 14 Left: Area (millions of sq km) of the ozone hole from ERA5 (orange), ERA5.1 (red) and
+CAMS (blue) analyses from July to December of each year from 2000 (top) to 2006 (bottom).
+Right: Corresponding total column ozone (Dobson unit) at the South Pole from ERA5, ERA5.1 and
+CAMS analyses and from ground-based measurements (black dots) for each month of the year.
+Corresponding full-year time series of total column ozone at the South Pole are presented in the righthand panels of Figure 14. Included in these panels are the (unassimilated) ground-based measurements
+made by Dobson spectrophotometry at the Amundsen-Scott South Pole Station, downloaded from
+NOAA/ESRL. The plots show excellent agreement between the reanalyses and the frequent
+observations made at the South Pole from early October to early March each year, including the latter
+part of the ozone-hole period. Observations are also available quite regularly though sparsely during the
+polar night, from reflected sunlight that is sufficiently strong when the moon is close to full. Agreement
+among the reanalyses and with the ground-based observations is mostly reasonable during this time also,
+but the higher values of ERA5.1 compared with ERA5 in 2000, 2001 and 2002 are for the most part in
+
+22
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+poorer agreement with the unassimilated data. The converse is true of 2003 and 2004, when ERA5 (but
+not ERA5.1) exhibits noisy values at the South Pole with peak values up to 100 Dobson units or more
+above what is indicated by the observations for June and July. These are associated with mobile smallscale features seen in maps of total column ozone over Antarctica. It can also be seen in Figure 14 that
+the CAMS reanalysis is in somewhat better agreement with the observations than ERA5.1 is for these
+two years. Agreement is much better in 2005 and 2006, most likely due to the assimilation of MLS data
+from 3 August 2004 onwards in all the reanalyses.
+
+Figure 15 Means for June 2003 for total column ozone (Dobson units). Upper: Differences between
+ERA5 and ERA5.1 for the HRES (left) and EDA ensemble-mean (right) analyses. Lower: Standard
+deviations of the ensemble members for ERA5 (left) and ERA5.1 (right).
+The large and noisy 2003 and 2004 polar-night values in ERA5 are symptomatic of problems
+experienced initially with the ERA5 system in the 1980s and 1990s, though less severe. Figure 15 shows
+some relevant features in terms of averages for the month of June 2003. The upper-left panel shows that
+the relatively high values of total column ozone in ERA5 (compared either with ERA5.1 or, at the South
+Pole, with ground-based measurements) are confined on average to the immediate vicinity of the South
+Pole, and surrounded by a region in which ozone is lower in ERA5 than in ERA5.1. Ozone from the
+
+Technical Memorandum No.859
+
+23
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+ERA5 EDA shown in the upper-right panel is higher still relative to that from ERA5.1 at the South Pole,
+and the high-ozone region is broader in extent. In addition, the spread of the EDA (lower panels) is
+much larger for ERA5 than ERA5.1, and again largest in the immediate vicinity of the South Pole. The
+time series for the region 60ºS-90ºS presented in Figure 16 show anomalously large ensemble-mean
+values of ozone partial pressure in the upper stratosphere during the polar night for the ERA5 (but not
+the ERA5.1) EDA, and ensemble spread (not shown) is anomalously large also. It was behaviour such
+as this that led to the revised use of SBUV data employed in ERA5 production from 1979 to 2000 and
+for ERA5.1. Comparison of ERA5 with the measurements from the South Pole show no years other than
+2003 and 2004 with such poor agreement.
+
+Figure 16 Monthly ozone partial pressure (mPa) averaged from 60ºS to 90ºS at 1, 2, 3, 5, 7 and 10
+hPa from the HRES and EDA ensemble-mean ERA5 analyses from January 1979 to November 2019,
+and corresponding ERA5.1 analyses from January 2000 to December 2006.
+There is nevertheless a question mark over the accuracy of the ERA5 analyses between 2013 and 2017.
+Figure 17 compares the ozone-hole areas from ERA5, ERA-Interim and the CAMS reanalysis for each
+year from 2007 to 2018. ERA5 is in very good agreement with the CAMS reanalysis from 2007 to 2012,
+and again in 2018. ERA-Interim is clearly in poorer agreement with both the other reanalyses for these
+years. Although all three reanalyses depict similar interannual variability between 2013 and 2017,
+differences between ERA5 and CAMS are larger in this period, and ERA5 is closer to ERA-Interim.
+The onset of the ozone hole is later in the ERA reanalyses, particularly in 2013 for ERA5, and the ozone
+hole is generally slightly smaller. This is despite the CAMS total column ozone being biased high
+compared with ground-based Dobson data from a set of stations over the Antarctic, more so from 2013
+onwards (Inness et al., 2019). It suggests that the ERA5 ozone is biased higher still from 2013 to 2017,
+a result that is confirmed by examining time series for the South Pole (not shown), especially during the
+polar night.
+Candidates for explaining the changes in the level of agreement between the ERA5 and CAMS
+reanalyses include differences in data usage, which are mostly small apart from ERA5’s assimilation of
+ozone-sensitive nadir-sounded infrared radiances, and a different sensitivity of the assimilation systems
+to the changing configuration of the observing system. Definitive explanations have yet to be found,
+however.
+It should also be noted that despite the relatively poor behaviour of ERA5 in the southern polar night
+for 2003 and 2004, the general performance of ERA5 in this regard is much improved over that of ERA-
+
+24
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Interim. ERA-Interim was known to produce extremely high values of ozone near the South Pole in July
+and August some years. The extent to which this happened varied from year to year, and the behaviour
+was especially prevalent in the years up to the early 2000s. It appeared to be associated with large
+analysis increments that tended to reduce ozone in the region with UV observations equatorward of the
+stratospheric vortex, but which, through the non-local nature of the structure functions employed, were
+accompanied by smaller increments of opposite sign in the vicinity of the South Pole, where no direct
+data on ozone was assimilated in the polar night prior to the early 2000s (Dee et al., 2011).
+
+Figure 17 Area (millions of sq km) of the ozone hole from the ERA5 (red solid), ERA-Interim (orange
+dotted) and CAMS (blue solid) reanalyses from July to December of each year from 2007 (top left) to
+2018 (bottom right).
+Figure 18 compares annual time series of total column ozone from ERA-Interim, ERA5 and groundbased measurement at the South Pole every third year from 1979 to 2012. The tendency for ERA-Interim
+to build up values that in many years are far too high in July and August is clear, with a peak excess of
+some 300 Dobson units in the year 2000. There are also exceptions such as the relatively low ERAInterim values in late August and early September 1994, and ERA-Interim does better than ERA5 (but
+not ERA5.1) in the problematic months of June and July 2003 (and 2004).
+
+Technical Memorandum No.859
+
+25
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+ERA-Interim is in quite good agreement with ERA5 at the South Pole for other times of year, but tends
+not to fit the ground-based data quite as well. Somewhat high ERA-Interim values can be seen in January
+and February 1994 in Figure 18, for example. More generally, global-mean ERA-Interim anomalies at
+individual stratospheric levels show much larger fluctuations over time than shown for ERA5 in Section
+6.1 of this report. Hersbach et al. (2020) illustrate this for the 70 hPa level, including comparisons with
+MERRA-2 and JRA-55.
+
+Figure 18 Total column ozone (Dobson unit) at the South Pole from ERA5 (red) and ERA-Interim
+(blue), and from ground-based measurements (black dots), for every third year from 1979 to 2012.
+
+7
+
+Extratropical vortex dynamics
+
+Although the stratospheric humidity fields from the ERA series of reanalyses all have quantitative
+limitations to some degree or other, these fields nevertheless serve as convenient tracers to illustrate the
+reanalyses’ representations of the short-term dynamics of the polar stratospheric vortices. Figure 19
+presents maps showing specific humidity and Montgomery potential on the 850K isentropic surface
+from ERA-Interim, ERA5 and ERA5.1 for the case of the exceptional break-up of the southern polar
+vortex in late September and early October 2002. The performance of the operational ECMWF system
+at the time was discussed by Simmons et al. (2005).
+
+26
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Figure 19 Analyses over the southern hemisphere of the abundance of water vapour (mole fraction in
+ppm; shaded) and Montgomery potential (contour interval 3000m2s-2) on the 850K isentropic surface,
+for 12UTC 22, 26 and 30 September and 4 October, 2002, from ERA-Interim (panels (a) to (d)), ERA5
+((e) to (h)) and ERA5.1 ((i) to (l)).
+Prior to breakdown, the polar vortex has a relatively high abundance of water vapour, due to descent of
+air moistened by methane oxidation at higher levels, with somewhat larger values for ERA-Interim than
+ERA5 in this example. ERA5.1 also provides slightly larger values than those from ERA5. The tropical
+ascent region is dry, the most so in ERA-Interim and the least so in ERA5.1, as discussed in Section 5.
+Middle latitudes are characterised by intermediate abundances, resulting from extrusion of air from the
+polar vortex, intrusion of air from the tropics, and the eventual mixing of the two.
+A very similar synoptic evolution is depicted by the three analyses. On the first day shown, 22
+September, the polar vortex is already elongated, and has been reduced to a smaller size than usual by a
+succession of events that stripped material from it. Remnants of this material can be seen within the
+flanking anticyclones south of Australia and over southern South America on 22 September. By 26
+September the vortex has split completely into two similarly sized vortices, and the dominant
+anticyclone in the Australian sector extends to the South Pole. Thereafter, the vortex in the Pacific sector
+is stretched around the northern flank of this dominant anticyclone, and breaks into three smaller vortices
+due to dynamical (barotropic) instability of the ambient easterly flow. The corresponding vortex in the
+
+Technical Memorandum No.859
+
+27
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Indian Ocean sector loses less material in this way, and is eventually re-established as the primary polar
+vortex, albeit a much weaker one than is usual for October. This succession of events was also seen in
+the operational analyses at the time. Simmons et al. (2005) note that the operational analyses were
+consistent with the 10 hPa temperature and wind measurements from Australian and neighbouring
+radiosondes during the passage of the smaller vortices around the anticyclone.
+The maps shown in Figure 19 differ a little in colour between the three reanalyses due to the differences
+in stratospheric humidity discussed in section 5. Apart from this, the filaments of moist and dry air are
+sharper and richer in structure in the ERA5 and ERA5.1 reanalyses than in the lower resolution ERAInterim reanalysis. The small vortices in the Australian sector are a little stronger in ERA5 and ERA5.1
+than in ERA-Interim, slightly more so in ERA5.1. ERA5.1 is generally very close synoptically to ERA5.
+This is also found lower down in the atmosphere.
+
+Figure 20 Analyses over the southern hemisphere of the abundance of ozone (mole fraction in ppm;
+shaded) and Montgomery potential (contour interval 3000m2s-2) on the 850K surface, for 12UTC 22,
+26 and 30 September and 4 October, 2002, from ERA-Interim (panels (a) to (d)), ERA5 ((e) to (h)) and
+ERA5.1 ((i) to (l)).
+Corresponding maps of ozone and Montgomery potential are shown in Figure 20. As the abundance of
+ozone is relatively high in the tropics and low in the polar vortex (or vortices), the colour scale is reversed
+
+28
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+to aid comparison with Figure 19. Ozone is subject to the same dynamical influences that change the
+distribution of water vapour, but it also changes due to parameterized chemistry and the assimilation of
+data, as seen particularly in the increase in values over time in the dominant anticyclone. Differences
+between ERA5 and ERA-Interim are more evident in this respect. Otherwise, the evolution of ozone is
+qualitatively similar to that for water vapour, and also qualitatively similar between the three reanalyses.
+ERA5 and ERA5.1 are again seen to be in very close agreement.
+Simmons et al. (2005) also discussed a weak (non-fatal) computational instability that manifested itself
+in noise in the operational forecasts in the easterly flow on the southern flank of the Pacific-sector vortex
+on 26 September. Although reduced in amplitude by a subsequent operational change, close inspection
+of panels (b) of Figure 19 and Figure 20 shows a trace of this noise in ERA-Interim. The noise is absent
+in ERA5 and ERA5.1, which benefit from further refinements of the assimilating model’s semiLagrangian advection scheme (Diamantakis, 2014; Diamantakis and Magnusson, 2016). Similar
+instances of noise in ERA-Interim but not ERA5 have been found in several cases of breakdown of the
+polar vortex in the northern hemisphere.
+
+Figure 21 Analyses over the southern hemisphere of the abundance of water vapour and ozone (mole
+
+fraction in ppm; shaded; panels (a) to (d) and (e) to (h) respectively) and Montgomery potential
+(contour interval 3000m2s-2) on the 850K surface, for 12UTC 2, 10, 18 and 26 September 2019, from
+ERA5.
+Although not directly related to ERA5.1, it is of interest to compare the 2002 event with the equally
+remarkable behaviour of the southern hemispheric stratosphere in 2019. The latter is illustrated by the
+sample of maps from ERA5 presented in Figure 21. The recent event has elements in common with that
+in 2002, starting with the development of a quite pronounced anticyclone south of Australia and
+displacement of the polar vortex towards the South Atlantic and South America. The displaced vortex
+did not split into two more-or-less equal parts in 2019, but considerable amounts of vortical material,
+
+Technical Memorandum No.859
+
+29
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+including water vapour and ozone as shown in Figure 21, were extruded from the vortex and extended
+in streamers around the equatorward side of the anticyclone. As in 2002, secondary vortices developed
+and moved westward in the easterly subtropical flow, two being evident on 10 September, one over the
+west coast of Australia and one east of Madagascar, and as many as six in a band westward from eastern
+Australia to the South Atlantic on 18 September. The parent vortex and associated ozone hole gradually
+diminished in size. These events are placed in longer-term context by the comparisons of ozone-hole
+area discussed in the preceding section.
+Corresponding water vapour maps from the analyses produced by ECMWF’s operational HRES
+analyses are shown in Figure 22. For clarity of comparison the colour scale for water vapour has been
+changed to allow for the moister polar vortex that results from the higher rate of methane oxidation used
+operationally since June 2018. Aside from this difference, the operational and ERA5 analyses provide
+a very similar picture, with only minor changes in detail that can be ascribed to the higher horizontal
+resolution (~9km grid, T1279 spectral truncation) used for operational forecasting.
+
+Figure 22 Analyses over the southern hemisphere of the abundance of water vapour (mole fraction in
+ppm; shaded) and Montgomery potential (contour interval 3000m2s-2) on the 850K surface, for 12UTC
+2, 10, 18 and 26 September 2019, from ECMWF HRES operations.
+
+Agreement for ozone (not shown) is generally similar, although there are some small differences that
+are most likely due to ozone data from the MLS instrument on the Aura satellite being assimilated in
+ERA5 but not operations. Evidence for this comes from the closer agreement of the ERA5 ozone
+analyses with those from the near-real-time analyses produced by the CAMS system, which also
+assimilates MLS data. Otherwise, compared with ERA5 the CAMS system has a somewhat lower (~40
+km) horizontal resolution, includes a comprehensive tropospheric chemistry, uses its interactive ozone
+and aerosol fields as input to its radiative calculations and aside from horizontal resolution uses the same
+more-recent version of the IFS used by ECMWF for its operational weather forecasting.
+A second synoptic example from the ERA5.1 period is presented in Figure 23, which illustrate the split
+of the northern polar stratospheric vortex in mid-February 2003. This too features secondary vortex
+formation, in air drawn from the original polar vortex and stretched into a region of easterly flow around
+the Aleutian anticyclone. Simmons et al. (2005) noted that this secondary vortex was sufficiently deep
+for its thermal signature to be seen in the radiances from the high-sounding AMSU-A channels whose
+data were assimilated operationally at the time. Although the synoptic development is again very similar
+for the three reanalyses shown here, a small difference can be seen between ERA-Interim and ERA5
+(and ERA5.1) in the central contour of Montgomery potential within the extending polar vortex on 14
+February. Small differences in the overall abundances of water vapour (and ozone, not shown) occur as
+before, and the sharper filamentary structures of ERA5 and ERA5.1 compared with ERA-Interim are
+
+30
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+again evident. The secondary vortex is also defined better in the newer, higher-resolution reanalyses.
+ERA5.1 is once more very close synoptically to ERA5.
+
+Figure 23 Analyses over the northern hemisphere of water vapour (mole fraction in ppm; shaded) and
+Montgomery potential (contour interval 3000m2s-2) on the 850K surface, for 12UTC 14, 16, 18 and 20
+February 2003, from ERA-Interim (panels (a) to (d)), ERA5 ((e) to (h)) and ERA5.1 ((i) to (l)).
+
+8
+
+Quasi-biennial oscillation
+
+Radiosondes provide wind data that are important for analysing the quasi-biennial oscillation (QBO) of
+flow in the tropical stratosphere. It may thus be questioned whether the broader structure functions used
+in ERA5.1 bring any improvement (or degradation) to the analyses of the QBO.
+Figure 24 shows that ERA5 gives a good basic analysis of the QBO. The figure displays time series of
+monthly averages of the zonal wind at all locations where radiosonde observations were made within
+the equatorial zone between 10ºN and 10ºS, at standard stratospheric pressure levels. The time series for
+the observations themselves are denoted by blue dots, while the orange lines denote the corresponding
+analysed values from ERA5. The fit of the analysis to the observations is evidently close when viewed
+as here in terms of absolute values. Among the variability in the QBO that can be seen in Figure 24 is
+the unusual duration of the westerly phase in 2015/16 (Newman et al., 2016), most evident at 20 hPa,
+
+Technical Memorandum No.859
+
+31
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+and the small amplitude at lower levels in the 2000s (Kawatani and Hamilton, 2013) most evident at 70
+hPa. Although the latter was suggestive at the time of a weakening trend in the QBO, cycles in the
+current decade have been stronger.
+
+Figure 24 Monthly means taken over observation locations from 10ºN to 10ºS at standard pressure
+levels from 10 hPa to 100 hPa of observations and corresponding ERA5 analyses of zonal wind (ms-1)
+from January 1979 to October 2019.
+
+32
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Examination of time series of the observation fits indicates a small improvement for ERA5.1 compared
+with ERA5. This occurs not only for the analysis itself but also for the background forecasts: much of
+the tropical wind information extracted by the analysis appears to be retained in the subsequent
+background forecast. This can be seen in Figure 25. Differences in fit between ERA5 and ERA5.1 are
+nevertheless generally smaller than the differences in fit between ERA5 and ERA-Interim.
+
+Figure 25 As Figure 24, but showing (observation – background) (left) and (observation – analysis)
+(right) differences of zonal wind (ms-1) for ERA-Interim and ERA5 from 1999 to 2008, and ERA 5.1
+from January 2000 to December 2006.
+
+9
+
+Troposphere
+
+Differences between ERA5 and ERA5.1 are very small in the lower to middle troposphere. Panels (a)
+and (b) of Figure 26 show time series of the fits to bias-adjusted radiosonde data of the background
+forecasts from ERA5, ERA5.1 and ERA-Interim, averaged monthly over all assimilated radiosonde data
+
+Technical Memorandum No.859
+
+33
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+from (a) 450 to 550 hPa, and (b) 650 to 750 hPa. The ERA5.1 fits are much closer to those from ERA5
+than seen for levels higher in the atmosphere. They have a slightly smaller annual cycle.
+
+Figure 26 Monthly average observation-background differences for all assimilated bias-adjusted
+radiosonde temperature data (K) between (a) 450 and 550 hPa, and (b) 650 and 775 hPa for ERAInterim and ERA-5 from January 1979 to August 2019, and for ERA5.1 from January 2000 to
+December 2006. (c) Monthly average estimated biases of brightness temperatures (K) from MSU-2
+and AMSU-A5, for ERA5 and ERA5.1, plotted relative to corresponding estimates from ERA-Interim.
+Panel (c) of Figure 6 shows time series of the differences between ERA5/ERA5.1 and ERA-Interim
+estimates of the globally averaged radiance biases from various satellites, for the tropospheric-sounding
+MSU-2 and AMSU-A5 channels. Here slightly larger differences between the ERA5 and ERA5.1 results
+are seen, with ERA5 showing a small jump in values from 1999 to 2000. This may be a consequence of
+the broad structure functions associated with these channels, as the radiances measured by both channels
+have a weak dependence on temperature in the lower stratosphere, despite being primarily sensitive to
+tropospheric temperature. The spike in the AMSU-A5 differences in late 2013 coincides with the
+temporary omission of RO data in ERA-Interim but not ERA5.
+Figure 27 shows annual-mean maps as in Figure 5, but for 500 hPa rather than 50 hPa. The differences
+between ERA5 and ERA-Interim for the year 2000 are clearly much more similar to those for 1999 than
+seen at 50 hPa. Nevertheless, the differences between ERA5.1 and ERA-Interim for 2000 are generally
+
+34
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+more similar to the 1999 differences between ERA5 and ERA-Interim than are the differences for 2000
+between ERA5 and ERA-Interim. ERA5.1 is slightly cooler on average than ERA5 at 500 hPa.
+
+Figure 27 Annual-mean 500 hPa temperature differences (K) for (a) ERA5 - ERA-Interim for 1999,
+(b) ERA5 - ERA-Interim for 2000, (c) ERA5.1 - ERA-Interim for 2000, and (d) ERA5 - ERA5.1 for
+2000.
+A third check on the similarity in the troposphere between ERA5 and ERA5.1 is provided by verification
+of the forecasts run twice daily from 00 and 12 UTC analyses to ten days ahead. The forecast models
+for ERA5.1 and ERA5 are identical, so any difference in forecast performance must stem from analysis
+differences. Figure 28 shows a version of the plot comparing anomaly correlations of 500 hPa height
+from ERA5 and ERA-Interim presented by Hersbach et al. (2018). It has been amended to superimpose
+the corresponding results from ERA5.1. It is clear that forecasts from the ERA 5.1 analyses are very
+similar to forecasts from the ERA5 analyses, both being substantially better than the forecasts run with
+the ERA-Interim model from the ERA-Interim analyses. The ERA5.1 forecasts are nevertheless slightly
+poorer than the ERA5 forecasts for a spell around 2005, more evidently so for the southern hemisphere
+later in the forecast range.
+
+10
+
+Conclusions
+
+The ERA5.1 extension of the version of the ERA5 system run from 1979 to 1999 provides analyses with
+better global-mean temperatures in the stratosphere and uppermost troposphere than produced by the
+ERA5 system over a period of seven years from 2000 onwards. The representation of ozone is also
+improved. ERA5.1 joins reasonably smoothly with ERA5 at the end of 2006 as by then ERA5
+temperature is constrained by assimilation of substantial amounts of RO data from the COSMIC
+constellation of satellites launched in 2006, and ERA5 ozone is constrained by assimilation of MLS data
+from the Aura satellite launched in 2004.
+ERA5.1 stands up well in comparison with ERA-Interim and other reanalyses in the lower stratosphere.
+The combination of ERA5.1 and ERA5 nevertheless performs less well than ERA-Interim for globalmean upper-stratospheric temperature for all but the most recent ten or so years, although ERA5.1 does
+
+Technical Memorandum No.859
+
+35
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+bring some improvement in global-mean temperature at 10 hPa and above for a short period. The
+pronounced near-tropopause cold bias of ERA5 in the period 2000-2006 has implications also for the
+representation of stratospheric humidity, for which ERA5.1 does a better though by no means perfect
+job. Synoptic evolution in the extratropical stratosphere has been shown to be very similar in cases of
+splitting of the stratospheric polar vortex and secondary vortex formation by dynamical instability.
+ERA5.1’s representation of the QBO agrees slightly better with radiosonde wind data than that of ERA5.
+ERA5 and ERA5.1 perform very similarly in the lower and middle troposphere. ERA5 products can
+thus continue to be used with reasonable confidence for tropospheric studies, although once the ERA5.1
+data are released for public use there is a marginal case for changing to use ERA5.1 products for all
+studies involving data from 2000 to 2006.
+
+Figure 28 Range (days) at which medium-range forecasts for the extratropical northern (upper panel)
+and southern (lower panel) hemispheres carried out from reanalyses reach the 90%, 80% and 60%
+thresholds for 365-day running means of anomaly correlations of 500 hPa height. Results are shown
+for forecasts from ERA-Interim and ERA5 from January 1979 to August 2019, and from ERA5.1 for
+forecasts from January 2000 to December 2006. ERA5.1 forecasts are blended with those from ERA5
+for the beginning and end of the ERA5.1 period, with results shown only for 365-day periods for which
+more than half the forecasts came from ERA5.1.
+
+Acknowledgments
+ECMWF implements the Copernicus Climate Change Service (C3S) and the Copernicus Atmosphere
+Monitoring Service (CAMS) on behalf of the European Union. ERA5 and ERA5.1 were produced with
+funding from C3S. Sean Healy was funded by the Radio Occultation Meteorology Satellite Application
+Facility (ROM SAF), which is a decentralized processing centre under the European Organisation for
+the Exploitation of Meteorological Satellites (EUMETSAT).
+
+36
+
+Technical Memorandum No.859
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+References
+Bonavita, M, E. Holm, L. Isaksen and M. Fisher (2016). The evolution of the ECMWF hybrid data
+assimilation system. Q. J. R. Meteorol. Soc., 142, 287-303, doi:10.1002/qj.2652
+Christy, J. R., C. Covey and W. Randel, 2019: [Global climate] Stratospheric temperature and winds
+[in “State of the Climate in 2018”]. Bull. Amer. Meteor. Soc., 100 (9), S19–S20,
+doi:10.1175/2019BAMSStateoftheClimate.1.
+Davis, S.M., K.H. Rosenlof, B. Hassler, D.F. Hurst, W.G. Read, H. Vömel, H. Selkirk, M. Fujiwara
+and R. Damadeo (2016). The Stratospheric Water and Ozone Satellite Homogenized (SWOOSH)
+database: a long-term database for climate studies. Earth System Science Data, 8(2), 461–490,
+doi:10.5194/essd-8-461-2016
+Dee D.P., and S. Uppala (2009). Variational bias correction of satellite radiance data in the ERAInterim reanalysis. Q. J. R. Meteorol. Soc., 135, 1830–1841, doi: 10.1002/qj.493
+Dee D.P., S.M. Uppala, A.J. Simmons, P. Berrisford, P. Poli, S. Kobayashi, U. Andrae, M.A.
+Balmaseda, G. Balsamo, P. Bauer, P. Bechtold, A.C.M. Beljaars, L. van de Berg, J. Bidlot, N.
+Bormann, C. Delsol, R. Dragani, M. Fuentes, A.J. Geer, L. Haimberger, S.B. Healy, H. Hersbach,
+E.V. Hólm, L. Isaksen, P. Kållberg, M. Köhler, M. Matricardi, A.P. McNally, B.M. Monge-Sanz, J.-J.
+Morcrette, B.-K. Park, C. Peubey, P. de Rosnay, C. Tavolato, J.-N. Thépaut and F. Vitart (2011). The
+ERA-Interim reanalysis: configuration and performance of the data assimilation system. Q.J.R.
+Meteorol. Soc., 137, 553–597, doi: 10.1002/qj.828
+Diamantakis, M. (2014). Improving ECMWF forecasts of stratospheric sudden warmings. ECMWF
+Newsletter, 141, 30-36, doi: 10.21957/pq2zizgf
+Diamantakis, M. and L. Magnusson (2016). Sensitivity of the ECMWF Model to Semi-Lagrangian
+Departure Point Iterations. Mon. Wea. Rev., 144, 3233–3250, doi: 10.1175/MWR-D-15-0432.1
+Fisher, M. 2003. Background error covariance modelling. In Proceedings of “Seminar on Recent
+Developments in Data Assimilation for Atmosphere and Ocean”, p45-63, ECMWF. Available at:
+https://www.ecmwf.int/en/elibrary/9404-background-error-covariance-modelling.
+Fueglistaler, S., P.H. Haynes and P.M. Forster (2011). The annual cycle in lower stratospheric
+temperatures revisited. Atmos. Chem. Phys., 11, 3701-3711, doi:10.5194/acp-11-3701-2011
+Gelaro, R., W. McCarty, M.J. Suárez, R. Todling, A. Molod, L. Takacs, C.A. Randles, A. Darmenov,
+M.G. Bosilovich, R. Reichle, K. Wargan, L. Coy, R. Cullather, C. Draper, S. Akella, V. Buchard, A.
+Conaty, A.M. da Silva, W. Gu, G. Kim, R. Koster, R. Lucchesi, D. Merkova, J.E. Nielsen, G. Partyka,
+S. Pawson, W. Putman, M. Rienecker, S.D. Schubert, M. Sienkiewicz, and B. Zhao (2017). The
+Modern-Era Retrospective Analysis for Research and Applications, Version 2 (MERRA-2). J.
+Climate, 30, 5419–5454, doi: 10.1175/JCLI-D-16-0758.1
+Haimberger, L. (2007). Homogenization of radiosonde temperature time series using innovation
+statistics. J. Climate, 20, 1377-1403, doi: 10.1175/JCLI4050.1
+Haimberger, L., C. Tavolato, and S. Sperka (2008). Toward elimination of the warm bias in historic
+radiosonde temperature records: Some new results from a comprehensive intercomparison of upper-air
+data. J. Climate, 21, 4587–4606, doi: 10.1175/2008JCLI1929.1
+Haimberger, L., C. Tavolato, and S. Sperka (2012). Homogenization of the global radiosonde
+temperature dataset through combined comparison with reanalysis background series and neighboring
+stations. J. Climate, 25, 8108–8131, doi: 10.1175/JCLI-D-11-00668.1
+Hersbach, H., P. de Rosnay, B. Bell, D. Schepers, A. Simmons, C. Soci, S. Abdalla, M. Alonso
+Balmaseda, G. Balsamo, P. Bechtold, P. Berrisford, J. Bidlot, E. de Boisséson, M. Bonavita, P.
+
+Technical Memorandum No.859
+
+37
+
+Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+
+Browne, R. Buizza, P. Dahlgren, D. Dee, R. Dragani, M. Diamantakis, J. Flemming, R. Forbes, A.
+Geer, T. Haiden, E. Hólm, L. Haimberger, R. Hogan, A. Horányi, M. Janisková, P. Laloyaux, P.
+Lopez, J. Muñoz-Sabater, C. Peubey, R. Radu, D. Richardson, J.-N. Thépaut, F. Vitart, X. Yang, E.
+Zsótér and H. Zuo (2018). Operational global reanalysis: progress, future directions and synergies with
+NWP. ERA Report, 27, 63pp, doi: 10.21957/tkic6g3wm
+Hersbach, H., B.Bell, P. Berrisford, S. Hirahara, András Horányi1, J. Muñoz-Sabater, J. Nicolas, C.
+Peubey, R. Radu, D. Schepers, A. Simmons, C. Soci, S. Abdalla, X. Abellan, G. Balsamo, P.
+Bechtold, G. Biavati, J. Bidlot, M. Bonavita, G. De Chiara1, P. Dahlgren, D. Dee, M. Diamantakis, R.
+Dragani, J. Flemming, R. Forbes, M. Fuentes, A. Geer, L. Haimberger, S. Healy, R.J. Hogan1, E.
+Hólm, M. Janisková, S. Keeley, P. Laloyaux, P. Lopez, G. Radnoti, P. de Rosnay, I. Rozum, F.
+Vamborg, S. Villaume and J.-N. Thépaut (2020). The ERA5 Global Reanalysis. Submitted to Q. J. R.
+Meteorol. Soc..
+Inness, A., M. Ades, A. Agustí-Panareda, J. Barré, A. Benedictow, A.-M. Blechschmidt, J. J.
+Dominguez, R. Engelen, H. Eskes, J. Flemming, V. Huijnen, L. Jones, Z. Kipling, S. Massart, M.
+Parrington, V.-H. Peuch, M. Razinger, S. Remy, M. Schulz and M. Suttie (2019). The CAMS
+reanalysis of atmospheric composition, Atmos. Chem. Phys., 19, 3515–3556, doi: 10.5194/acp-193515-2019
+Isaksen, L., M. Bonavita, R.Buizza, M. Fisher, J. Haseler, M. Leutbecher and L. Raynaud (2010).
+Ensemble of Data Assimilation at ECMWF. ECMWF Research Department Technical Memorandum,
+636, ECMWF, pp47 (available online at http://www.ecmwf.int/publications).
+Kawatani, Y. and K. Hamilton (2013). Weakened stratospheric quasibiennial oscillation driven by
+increased tropical mean upwelling. Nature, 497, 478-81, doi: 10.1038/nature12140
+Kobayashi, S., Y. Ota, Y. Harada, A. Ebita, M. Moriya, H. Onoda, K. Onogi, H. Kamahori, C.
+Kobayashi, H. Endo, K. Miyaoka, K. Takahashi (2015). The JRA-55 Reanalysis: General
+Specifications and Basic Characteristics. J. Meteorol. Soc. Japan, 93, 5-48, doi:10.2151/jmsj.2015001
+McLandress, C., D.A. Plummer and T.G. Shepherd (2014). Technical Note: A simple procedure for
+removing temporal discontinuities in ERA-Interim upper stratospheric temperatures for use in nudged
+chemistry-climate model simulations. Atmos. Chem. Phys., 14: 1547-1555, doi: 10.5194/acp-14-15472014
+Newman, P.A., L. Coy, S. Pawson and L.R. Lait (2016). The anomalous change in the QBO in 2015–
+2016. Geophys. Res. Lett., 43, 8791-8797, doi: 10.1002/2016GL070373
+Poli, P., S.B. Healy and D.P. Dee (2010). Assimilation of Global Positioning System radio occultation
+data in the ECMWF ERA–Interim reanalysis. Q.J.R. Meteorol. Soc., 136: 1972-1990, doi:
+10.1002/qj.722
+Shepherd, T.G, I. Polichtchouk, R.J. Hogan and A.J. Simmons (2018). Report on Stratosphere Task
+Force. ECMWF Tech. Memo., 824, 32pp, doi: 10.21957/0vkp0t1xx
+Simmons, A.J., M. Hortal, G. Kelly, A. McNally, A. Untch and S. Uppala (2005). ECMWF analyses
+and forecasts of stratospheric winter polar vortex break-up: September 2002 in the southern
+hemisphere and related events. J. Atmos. Sci., 62, 668-689, doi: 10.1175/ JAS-3322.1
+Simmons, A.J., P. Poli, D.P. Dee, P. Berrisford, H. Hersbach, S. Kobayashi S and C. Peubey (2014).
+Estimating low-frequency variability and trends in atmospheric temperature using ERA-Interim. Q.J.R.
+Meteorol. Soc., 140: 329-353, doi: 10.1002/qj.2317
+
+38
+
+Technical Memorandum No.859
+
+

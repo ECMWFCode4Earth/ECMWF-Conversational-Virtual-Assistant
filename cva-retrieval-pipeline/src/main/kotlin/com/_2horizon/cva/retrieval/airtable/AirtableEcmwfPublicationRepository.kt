@@ -9,8 +9,6 @@ import dev.fuxing.airtable.formula.AirtableFormula
 import dev.fuxing.airtable.formula.LogicalOperator
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
-import io.micronaut.runtime.event.annotation.EventListener
-import io.micronaut.scheduling.annotation.Async
 import org.slf4j.LoggerFactory
 import javax.inject.Singleton
 
@@ -29,8 +27,8 @@ open class AirtableEcmwfPublicationRepository(
     private val keywordsTable = api.base(publicationsBase).table("Keywords")
     private val authorsTable = api.base(publicationsBase).table("Authors")
 
-    @EventListener
-    @Async
+    // @EventListener
+    // @Async
     open fun ecmwfPublicationEventReceived(ecmwfPublicationEvent: EcmwfPublicationEvent) {
         log.debug("EcmwfPublicationEvent received")
 
@@ -41,8 +39,13 @@ open class AirtableEcmwfPublicationRepository(
             return
         }
 
-        saveUnknownKeywords(pubDTO.keywords)
-        saveUnknownAuthors(pubDTO.contributors)
+        if (pubDTO.keywords != null) {
+            saveUnknownKeywords(pubDTO.keywords)
+        }
+
+        if (pubDTO.contributors != null) {
+            saveUnknownAuthors(pubDTO.contributors)
+        }
 
         val record = AirtableRecord().apply {
             putField("NodeId", pubDTO.nodeId)
@@ -50,8 +53,8 @@ open class AirtableEcmwfPublicationRepository(
             putField("Title", pubDTO.title)
             putField("SecondaryTitle", pubDTO.secondaryTitle)
             putField("TertiaryTitle", pubDTO.tertiaryTitle)
-            putField("Authors", pubDTO.contributors.map { c -> lookupAuthor(c)!!.id }.toSet())
-            putField("Keywords", pubDTO.keywords.map { c -> lookupKeyword(c)!!.id }.toSet())
+            putField("Authors", pubDTO.contributors?.map { c -> lookupAuthor(c)!!.id }?.toSet())
+            putField("Keywords", pubDTO.keywords?.map { c -> lookupKeyword(c)!!.id }?.toSet())
             putField("PublicationType", pubDTO.publicationType)
             putField("Abstract", pubDTO.abstract)
             putField("Number", pubDTO.number)

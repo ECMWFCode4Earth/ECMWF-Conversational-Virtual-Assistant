@@ -34,7 +34,7 @@ class EcmwfPublicationsBibEndNoteCrawlService {
         val number = xml.getElementsByTag("number").first()?.text()
         val year = xml.getElementsByTag("year").first()?.text()?.toInt()
         val pubDates = xml.getElementsByTag("date").map { it.text() }
-        val language = xml.getElementsByTag("language").first().text()
+        val language = xml.getElementsByTag("language").first()?.text()
 
         val pages = xml.getElementsByTag("pages").firstOrNull()?.text()
         val issue = xml.getElementsByTag("issue").firstOrNull()?.text()

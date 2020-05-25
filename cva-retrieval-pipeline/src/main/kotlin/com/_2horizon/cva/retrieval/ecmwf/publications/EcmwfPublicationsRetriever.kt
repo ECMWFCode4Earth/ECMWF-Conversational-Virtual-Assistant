@@ -36,30 +36,37 @@ class EcmwfPublicationsRetriever(
 
         val publicationSitemaps = sitemapRetrievalService.retrieveEcmwfSitemaps()
             .filter(::filterEcmwfPublications)
+            .map { sitemap -> Pair(extractNodeIdFromSitemapLoc(sitemap.loc), sitemap.loc) }
+            .sortedByDescending { it.first }
 
         // just in case the sitemap format changed
         check(publicationSitemaps.size > 7000) { "Wrong publicationSitemaps size with ${publicationSitemaps.size}" }
 
-        return publicationSitemaps.map { sitemap ->
+        return publicationSitemaps
+            .filter { it.first < 13729 }
+            .map { sitemapPair ->
 
-            val loc = sitemap.loc
-            log.debug("going to process $loc")
+                val nodeId = sitemapPair.first
+                val loc = sitemapPair.second
+                log.debug("going to process $loc")
 
-            val nodeId = extractNodeIdFromSitemapLoc(sitemap.loc)
+                val ecmwfPublicationDTO =
+                    publicationsBibEndNoteCrawlService.downloadAndExtractBibEndNote(nodeId)
 
-            val ecmwfPublicationDTO =
-                publicationsBibEndNoteCrawlService.downloadAndExtractBibEndNote(nodeId)
+                val publicationType = publicationsHtmlCrawlService.downloadAndExtractPublicationType(nodeId)
 
-            val publicationType = publicationsHtmlCrawlService.downloadAndExtractPublicationType(nodeId)
-
-            val pubDTO = ecmwfPublicationDTO.copy(publicationType = publicationType)
-            applicationEventPublisher.publishEvent(EcmwfPublicationEvent(pubDTO))
-            pubDTO
-        }
+                val pubDTO = ecmwfPublicationDTO.copy(publicationType = publicationType)
+                applicationEventPublisher.publishEvent(EcmwfPublicationEvent(pubDTO))
+                pubDTO
+            }
     }
 
-    private fun extractNodeIdFromSitemapLoc(loc: String): Int =
-        loc.replace("http://www.ecmwf.int/en/elibrary/", "").split("-").first().toInt()
+    private fun extractNodeIdFromSitemapLoc(loc: String): Int {
+        val urlParts = loc.replace("http://www.ecmwf.int/en/elibrary/", "").split("/")
+        val nodeIdPart = urlParts.filter { part -> part.matches("^[0-9]{4,7}.*".toRegex()) }
+        check(nodeIdPart.size == 1) { "Multiple nodeIdParts found $nodeIdPart" }
+        return nodeIdPart.first().split("-").first().toInt()
+    }
 
     private fun filterEcmwfPublications(sitemap: Sitemap): Boolean =
         sitemap.loc.startsWith("http://www.ecmwf.int/en/elibrary/")
