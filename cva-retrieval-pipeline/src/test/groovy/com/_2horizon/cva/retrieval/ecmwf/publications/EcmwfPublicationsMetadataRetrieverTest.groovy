@@ -9,10 +9,10 @@ import spock.lang.Unroll
 /**
  * Created by Frank Lieber (liefra) on 2020-05-23.
  */
-class EcmwfPublicationsRetrieverTest extends Specification {
+class EcmwfPublicationsMetadataRetrieverTest extends Specification {
 
     @Shared
-    EcmwfPublicationsRetriever service = new EcmwfPublicationsRetriever(
+    EcmwfPublicationsMetadataRetriever service = new EcmwfPublicationsMetadataRetriever(
             GroovyMock(EcmwfPublicationsBibEndNoteCrawlService),
             GroovyMock(EcmwfPublicationsHtmlCrawlService),
             GroovyMock(SitemapRetrievalService),

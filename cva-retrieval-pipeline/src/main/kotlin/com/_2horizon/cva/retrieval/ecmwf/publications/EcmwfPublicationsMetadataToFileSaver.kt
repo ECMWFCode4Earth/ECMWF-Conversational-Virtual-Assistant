@@ -13,7 +13,7 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-23.
  */
 @Singleton
-open class EcmwfPublicationToFileSaver(
+open class EcmwfPublicationsMetadataToFileSaver(
     @Value("\${app.retrieval.ecmwf.publications-path}") private val publicationsPath: String,
     private val objectMapper: ObjectMapper
 ) {

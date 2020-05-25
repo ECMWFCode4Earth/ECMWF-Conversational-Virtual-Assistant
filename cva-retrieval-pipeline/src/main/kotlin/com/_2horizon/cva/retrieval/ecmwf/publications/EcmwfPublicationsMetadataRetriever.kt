@@ -15,7 +15,7 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-21.
  */
 @Singleton
-class EcmwfPublicationsRetriever(
+class EcmwfPublicationsMetadataRetriever(
     private val publicationsBibEndNoteCrawlService: EcmwfPublicationsBibEndNoteCrawlService,
     private val publicationsHtmlCrawlService: EcmwfPublicationsHtmlCrawlService,
     private val sitemapRetrievalService: SitemapRetrievalService,
