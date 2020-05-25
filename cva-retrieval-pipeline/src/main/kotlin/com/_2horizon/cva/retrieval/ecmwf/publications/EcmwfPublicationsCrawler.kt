@@ -15,9 +15,9 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-21.
  */
 @Singleton
-class EcmwfPublicationsMetadataRetriever(
-    private val publicationsBibEndNoteCrawlService: EcmwfPublicationsBibEndNoteCrawlService,
-    private val publicationsHtmlCrawlService: EcmwfPublicationsHtmlCrawlService,
+class EcmwfPublicationsCrawler(
+    private val publicationsBibEndNoteDownloadAndExtractService: EcmwfPublicationsBibEndNoteDownloadAndExtractService,
+    private val publicationsHtmlDownloadAndExtractService: EcmwfPublicationsHtmlDownloadAndExtractService,
     private val sitemapRetrievalService: SitemapRetrievalService,
     @Value("\${app.feature.retrieval-pipeline.ecmwf-publications-enabled:false}") private val retrievalEcmwfPublicationsEnabled: Boolean,
     private val applicationEventPublisher: ApplicationEventPublisher
@@ -51,9 +51,9 @@ class EcmwfPublicationsMetadataRetriever(
                 log.debug("going to process $loc")
 
                 val ecmwfPublicationDTO =
-                    publicationsBibEndNoteCrawlService.downloadAndExtractBibEndNote(nodeId)
+                    publicationsBibEndNoteDownloadAndExtractService.downloadAndExtractBibEndNote(nodeId)
 
-                val publicationType = publicationsHtmlCrawlService.downloadAndExtractPublicationType(nodeId)
+                val publicationType = publicationsHtmlDownloadAndExtractService.downloadAndExtractPublicationType(nodeId)
 
                 val pubDTO = ecmwfPublicationDTO.copy(publicationType = publicationType)
                 applicationEventPublisher.publishEvent(EcmwfPublicationEvent(pubDTO))

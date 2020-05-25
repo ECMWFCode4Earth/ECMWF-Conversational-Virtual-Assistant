@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-21.
  */
 @Singleton
-class EcmwfPublicationsBibEndNoteCrawlService {
+class EcmwfPublicationsBibEndNoteDownloadAndExtractService {
     private val log = LoggerFactory.getLogger(javaClass)
 
     fun downloadAndExtractBibEndNote(nodeId: Int): EcmwfPublicationDTO {

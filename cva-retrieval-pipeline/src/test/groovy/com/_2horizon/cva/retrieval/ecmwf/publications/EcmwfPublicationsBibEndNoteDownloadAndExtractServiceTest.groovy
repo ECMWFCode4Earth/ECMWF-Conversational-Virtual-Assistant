@@ -11,10 +11,10 @@ import spock.lang.Unroll
 /**
  * Created by Frank Lieber (liefra) on 2020-05-21.
  */
-class EcmwfPublicationsBibEndNoteCrawlServiceTest extends Specification {
+class EcmwfPublicationsBibEndNoteDownloadAndExtractServiceTest extends Specification {
 
     @Shared
-    EcmwfPublicationsBibEndNoteCrawlService service = new EcmwfPublicationsBibEndNoteCrawlService()
+    EcmwfPublicationsBibEndNoteDownloadAndExtractService service = new EcmwfPublicationsBibEndNoteDownloadAndExtractService()
 
 
     @Unroll

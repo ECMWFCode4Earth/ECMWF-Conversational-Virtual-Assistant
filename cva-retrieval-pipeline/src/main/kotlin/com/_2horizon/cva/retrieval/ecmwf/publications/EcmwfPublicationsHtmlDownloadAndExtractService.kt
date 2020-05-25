@@ -11,7 +11,7 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-21.
  */
 @Singleton
-class EcmwfPublicationsHtmlCrawlService {
+class EcmwfPublicationsHtmlDownloadAndExtractService {
     private val log = LoggerFactory.getLogger(javaClass)
 
     fun downloadAndExtractPublicationType(nodeId: Int): String {

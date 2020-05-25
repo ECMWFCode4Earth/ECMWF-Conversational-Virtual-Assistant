@@ -1,9 +1,8 @@
 package com._2horizon.cva.retrieval.ecmwf.publications
 
-import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
+
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.jsoup.parser.Parser
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -11,10 +10,10 @@ import spock.lang.Unroll
 /**
  * Created by Frank Lieber (liefra) on 2020-05-22.
  */
-class EcmwfPublicationsHtmlCrawlServiceTest extends Specification {
+class EcmwfPublicationsHtmlDownloadAndExtractServiceTest extends Specification {
 
     @Shared
-    EcmwfPublicationsHtmlCrawlService service = new EcmwfPublicationsHtmlCrawlService()
+    EcmwfPublicationsHtmlDownloadAndExtractService service = new EcmwfPublicationsHtmlDownloadAndExtractService()
 
 
     @Unroll
