@@ -3,6 +3,7 @@ package com._2horizon.cva.retrieval.smilenlp
 
 import io.micronaut.context.annotation.Property
 import io.micronaut.test.annotation.MicronautTest
+import spock.lang.Ignore
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -11,6 +12,7 @@ import javax.inject.Inject
 /**
  * Created by Frank Lieber (liefra) on 2020-05-11.
  */
+@Ignore
 @MicronautTest
 @Property(name = "app.retrieval.ecmwf.publications-path", value = "/Users/liefra/data/02Projects/ECMWF/100-dev/local-file-store/ecmwf/publications")
 class SmileNlpServiceTest extends Specification {
