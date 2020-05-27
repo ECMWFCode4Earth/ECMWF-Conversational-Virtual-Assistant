@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v2-preview
         with:
           name: 'ECMWF-virtual-assistant-documentation.pdf'
-          path: build/docs/asciidocPdf/ECMWF-virtual-assistant-documentation.pdf
+          path: build/docs/asciidocPdf/ECMWF-virtual-assistant.pdf
