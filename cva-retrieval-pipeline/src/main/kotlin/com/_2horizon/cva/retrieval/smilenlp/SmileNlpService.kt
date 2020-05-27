@@ -120,7 +120,7 @@ class SmileNlpService(
 
         val reg = "\\((.*?)\\)".toRegex()
 
-        return File(publicationsPath).listFiles()!!
+        return File("$publicationsPath/json").listFiles()!!
             .map { file ->
                 val pubDTO = objectMapper.readValue(file, EcmwfPublicationDTO::class.java)
                 if (pubDTO.abstract != null) {

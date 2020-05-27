@@ -1,8 +1,6 @@
 package com._2horizon.cva.retrieval.confluence.dto.space
 
 
-import com._2horizon.cva.retrieval.confluence.dto.space.Links
-import com._2horizon.cva.retrieval.confluence.dto.space.Space
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class SpacesResponse(

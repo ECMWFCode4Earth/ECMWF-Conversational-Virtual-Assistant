@@ -1,6 +1,6 @@
 package com._2horizon.cva.retrieval.smilenlp
 
-import com._2horizon.cva.retrieval.extract.pdf.PDFToTextService
+
 import io.micronaut.context.annotation.Property
 import io.micronaut.test.annotation.MicronautTest
 import spock.lang.Ignore
