@@ -49,6 +49,8 @@ tasks {
 
         setSourceDir(file("asciidoc"))
 
+        setOutputDir(file("docs"))
+
         sources(delegateClosureOf<PatternSet> {
             include("ECMWF-Conversational-Virtual-Assistant.adoc")
         })
