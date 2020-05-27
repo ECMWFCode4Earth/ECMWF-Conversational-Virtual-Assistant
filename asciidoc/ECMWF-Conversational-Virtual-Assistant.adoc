@@ -1,0 +1,20 @@
+= ECMWF Conversational Virtual Assistant
+:author: Frank Lieber
+:revnumber: 0.1
+:revdate: 2020-05-27
+:imagesdir: images
+:glossarydir: glossary
+:csvdir: csv
+:definitiondir: definition
+:sectiondir: section
+:show-link-uri:
+:hide-uri-scheme:
+:tot:
+:tof:
+
+
+:sectnums!:
+== Introduction
+:sectnums:
+
+ECMWF Conversational Virtual Assistant

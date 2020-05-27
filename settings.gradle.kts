@@ -21,5 +21,7 @@ pluginManagement {
         resolve("name.remal.check-dependency-updates")
         resolve("com.google.cloud.tools.jib")
         resolve("org.jlleitschuh.gradle.ktlint-idea")
+        resolve("org.asciidoctor.jvm.convert")
+        resolve("org.asciidoctor.jvm.pdf")
     }
 }

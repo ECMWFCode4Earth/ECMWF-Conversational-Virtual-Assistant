@@ -2,15 +2,16 @@
 
 allprojects {
     group = "com._2horizon.cva"
-}
-
-subprojects {
     repositories {
         mavenCentral()
         jcenter()
         maven("https://jitpack.io")
         maven("https://jcenter.bintray.com")
     }
+}
+
+subprojects {
+
 }
 
 val kotlinVersion: String by project
@@ -21,6 +22,7 @@ val hamcrestVersion: String by project
 val jacksonKotlinVersion: String by project
 val objenesisVersion: String by project
 val spockVersion: String by project
+val asciidoctorjVersion: String by project
 
 plugins {
     java
@@ -33,7 +35,77 @@ plugins {
     id("com.github.johnrengelman.shadow") apply false
     id("org.jlleitschuh.gradle.ktlint-idea") apply false
     id("com.google.cloud.tools.jib") apply false
+    id("org.asciidoctor.jvm.convert")
+    id("org.asciidoctor.jvm.pdf")
     jacoco
+}
+
+dependencies{
+    implementation("org.asciidoctor:asciidoctorj:$asciidoctorjVersion")
+}
+
+tasks {
+    "asciidoctor"(org.asciidoctor.gradle.jvm.AsciidoctorTask::class) {
+
+        setSourceDir(file("asciidoc"))
+
+        sources(delegateClosureOf<PatternSet> {
+            include("ECMWF-Conversational-Virtual-Assistant.adoc")
+        })
+
+        options(
+            mapOf(
+                "doctype" to "article",
+                "ruby" to "erubis"
+            )
+        )
+
+        attributes(
+            mapOf(
+                "source-highlighter" to "coderay",
+                "toc" to "left",
+                "idprefix" to "",
+                "idseparator" to "-"
+            )
+        )
+    }
+    "asciidoctorPdf"(org.asciidoctor.gradle.jvm.pdf.AsciidoctorPdfTask::class) {
+
+        setSourceDir(file("asciidoc"))
+
+        sources(delegateClosureOf<PatternSet> {
+            include("ECMWF-Conversational-Virtual-Assistant.adoc")
+        })
+
+        options(
+            mapOf(
+                "doctype" to "article",
+                "ruby" to "erubis"
+            )
+        )
+
+        val path = project.projectDir.path
+
+        attributes(
+            mapOf(
+                "imagesdir" to "$path/asciidoc/img",
+                "definitiondir" to "$path/asciidoc/definition",
+                "glossarydir" to "$path/asciidoc/glossary",
+                "sectiondir" to "$path/asciidoc/section",
+
+                "source-highlighter" to "coderay",
+                "toc" to "left",
+                "idprefix" to "",
+                "idseparator" to "-",
+                "toclevels" to "4",
+                "icons" to "font",
+                "experimental" to ""
+            )
+        )
+
+    }
+
+
 }
 
 subprojects {
