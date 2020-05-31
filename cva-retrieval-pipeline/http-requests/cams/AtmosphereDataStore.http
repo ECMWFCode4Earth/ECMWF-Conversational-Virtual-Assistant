@@ -1,0 +1,8 @@
+# Swagger docs https://ads.atmosphere.copernicus.eu/modules/custom/cds_apikeys/app/apidocs.html
+
+# Get all resources
+# https://cds.climate.copernicus.eu/modules/custom/cds_apikeys/app/apidocs.html#/default/getResouceList
+
+# curl -X GET "https://ads.atmosphere.copernicus.eu/api/v2/resources" -H "accept: application/json"
+GET https://ads.atmosphere.copernicus.eu/api/v2/resources
+accept: application/json

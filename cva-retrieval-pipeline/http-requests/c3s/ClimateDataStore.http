@@ -1,0 +1,23 @@
+
+
+// Swagger docs https://cds.climate.copernicus.eu/modules/custom/cds_apikeys/app/apidocs.html#/default/getResouceList
+
+
+# Get all resources
+# https://cds.climate.copernicus.eu/modules/custom/cds_apikeys/app/apidocs.html#/default/getResouceList
+
+# curl -X GET "https://cds.climate.copernicus.eu/api/v2/resources" -H "accept: application/json"
+GET https://cds.climate.copernicus.eu/api/v2/resources
+accept: application/json
+
+###
+
+
+# curl -X GET "https://cds.climate.copernicus.eu/api/v2/terms/list" -H "accept: application/json"
+GET https://cds.climate.copernicus.eu/api/v2/terms/list
+accept: application/json
+
+###
+
+GET https://cds.climate.copernicus.eu/api/v2.ui/resources/satellite-aerosol-properties
+accept: application/json
