@@ -1,0 +1,11 @@
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: elastic
+  namespace: ecmwf
+spec:
+  version: 7.7.0
+  count: 1
+  elasticsearchRef:
+    name: elastic
+    namespace: ecmwf
