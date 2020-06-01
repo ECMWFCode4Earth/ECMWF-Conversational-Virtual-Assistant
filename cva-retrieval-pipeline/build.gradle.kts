@@ -8,6 +8,8 @@ val smileNlpKtVersion: String by project
 val smileCoreVersion: String by project
 val commonsIoVersion: String by project
 val pdfBoxVersion: String by project
+val elasticsearchRestVersion: String by project
+val elasticsearchBeyonderVersion: String by project
 
 
 plugins {
@@ -41,6 +43,10 @@ dependencies {
 
     // https://pdfbox.apache.org/
     implementation("org.apache.pdfbox:pdfbox:$pdfBoxVersion")
+
+    // elasticsearch
+    implementation("org.elasticsearch.client:elasticsearch-rest-high-level-client:$elasticsearchRestVersion")
+    implementation("fr.pilato.elasticsearch:elasticsearch-beyonder:$elasticsearchBeyonderVersion")
 
 
     // https://github.com/londogard/smile-nlp-kt
