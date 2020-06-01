@@ -27,7 +27,8 @@ import javax.inject.Singleton
  */
 @Requirements(
     Requires(beans = [HealthEndpoint::class]),
-    Requires(property = HealthEndpoint.PREFIX + ".elasticsearch.rest.high.level.enabled", notEquals = "false")
+    Requires(property = HealthEndpoint.PREFIX + ".elasticsearch.rest.high.level.enabled", notEquals = "false"),
+    Requires(property = "app.feature.ingest-pipeline.elastic-ingest-enabled", notEquals = "false")
 )
 @Singleton
 class ElasticsearchHealthIndicator(

@@ -4,6 +4,7 @@ import fr.pilato.elasticsearch.tools.ElasticsearchBeyonder
 import fr.pilato.elasticsearch.tools.SettingsFinder
 import io.micronaut.context.annotation.Bean
 import io.micronaut.context.annotation.Factory
+import io.micronaut.context.annotation.Requirements
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
 import org.apache.http.HttpHost
@@ -18,7 +19,10 @@ import org.elasticsearch.client.RestHighLevelClient
 /**
  * Created by Frank Lieber (liefra) on 2019-03-28.
  */
-@Requires(classes = [RestHighLevelClient::class])
+@Requirements(
+    Requires(beans = [RestHighLevelClient::class]),
+    Requires(property = "app.feature.ingest-pipeline.elastic-ingest-enabled", notEquals = "false")
+)
 @Factory
 class ElasticFactory(
     @param:Value("\${app.elastic.host}") val elasticHost: String,
