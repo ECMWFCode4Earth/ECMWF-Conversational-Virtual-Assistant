@@ -50,11 +50,12 @@ spec:
   #   entries:
   #   - key: value1
   #     path: newkey # project a key to a specific path (optional)
-  # http:
-  #   service:
-  #     spec:
-  #       # expose this cluster Service with a LoadBalancer
-  #       type: LoadBalancer
+  http:
+    service:
+      spec:
+        # expose this cluster Service with a LoadBalancer
+        type: ClusterIP
+        externalIPs: ['116.202.55.227']
   #   tls:
   #     selfSignedCertificate:
   #       # add a list of SANs into the self-signed HTTP certificate

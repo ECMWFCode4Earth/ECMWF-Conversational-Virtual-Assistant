@@ -9,3 +9,9 @@ spec:
   elasticsearchRef:
     name: elastic
     namespace: ecmwf
+  http:
+    service:
+      spec:
+        # expose this cluster Service with a LoadBalancer
+        type: ClusterIP
+        externalIPs: ['116.202.55.227']
