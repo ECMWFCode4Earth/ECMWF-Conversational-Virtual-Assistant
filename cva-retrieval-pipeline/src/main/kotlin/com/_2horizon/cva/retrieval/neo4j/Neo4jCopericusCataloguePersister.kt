@@ -147,11 +147,8 @@ open class Neo4jCopericusCataloguePersister(
                 }.toSet()
 
                 if (relatedApplications.isNotEmpty())
-                    datasetRepository.save(application.copy(relatedDatasets = relatedApplications))
+                    datasetRepository.save(application.copy(relatedApplications = relatedApplications))
             }
-
-            //TODO: handle related applications
-
         }
 
         log.debug("DONE with Neo4j CdsCatalogueReceivedEvent received")

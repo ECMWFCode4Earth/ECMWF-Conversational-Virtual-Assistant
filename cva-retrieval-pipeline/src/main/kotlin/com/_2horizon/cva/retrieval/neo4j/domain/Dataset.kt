@@ -57,6 +57,9 @@ data class Dataset(
     val docs: Set<Documentation>?,
 
     @Relationship("RELATED_DATASETS")
-    val relatedDatasets: Set<Dataset>? = null
+    val relatedDatasets: Set<Dataset>? = null,
+
+    @Relationship("RELATED_APPLICATIONS")
+    val relatedApplications: Set<Application> = mutableSetOf()
 
 )
