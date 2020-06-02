@@ -10,7 +10,8 @@ val commonsIoVersion: String by project
 val pdfBoxVersion: String by project
 val elasticsearchRestVersion: String by project
 val elasticsearchBeyonderVersion: String by project
-
+val micronautNeo4jBoltVersion: String by project
+val micronautNeo4jOgmVersion: String by project
 
 plugins {
     groovy
@@ -48,6 +49,12 @@ dependencies {
     implementation("org.elasticsearch.client:elasticsearch-rest-high-level-client:$elasticsearchRestVersion")
     implementation("fr.pilato.elasticsearch:elasticsearch-beyonder:$elasticsearchBeyonderVersion")
 
+    // Neo4j
+    implementation("io.micronaut.configuration:micronaut-neo4j-bolt:$micronautNeo4jBoltVersion")
+    implementation("org.neo4j:neo4j-ogm-core:$micronautNeo4jOgmVersion")
+    implementation("org.neo4j:neo4j-ogm-bolt-driver:$micronautNeo4jOgmVersion")
+    implementation("org.neo4j:neo4j-ogm-bolt-native-types:$micronautNeo4jOgmVersion")
+
 
     // https://github.com/londogard/smile-nlp-kt
     implementation("com.londogard:smile-nlp-kt:$smileNlpKtVersion")
@@ -78,6 +85,11 @@ tasks {
         classpath += configurations.getByName("developmentOnly")
         jvmArgs("-XX:TieredStopAtLevel=1", "-Dcom.sun.management.jmxremote")
     }
+}
+
+noArg {
+    annotation("org.neo4j.ogm.annotation.NodeEntity")
+    annotation("org.neo4j.ogm.annotation.RelationshipEntity")
 }
 
 allOpen{

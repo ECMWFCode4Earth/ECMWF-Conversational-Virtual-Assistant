@@ -1,5 +1,6 @@
 package com._2horizon.cva.retrieval.copernicus.c3s.datasets
 
+import com._2horizon.cva.retrieval.copernicus.cams.datasets.AtmosphereDataStoreOperations
 import com._2horizon.cva.retrieval.event.CdsCatalogueReceivedEvent
 import io.micronaut.context.annotation.Value
 import io.micronaut.context.event.ApplicationEventPublisher
@@ -14,6 +15,7 @@ import javax.inject.Singleton
 @Singleton
 class ClimateDataStoreSyncService(
     private val cdsOperations: ClimateDataStoreOperations,
+    private val adsOperations: AtmosphereDataStoreOperations,
     private val applicationEventPublisher: ApplicationEventPublisher,
     @Value("\${app.feature.retrieval-pipeline.cds-enabled:false}") private val retrievalPipelineCdsEnabled: Boolean
 ) {
@@ -23,15 +25,24 @@ class ClimateDataStoreSyncService(
     fun onStartup(startupEvent: StartupEvent) {
         if (retrievalPipelineCdsEnabled) {
             retrieveClimateDataStoreCatalogue()
+            retrieveAtmosphereStoreCatalogue()
         } else {
             log.debug("ClimateDataStoreSyncService disabled")
         }
     }
 
-    fun retrieveClimateDataStoreCatalogue() {
+    private fun retrieveAtmosphereStoreCatalogue() {
+        log.info("Going to retrieveAtmosphereStoreCatalogue")
+        val uiResources = adsOperations.getResources().get()
+            .map { adsOperations.getUiResourceByKey(it).get() }
+        applicationEventPublisher.publishEvent(CdsCatalogueReceivedEvent(uiResources))
+    }
 
+    private fun retrieveClimateDataStoreCatalogue() {
         log.info("Going to retrieveClimateDataStoreCatalogue")
-        val uiResources = cdsOperations.getResources().get().take(2).map { cdsOperations.getUiResourceByKey(it).get() }
+        val uiResources = cdsOperations.getResources().get()
+            // .take(2)
+            .map { cdsOperations.getUiResourceByKey(it).get() }
         applicationEventPublisher.publishEvent(CdsCatalogueReceivedEvent(uiResources))
     }
 }
