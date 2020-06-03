@@ -2,7 +2,8 @@
 micronaut:
   application:
     name: cva-retrieval-pipeline
-
+  server:
+    thread-selection: auto # see https://objectcomputing.com/resources/publications/sett/june-2020-micronaut-2-dont-let-event-loops-own-you
 ---
 #graphql:
 #  graphiql.enabled: true
