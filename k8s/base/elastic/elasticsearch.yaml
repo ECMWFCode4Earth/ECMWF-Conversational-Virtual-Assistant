@@ -5,7 +5,7 @@ metadata:
   name: elastic
   namespace: ecmwf
 spec:
-  version: 7.7.0
+  version: 7.7.1
   nodeSets:
     - name: default
       config:
