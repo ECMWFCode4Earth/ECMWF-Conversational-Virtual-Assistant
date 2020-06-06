@@ -1,10 +1,9 @@
 package com._2horizon.cva.retrieval.elastic
 
-import com._2horizon.cva.retrieval.event.CdsCatalogueReceivedEvent
+import com._2horizon.cva.retrieval.event.CopernicusCatalogueReceivedEvent
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.micronaut.context.annotation.Requirements
 import io.micronaut.context.annotation.Requires
-import io.micronaut.management.endpoint.health.HealthEndpoint
 import io.micronaut.runtime.event.annotation.EventListener
 import io.micronaut.scheduling.annotation.Async
 import org.elasticsearch.action.bulk.BulkRequest
@@ -21,7 +20,7 @@ import javax.inject.Singleton
 @Singleton
 @Requirements(
     Requires(beans = [RestHighLevelClient::class]),
-    Requires(property = "app.feature.ingest-pipeline.elastic-ingest-enabled", notEquals = "false")
+    Requires(property = "app.feature.ingest-pipeline.elastic-ingest-enabled", value = "true")
 )
 open class ElasticCopericusCataloguePersister(
     private val client: RestHighLevelClient,

@@ -1,7 +1,7 @@
 package com._2horizon.cva.retrieval.neo4j
 
 import com._2horizon.cva.retrieval.copernicus.dto.ui.UiResource
-import com._2horizon.cva.retrieval.event.CdsCatalogueReceivedEvent
+import com._2horizon.cva.retrieval.event.CopernicusCatalogueReceivedEvent
 import com._2horizon.cva.retrieval.neo4j.domain.Application
 import com._2horizon.cva.retrieval.neo4j.domain.Dataset
 import com._2horizon.cva.retrieval.neo4j.domain.DatasetDomain
@@ -28,20 +28,20 @@ import javax.inject.Singleton
  */
 @Requirements(
     Requires(beans = [SessionFactory::class]),
-    Requires(property = "app.feature.ingest-pipeline.neo4j-ingest-enabled", notEquals = "false")
+    Requires(property = "app.feature.ingest-pipeline.neo4j-ingest-enabled", value = "true")
 )
 @Singleton
-open class Neo4jCopericusCataloguePersister(
+open class Neo4jCopernicusCataloguePersister(
     private val datasetRepository: DatasetRepository
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
     @EventListener
     @Async
-    open fun cdsCatalogueReceivedEvent(cdsCatalogueReceivedEvent: CdsCatalogueReceivedEvent) {
+    open fun cdsCatalogueReceivedEvent(copernicusCatalogueReceivedEvent: CopernicusCatalogueReceivedEvent) {
         log.info("Neo4j CdsCatalogueReceivedEvent received")
 
-        val uiResources = cdsCatalogueReceivedEvent.uiResources
+        val uiResources = copernicusCatalogueReceivedEvent.uiResources
 
         val cdsKeywords = uiResources.flatMap { it.cdsKeywords }.sorted().map {
             val s = it.split(":")

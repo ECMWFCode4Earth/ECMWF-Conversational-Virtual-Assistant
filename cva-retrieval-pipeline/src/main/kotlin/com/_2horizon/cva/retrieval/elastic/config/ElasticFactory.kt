@@ -21,7 +21,7 @@ import org.elasticsearch.client.RestHighLevelClient
  */
 @Requirements(
     Requires(beans = [RestHighLevelClient::class]),
-    Requires(property = "app.feature.ingest-pipeline.elastic-ingest-enabled", notEquals = "false")
+    Requires(property = "app.feature.ingest-pipeline.elastic-ingest-enabled", value = "true")
 )
 @Factory
 class ElasticFactory(
