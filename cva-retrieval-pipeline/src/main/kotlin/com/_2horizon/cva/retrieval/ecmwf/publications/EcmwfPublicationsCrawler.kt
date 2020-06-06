@@ -34,16 +34,13 @@ class EcmwfPublicationsCrawler(
 
     private fun retrievalEcmwfPublications(): List<EcmwfPublicationDTO> {
 
-        val publicationSitemaps = sitemapRetrievalService.retrieveEcmwfSitemaps()
-            .filter(::filterEcmwfPublications)
-            .map { sitemap -> Pair(extractNodeIdFromSitemapLoc(sitemap.loc), sitemap.loc) }
-            .sortedByDescending { it.first }
+        val publicationSitemaps = retrieveEcmwfSitemapsSortedByDescending()
 
         // just in case the sitemap format changed
         check(publicationSitemaps.size > 7000) { "Wrong publicationSitemaps size with ${publicationSitemaps.size}" }
 
         return publicationSitemaps
-            // .filter { it.first < 13729 }
+            // .filter { it.first < 16666 }
             .take(100)
             .map { sitemapPair ->
 
@@ -63,6 +60,13 @@ class EcmwfPublicationsCrawler(
                 applicationEventPublisher.publishEvent(EcmwfPublicationEvent(pubDTO))
                 pubDTO
             }
+    }
+
+    private fun retrieveEcmwfSitemapsSortedByDescending(): List<Pair<Int, String>> {
+        return sitemapRetrievalService.retrieveEcmwfSitemaps()
+            .filter(::filterEcmwfPublications)
+            .map { sitemap -> Pair(extractNodeIdFromSitemapLoc(sitemap.loc), sitemap.loc) }
+            .sortedByDescending { it.first }
     }
 
     private fun extractNodeIdFromSitemapLoc(loc: String): Int {
