@@ -2,6 +2,7 @@ package com._2horizon.cva.retrieval.ecmwf.publications
 
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
 import com._2horizon.cva.retrieval.event.EcmwfPublicationEvent
+import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
 import io.micronaut.runtime.event.annotation.EventListener
 import io.micronaut.scheduling.annotation.Async
@@ -18,6 +19,7 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-21.
  */
 @Singleton
+@Requires(property =  "app.feature.retrieval-pipeline.ecmwf-publications-download-enabled", value = "true")
 open class EcmwfPublicationsPDFDownloadAndExtractService(
     @Value("\${app.retrieval.ecmwf.publications-path}") private val publicationsPath: String
 ) {
@@ -31,7 +33,6 @@ open class EcmwfPublicationsPDFDownloadAndExtractService(
         val pubDTO: EcmwfPublicationDTO = ecmwfPublicationEvent.ecmwfPublicationDTO
 
         if (pubDTO.publicationPDF!=null){
-            // downloadWithNio(pubDTO)
             downloadWithCommonsIo(pubDTO)
         } else {
             log.debug("No PDF found for ${pubDTO.nodeId}")
@@ -46,14 +47,7 @@ open class EcmwfPublicationsPDFDownloadAndExtractService(
             60000
         )
     }
-
-    private fun downloadWithNio(pubDTO: EcmwfPublicationDTO){
-        FileOutputStream(File("$publicationsPath/pdf/${pubDTO.nodeId}.pdf")).use {
-            val readableByteChannel: ReadableByteChannel = Channels.newChannel(URL(pubDTO.publicationPDF!!).openStream())
-            it.channel
-                .transferFrom(readableByteChannel, 0, Long.MAX_VALUE)
-        }
-    }
+    
 }
 
 
