@@ -13,4 +13,4 @@ Users who will make use of our chatbot will hopefully find answers faster than b
 NOTE: Currently, all components of the source code are experimental and will be frequently changed. The final version will be available end of August 2020.
 
 .High-level architecture overview
-image::asciidocs/img/CVA-bot.png[]
+image::asciidoc/img/CVA-bot-High-level.png[]
