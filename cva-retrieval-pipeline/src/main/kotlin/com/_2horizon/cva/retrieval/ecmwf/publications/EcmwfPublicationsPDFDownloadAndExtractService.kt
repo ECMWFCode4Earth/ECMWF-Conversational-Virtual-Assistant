@@ -9,10 +9,7 @@ import io.micronaut.scheduling.annotation.Async
 import org.apache.commons.io.FileUtils
 import org.slf4j.LoggerFactory
 import java.io.File
-import java.io.FileOutputStream
 import java.net.URL
-import java.nio.channels.Channels
-import java.nio.channels.ReadableByteChannel
 import javax.inject.Singleton
 
 /**
