@@ -33,10 +33,10 @@ open class ElasticCopericusCataloguePersister(
 
     @EventListener
     @Async
-    open fun cdsCatalogueReceivedEvent(cdsCatalogueReceivedEvent: CdsCatalogueReceivedEvent) {
+    open fun cdsCatalogueReceivedEvent(copernicusCatalogueReceivedEvent: CopernicusCatalogueReceivedEvent) {
         log.info("CdsCatalogueReceivedEvent received")
 
-        val uiResources = cdsCatalogueReceivedEvent.uiResources
+        val uiResources = copernicusCatalogueReceivedEvent.uiResources
         val bulkRequest = BulkRequest()
         uiResources.forEach { uiResource ->
             val request = IndexRequest(copericusCatalogue).id(uiResource.id)

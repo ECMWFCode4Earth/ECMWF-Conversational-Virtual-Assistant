@@ -4,6 +4,8 @@ package com._2horizon.cva.retrieval.copernicus.dto.ui
 import com._2horizon.cva.retrieval.copernicus.dto.WmsSample
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.JsonNode
+import org.jsoup.Jsoup
+import org.jsoup.safety.Whitelist
 import java.time.LocalDate
 
 data class UiResource(
@@ -116,4 +118,7 @@ data class UiResource(
     
     @JsonProperty("wms_sample")
     val wmsSample: WmsSample?
-)
+)    {
+    val richAbstractCleaned: String
+        get() = Jsoup.clean(richAbstract, Whitelist.none())
+}

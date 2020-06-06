@@ -13,7 +13,7 @@ import org.neo4j.ogm.session.SessionFactory
  */
 @Requirements(
     Requires(classes = [SessionFactory::class]),
-    Requires(property = "app.feature.ingest-pipeline.neo4j-ingest-enabled", notEquals = "false")
+    Requires(property = "app.feature.ingest-pipeline.neo4j-ingest-enabled", value = "true")
 )
 @Factory
 class OgmFactory(
