@@ -18,7 +18,7 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-09.
  */
 @Singleton
-@Requires(property = "app.airtable.retrieval.ecmwf.publications")
+@Requires(property = "app.feature.ingest-pipeline.ecmwf.publications.airtable-ingest-enabled", value = "true")
 open class AirtableEcmwfPublicationRepository(
     @Value("\${app.airtable.retrieval.ecmwf.publications}") private val publicationsBase: String,
     api: AirtableApi
@@ -32,9 +32,9 @@ open class AirtableEcmwfPublicationRepository(
     @EventListener
     @Async
     open fun ecmwfPublicationEventReceived(ecmwfPublicationEvent: EcmwfPublicationEvent) {
-        log.debug("EcmwfPublicationEvent received")
 
         val pubDTO = ecmwfPublicationEvent.ecmwfPublicationDTO
+        log.debug("EcmwfPublicationEvent received ${pubDTO.nodeId}")
 
         // only process unknown publications
         if (lookupPublication(pubDTO.nodeId) != null) {

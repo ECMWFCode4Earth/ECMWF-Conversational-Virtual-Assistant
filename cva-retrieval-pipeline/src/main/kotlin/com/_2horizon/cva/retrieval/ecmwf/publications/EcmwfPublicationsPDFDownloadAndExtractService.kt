@@ -16,7 +16,7 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-21.
  */
 @Singleton
-@Requires(property =  "app.feature.retrieval-pipeline.ecmwf-publications-download-enabled", value = "true")
+@Requires(property =  "app.feature.retrieval-pipeline.ecmwf.publications.download-enabled", value = "true")
 open class EcmwfPublicationsPDFDownloadAndExtractService(
     @Value("\${app.retrieval.ecmwf.publications-path}") private val publicationsPath: String
 ) {

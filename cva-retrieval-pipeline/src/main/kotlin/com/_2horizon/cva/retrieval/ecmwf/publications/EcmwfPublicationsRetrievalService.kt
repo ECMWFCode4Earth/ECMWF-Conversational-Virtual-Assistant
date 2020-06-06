@@ -4,6 +4,7 @@ import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
 import com._2horizon.cva.retrieval.event.EcmwfPublicationEvent
 import com._2horizon.cva.retrieval.sitemap.Sitemap
 import com._2horizon.cva.retrieval.sitemap.SitemapRetrievalService
+import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
 import io.micronaut.context.event.ApplicationEventPublisher
 import io.micronaut.context.event.StartupEvent
@@ -15,11 +16,13 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-05-21.
  */
 @Singleton
-class EcmwfPublicationsCrawler(
+@Requires(property = "app.feature.retrieval-pipeline.ecmwf.publications.enabled", value = "true")
+class EcmwfPublicationsRetrievalService(
     private val publicationsBibEndNoteDownloadAndExtractService: EcmwfPublicationsBibEndNoteDownloadAndExtractService,
     private val publicationsHtmlDownloadAndExtractService: EcmwfPublicationsHtmlDownloadAndExtractService,
     private val sitemapRetrievalService: SitemapRetrievalService,
-    @Value("\${app.feature.retrieval-pipeline.ecmwf-publications-enabled:false}") private val retrievalEcmwfPublicationsEnabled: Boolean,
+    private val ecmwfPublicationsMetadataToFileSaver: EcmwfPublicationsMetadataToFileSaver,
+    @Value("\${app.feature.retrieval-pipeline.ecmwf.publications.strategy}") private val retrievalEcmwfPublicationsStrategy: EcmwfPublicationsStrategy,
     private val applicationEventPublisher: ApplicationEventPublisher
 ) {
 
@@ -27,46 +30,54 @@ class EcmwfPublicationsCrawler(
 
     @EventListener
     fun onStartup(startupEvent: StartupEvent) {
-        if (retrievalEcmwfPublicationsEnabled) {
-            retrievalEcmwfPublications()
-        }
+        retrievalEcmwfPublications()
     }
 
     private fun retrievalEcmwfPublications(): List<EcmwfPublicationDTO> {
 
         val publicationSitemaps = retrieveEcmwfSitemapsSortedByDescending()
 
-        // just in case the sitemap format changed
-        check(publicationSitemaps.size > 7000) { "Wrong publicationSitemaps size with ${publicationSitemaps.size}" }
-
         return publicationSitemaps
-            // .filter { it.first < 16666 }
-            .take(100)
+            .filter { it.first < 13567 }
+            // .take(100)
             .map { sitemapPair ->
 
                 val nodeId = sitemapPair.first
                 val loc = sitemapPair.second
                 log.debug("going to process $loc")
 
-                val ecmwfPublicationDTO =
-                    publicationsBibEndNoteDownloadAndExtractService.downloadAndExtractBibEndNote(nodeId)
-
-                val (publicationPDF, publicationType) = publicationsHtmlDownloadAndExtractService
-                    .downloadAndExtractPublicationTypeAndPDF(nodeId)
-
-                val pubDTO =
-                    ecmwfPublicationDTO.copy(publicationType = publicationType, publicationPDF = publicationPDF)
+                val pubDTO: EcmwfPublicationDTO =
+                    if (retrievalEcmwfPublicationsStrategy == EcmwfPublicationsStrategy.LOCAL) {
+                        ecmwfPublicationsMetadataToFileSaver.readInLocalEcmwfPublicationDTO(nodeId)
+                    } else {
+                        fetchRemoteEcmwfPublicationAsDTO(nodeId)
+                    }
 
                 applicationEventPublisher.publishEvent(EcmwfPublicationEvent(pubDTO))
                 pubDTO
             }
     }
 
+    private fun fetchRemoteEcmwfPublicationAsDTO(nodeId: Int): EcmwfPublicationDTO {
+        val ecmwfPublicationDTO =
+            publicationsBibEndNoteDownloadAndExtractService.downloadAndExtractBibEndNote(nodeId)
+
+        val (publicationPDF, publicationType) = publicationsHtmlDownloadAndExtractService
+            .downloadAndExtractPublicationTypeAndPDF(nodeId)
+
+        return ecmwfPublicationDTO.copy(publicationType = publicationType, publicationPDF = publicationPDF)
+    }
+
+
+
     private fun retrieveEcmwfSitemapsSortedByDescending(): List<Pair<Int, String>> {
-        return sitemapRetrievalService.retrieveEcmwfSitemaps()
+        val publicationSitemaps = sitemapRetrievalService.retrieveEcmwfSitemaps()
             .filter(::filterEcmwfPublications)
             .map { sitemap -> Pair(extractNodeIdFromSitemapLoc(sitemap.loc), sitemap.loc) }
             .sortedByDescending { it.first }
+        // just in case the sitemap format changed
+        check(publicationSitemaps.size > 7000) { "Wrong publicationSitemaps size with ${publicationSitemaps.size}" }
+        return publicationSitemaps
     }
 
     private fun extractNodeIdFromSitemapLoc(loc: String): Int {
@@ -78,4 +89,8 @@ class EcmwfPublicationsCrawler(
 
     private fun filterEcmwfPublications(sitemap: Sitemap): Boolean =
         sitemap.loc.startsWith("http://www.ecmwf.int/en/elibrary/")
+}
+
+enum class EcmwfPublicationsStrategy {
+    LOCAL, REMOTE
 }

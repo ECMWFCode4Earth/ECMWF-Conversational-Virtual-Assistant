@@ -21,6 +21,7 @@ val junitVersion: String by project
 val hamcrestVersion: String by project
 val jacksonKotlinVersion: String by project
 val objenesisVersion: String by project
+val byteBuddyVersion: String by project
 val spockVersion: String by project
 val asciidoctorjVersion: String by project
 
@@ -154,6 +155,7 @@ subprojects {
             testImplementation("io.micronaut:micronaut-inject-groovy")
             testImplementation("io.micronaut.test:micronaut-test-spock")
             testImplementation("org.objenesis:objenesis:$objenesisVersion")
+            testImplementation("net.bytebuddy:byte-buddy:$byteBuddyVersion")
         }
     }
 }

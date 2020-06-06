@@ -1,5 +1,6 @@
 package com._2horizon.cva.retrieval.ecmwf.publications
 
+import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
 import com._2horizon.cva.retrieval.event.EcmwfPublicationEvent
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.micronaut.context.annotation.Value
@@ -29,5 +30,13 @@ open class EcmwfPublicationsMetadataToFileSaver(
         File("$publicationsPath/json/${pubDTO.nodeId}.json").writeText(
             objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(pubDTO)
         )
+    }
+
+    fun readInLocalEcmwfPublicationDTO(nodeId: Int): EcmwfPublicationDTO {
+        return readInLocalFileEcmwfPublicationDTO(File("$publicationsPath/json/${nodeId}.json"))
+    }
+
+    fun readInLocalFileEcmwfPublicationDTO(nodeIdJsonFile: File): EcmwfPublicationDTO {
+        return objectMapper.readValue(nodeIdJsonFile, EcmwfPublicationDTO::class.java)
     }
 }
