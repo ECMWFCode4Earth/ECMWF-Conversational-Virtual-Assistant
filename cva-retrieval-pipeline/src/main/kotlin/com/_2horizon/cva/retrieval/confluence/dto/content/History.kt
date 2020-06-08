@@ -6,7 +6,7 @@ import java.time.OffsetDateTime
 
 data class History(
     @JsonProperty("createdBy")
-    val createdBy: CreatedBy,
+    val createdBy: User,
     @JsonProperty("createdDate")
     val createdDate: OffsetDateTime,
     @JsonProperty("latest")

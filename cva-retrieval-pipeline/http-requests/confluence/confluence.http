@@ -1,0 +1,19 @@
+# see https://docs.atlassian.com/ConfluenceServer/rest/7.3.1/
+
+
+GET https://confluence.ecmwf.int/rest/api/space/WIGOSWT/content/page?expand=page.children.page.children.page
+Accept: application/json
+
+###
+
+# Top level
+GET https://confluence.ecmwf.int/rest/api/content/174866096/child
+
+### Get pages
+
+GET https://confluence.ecmwf.int/rest/api/content/174866096/child/page
+
+
+###
+GET https://confluence.ecmwf.int/rest/api/space/CKB/content?depth=root
+

@@ -19,3 +19,6 @@ data class CopernicusCatalogueReceivedEvent(val datastore:Datastore, val uiResou
 data class SignificantTermsReceivedEvent(val datastore: Datastore, val significantTerms: List<SignificantTerm>)
 
 
+data class ConfluenceParentChildRelationshipEvent(val parentId:Long, val childId:Long)
+
+

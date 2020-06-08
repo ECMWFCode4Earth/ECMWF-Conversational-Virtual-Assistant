@@ -1,6 +1,7 @@
 package com._2horizon.cva.retrieval.confluence
 
 import com._2horizon.cva.retrieval.confluence.dto.content.ContentResponse
+import com._2horizon.cva.retrieval.confluence.dto.pagechildren.PageChildrenResponse
 import com._2horizon.cva.retrieval.confluence.dto.space.SpacesResponse
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.annotation.Client
@@ -27,4 +28,12 @@ interface ConfluenceOperations {
         limit: Int = 10,
         start: Int = 0
     ): Optional<ContentResponse>
+
+    @Get("/content/{contentId}/child?start={start}&limit={limit}&expand=page.children.page")
+    fun contentWithChildPages(
+        contentId:Long,
+        limit: Int = 500,
+        start: Int = 0
+    ): PageChildrenResponse
+    
 }

@@ -12,6 +12,7 @@ val elasticsearchRestVersion: String by project
 val elasticsearchBeyonderVersion: String by project
 val micronautNeo4jBoltVersion: String by project
 val micronautNeo4jOgmVersion: String by project
+val reactorVersion: String by project
 
 plugins {
     groovy

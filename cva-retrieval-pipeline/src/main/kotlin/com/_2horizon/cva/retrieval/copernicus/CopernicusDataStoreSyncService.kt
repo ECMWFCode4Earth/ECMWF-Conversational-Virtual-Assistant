@@ -54,5 +54,5 @@ class CopernicusDataStoreSyncService(
 }
 
 enum class Datastore{
-    ADS,CDS,ECMWF_PUBLICATIONS
+    ADS,CDS,ECMWF_PUBLICATIONS,CONFLUENCE
 }

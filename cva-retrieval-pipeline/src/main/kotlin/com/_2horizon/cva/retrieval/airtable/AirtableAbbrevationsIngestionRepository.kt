@@ -59,11 +59,15 @@ class AirtableAbbrevationsIngestionRepository(
     }
 
     private fun lookupAbbreviation(abbreviation: String) =
-        abbreviationTable.list { querySpec: AirtableTable.QuerySpec ->
-            querySpec.filterByFormula(
-                LogicalOperator.EQ,
-                AirtableFormula.Object.field("Abbreviation"),
-                AirtableFormula.Object.value(abbreviation)
-            )
-        }.firstOrNull()
+        try {
+            abbreviationTable.list { querySpec: AirtableTable.QuerySpec ->
+                querySpec.filterByFormula(
+                    LogicalOperator.EQ,
+                    AirtableFormula.Object.field("Abbreviation"),
+                    AirtableFormula.Object.value(abbreviation)
+                )
+            }.firstOrNull()
+        } catch (ex: AirtableApiException) {
+            log.warn("Couldn't save because ${ex.type}: ${ex.message}")
+        }
 }

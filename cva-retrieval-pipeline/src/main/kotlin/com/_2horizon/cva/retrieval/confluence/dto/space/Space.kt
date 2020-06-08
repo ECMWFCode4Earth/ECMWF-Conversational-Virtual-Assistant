@@ -11,7 +11,7 @@ data class Space(
     @JsonProperty("icon")
     val icon: Icon,
     @JsonProperty("id")
-    val id: Int,
+    val id: Long,
     @JsonProperty("key")
     val key: String,
     @JsonProperty("_links")

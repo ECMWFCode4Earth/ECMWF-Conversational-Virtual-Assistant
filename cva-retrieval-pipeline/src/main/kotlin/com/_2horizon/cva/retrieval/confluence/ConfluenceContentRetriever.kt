@@ -17,7 +17,7 @@ class ConfluenceContentRetriever(
     private val confluenceOperations: ConfluenceOperations,
     private val applicationEventPublisher: ApplicationEventPublisher,
     private val confluenceSpacesRetriever: ConfluenceSpacesRetriever,
-    @Value("\${app.feature.retrieval-pipeline.pages-enabled:false}") private val retrievalPipelinePagesEnabled: Boolean
+    @Value("\${app.feature.retrieval-pipeline.confluence.pages.enabled:false}") private val retrievalPipelinePagesEnabled: Boolean
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
@@ -26,7 +26,8 @@ class ConfluenceContentRetriever(
         if (retrievalPipelinePagesEnabled) {
             confluenceSpacesRetriever.retrieveSpaces().spacesList
                 .filter { it.type == "global" }
-                .filter { it.key != "ECC" }
+                // .filter { it.key != "ECC" }
+                // .filter { it.key == "CUSF" }
                 .forEach { space -> retrievePages(space.key) }
         }
     }

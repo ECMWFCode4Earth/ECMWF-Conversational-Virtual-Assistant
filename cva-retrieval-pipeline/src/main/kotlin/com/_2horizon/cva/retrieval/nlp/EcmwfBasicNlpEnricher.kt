@@ -17,7 +17,7 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-06-03.
  */
 @Singleton
-@Requires(property = "app.feature.nlp-pipeline.ecmwf-basic-nlp-enabled", value = "true")
+@Requires(property = "app.feature.basic-nlp.ecmwf.enabled", value = "true")
 open class EcmwfBasicNlpEnricher(
     private val applicationEventPublisher: ApplicationEventPublisher
 ) {
