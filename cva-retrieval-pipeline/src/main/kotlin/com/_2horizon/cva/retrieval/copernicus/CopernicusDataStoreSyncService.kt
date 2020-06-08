@@ -18,8 +18,8 @@ class CopernicusDataStoreSyncService(
     private val cdsOperations: ClimateDataStoreOperations,
     private val adsOperations: AtmosphereDataStoreOperations,
     private val applicationEventPublisher: ApplicationEventPublisher,
-    @Value("\${app.feature.retrieval-pipeline.cds-enabled:false}") private val retrievalPipelineCdsEnabled: Boolean,
-    @Value("\${app.feature.retrieval-pipeline.ads-enabled:false}") private val retrievalPipelineAdsEnabled: Boolean
+    @Value("\${app.feature.retrieval-pipeline.copernicus.cds.enabled:false}") private val retrievalPipelineCdsEnabled: Boolean,
+    @Value("\${app.feature.retrieval-pipeline.copernicus.ads.enabled:false}") private val retrievalPipelineAdsEnabled: Boolean
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
