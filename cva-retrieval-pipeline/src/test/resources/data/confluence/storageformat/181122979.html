@@ -1,0 +1,123 @@
+<p style="text-align: justify;">The temporal aggregation is presented in two different formats: 6-hourly intervals and
+    daily intervals. In addition, an aggregation based on a 5-day moving average (Alert) is also available.&nbsp;</p>
+<p style="text-align: justify;"><br/></p>
+<p><strong>
+    <ac:structured-macro ac:name="anchor" ac:schema-version="1" ac:macro-id="a5d5306f-2cbd-4cd4-a1cf-414612bb27ed">
+        <ac:parameter ac:name="">Section4.1</ac:parameter>
+    </ac:structured-macro>
+    4.1.<span class="Apple-tab-span"> </span>6-hourly</strong></p>
+<p style="text-align: justify;"><br/></p>
+<p style="text-align: justify;">The 6-hourly intervals are centred on the main synoptic hours (00, 06, 12 and 18 UTC) as
+    described in <span><ac:link ac:anchor="Table8"><ac:plain-text-link-body><![CDATA[Table 8]]></ac:plain-text-link-body></ac:link></span>.
+</p>
+<p style="text-align: justify;"><br/></p>
+<p style="text-align: justify;"><strong>
+    <ac:structured-macro ac:name="anchor" ac:schema-version="1" ac:macro-id="47c7a28a-4961-49f7-bc49-6747a7edd744">
+        <ac:parameter ac:name="">Table8</ac:parameter>
+    </ac:structured-macro>
+    Table 8 - </strong>Definition of the 6-hourly aggregation intervals. The defined time limits (note that 21UTC in the
+    00 interval refers to the previous day) are applied to the observation time (<strong>t</strong>) as specified in the
+    NWP
+    monitoring reports. It should be noted that only the observations that were made available in time for each of the
+    NWP
+    assimilation systems are included in the NWP reports.
+</p>
+<table class="wrapped">
+    <colgroup>
+        <col/>
+        <col/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td>
+            <p><strong>6-hourly interval</strong></p></td>
+        <td>
+            <p><strong>Observation time (t)</strong></p></td>
+    </tr>
+    <tr>
+        <td>
+            <p>00</p></td>
+        <td>
+            <p>21 UTC &le; t &lt; 03 UTC</p></td>
+    </tr>
+    <tr>
+        <td>
+            <p>06</p></td>
+        <td>
+            <p>03 UTC &le; t &lt; 09 UTC</p></td>
+    </tr>
+    <tr>
+        <td>
+            <p>12</p></td>
+        <td>
+            <p>09 UTC &le; t &lt; 15 UTC</p></td>
+    </tr>
+    <tr>
+        <td>
+            <p>18</p></td>
+        <td>
+            <p>15 UTC &le; t &lt; 21 UTC</p></td>
+    </tr>
+    </tbody>
+</table>
+<p><br/></p>
+<p><strong>
+    <ac:structured-macro ac:name="anchor" ac:schema-version="1" ac:macro-id="e45ffe30-6425-4185-ae49-8739ada0ae20">
+        <ac:parameter ac:name="">Section4.2</ac:parameter>
+    </ac:structured-macro>
+    4.2.<span class="Apple-tab-span"> </span>Daily</strong></p>
+<p><br/></p>
+<p style="text-align: justify;">The daily aggregation refers to the union of the four 6-hourly intervals as defined in
+    <span><ac:link ac:anchor="Table8"><ac:plain-text-link-body><![CDATA[Table 8]]></ac:plain-text-link-body></ac:link></span>,
+    therefore is the 24-hour period within the interval 21 UTC &le; t &lt; 21 UTC, where t is the observation time and
+    the
+    lower &ldquo;21UTC&rdquo; limit is the day before.
+</p>
+<p><br/></p>
+<p><strong>4.3.<span class="Apple-tab-span"> </span>Alert</strong></p>
+<p><br/></p>
+<p style="text-align: justify;">The alert maps represent a 5-day moving average, therefore rely on daily values for a 5
+    day period as described in <span><ac:link ac:anchor="Table9"><ac:plain-text-link-body><![CDATA[Table 9]]></ac:plain-text-link-body></ac:link></span>.
+</p>
+<p><br/></p>
+<p><strong>
+    <ac:structured-macro ac:name="anchor" ac:schema-version="1" ac:macro-id="322f9215-105c-4660-846a-6836d1d69e23">
+        <ac:parameter ac:name="">Table9</ac:parameter>
+    </ac:structured-macro>
+    Table 9 - </strong>5-day moving average
+</p>
+<table class="wrapped">
+    <colgroup>
+        <col/>
+        <col/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td>
+            <p><strong>Definition</strong></p></td>
+        <td>
+            <p>5-day moving average of daily averages</p></td>
+    </tr>
+    <tr>
+        <td>
+            <p><strong>Calculation</strong></p></td>
+        <td>
+            <p>For each observed variable, the average of the valid daily values for that day and the four of previous
+                days.&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><strong>Valid data</strong></p></td>
+        <td>
+            <p>Data not flagged as NULL</p></td>
+    </tr>
+    <tr>
+        <td>
+            <p><strong>Minimum required valid data</strong></p></td>
+        <td>
+            <p>It is calculated if at least 1 valid daily value is available over the 5-day period.</p></td>
+    </tr>
+    </tbody>
+</table>
+<p class="auto-cursor-target" style="text-align: justify;"><br/></p>

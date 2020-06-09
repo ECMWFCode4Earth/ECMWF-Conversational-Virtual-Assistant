@@ -6,10 +6,16 @@ import com._2horizon.cva.retrieval.event.ConfluenceContentEvent
 import com._2horizon.cva.retrieval.event.SignificantTermsReceivedEvent
 import com._2horizon.cva.retrieval.extensions.TextInBrackets
 import com._2horizon.cva.retrieval.extensions.extractTextInBrackets
+import com.londogard.smile.extensions.normalize
+import com.londogard.smile.extensions.sentences
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.event.ApplicationEventPublisher
 import io.micronaut.runtime.event.annotation.EventListener
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
+import org.jsoup.parser.Parser
 import org.slf4j.LoggerFactory
+import smile.nlp.tokenizer.BreakIteratorSentenceSplitter
 import javax.inject.Singleton
 
 /**
@@ -33,7 +39,7 @@ open class ConfluenceBasicNlpEnricher(
         val significantTerms = contentList.map { content ->
 
             listOf(
-                findSigTextInBrackets(spaceKey,content)
+                findSigTextInBrackets(spaceKey, content)
             ).flatten()
 
         }.flatten()
@@ -46,10 +52,8 @@ open class ConfluenceBasicNlpEnricher(
         )
     }
 
-
-
     private fun findSigTextInBrackets(
-        spaceKey:String,
+        spaceKey: String,
         content: Content
     ): List<SignificantTerm> {
         return mutableListOf<TextInBrackets>().apply {
@@ -67,7 +71,39 @@ open class ConfluenceBasicNlpEnricher(
             }
     }
 
+    private fun findQuestionsInStorageFormat(storageFormat: String) {
 
+        val document = Jsoup.parse(storageFormat, "", Parser.xmlParser())
+
+        val children = document.children().filter { it.text().isNotEmpty() }
+
+        val tagVariations = children.map { it.nodeName() }.toSet()
+
+        val structureMarcos =
+            children.filter { it.nodeName() == "ac:structured-macro" }.map { it.attr("ac:name") }.toSet()
+
+
+        println(children.size)
+    }
+
+
+    private fun findSentencesInStorageFormat(storageFormat: String, removeCodeBlock: Boolean = true): List<String> {
+
+        val document = Jsoup.parse(storageFormat, "", Parser.xmlParser())
+
+        if (removeCodeBlock) {
+            document.select("ac|structured-macro[ac:name=code]").forEach { it.remove() }
+        }
+
+        val s = document.children().filter { it.text().isNotEmpty() }
+            .map { BreakIteratorSentenceSplitter().split(it.text().normalize()).toList() }
+
+        return document.text().sentences()
+    }
+
+    private fun findStrucutredStorageFormat(document: Document): List<String> {
+        return document.select("ac|structured-macro").map { it.attr("ac:name") }
+    }
 }
 
 
