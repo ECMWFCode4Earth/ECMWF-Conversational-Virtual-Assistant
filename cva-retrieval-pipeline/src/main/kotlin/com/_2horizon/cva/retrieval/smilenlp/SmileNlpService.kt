@@ -3,6 +3,7 @@ package com._2horizon.cva.retrieval.smilenlp
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
 import com._2horizon.cva.retrieval.extract.pdf.PDFToTextService
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.londogard.smile.extensions.StopWordFilter
 import com.londogard.smile.extensions.bag
 import com.londogard.smile.extensions.keywords
 import com.londogard.smile.extensions.normalize
@@ -17,9 +18,14 @@ import smile.nlp.SimpleCorpus
 import smile.nlp.Text
 import smile.nlp.dictionary.EnglishPunctuations
 import smile.nlp.dictionary.EnglishStopWords
+import smile.nlp.pos.HMMPOSTagger
+import smile.nlp.pos.PennTreebankPOS
+import smile.nlp.tokenizer.BreakIteratorSentenceSplitter
 import smile.nlp.tokenizer.PennTreebankTokenizer
+import smile.nlp.tokenizer.SentenceSplitter
 import smile.nlp.tokenizer.SimpleSentenceSplitter
 import java.io.File
+import java.util.Locale
 import javax.inject.Singleton
 
 /**
@@ -138,5 +144,15 @@ class SmileNlpService(
     fun analysePdf(pdf:File){
         val pdfText = pdfToTextService.convertToText(pdf)
         textToSentences(pdfText)
+    }
+
+    @JvmOverloads
+    fun breakTextToSentences(text:String, sentenceSplitter: SentenceSplitter = BreakIteratorSentenceSplitter(Locale.ENGLISH)): List<String> {
+        return sentenceSplitter.split(text).toList()
+    }
+
+    fun pos(aSentence:String): List<Pair<String, PennTreebankPOS>> {
+        val words = aSentence.words(StopWordFilter.NONE)
+        return words.zip(HMMPOSTagger.getDefault().tag(words.toTypedArray()))
     }
 }

@@ -12,15 +12,16 @@ import javax.inject.Inject
 /**
  * Created by Frank Lieber (liefra) on 2020-05-11.
  */
-@Ignore
+
 @MicronautTest
-@Property(name = "app.retrieval.ecmwf.publications-path", value = "/Users/liefra/data/02Projects/ECMWF/100-dev/local-file-store/ecmwf/publications")
+@Property(name = "app.retrieval.ecmwf.publications-path", value = "/Volumes/DeepT5/02-Ext-Projects/ECMWF/local-file-store/ecmwf/publications")
 class SmileNlpServiceTest extends Specification {
 
     @Inject
     SmileNlpService service
 
     @Unroll
+    @Ignore
     def "Should get convert text to the correct number of sentences"() {
         given:
         String text = new File("./src/test/resources/data/nlp/sampletext/ecmwf/${textId}.txt").text
@@ -39,6 +40,7 @@ class SmileNlpServiceTest extends Specification {
     }
 
     // TODO: Not very useful like this
+    @Ignore
     def "Should analyseEcmwfPublications"() {
         when:
         def t = service.analyseEcmwfPublications()
@@ -52,6 +54,7 @@ class SmileNlpServiceTest extends Specification {
 
 
     // TODO: Not very useful like this
+    @Ignore
     def "Should getAllTextInBrackets"() {
         when:
         def t = service.getAllTextInBrackets()
@@ -62,6 +65,7 @@ class SmileNlpServiceTest extends Specification {
     }
 
     @Unroll
+    @Ignore
     def "Should convert local publication PDF file of #publicationId into text"() {
         when:
         List<String> sentences = service.analysePdf(new File("./src/test/resources/data/ecmwf/publications/pdf/${publicationId}.pdf"))
@@ -73,6 +77,36 @@ class SmileNlpServiceTest extends Specification {
         publicationId | start
         19307         | 'Part III: Dynamics and Numerical Procedures'
         19516         | 'COMPUTING'
+    }
+
+    @Unroll
+    @Ignore
+    def "Should split into sentences"() {
+        when:
+        def sentences = service.breakTextToSentences(text)
+
+        then:
+        sentences.size() == noSentences
+
+        where:
+        noSentences | text
+        2           | 'The model surface is logically divided into sea and land points by using a land-sea mask. A grid point is defined as a land point, if more than 50 per cent of the actual surface of the grid-box is land, for example with a TL511 resolution, islands like Corsica, Crete and Cyprus are represented by around five land grid points each.'
+        1           | 'When does the information inserted in OSCAR/Surface (e.g., a new station.) show in the WIGOS Data Quality Monitoring System webtool?'
+    }
+
+    @Unroll
+
+    def "Should pos"() {
+        when:
+        def sentences = service.pos(aSentence)
+
+        then:
+        sentences.size() == size
+
+        where:
+        aSentence                                                      | size
+        'What bulletin type does NCEP assimilate, TAC, BUFR or both?' | 2
+
     }
 
 

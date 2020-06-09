@@ -13,6 +13,8 @@ val elasticsearchBeyonderVersion: String by project
 val micronautNeo4jBoltVersion: String by project
 val micronautNeo4jOgmVersion: String by project
 val reactorVersion: String by project
+val coreNlpKtVersion: String by project
+
 
 plugins {
     groovy
@@ -63,6 +65,12 @@ dependencies {
     implementation("com.github.haifengl:smile-core:$smileCoreVersion")
     implementation("com.github.haifengl:smile-nlp:$smileCoreVersion")
 
+    // https://stanfordnlp.github.io/CoreNLP/
+    implementation("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion")
+    runtimeOnly("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion:models")
+    runtimeOnly("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion:models-english")
+    runtimeOnly("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion:models-english-kbp")
+
     implementation("io.swagger.core.v3:swagger-annotations")
     implementation("io.micronaut.graphql:micronaut-graphql")
     kapt("io.micronaut.configuration:micronaut-openapi")
@@ -86,11 +94,6 @@ tasks {
         classpath += configurations.getByName("developmentOnly")
         jvmArgs("-XX:TieredStopAtLevel=1", "-Dcom.sun.management.jmxremote")
     }
-}
-
-noArg {
-    annotation("org.neo4j.ogm.annotation.NodeEntity")
-    annotation("org.neo4j.ogm.annotation.RelationshipEntity")
 }
 
 allOpen{
