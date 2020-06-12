@@ -17,3 +17,7 @@ GET https://confluence.ecmwf.int/rest/api/content/174866096/child/page
 ###
 GET https://confluence.ecmwf.int/rest/api/space/CKB/content?depth=root
 
+###
+
+GET https://confluence.ecmwf.int/rest/api/content/140380476/child/comment?expand=body.view
+

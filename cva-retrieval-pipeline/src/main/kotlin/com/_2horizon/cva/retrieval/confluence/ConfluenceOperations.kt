@@ -16,10 +16,11 @@ import java.util.Optional
 @Retryable(attempts = "5", multiplier = "1.5")
 interface ConfluenceOperations {
 
-    @Get("/space?start={start}&limit={limit}&expand=metadata.labels,description.view,description.plain,icon")
+    @Get("/space?start={start}&limit={limit}&type={type}&expand=metadata.labels,description.view,description.plain,icon")
     fun spacesWithMetadataLabelsAndDescriptionAndIcon(
         limit: Int = 500,
-        start: Int = 0
+        start: Int = 0,
+        type: String = "global"
     ): Optional<SpacesResponse>
     
 
@@ -41,5 +42,12 @@ interface ConfluenceOperations {
         limit: Int = 500,
         start: Int = 0
     ): PageChildrenResponse
-    
+
+    @Get("/content/{contentId}/child/comment?&start={start}&limit={limit}&expand=history,version,metadata.labels,body.view,body.storage")
+    fun contentComments(
+        contentId:Long,
+        limit: Int = 200,
+        start: Int = 0
+    ): Optional<ContentResponse>
+
 }

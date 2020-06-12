@@ -1,6 +1,6 @@
 package com._2horizon.cva.retrieval.neo4j.repo
 
-import org.neo4j.driver.Driver
+import com._2horizon.cva.retrieval.neo4j.domain.ConfluencePage
 import org.neo4j.ogm.session.SessionFactory
 import org.slf4j.LoggerFactory
 import javax.inject.Singleton
@@ -10,36 +10,22 @@ import javax.inject.Singleton
  */
 @Singleton
 class DatasetRepository(
-    driver: Driver,
+    // driver: Driver,
     sessionFactory: SessionFactory
-) : AbstractNeo4JRepository(driver, sessionFactory) {
+) : AbstractNeo4JRepository( sessionFactory) {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
-    // fun findMovieAndTheirActors(movieName: String): List<Movie> {
-    //     val query = """
-    //         MATCH (m:Movie) <-[:ACTED_IN]-(p:Person) WHERE m.title =~ ".*${movieName}.*" RETURN m.title as title, collect(p.name) as actors
-    //                   """.trimIndent()
-    //
-    //     return findMany(query) { r ->
-    //         Movie(r.get("title").asString(), r.get("actors").asList { Actor(it.asString()) })
-    //     }
-    // }
 
-    // fun saveMovie(movie: MovieEntity) {
-    //
-    //     val session = sessionFactory.openSession()
-    //
-    //     session.beginTransaction().use { tx ->
-    //         try {
-    //             session.save(movie)
-    //             tx.commit()
-    //         } catch (ex: Throwable) {
-    //             log.error(ex.message)
-    //             tx.rollback()
-    //         }
-    //     }
-    //
-    //     println("done saving movie")
-    // }
+
+    fun findConfluencePageByTitleAndSpaceKey(title: String,spaceKey:String): ConfluencePage? {
+        val query = "MATCH(p:ConfluencePage) WHERE p.title='\$title' AND p.spaceKey='\$spaceKey' RETURN p"
+        val params = mapOf(
+            "title" to title,
+            "spaceKey" to spaceKey
+        )
+        return queryForObject<ConfluencePage>(query,params)
+    }
+
+
 }

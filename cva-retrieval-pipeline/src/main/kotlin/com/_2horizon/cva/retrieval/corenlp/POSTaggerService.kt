@@ -25,11 +25,17 @@ class POSTaggerService {
 
     // @EventListener
     fun onStartup(startupEvent: StartupEvent) {
-
     }
 
-    fun questionDetector(text: String): Boolean {
-        val sentenceSimple = Sentence(text)
+    fun questionDetector(text: String, skippingLength: Int = 144): Boolean {
+        log.debug("questionDetector for $text")
+
+        if (text.length > skippingLength) {
+            log.warn("skipping questionDetector for $text")
+            return false
+        }
+
+        val sentenceSimple = Sentence(text, Properties().apply { setProperty("pos.maxlen", "100") })
 
         //SBARQ: Direct question introduced by wh-element
         //SQ: Yes/no questions and subconstituent of SBARQ excluding wh-element
@@ -57,6 +63,5 @@ class POSTaggerService {
 
         val t = constituencyParse.constituents(LabeledScoredConstituentFactory())
         return t.map { it.label().value() }.any { it == "SBARQ" || it == "SQ" }
-
     }
 }

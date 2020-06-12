@@ -11,6 +11,6 @@ data class View(
     @JsonProperty("value")
     val value: String
 ) {
-    val valueWithHtml: String
+    val valueWithoutHtml: String
         get() = Jsoup.clean(value, Whitelist.none())
 }

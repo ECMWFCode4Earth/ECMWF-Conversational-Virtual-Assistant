@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 data class Content(
     @JsonProperty("body")
     val body: Body,
-    @JsonProperty("extensions")
-    val extensions: Extensions,
+    // @JsonProperty("extensions")
+    // val extensions: Extensions,
     @JsonProperty("history")
     val history: History,
     @JsonProperty("id")

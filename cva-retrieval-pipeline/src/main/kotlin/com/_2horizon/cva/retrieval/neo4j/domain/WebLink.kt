@@ -8,7 +8,7 @@ import org.neo4j.ogm.annotation.NodeEntity
  */
 
 @NodeEntity
-data class DatasetTerms (
+data class WebLink (
     @Id
-    val id: String
+    val href: String
 )

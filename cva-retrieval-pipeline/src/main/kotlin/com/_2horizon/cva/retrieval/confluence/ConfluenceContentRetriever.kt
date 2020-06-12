@@ -25,9 +25,10 @@ class ConfluenceContentRetriever(
     fun onStartup(startupEvent: StartupEvent) {
         if (retrievalPipelinePagesEnabled) {
             confluenceSpacesRetriever.retrieveSpaces().spacesList
-                .filter { it.type == "global" }
                 // .filter { it.key != "ECC" }
-                // .filter { it.key == "CUSF" }
+                .filter { it.key == "CUSF" }
+                // .filter { it.key == "WIGOSWT" }
+                // .filter { it.key == "CKB" }
                 .forEach { space -> retrievePages(space.key) }
         }
     }

@@ -1,21 +1,36 @@
 package com._2horizon.cva.retrieval.neo4j
 
+import com._2horizon.cva.retrieval.confluence.ConfluenceExperimentalOperations
+import com._2horizon.cva.retrieval.confluence.ConfluenceLinkExtractor
+import com._2horizon.cva.retrieval.confluence.ConfluenceOperations
+import com._2horizon.cva.retrieval.confluence.ExternalConfluenceLink
+import com._2horizon.cva.retrieval.confluence.ExternalConfluenceLinkType
+import com._2horizon.cva.retrieval.confluence.InternalConfluenceLink
+import com._2horizon.cva.retrieval.confluence.StorageFormatUtil
+import com._2horizon.cva.retrieval.confluence.dto.content.Content
 import com._2horizon.cva.retrieval.confluence.dto.space.Space
+import com._2horizon.cva.retrieval.corenlp.POSTaggerService
 import com._2horizon.cva.retrieval.event.ConfluenceContentEvent
 import com._2horizon.cva.retrieval.event.ConfluenceParentChildRelationshipEvent
 import com._2horizon.cva.retrieval.event.ConfluenceSpacesEvent
 import com._2horizon.cva.retrieval.neo4j.domain.ConfluenceAuthor
+import com._2horizon.cva.retrieval.neo4j.domain.ConfluenceComment
 import com._2horizon.cva.retrieval.neo4j.domain.ConfluenceLabel
 import com._2horizon.cva.retrieval.neo4j.domain.ConfluencePage
 import com._2horizon.cva.retrieval.neo4j.domain.ConfluenceSpace
+import com._2horizon.cva.retrieval.neo4j.domain.QuestionAnswer
+import com._2horizon.cva.retrieval.neo4j.domain.WebLink
 import com._2horizon.cva.retrieval.neo4j.repo.DatasetRepository
+import com._2horizon.cva.retrieval.nlp.SentencesDetector
 import io.micronaut.context.annotation.Requirements
 import io.micronaut.context.annotation.Requires
 import io.micronaut.runtime.event.annotation.EventListener
 import io.micronaut.scheduling.annotation.Async
 import org.neo4j.ogm.session.SessionFactory
 import org.slf4j.LoggerFactory
+import java.util.UUID
 import javax.inject.Singleton
+import kotlin.streams.toList
 
 /**
  * Created by Frank Lieber (liefra) on 2020-06-01.
@@ -26,7 +41,12 @@ import javax.inject.Singleton
 )
 @Singleton
 open class Neo4jConfluenceSpacesPersister(
-    private val datasetRepository: DatasetRepository
+    private val datasetRepository: DatasetRepository,
+    private val sentencesDetector: SentencesDetector,
+    private val posTaggerService: POSTaggerService,
+    private val confluenceLinkExtractor: ConfluenceLinkExtractor,
+    private val confluenceExperimentalOperations: ConfluenceExperimentalOperations,
+    private val confluenceOperations: ConfluenceOperations
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
@@ -56,49 +76,234 @@ open class Neo4jConfluenceSpacesPersister(
     }
 
     @EventListener
-    @Async
-    open fun confluenceContentEventReceived(confluenceContentEvent: ConfluenceContentEvent) {
+    fun confluenceContentEventReceived(confluenceContentEvent: ConfluenceContentEvent) {
         log.info("Neo4j ConfluenceContentEvent received")
 
         val pages = confluenceContentEvent.contentList
         val spaceKey = confluenceContentEvent.spaceKey
 
+        val confluenceSpace = datasetRepository.load<ConfluenceSpace>(spaceKey)
+
         pages.forEach { page ->
 
-            val updatedBy = page.version.user
-            val updatedByAuthor =
-                ConfluenceAuthor(updatedBy.userKey, updatedBy.username, updatedBy.displayName, updatedBy.type)
+            val (updatedByAuthor, editors) = extractPageEditors(page)
 
-            val createdBy = page.history.createdBy
-            val createdByAuthor =
-                ConfluenceAuthor(createdBy.userKey, createdBy.username, createdBy.displayName, createdBy.type)
+            val (titleQuestion, questionsInBody) = extractPageQuestions(page)
+
+            val pageComments = extractPageComments(page)
 
             val confluencePage = ConfluencePage(
+                space = confluenceSpace,
                 contentId = page.id.toString(),
                 spaceKey = spaceKey,
                 title = page.title,
                 type = page.type,
                 status = page.status,
+                bodyPlain = page.body.view.valueWithoutHtml,
+                titleQuestion = titleQuestion,
+                contentLength = page.body.view.valueWithoutHtml.length,
                 createdDate = page.history.createdDate,
                 updatedDate = page.version.`when`,
                 version = page.version.number,
                 updatedBy = updatedByAuthor,
-                authors = setOf(createdByAuthor, createdByAuthor),
                 labels = page.metadata.labels.results.map { ConfluenceLabel(it.name) }.toSet(),
-                childPage = null
+                faqs = questionsInBody,
+                edits = editors,
+                comments = pageComments.toSet(),
+                childPage = null,
+                internalLinks = null,
+                externalLinks = null
             )
 
             datasetRepository.save(confluencePage)
 
         }
 
+        handleLinks(pages, spaceKey)
+
+        handleAllChildPages(pages)
+
 
         log.debug("DONE with Neo4j ConfluenceContentEvent received")
     }
 
-    @EventListener
-    // @Async
-    open fun parentChildRelationshipEventReceived(parentChildRelationshipEvent: ConfluenceParentChildRelationshipEvent) {
+    private fun handleAllChildPages(pages: List<Content>) {
+        pages.forEach { parentPage ->
+            retrievePageChildren(parentPage.id)
+        }
+    }
+
+    private fun retrievePageChildren(parentId: Long) {
+        confluenceOperations.contentWithChildPages(parentId)
+            .page.results
+            .forEach { result ->
+
+                val childId = result.id
+
+                parentChildRelationshipEventReceived(
+                    ConfluenceParentChildRelationshipEvent(
+                        parentId = parentId,
+                        childId = childId
+                    )
+                )
+
+                if (result.children != null && result.children.page.results.isNotEmpty()) {
+                    retrievePageChildren(childId)
+                }
+
+            }
+    }
+
+    private fun handleLinks(
+        pages: List<Content>,
+        spaceKey: String
+    ) {
+        pages.forEach { page ->
+
+            val (internalConfluenceLinks, externalLinks) = extractPageLinks(page, spaceKey)
+
+            val internalLinks = internalConfluenceLinks.mapNotNull { link ->
+                datasetRepository.findConfluencePageByTitleAndSpaceKey(link.contentTitle, link.spaceKey)
+
+            }
+            val moreInternalLinks = externalLinks.filter { it.type == ExternalConfluenceLinkType.CONFLUENCE_LINK }
+                .mapNotNull {
+                    datasetRepository.findConfluencePageByTitleAndSpaceKey(
+                        it.properties["contentTitle"].toString(),
+                        it.properties["spaceKey"].toString()
+                    )
+                }
+
+            val moreInternalDirectLinks =
+                externalLinks.filter { it.type == ExternalConfluenceLinkType.CONFLUENCE_DIRECT_LINK }
+                    .map {
+                        datasetRepository.load<ConfluencePage>(it.properties["pageID"].toString())
+                    }
+
+            val allInteralLinks = setOf(internalLinks, moreInternalLinks, moreInternalDirectLinks).flatten().toSet()
+
+            val otherLinks = externalLinks.filterNot { it.type == ExternalConfluenceLinkType.CONFLUENCE_LINK }
+                .map { link ->
+                    WebLink(link.href)
+                }
+
+            val confluencePageWithLinks = datasetRepository.load<ConfluencePage>(page.id.toString())
+                .copy(
+                    internalLinks = allInteralLinks,
+                    externalLinks = otherLinks.toSet()
+                )
+
+            datasetRepository.save(confluencePageWithLinks)
+
+        }
+    }
+
+    private fun extractPageComments(page: Content): List<ConfluenceComment> {
+        return confluenceOperations.contentComments(page.id)
+            .get()
+            .contents
+            .map {
+
+                ConfluenceComment(
+                    contentId = page.id.toString(),
+                    title = page.title,
+                    type = page.type,
+                    status = page.status,
+                    bodyPlain = page.body.view.valueWithoutHtml,
+                    contentLength = page.body.view.valueWithoutHtml.length,
+                    createdDate = page.history.createdDate,
+                    updatedDate = page.version.`when`,
+                    version = page.version.number,
+                    updatedBy = extractPageEditors(page).first
+                )
+
+            }
+    }
+
+    private fun extractPageLinks(
+        page: Content,
+        spaceKey: String
+    ): Pair<List<InternalConfluenceLink>, List<ExternalConfluenceLink>> {
+        val storageDocument = StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body.storage.value)
+        val internalConfluenceLinks = confluenceLinkExtractor.extractInternalConfluenceLinks(storageDocument, spaceKey)
+        val externalLinks = confluenceLinkExtractor.extractExternalLinks(storageDocument)
+        return Pair(internalConfluenceLinks, externalLinks)
+    }
+
+    private fun extractPageQuestions(
+        page: Content,
+        extractQuestionsInBody: Boolean = false
+    ): Pair<QuestionAnswer?, Set<QuestionAnswer>> {
+        val storageDocument = StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body.storage.value)
+        val sentences = sentencesDetector.findCoreNlpSentences(storageDocument.text())
+        val titleQuestion = if (posTaggerService.questionDetector(page.title)) QuestionAnswer(
+            uuid = UUID.randomUUID().toString(),
+            question = page.title,
+            answer = null
+        ) else null
+
+        val questionsInBody = if (extractQuestionsInBody) {
+            sentences
+                .parallelStream()
+                .filter { posTaggerService.questionDetector(it) }
+                .map { QuestionAnswer(uuid = UUID.randomUUID().toString(), question = it, answer = null) }
+                .toList()
+                .toSet()
+        } else {
+            emptySet()
+        }
+
+        return Pair(titleQuestion, questionsInBody)
+    }
+
+    private fun extractPageEditors(
+        page: Content,
+        extractVersionHistory: Boolean = false
+    ): Pair<ConfluenceAuthor, Set<ConfluenceAuthor>> {
+        val updatedBy = page.version.user
+        val updatedByAuthor =
+            ConfluenceAuthor(updatedBy.userKey, updatedBy.username, updatedBy.displayName, updatedBy.type)
+
+        val editors = if (extractVersionHistory) {
+            retrieveAndSavePageVersions(page.id, page.version.number)
+        } else {
+            emptySet()
+        }
+
+        return Pair(updatedByAuthor, editors)
+    }
+
+    private fun retrieveAndSavePageVersions(contentId: Long, latestVersionNumber: Int): Set<ConfluenceAuthor> {
+
+        return latestVersionNumber.downTo(1)
+            .toSet()
+            .parallelStream()
+            .map { versionNumber ->
+                confluenceExperimentalOperations.contentVersion(contentId, versionNumber).get().user
+            }
+            .toList()
+            .toSet()
+            .map { user ->
+                val editor = datasetRepository.loadOrNull<ConfluenceAuthor>(user.userKey)
+
+                val persistedEditor = if (editor == null) {
+                    val newEditor = ConfluenceAuthor(
+                        userKey = user.userKey,
+                        name = user.username,
+                        displayName = user.displayName,
+                        type = user.type
+                    )
+                    datasetRepository.save(newEditor)
+                    newEditor
+                } else {
+                    editor
+                }
+
+                persistedEditor
+            }.toSet()
+    }
+
+    private fun parentChildRelationshipEventReceived(parentChildRelationshipEvent: ConfluenceParentChildRelationshipEvent) {
         log.info("Neo4j ConfluenceParentChildRelationshipEvent received")
 
         val parent = datasetRepository.load<ConfluencePage>(parentChildRelationshipEvent.parentId.toString())

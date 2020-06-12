@@ -20,7 +20,7 @@ class ConfluenceOperationsTest extends Specification {
 
     def "Should retrieve Confluence spaces"() {
         when:
-        Optional<SpacesResponse> response = confluenceOperations.spacesWithMetadataLabelsAndDescriptionAndIcon(10, 0)
+        Optional<SpacesResponse> response = confluenceOperations.spacesWithMetadataLabelsAndDescriptionAndIcon(10, 0,'global')
 
         then:
         response.get().spaces.size() == 10
@@ -42,7 +42,7 @@ class ConfluenceOperationsTest extends Specification {
     @Unroll
     def "Should retrieve Confluence child pages of content #contentId"() {
         when:
-        PageChildrenResponse response = confluenceOperations.contentWithChildPages(contentId, 500, 0).block()
+        PageChildrenResponse response = confluenceOperations.contentWithChildPages(contentId, 500, 0)
 
         then:
         response.page.results.size() == results
@@ -52,4 +52,19 @@ class ConfluenceOperationsTest extends Specification {
 //        174866096 | 3
         55116796 | 5
     }
+
+    @Unroll
+    def "Should retrieve Confluence comments of content #contentId"() {
+        when:
+        def response = confluenceOperations.contentComments(contentId, size, 0)
+
+        then:
+        response.get().contents.size()==size
+
+        where:
+        contentId | size
+        140380476 | 2
+    }
+
+   
 }

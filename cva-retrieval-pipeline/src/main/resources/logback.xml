@@ -14,5 +14,6 @@
     </root>
 
     <logger name="com._2horizon.cva" level="DEBUG"/>
+    <logger name="edu.stanford.nlp" level="WARN"/>
 
 </configuration>

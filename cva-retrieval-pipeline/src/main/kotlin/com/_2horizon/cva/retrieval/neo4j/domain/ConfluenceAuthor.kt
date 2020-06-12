@@ -9,7 +9,7 @@ import org.neo4j.ogm.annotation.NodeEntity
  */
 
 @NodeEntity
-class ConfluenceAuthor(
+data class ConfluenceAuthor(
     @Id
     val userKey: String,
 

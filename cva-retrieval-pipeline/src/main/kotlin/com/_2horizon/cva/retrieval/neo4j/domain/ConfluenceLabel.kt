@@ -8,7 +8,7 @@ import org.neo4j.ogm.annotation.NodeEntity
  */
 
 @NodeEntity
-class ConfluenceLabel (
+data class ConfluenceLabel (
     @Id
     val name: String
 )

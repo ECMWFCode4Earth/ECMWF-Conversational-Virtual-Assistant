@@ -1,6 +1,7 @@
 package com._2horizon.cva.retrieval.neo4j.domain
 
 import org.neo4j.ogm.annotation.Id
+import org.neo4j.ogm.annotation.Index
 import org.neo4j.ogm.annotation.NodeEntity
 
 /**
@@ -8,7 +9,12 @@ import org.neo4j.ogm.annotation.NodeEntity
  */
 
 @NodeEntity
-data class DatasetTerms (
+data class QuestionAnswer (
     @Id
-    val id: String
+    val uuid: String,
+
+    @Index
+    val question: String,
+
+    val answer: String?
 )

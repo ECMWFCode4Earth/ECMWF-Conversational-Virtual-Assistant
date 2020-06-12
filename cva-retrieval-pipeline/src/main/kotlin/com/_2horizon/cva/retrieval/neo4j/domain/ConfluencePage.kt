@@ -26,23 +26,45 @@ data class ConfluencePage(
     @Index
     val status: String,
 
+    val bodyPlain: String,
+
+    @Relationship("TITLE_QUESTION")
+    val titleQuestion: QuestionAnswer?,
+
+    val contentLength: Int,
+
     val createdDate: OffsetDateTime,
 
     val updatedDate: OffsetDateTime,
 
     val version: Int,
 
-    @Relationship("LAST_UPDATE_BY")
+    @Relationship("LAST_EDIT_BY", direction = Relationship.UNDIRECTED)
     val updatedBy: ConfluenceAuthor,
 
-    @Relationship("AUTHORED_BY")
-    val authors: Set<ConfluenceAuthor>?,
+    @Relationship("BELONGS_TO", direction = Relationship.UNDIRECTED)
+    val space: ConfluenceSpace,
 
-    @Relationship("LABEL")
+    @Relationship("EDITED_BY", direction = Relationship.UNDIRECTED)
+    val edits: Set<ConfluenceAuthor>?,
+
+    @Relationship("FAQ")
+    val faqs: Set<QuestionAnswer>?,
+
+    @Relationship("LABEL", direction = Relationship.UNDIRECTED)
     val labels: Set<ConfluenceLabel>?,
 
     @Relationship("CHILD_PAGE")
-    val childPage: ConfluencePage?
+    val childPage: ConfluencePage?,
+
+    @Relationship("COMMENT", direction = Relationship.UNDIRECTED)
+    val comments: Set<ConfluenceComment>? ,
+
+    @Relationship("INTERNAL_LINK")
+    val internalLinks: Set<ConfluencePage>? ,
+
+    @Relationship("EXTERNAL_LINK")
+    val externalLinks: Set<WebLink>?
 
 )
 

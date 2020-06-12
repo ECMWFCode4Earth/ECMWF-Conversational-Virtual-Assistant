@@ -96,6 +96,11 @@ tasks {
     }
 }
 
+noArg {
+    annotation("org.neo4j.ogm.annotation.NodeEntity")
+    annotation("org.neo4j.ogm.annotation.RelationshipEntity")
+}
+
 allOpen{
     annotation("io.micronaut.aop.Around")
 }

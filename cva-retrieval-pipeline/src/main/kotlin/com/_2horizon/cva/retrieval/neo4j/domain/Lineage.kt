@@ -8,7 +8,7 @@ import org.neo4j.ogm.annotation.NodeEntity
  */
 
 @NodeEntity
-class Lineage (
+data class Lineage (
     @Id
     val id: String
 )

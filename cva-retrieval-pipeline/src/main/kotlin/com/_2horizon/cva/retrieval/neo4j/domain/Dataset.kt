@@ -32,7 +32,7 @@ data class Dataset(
     @Relationship("DOMAIN")
     val domains: Set<DatasetDomain>?,
 
-    @Relationship("PARAMETER_FAMILY")
+    @Relationship("PARAMETER_FAMILY", direction = Relationship.UNDIRECTED)
     val parameterFamilies: Set<ParameterFamily>?,
 
     @Relationship("PRODUCT_TYPE")
