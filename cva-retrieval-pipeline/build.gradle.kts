@@ -90,6 +90,7 @@ tasks {
     }
     withType<Test> {
         useJUnitPlatform()
+        maxHeapSize = "4G" // Needed for CoreNLP NER
     }
     withType<ShadowJar> {
         mergeServiceFiles()
