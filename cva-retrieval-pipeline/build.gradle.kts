@@ -14,6 +14,7 @@ val micronautNeo4jBoltVersion: String by project
 val micronautNeo4jOgmVersion: String by project
 val reactorVersion: String by project
 val coreNlpKtVersion: String by project
+val openNlpVersion: String by project
 
 
 plugins {
@@ -70,6 +71,9 @@ dependencies {
     runtimeOnly("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion:models")
     runtimeOnly("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion:models-english")
     runtimeOnly("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion:models-english-kbp")
+
+    // https://opennlp.apache.org/
+    implementation("org.apache.opennlp:opennlp-tools:$openNlpVersion")
 
     implementation("io.swagger.core.v3:swagger-annotations")
     implementation("io.micronaut.graphql:micronaut-graphql")

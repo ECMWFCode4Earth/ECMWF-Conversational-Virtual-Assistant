@@ -69,5 +69,23 @@ class SentencesDetectorTest extends Specification {
         171412993 | 3
     }
 
+    @Unroll
+    def "Should find sentences in storage text of #nodeId using OoreNLP"() {
+        given:
+        def document = StorageFormatUtil.createDocumentFromStructuredStorageFormat(new File("./src/test/resources/data/confluence/storageformat/${nodeId}.html").text, true)
+
+        when:
+        def sentences = sentencesDetector.findSentencesWithOpenNlp(document.text())
+
+        then:
+        sentences.size() == s
+
+        where:
+        nodeId    | s
+        177472176 | 85
+        181122979 | 13
+        171412993 | 3
+    }
+
 
 }
