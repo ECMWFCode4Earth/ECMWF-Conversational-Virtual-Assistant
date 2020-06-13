@@ -26,8 +26,8 @@ class ConfluenceContentRetriever(
         if (retrievalPipelinePagesEnabled) {
             confluenceSpacesRetriever.retrieveSpaces().spacesList
                 // .filter { it.key != "ECC" }
-                .filter { it.key == "CUSF" }
-                // .filter { it.key == "WIGOSWT" }
+                // .filter { it.key == "CUSF" }
+                .filter { it.key == "WIGOSWT" }
                 // .filter { it.key == "CKB" }
                 .forEach { space -> retrievePages(space.key) }
         }
