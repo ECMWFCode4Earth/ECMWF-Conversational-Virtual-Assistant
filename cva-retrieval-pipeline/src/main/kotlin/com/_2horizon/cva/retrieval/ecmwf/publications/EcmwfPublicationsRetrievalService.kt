@@ -1,7 +1,7 @@
 package com._2horizon.cva.retrieval.ecmwf.publications
 
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
-import com._2horizon.cva.retrieval.event.EcmwfPublicationEvent
+import com._2horizon.cva.retrieval.event.EcmwfPublicationsEvent
 import com._2horizon.cva.retrieval.sitemap.Sitemap
 import com._2horizon.cva.retrieval.sitemap.SitemapRetrievalService
 import io.micronaut.context.annotation.Requires
@@ -11,6 +11,7 @@ import io.micronaut.context.event.StartupEvent
 import io.micronaut.runtime.event.annotation.EventListener
 import org.slf4j.LoggerFactory
 import javax.inject.Singleton
+import kotlin.streams.toList
 
 /**
  * Created by Frank Lieber (liefra) on 2020-05-21.
@@ -37,26 +38,40 @@ class EcmwfPublicationsRetrievalService(
 
         val publicationSitemaps = retrieveEcmwfSitemapsSortedByDescending()
 
-        return publicationSitemaps
-            .filter { it.first < 13567 }
+        val publications = publicationSitemaps
+            // .filter { it.first >= 10000 }
             // .take(100)
+            .parallelStream()
             .map { sitemapPair ->
 
                 val nodeId = sitemapPair.first
                 val loc = sitemapPair.second
                 log.debug("going to process $loc")
 
-                val pubDTO: EcmwfPublicationDTO =
-                    if (retrievalEcmwfPublicationsStrategy == EcmwfPublicationsStrategy.LOCAL) {
-                        ecmwfPublicationsMetadataToFileSaver.readInLocalEcmwfPublicationDTO(nodeId)
-                    } else {
-                        fetchRemoteEcmwfPublicationAsDTO(nodeId)
-                    }
+                if (retrievalEcmwfPublicationsStrategy == EcmwfPublicationsStrategy.LOCAL) {
+                    ecmwfPublicationsMetadataToFileSaver.readInLocalEcmwfPublicationDTO(nodeId)
+                } else {
+                    fetchRemoteEcmwfPublicationAsDTO(nodeId)
+                }
 
-                applicationEventPublisher.publishEvent(EcmwfPublicationEvent(pubDTO))
-                pubDTO
             }
+            .filter(::filterAll)
+            .toList()
+            .sortedByDescending { it.pubDate }
+
+
+        applicationEventPublisher.publishEvent(EcmwfPublicationsEvent(publications))
+
+        return publications
     }
+
+    private fun filterAll(pubDTO: EcmwfPublicationDTO) = true
+
+    private fun filterNewsletters(pubDTO: EcmwfPublicationDTO) =
+        pubDTO.publicationType != null && pubDTO.publicationType == "Newsletter"
+
+    private fun filterECMWFAnnualReport(pubDTO: EcmwfPublicationDTO) =
+        pubDTO.publicationType != null && pubDTO.secondaryTitle == "ECMWF Annual Report"
 
     private fun fetchRemoteEcmwfPublicationAsDTO(nodeId: Int): EcmwfPublicationDTO {
         val ecmwfPublicationDTO =
@@ -67,8 +82,6 @@ class EcmwfPublicationsRetrievalService(
 
         return ecmwfPublicationDTO.copy(publicationType = publicationType, publicationPDF = publicationPDF)
     }
-
-
 
     private fun retrieveEcmwfSitemapsSortedByDescending(): List<Pair<Int, String>> {
         val publicationSitemaps = sitemapRetrievalService.retrieveEcmwfSitemaps()

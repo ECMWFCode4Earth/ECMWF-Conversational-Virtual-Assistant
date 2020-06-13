@@ -1,11 +1,10 @@
 package com._2horizon.cva.retrieval.ecmwf.publications
 
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
-import com._2horizon.cva.retrieval.event.EcmwfPublicationEvent
+import com._2horizon.cva.retrieval.event.EcmwfPublicationsEvent
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.micronaut.context.annotation.Value
 import io.micronaut.runtime.event.annotation.EventListener
-import io.micronaut.scheduling.annotation.Async
 import org.slf4j.LoggerFactory
 import java.io.File
 import javax.inject.Singleton
@@ -21,15 +20,15 @@ open class EcmwfPublicationsMetadataToFileSaver(
     private val log = LoggerFactory.getLogger(javaClass)
 
     @EventListener
-    @Async
-    open fun ecmwfPublicationEventReceived(ecmwfPublicationEvent: EcmwfPublicationEvent) {
+    open fun ecmwfPublicationEventReceived(ecmwfPublicationsEvent: EcmwfPublicationsEvent) {
         log.debug("EcmwfPublicationToFileSaver: EcmwfPublicationEvent received")
 
-        val pubDTO = ecmwfPublicationEvent.ecmwfPublicationDTO
-
-        File("$publicationsPath/json/${pubDTO.nodeId}.json").writeText(
-            objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(pubDTO)
-        )
+         ecmwfPublicationsEvent.ecmwfPublicationDTOs.
+            forEach { pubDTO ->
+                File("$publicationsPath/json/${pubDTO.nodeId}.json").writeText(
+                    objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(pubDTO)
+                )
+            }
     }
 
     fun readInLocalEcmwfPublicationDTO(nodeId: Int): EcmwfPublicationDTO {

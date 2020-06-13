@@ -4,6 +4,7 @@ import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.slf4j.LoggerFactory
+import java.time.LocalDate
 import javax.inject.Singleton
 
 /**
@@ -33,7 +34,7 @@ class EcmwfPublicationsBibEndNoteDownloadAndExtractService {
         val abstract = xml.getElementsByTag("abstract").first()?.text()
         val number = xml.getElementsByTag("number").first()?.text()
         val year = xml.getElementsByTag("year").first()?.text()?.toInt()
-        val pubDates = xml.getElementsByTag("date").map { it.text() }
+        val pubDate = xml.getElementsByTag("date").firstOrNull()?.text()
         val language = xml.getElementsByTag("language").first()?.text()
 
         val pages = xml.getElementsByTag("pages").firstOrNull()?.text()
@@ -56,18 +57,41 @@ class EcmwfPublicationsBibEndNoteDownloadAndExtractService {
             abstract = abstract,
             number = number,
             year = year,
-            pubDates = pubDates,
+            pubDate = pubDateToLocalDate(pubDate, nodeId),
             language = language,
             pages = pages,
             issue = issue,
             section = section,
-
             custom1 = custom1,
             custom2 = custom2,
             custom3 = custom3,
             custom4 = custom4,
             custom5 = custom5
         )
+    }
+
+    private fun pubDateToLocalDate(pubDate: String?, nodeId: Int): LocalDate? {
+        if (pubDate == null) {
+            return null
+        }
+        val pubDateParts = pubDate.split("/").map { it.toInt() }
+        return try {
+            when (pubDateParts.size) {
+                3 -> {
+                    LocalDate.of(pubDateParts[2], pubDateParts[1], pubDateParts[0])
+                }
+                2 -> {
+                    LocalDate.of(pubDateParts[1], pubDateParts[0], 1)
+                }
+                1 -> {
+                    LocalDate.of(pubDateParts[0], 1, 1)
+                }
+                else -> error("pubDateParts has wrong size $pubDateParts")
+            }
+        } catch (ex: Throwable) {
+            log.error("Couldn't convert pubDateToLocalDate: $pubDate fpr $nodeId ")
+            null
+        }
     }
 }
 

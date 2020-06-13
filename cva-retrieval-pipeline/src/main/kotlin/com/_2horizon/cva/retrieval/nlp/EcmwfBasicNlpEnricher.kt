@@ -2,7 +2,7 @@ package com._2horizon.cva.retrieval.nlp
 
 import com._2horizon.cva.retrieval.copernicus.Datastore
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
-import com._2horizon.cva.retrieval.event.EcmwfPublicationEvent
+import com._2horizon.cva.retrieval.event.EcmwfPublicationsEvent
 import com._2horizon.cva.retrieval.event.SignificantTermsReceivedEvent
 import com._2horizon.cva.retrieval.extensions.TextInBrackets
 import com._2horizon.cva.retrieval.extensions.extractTextInBrackets
@@ -25,12 +25,14 @@ open class EcmwfBasicNlpEnricher(
 
     @EventListener
     @Async
-    open fun ecmwfPublicationEventReceived(ecmwfPublicationEvent: EcmwfPublicationEvent) {
+    open fun ecmwfPublicationEventReceived(ecmwfPublicationsEvent: EcmwfPublicationsEvent) {
         log.info("EcmwfBasicNlpEnricher EcmwfPublicationEvent received")
 
-        val pubDTO: EcmwfPublicationDTO = ecmwfPublicationEvent.ecmwfPublicationDTO
 
-        val significantTerms = findSigTextInBrackets(pubDTO)
+        val significantTerms= ecmwfPublicationsEvent.ecmwfPublicationDTOs
+            .flatMap { pubDTO ->
+                findSigTextInBrackets(pubDTO)
+            }
 
         applicationEventPublisher.publishEvent(
             SignificantTermsReceivedEvent(

@@ -1,6 +1,7 @@
 package com._2horizon.cva.retrieval.airtable
 
-import com._2horizon.cva.retrieval.event.EcmwfPublicationEvent
+import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
+import com._2horizon.cva.retrieval.event.EcmwfPublicationsEvent
 import dev.fuxing.airtable.AirtableApi
 import dev.fuxing.airtable.AirtableRecord
 import dev.fuxing.airtable.AirtableTable
@@ -10,7 +11,6 @@ import dev.fuxing.airtable.formula.LogicalOperator
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
 import io.micronaut.runtime.event.annotation.EventListener
-import io.micronaut.scheduling.annotation.Async
 import org.slf4j.LoggerFactory
 import javax.inject.Singleton
 
@@ -30,17 +30,19 @@ open class AirtableEcmwfPublicationRepository(
     private val authorsTable = api.base(publicationsBase).table("Authors")
 
     @EventListener
-    @Async
-    open fun ecmwfPublicationEventReceived(ecmwfPublicationEvent: EcmwfPublicationEvent) {
+    open fun ecmwfPublicationEventReceived(ecmwfPublicationsEvent: EcmwfPublicationsEvent) {
 
-        val pubDTO = ecmwfPublicationEvent.ecmwfPublicationDTO
+        ecmwfPublicationsEvent.ecmwfPublicationDTOs
+            .forEach { pubDTO -> savePubDTO(pubDTO) }
+    }
+
+    private fun savePubDTO(pubDTO: EcmwfPublicationDTO) {
         log.debug("EcmwfPublicationEvent received ${pubDTO.nodeId}")
 
         // only process unknown publications
         if (lookupPublication(pubDTO.nodeId) != null) {
             return
         }
-
         saveUnknownKeywords(pubDTO.keywords)
         saveUnknownAuthors(pubDTO.contributors)
 

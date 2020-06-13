@@ -14,7 +14,8 @@ import com._2horizon.cva.retrieval.sitemap.Sitemap
 data class ConfluenceContentEvent( val spaceKey:String, val contentList: List<Content>)
 data class ConfluenceSpacesEvent(val spacesList: List<Space>)
 data class SitemapEvent(val sitemapsList: List<Sitemap>)
-data class EcmwfPublicationEvent(val ecmwfPublicationDTO: EcmwfPublicationDTO)
+data class EcmwfPublicationsEvent(val ecmwfPublicationDTOs: List<EcmwfPublicationDTO>)
+data class EcmwfPublicationsWithPdfContentEvent(val ecmwfPublicationDTOs: List<EcmwfPublicationDTO>)
 data class CopernicusCatalogueReceivedEvent(val datastore:Datastore, val uiResources: List<UiResource>)
 data class SignificantTermsReceivedEvent(val datastore: Datastore, val significantTerms: List<SignificantTerm>)
 

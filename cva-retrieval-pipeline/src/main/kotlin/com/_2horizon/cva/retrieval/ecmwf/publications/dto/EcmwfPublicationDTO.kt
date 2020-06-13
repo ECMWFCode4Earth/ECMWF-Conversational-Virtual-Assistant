@@ -1,5 +1,7 @@
 package com._2horizon.cva.retrieval.ecmwf.publications.dto
 
+import java.time.LocalDate
+
 /**
  * Created by Frank Lieber (liefra) on 2020-05-22.
  */
@@ -13,7 +15,7 @@ data class  EcmwfPublicationDTO(
     val secondaryTitle:String?,
     val tertiaryTitle:String?,
     val year:Int?,
-    val pubDates:List<String> = emptyList(),
+    val pubDate:LocalDate?,
     val language:String?,
     val pages:String?,
     val issue:String?,
@@ -24,5 +26,6 @@ data class  EcmwfPublicationDTO(
     val custom4:String?,
     val custom5:String?,
     val publicationType:String? = null ,
-    val publicationPDF:String? = null
+    val publicationPDF:String? = null,
+    val publicationPDFContent:String? = null
 )

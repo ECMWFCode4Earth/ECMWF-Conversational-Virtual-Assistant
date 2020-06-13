@@ -19,7 +19,6 @@ import javax.inject.Singleton
 @Requires(property = "app.feature.retrieval-pipeline.confluence.pages.local-storage", value = "true")
 class LocalConfluenceContentStore(
     @Value("\${app.retrieval.ecmwf.confluence-path}") private val localConfluenceContentPath: String,
-    @Value("\${app.retrieval.ecmwf.doccano-path}") private val localDoccanoPath: String,
     private val objectMapper: ObjectMapper
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
@@ -38,25 +37,6 @@ class LocalConfluenceContentStore(
         pages.forEach { page ->
             storeLocalConfluenceContentDTO(pathToSpace, page)
         }
-
-        storeDoccanoDataset(confluenceContentEvent)
-    }
-
-    private fun storeDoccanoDataset(confluenceContentEvent: ConfluenceContentEvent) {
-        val pages = confluenceContentEvent.contentList
-        val spaceKey = confluenceContentEvent.spaceKey
-
-       val jsonl = pages.mapIndexed { index: Int, page ->
-
-           val text =
-               "${page.title} | ${StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body.storage.value)
-                   .text()}"
-           DoccanoDataset(id = index, text = text, annotations = emptyList())
-       }.joinToString(System.lineSeparator()) {
-           objectMapper.writeValueAsString(it)
-       }
-
-        File("$localDoccanoPath/$spaceKey.json").writeText(jsonl)
     }
 
     private fun storeLocalConfluenceContentDTO(pathToSpace: String, page: Content) {
@@ -74,16 +54,4 @@ class LocalConfluenceContentStore(
     }
 }
 
-data class DoccanoDataset(
-    val id: Int,
-    val text: String,
-    val annotations: List<DoccanoAnnotation>
-) {
-    data class DoccanoAnnotation(
-        val id: Int,
-        val label: Int,
-        val start_offset: Int,
-        val end_offset: Int,
-        val user: Int
-    )
-}
+
