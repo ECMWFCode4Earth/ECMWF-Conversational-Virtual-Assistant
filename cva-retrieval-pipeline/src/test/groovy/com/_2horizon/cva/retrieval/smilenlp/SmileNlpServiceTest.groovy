@@ -98,10 +98,10 @@ class SmileNlpServiceTest extends Specification {
 
     def "Should pos"() {
         when:
-        def sentences = service.pos(aSentence)
+        def pos = service.pos(aSentence)
 
         then:
-        sentences.size() == size
+        pos.size() == 13
 
         where:
         aSentence                                                      | size

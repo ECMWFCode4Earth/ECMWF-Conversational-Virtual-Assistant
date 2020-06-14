@@ -18,7 +18,7 @@ import javax.inject.Singleton
  */
 @Singleton
 @Requires(property = "app.feature.basic-nlp.ecmwf.enabled", value = "true")
-open class EcmwfBasicNlpEnricher(
+open class SignificantTermNlpEnricher(
     private val applicationEventPublisher: ApplicationEventPublisher
 ) {
     private val log = LoggerFactory.getLogger(javaClass)

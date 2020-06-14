@@ -27,6 +27,7 @@ class POSTaggerService {
     fun onStartup(startupEvent: StartupEvent) {
     }
 
+    @JvmOverloads
     fun questionDetector(text: String, skippingLength: Int = 144): Boolean {
         log.debug("questionDetector for $text")
 

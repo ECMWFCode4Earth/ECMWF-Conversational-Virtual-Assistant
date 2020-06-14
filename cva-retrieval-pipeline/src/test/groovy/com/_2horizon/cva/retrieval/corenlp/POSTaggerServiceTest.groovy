@@ -1,6 +1,5 @@
 package com._2horizon.cva.retrieval.corenlp
 
-import spock.lang.Ignore
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -14,8 +13,6 @@ class POSTaggerServiceTest extends Specification {
     POSTaggerService service = new POSTaggerService()
 
     @Unroll
-    @Ignore
-    // Too slow
     def "Should questionDetectorStanfordCoreNLP"() {
         when:
         def isQuestion = service.questionDetectorStanfordCoreNLP(text)
