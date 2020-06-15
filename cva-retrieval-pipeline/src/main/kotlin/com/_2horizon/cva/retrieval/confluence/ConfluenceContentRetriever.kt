@@ -28,6 +28,8 @@ class ConfluenceContentRetriever(
                 // .filter { it.key != "ECC" }
                 // .filter { it.key == "CUSF" }
                 .filter { it.key == "WIGOSWT" }
+                // .filter { it.key == "UDOC" }
+                // .filter { it.key == "CPS" }
                 // .filter { it.key == "CKB" }
                 .forEach { space -> retrievePages(space.key) }
         }

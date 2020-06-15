@@ -28,7 +28,7 @@ class POSTaggerService {
     }
 
     @JvmOverloads
-    fun questionDetector(text: String, skippingLength: Int = 144): Boolean {
+    fun questionDetector(text: String, skippingLength: Int = 250): Boolean {
         log.debug("questionDetector for $text")
 
         if (text.length > skippingLength) {

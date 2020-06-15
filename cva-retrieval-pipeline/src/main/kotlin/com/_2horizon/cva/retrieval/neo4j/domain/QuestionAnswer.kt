@@ -11,7 +11,7 @@ import org.neo4j.ogm.annotation.NodeEntity
 @NodeEntity
 data class QuestionAnswer (
     @Id
-    val uuid: String,
+    val faqId: String,
 
     @Index
     val question: String,

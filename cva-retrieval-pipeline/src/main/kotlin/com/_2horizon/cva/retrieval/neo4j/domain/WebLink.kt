@@ -10,5 +10,9 @@ import org.neo4j.ogm.annotation.NodeEntity
 @NodeEntity
 data class WebLink (
     @Id
-    val href: String
+    val url: String,
+
+    val title: String?=null,
+
+    val description: String?=null
 )

@@ -3,10 +3,9 @@ package com._2horizon.cva.retrieval.neo4j
 import com._2horizon.cva.retrieval.confluence.ConfluenceLinkExtractor
 import com._2horizon.cva.retrieval.confluence.isConfluencePageLink
 import com._2horizon.cva.retrieval.confluence.isConfluenceSpaceLink
+import com._2horizon.cva.retrieval.confluence.isNotConfluenceLink
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
 import com._2horizon.cva.retrieval.event.EcmwfPublicationsEvent
-import com._2horizon.cva.retrieval.neo4j.domain.ConfluencePage
-import com._2horizon.cva.retrieval.neo4j.domain.ConfluenceSpace
 import com._2horizon.cva.retrieval.neo4j.domain.Publication
 import com._2horizon.cva.retrieval.neo4j.domain.PublicationContributor
 import com._2horizon.cva.retrieval.neo4j.domain.PublicationKeyword
@@ -29,8 +28,8 @@ import javax.inject.Singleton
 @Singleton
 class Neo4jEcmwfPublicationsPersister(
     private val datasetRepository: DatasetRepository,
-    private val confluenceLinkExtractor: ConfluenceLinkExtractor
-) : AbstractNeo4Persister(datasetRepository) {
+    confluenceLinkExtractor: ConfluenceLinkExtractor
+) : AbstractNeo4Persister(datasetRepository,confluenceLinkExtractor) {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
@@ -54,7 +53,7 @@ class Neo4jEcmwfPublicationsPersister(
                 null
             }
 
-            val weblinks = if (pubDTO.publicationLink != null) {
+            val weblinks = if (pubDTO.publicationLink != null && pubDTO.publicationLink.isNotConfluenceLink()) {
                 listOf(WebLink(pubDTO.publicationLink))
             } else {
                 null
@@ -88,21 +87,5 @@ class Neo4jEcmwfPublicationsPersister(
         }
     }
 
-    private fun lookupConfluencePageLink(publicationLink: String): List<ConfluencePage>? {
-        val createConfluenceLink = confluenceLinkExtractor.createConfluenceLink(publicationLink)
-        return if (createConfluenceLink != null) {
-            lookupConfluencePagesByExternalConfluenceLink(listOf(createConfluenceLink))
-        } else {
-            null
-        }
-    }
 
-    private fun lookupConfluenceSpaceLink(publicationLink: String): List<ConfluenceSpace>? {
-        val createConfluenceLink = confluenceLinkExtractor.createConfluenceLink(publicationLink)
-        return if (createConfluenceLink != null) {
-            lookupConfluenceSpacesByExternalConfluenceLink(listOf(createConfluenceLink))
-        } else {
-            null
-        }
-    }
 }

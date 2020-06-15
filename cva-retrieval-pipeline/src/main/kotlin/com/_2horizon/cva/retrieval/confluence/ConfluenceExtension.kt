@@ -36,6 +36,7 @@ fun String?.isConfluenceLink(): Boolean {
     }
     return s.startsWith("https://confluence.ecmwf.int/display/") || s.startsWith("https://confluence.ecmwf.int/pages/viewpage.action?pageId=")
 }
+fun String?.isNotConfluenceLink(): Boolean = !isConfluenceLink()
 
 fun String?.convertToCanonicalConfluenceLink(): String? {
     if (this == null) {

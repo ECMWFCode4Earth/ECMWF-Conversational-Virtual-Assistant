@@ -28,36 +28,42 @@ data class Application(
 
     var publicationDate: LocalDate,
 
-    @Relationship("DOMAIN")
-    val domains: List<DatasetDomain> = mutableListOf(),
+    @Relationship("DOMAIN", direction = Relationship.UNDIRECTED)
+    val domains: List<DatasetDomain>?,
 
-    @Relationship("PARAMETER_FAMILY")
-    val parameterFamilies: List<ParameterFamily> = mutableListOf(),
+    @Relationship("PARAMETER_FAMILY", direction = Relationship.UNDIRECTED)
+    val parameterFamilies: List<ParameterFamily>?,
 
-    @Relationship("PRODUCT_TYPE")
-    val productTypes: List<ProductType> = mutableListOf(),
+    @Relationship("PRODUCT_TYPE", direction = Relationship.UNDIRECTED)
+    val productTypes: List<ProductType>?,
 
-    @Relationship("DATASET_PROVIDER")
-    val providers: List<DatasetProvider> = mutableListOf(),
+    @Relationship("DATASET_PROVIDER", direction = Relationship.UNDIRECTED)
+    val providers: List<DatasetProvider>?,
 
-    @Relationship("SECTOR")
-    val sectors: List<Sector> = mutableListOf(),
+    @Relationship("SECTOR", direction = Relationship.UNDIRECTED)
+    val sectors: List<Sector>?,
 
-    @Relationship("SPATIAL_COVERAGE")
-    val spatialCoverages: List<SpatialCoverage> = mutableListOf(),
+    @Relationship("SPATIAL_COVERAGE", direction = Relationship.UNDIRECTED)
+    val spatialCoverages: List<SpatialCoverage>?,
 
-    @Relationship("TEMPORAL_COVERAGE")
-    val temporalCoverages: List<TemporalCoverage> = mutableListOf(),
+    @Relationship("TEMPORAL_COVERAGE", direction = Relationship.UNDIRECTED)
+    val temporalCoverages: List<TemporalCoverage>?,
 
-    @Relationship("TERMS")
-    val terms: List<DatasetTerms> = mutableListOf(),
+    @Relationship("TERMS", direction = Relationship.UNDIRECTED)
+    val terms: List<DatasetTerms>?,
 
-    @Relationship("DOCUMENTED_BY")
-    val docs: List<Documentation> = mutableListOf(),
+    @Relationship("CONFLUENCE_PAGE")
+    val confluencePages: List<ConfluencePage>?,
+
+    @Relationship("CONFLUENCE_SPACE")
+    val confluenceSpaces: List<ConfluenceSpace>?,
+
+    @Relationship("EXTERNAL_LINK")
+    val externalLinks: List<WebLink>?,
 
     @Relationship("RELATED_DATASETS")
-    val relatedDatasets: List<Dataset> = mutableListOf(),
+    val relatedDatasets: List<Dataset>?,
 
     @Relationship("RELATED_APPLICATIONS")
-    val relatedApplications: List<Application> = mutableListOf()
+    val relatedApplications: List<Application>?
 )

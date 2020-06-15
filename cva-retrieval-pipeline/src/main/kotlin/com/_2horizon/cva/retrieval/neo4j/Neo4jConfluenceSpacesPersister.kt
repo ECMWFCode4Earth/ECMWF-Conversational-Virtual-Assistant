@@ -28,7 +28,6 @@ import io.micronaut.runtime.event.annotation.EventListener
 import io.micronaut.scheduling.annotation.Async
 import org.neo4j.ogm.session.SessionFactory
 import org.slf4j.LoggerFactory
-import java.util.UUID
 import javax.inject.Singleton
 import kotlin.streams.toList
 
@@ -47,7 +46,7 @@ open class Neo4jConfluenceSpacesPersister(
     private val confluenceLinkExtractor: ConfluenceLinkExtractor,
     private val confluenceExperimentalOperations: ConfluenceExperimentalOperations,
     private val confluenceOperations: ConfluenceOperations
-) : AbstractNeo4Persister(datasetRepository) {
+) : AbstractNeo4Persister(datasetRepository, confluenceLinkExtractor) {
     private val log = LoggerFactory.getLogger(javaClass)
 
     @EventListener
@@ -82,13 +81,15 @@ open class Neo4jConfluenceSpacesPersister(
         val pages = confluenceContentEvent.contentList
         val spaceKey = confluenceContentEvent.spaceKey
 
+        val extended = spaceKey == "WIGOSWT"
+
         val confluenceSpace = datasetRepository.load<ConfluenceSpace>(spaceKey)
 
         pages.forEach { page ->
 
-            val (updatedByAuthor, editors) = extractPageEditors(page)
+            val (updatedByAuthor, editors) = extractPageEditors(page, extended)
 
-            val (titleQuestion, questionsInBody) = extractPageQuestions(page)
+            val (titleQuestion, questionsInBody) = extractPageQuestions(page, extended)
 
             val pageComments = extractPageComments(page)
 
@@ -220,10 +221,11 @@ open class Neo4jConfluenceSpacesPersister(
         page: Content,
         extractQuestionsInBody: Boolean = false
     ): Pair<QuestionAnswer?, List<QuestionAnswer>> {
+        val faqId = "${page.id}#${page.title}"
         val storageDocument = StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body.storage.value)
         val sentences = sentencesDetector.findCoreNlpSentences(storageDocument.text())
         val titleQuestion = if (posTaggerService.questionDetector(page.title)) QuestionAnswer(
-            uuid = UUID.randomUUID().toString(),
+            faqId = faqId,
             question = page.title,
             answer = null
         ) else null
@@ -232,7 +234,7 @@ open class Neo4jConfluenceSpacesPersister(
             sentences
                 .parallelStream()
                 .filter { posTaggerService.questionDetector(it) }
-                .map { QuestionAnswer(uuid = UUID.randomUUID().toString(), question = it, answer = null) }
+                .map { QuestionAnswer(faqId = faqId, question = it, answer = null) }
                 .toList()
         } else {
             emptyList()

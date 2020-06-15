@@ -1,5 +1,9 @@
 package com._2horizon.cva.retrieval.neo4j
 
+import com._2horizon.cva.retrieval.confluence.ConfluenceLinkExtractor
+import com._2horizon.cva.retrieval.confluence.isConfluencePageLink
+import com._2horizon.cva.retrieval.confluence.isConfluenceSpaceLink
+import com._2horizon.cva.retrieval.confluence.isNotConfluenceLink
 import com._2horizon.cva.retrieval.copernicus.dto.ui.UiResource
 import com._2horizon.cva.retrieval.event.CopernicusCatalogueReceivedEvent
 import com._2horizon.cva.retrieval.neo4j.domain.Application
@@ -7,13 +11,13 @@ import com._2horizon.cva.retrieval.neo4j.domain.Dataset
 import com._2horizon.cva.retrieval.neo4j.domain.DatasetDomain
 import com._2horizon.cva.retrieval.neo4j.domain.DatasetProvider
 import com._2horizon.cva.retrieval.neo4j.domain.DatasetTerms
-import com._2horizon.cva.retrieval.neo4j.domain.Documentation
 import com._2horizon.cva.retrieval.neo4j.domain.Lineage
 import com._2horizon.cva.retrieval.neo4j.domain.ParameterFamily
 import com._2horizon.cva.retrieval.neo4j.domain.ProductType
 import com._2horizon.cva.retrieval.neo4j.domain.Sector
 import com._2horizon.cva.retrieval.neo4j.domain.SpatialCoverage
 import com._2horizon.cva.retrieval.neo4j.domain.TemporalCoverage
+import com._2horizon.cva.retrieval.neo4j.domain.WebLink
 import com._2horizon.cva.retrieval.neo4j.repo.DatasetRepository
 import io.micronaut.context.annotation.Requirements
 import io.micronaut.context.annotation.Requires
@@ -32,8 +36,9 @@ import javax.inject.Singleton
 )
 @Singleton
 open class Neo4jCopernicusCataloguePersister(
-    private val datasetRepository: DatasetRepository
-) {
+    private val datasetRepository: DatasetRepository,
+    private val confluenceLinkExtractor: ConfluenceLinkExtractor
+) : AbstractNeo4Persister(datasetRepository, confluenceLinkExtractor) {
     private val log = LoggerFactory.getLogger(javaClass)
 
     @EventListener
@@ -59,25 +64,28 @@ open class Neo4jCopernicusCataloguePersister(
             val domains = extractDatasetDomains(r.cdsKeywords)
             val providers = extractDatasetProviders(r.cdsKeywords)
             val parameterFamilies = extractParameterFamilies(r.cdsKeywords)
-            val productTypes= extractProductTypes(r.cdsKeywords)
-            val sectors= extractSectors(r.cdsKeywords)
+            val productTypes = extractProductTypes(r.cdsKeywords)
+            val sectors = extractSectors(r.cdsKeywords)
             val spatialCoverages = extractSpatialCoverages(r.cdsKeywords)
             val temporalCoverages = extractTemporalCoverages(r.cdsKeywords)
 
             val terms = r.terms.map { DatasetTerms(it) }
-            val docs = r.externalLinks.map { externalLink ->
 
-                val isWiki =
-                    externalLink.url.startsWith("https://software.ecmwf.int/wiki") || externalLink.url.startsWith("https://confluence.ecmwf.int")
+            val confluencePageLinks = r.externalLinks.filter { it.url.isConfluencePageLink() }
+                .mapNotNull { lookupConfluencePageLink(it.url) }.flatten()
 
-                Documentation(
-                    url = externalLink.url,
-                    title = externalLink.name,
-                    description = externalLink.description,
-                    isWiki = isWiki
-                )
+            val confluenceSpacesLinks = r.externalLinks.filter { it.url.isConfluenceSpaceLink() }
+                .mapNotNull { lookupConfluenceSpaceLink(it.url) }.flatten()
 
-            }
+            val weblinks = r.externalLinks.filter { it.url.isNotConfluenceLink() }
+                .map { externalLink ->
+                    WebLink(
+                        url = externalLink.url,
+                        title = externalLink.name,
+                        description = externalLink.description
+
+                    )
+                }
 
             if (r.type == "dataset") {
                 val dataset = Dataset(
@@ -96,7 +104,11 @@ open class Neo4jCopernicusCataloguePersister(
                     spatialCoverages = spatialCoverages,
                     temporalCoverages = temporalCoverages,
                     terms = terms,
-                    docs = docs
+                    confluencePages = confluencePageLinks,
+                    confluenceSpaces = confluenceSpacesLinks,
+                    externalLinks = weblinks,
+                    relatedApplications = null,
+                    relatedDatasets = null
                 )
                 datasetRepository.save(dataset)
             } else if (r.type == "application") {
@@ -116,7 +128,11 @@ open class Neo4jCopernicusCataloguePersister(
                     spatialCoverages = spatialCoverages,
                     temporalCoverages = temporalCoverages,
                     terms = terms,
-                    docs = docs
+                    confluencePages = confluencePageLinks,
+                    confluenceSpaces = confluenceSpacesLinks,
+                    externalLinks = weblinks,
+                    relatedApplications = null,
+                    relatedDatasets = null
                 )
                 datasetRepository.save(application)
             }
@@ -142,7 +158,8 @@ open class Neo4jCopernicusCataloguePersister(
                 val application = datasetRepository.load<Application>(r.id)
 
                 val relatedApplications = r.relatedResources.map { relatedResource ->
-                    val rel = datasetRepository.load<Application>(uiResources.find { it.name == relatedResource.name }!!.id)
+                    val rel =
+                        datasetRepository.load<Application>(uiResources.find { it.name == relatedResource.name }!!.id)
                     rel
                 }
 

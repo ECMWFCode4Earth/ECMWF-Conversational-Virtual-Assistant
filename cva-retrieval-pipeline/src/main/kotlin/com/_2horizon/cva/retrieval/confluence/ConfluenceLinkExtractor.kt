@@ -61,15 +61,17 @@ class ConfluenceLinkExtractor {
             }
     }
 
-     fun createConfluenceLink(href: String): ExternalConfluenceLink? {
+    fun createConfluenceLink(href: String): ExternalConfluenceLink? {
 
         // skip document attachments
         if (href.toLowerCase().contains("attachments")) {
             return null
         }
 
+        val canonicalUrl = href.convertToCanonicalConfluenceLink()!!
+
         when {
-            href.toLowerCase().startsWith("https://confluence.ecmwf.int/pages/viewpage.action?pageid=") -> {
+            canonicalUrl.toLowerCase().startsWith("https://confluence.ecmwf.int/pages/viewpage.action?pageid=") -> {
                 val pageId =
                     href.replace("https://confluence.ecmwf.int/pages/viewpage.action?pageId=", "").split("#").first()
                 check(pageId.toIntOrNull() != null) { "Couldn't extract pageId of $pageId" }
@@ -81,15 +83,15 @@ class ConfluenceLinkExtractor {
                     }
                 )
             }
-            href.toLowerCase().startsWith("https://confluence.ecmwf.int/display") -> {
-                val uri = URI(href)
+            canonicalUrl.toLowerCase().startsWith("https://confluence.ecmwf.int/display") -> {
+                val uri = URI(canonicalUrl)
                 val anchor: String? = uri.fragment
                 val pathSegements = uri.path.split("/").filter { it.isNotBlank() }
 
                 when (pathSegements.size) {
                     3 -> {
-                        val spaceKey = pathSegements[2]
-                        val contentTitle = URLDecoder.decode(pathSegements[3], Charset.defaultCharset())
+                        val spaceKey = pathSegements[1]
+                        val contentTitle = URLDecoder.decode(pathSegements[2], Charset.defaultCharset())
                         val properties = Properties().apply {
                             setProperty("contentTitle", contentTitle)
                             setProperty("spaceKey", spaceKey)
@@ -105,7 +107,7 @@ class ConfluenceLinkExtractor {
                         )
                     }
                     2 -> {
-                        val spaceKey = pathSegements[2]
+                        val spaceKey = pathSegements[1]
                         val properties = Properties().apply {
                             setProperty("spaceKey", spaceKey)
                         }
@@ -120,9 +122,11 @@ class ConfluenceLinkExtractor {
                         return null
                     }
                 }
-
-
-
+            }
+            canonicalUrl.toLowerCase().startsWith("https://confluence.ecmwf.int/pages/viewrecentblogposts.action?key=") -> {
+                // TODO: Handle blog posts
+                log.warn("Skipping blog post $canonicalUrl ")
+                return null
             }
             else -> {
                 error("Wrong link href format $href")

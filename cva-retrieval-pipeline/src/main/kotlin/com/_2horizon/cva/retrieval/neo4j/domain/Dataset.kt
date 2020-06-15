@@ -29,37 +29,43 @@ data class Dataset(
 
     val publicationDate: LocalDate,
 
-    @Relationship("DOMAIN")
+    @Relationship("DOMAIN", direction = Relationship.UNDIRECTED)
     val domains: List<DatasetDomain>?,
 
     @Relationship("PARAMETER_FAMILY", direction = Relationship.UNDIRECTED)
     val parameterFamilies: List<ParameterFamily>?,
 
-    @Relationship("PRODUCT_TYPE")
+    @Relationship("PRODUCT_TYPE", direction = Relationship.UNDIRECTED)
     val productTypes: List<ProductType>?,
 
-    @Relationship("DATASET_PROVIDER")
+    @Relationship("DATASET_PROVIDER", direction = Relationship.UNDIRECTED)
     val providers: List<DatasetProvider>?,
 
-    @Relationship("SECTOR")
+    @Relationship("SECTOR", direction = Relationship.UNDIRECTED)
     val sectors: List<Sector>?,
 
-    @Relationship("SPATIAL_COVERAGE")
+    @Relationship("SPATIAL_COVERAGE", direction = Relationship.UNDIRECTED)
     val spatialCoverages: List<SpatialCoverage>?,
 
-    @Relationship("TEMPORAL_COVERAGE")
+    @Relationship("TEMPORAL_COVERAGE", direction = Relationship.UNDIRECTED)
     val temporalCoverages: List<TemporalCoverage>?,
 
-    @Relationship("TERMS")
+    @Relationship("TERMS", direction = Relationship.UNDIRECTED)
     val terms: List<DatasetTerms>?,
 
-    @Relationship("DOCUMENTED_BY")
-    val docs: List<Documentation>?,
+    @Relationship("CONFLUENCE_PAGE")
+    val confluencePages: List<ConfluencePage>?,
+
+    @Relationship("CONFLUENCE_SPACE")
+    val confluenceSpaces: List<ConfluenceSpace>?,
+
+    @Relationship("EXTERNAL_LINK")
+    val externalLinks: List<WebLink>?,
 
     @Relationship("RELATED_DATASETS")
-    val relatedDatasets: List<Dataset>? = null,
+    val relatedDatasets: List<Dataset>?,
 
     @Relationship("RELATED_APPLICATIONS")
-    val relatedApplications: List<Application> = mutableListOf()
+    val relatedApplications: List<Application>?
 
 )
