@@ -68,5 +68,26 @@ class EcmwfPublicationsHtmlDownloadAndExtractServiceTest extends Specification {
         19325         | ''
     }
 
+    @Unroll
+    def "Should convert local publication Html file of #publicationId into publication web link"() {
+        given:
+        Document html = Jsoup.parse(new File("./src/test/resources/data/ecmwf/publications/html/${publicationId}.html").text, 'https://www.ecmwf.int')
+
+        when:
+        def publicationLinks = service.extractEcmwfPublicationLink(html)
+
+        then:
+        publicationLinks.size() == size
+        if (publicationLinks.size() > 0)
+            publicationLinks.first() == link
+
+        where:
+        publicationId | size | link
+        16559         | 1    | 'https://software.ecmwf.int/wiki/display/FUG/Forecast+User+Guide'
+        15680         | 0    | null
+        19275         | 1    | 'https://www.ecmwf.int/assets/elearning/stochphysics/stochphysics1/story_html5.html'
+        19325         | 0    | null
+    }
+
 
 }

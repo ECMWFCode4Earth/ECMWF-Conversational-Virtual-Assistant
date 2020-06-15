@@ -46,25 +46,25 @@ data class ConfluencePage(
     val space: ConfluenceSpace,
 
     @Relationship("EDITED_BY", direction = Relationship.UNDIRECTED)
-    val edits: Set<ConfluenceAuthor>?,
+    val edits: List<ConfluenceAuthor>?,
 
     @Relationship("FAQ")
-    val faqs: Set<QuestionAnswer>?,
+    val faqs: List<QuestionAnswer>?,
 
     @Relationship("LABEL", direction = Relationship.UNDIRECTED)
-    val labels: Set<ConfluenceLabel>?,
+    val labels: List<ConfluenceLabel>?,
 
     @Relationship("CHILD_PAGE")
     val childPage: ConfluencePage?,
 
     @Relationship("COMMENT", direction = Relationship.UNDIRECTED)
-    val comments: Set<ConfluenceComment>? ,
+    val comments: List<ConfluenceComment>? ,
 
     @Relationship("INTERNAL_LINK")
-    val internalLinks: Set<ConfluencePage>? ,
+    val internalLinks: List<ConfluencePage>? ,
 
     @Relationship("EXTERNAL_LINK")
-    val externalLinks: Set<WebLink>?
+    val externalLinks: List<WebLink>?
 
 )
 

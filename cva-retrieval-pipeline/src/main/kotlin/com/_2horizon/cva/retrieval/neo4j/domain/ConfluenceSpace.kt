@@ -26,6 +26,6 @@ data class ConfluenceSpace(
     val description: String,
 
     @Relationship("LABEL")
-    val labels: Set<ConfluenceLabel>?
+    val labels: List<ConfluenceLabel>?
 
 )

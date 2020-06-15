@@ -13,16 +13,22 @@ import javax.inject.Singleton
 class EcmwfPublicationsHtmlDownloadAndExtractService {
     private val log = LoggerFactory.getLogger(javaClass)
 
-    fun downloadAndExtractPublicationTypeAndPDF(nodeId: Int): Pair<String?, String> {
+    fun downloadAndExtractPublicationTypeAndPDF(nodeId: Int): PublicationExtraMetadata {
 
         val xml = downloadPublicationHtml(nodeId)
 
         val publicationType = extractEcmwfPublicationType(xml)
         val publicationPDF = extractEcmwfPublicationPDF(xml)
+        val publicationLink = extractEcmwfPublicationLink(xml)
 
         check(publicationPDF.size < 2) { "publicationPDF size not 1 but $publicationPDF" }
+        check(publicationPDF.size < 2) { "publicationPDF size not 1 but $publicationPDF" }
 
-        return Pair(publicationPDF.firstOrNull(), publicationType)
+         return PublicationExtraMetadata(
+             publicationType = publicationType,
+             publicationPDF = publicationPDF.firstOrNull(),
+             publicationLink = publicationLink.firstOrNull()
+         )
     }
 
     private fun downloadPublicationHtml(nodeId: Int): Document {
@@ -47,6 +53,21 @@ class EcmwfPublicationsHtmlDownloadAndExtractService {
             emptyList()
         }
     }
+    private fun extractEcmwfPublicationLink(htmlDoc: Document): List<String> {
+        return if (htmlDoc.select(".region-sidebar-second").size>0) {
+            htmlDoc.select(".region-sidebar-second")
+                .select("a[href]")
+                .map { a -> a.attr("abs:href") }
+                .filterNot { a -> a.startsWith("https://www.ecmwf.int/file/") }
+        } else {
+            emptyList()
+        }
+    }
 }
+data class PublicationExtraMetadata(
+    val publicationType :String,
+    val publicationPDF :String?,
+    val publicationLink :String?
+)
 
 

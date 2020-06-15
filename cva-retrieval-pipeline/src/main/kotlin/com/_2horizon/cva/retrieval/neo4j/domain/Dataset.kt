@@ -30,36 +30,36 @@ data class Dataset(
     val publicationDate: LocalDate,
 
     @Relationship("DOMAIN")
-    val domains: Set<DatasetDomain>?,
+    val domains: List<DatasetDomain>?,
 
     @Relationship("PARAMETER_FAMILY", direction = Relationship.UNDIRECTED)
-    val parameterFamilies: Set<ParameterFamily>?,
+    val parameterFamilies: List<ParameterFamily>?,
 
     @Relationship("PRODUCT_TYPE")
-    val productTypes: Set<ProductType>?,
+    val productTypes: List<ProductType>?,
 
     @Relationship("DATASET_PROVIDER")
-    val providers: Set<DatasetProvider>?,
+    val providers: List<DatasetProvider>?,
 
     @Relationship("SECTOR")
-    val sectors: Set<Sector>?,
+    val sectors: List<Sector>?,
 
     @Relationship("SPATIAL_COVERAGE")
-    val spatialCoverages: Set<SpatialCoverage>?,
+    val spatialCoverages: List<SpatialCoverage>?,
 
     @Relationship("TEMPORAL_COVERAGE")
-    val temporalCoverages: Set<TemporalCoverage>?,
+    val temporalCoverages: List<TemporalCoverage>?,
 
     @Relationship("TERMS")
-    val terms: Set<DatasetTerms>?,
+    val terms: List<DatasetTerms>?,
 
     @Relationship("DOCUMENTED_BY")
-    val docs: Set<Documentation>?,
+    val docs: List<Documentation>?,
 
     @Relationship("RELATED_DATASETS")
-    val relatedDatasets: Set<Dataset>? = null,
+    val relatedDatasets: List<Dataset>? = null,
 
     @Relationship("RELATED_APPLICATIONS")
-    val relatedApplications: Set<Application> = mutableSetOf()
+    val relatedApplications: List<Application> = mutableListOf()
 
 )

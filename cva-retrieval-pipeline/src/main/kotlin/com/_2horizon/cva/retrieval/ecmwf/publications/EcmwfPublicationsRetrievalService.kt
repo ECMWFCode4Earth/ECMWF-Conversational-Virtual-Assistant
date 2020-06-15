@@ -59,6 +59,7 @@ class EcmwfPublicationsRetrievalService(
             .toList()
             .sortedByDescending { it.pubDate }
 
+        val links = publications.mapNotNull { it.publicationLink }.toSortedSet()
 
         applicationEventPublisher.publishEvent(EcmwfPublicationsEvent(publications))
 
@@ -77,10 +78,14 @@ class EcmwfPublicationsRetrievalService(
         val ecmwfPublicationDTO =
             publicationsBibEndNoteDownloadAndExtractService.downloadAndExtractBibEndNote(nodeId)
 
-        val (publicationPDF, publicationType) = publicationsHtmlDownloadAndExtractService
+        val extraMetadata = publicationsHtmlDownloadAndExtractService
             .downloadAndExtractPublicationTypeAndPDF(nodeId)
 
-        return ecmwfPublicationDTO.copy(publicationType = publicationType, publicationPDF = publicationPDF)
+        return ecmwfPublicationDTO.copy(
+            publicationType = extraMetadata.publicationType,
+            publicationPDF = extraMetadata.publicationPDF,
+            publicationLink = extraMetadata.publicationLink
+        )
     }
 
     private fun retrieveEcmwfSitemapsSortedByDescending(): List<Pair<Int, String>> {

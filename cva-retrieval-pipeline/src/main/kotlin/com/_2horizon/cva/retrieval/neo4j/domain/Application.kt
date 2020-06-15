@@ -29,35 +29,35 @@ data class Application(
     var publicationDate: LocalDate,
 
     @Relationship("DOMAIN")
-    val domains: Set<DatasetDomain> = mutableSetOf(),
+    val domains: List<DatasetDomain> = mutableListOf(),
 
     @Relationship("PARAMETER_FAMILY")
-    val parameterFamilies: Set<ParameterFamily> = mutableSetOf(),
+    val parameterFamilies: List<ParameterFamily> = mutableListOf(),
 
     @Relationship("PRODUCT_TYPE")
-    val productTypes: Set<ProductType> = mutableSetOf(),
+    val productTypes: List<ProductType> = mutableListOf(),
 
     @Relationship("DATASET_PROVIDER")
-    val providers: Set<DatasetProvider> = mutableSetOf(),
+    val providers: List<DatasetProvider> = mutableListOf(),
 
     @Relationship("SECTOR")
-    val sectors: Set<Sector> = mutableSetOf(),
+    val sectors: List<Sector> = mutableListOf(),
 
     @Relationship("SPATIAL_COVERAGE")
-    val spatialCoverages: Set<SpatialCoverage> = mutableSetOf(),
+    val spatialCoverages: List<SpatialCoverage> = mutableListOf(),
 
     @Relationship("TEMPORAL_COVERAGE")
-    val temporalCoverages: Set<TemporalCoverage> = mutableSetOf(),
+    val temporalCoverages: List<TemporalCoverage> = mutableListOf(),
 
     @Relationship("TERMS")
-    val terms: Set<DatasetTerms> = mutableSetOf(),
+    val terms: List<DatasetTerms> = mutableListOf(),
 
     @Relationship("DOCUMENTED_BY")
-    val docs: Set<Documentation> = mutableSetOf(),
+    val docs: List<Documentation> = mutableListOf(),
 
     @Relationship("RELATED_DATASETS")
-    val relatedDatasets: Set<Dataset> = mutableSetOf(),
+    val relatedDatasets: List<Dataset> = mutableListOf(),
 
     @Relationship("RELATED_APPLICATIONS")
-    val relatedApplications: Set<Application> = mutableSetOf()
+    val relatedApplications: List<Application> = mutableListOf()
 )

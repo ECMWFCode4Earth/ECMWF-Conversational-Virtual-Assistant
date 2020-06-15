@@ -14,12 +14,12 @@ fun String.extractTextInBrackets(size: Int = 70): List<TextInBrackets> {
 
         TextInBrackets(helper, it.groupValues[2])
     }.toList()
-        
 }
 
 @JvmOverloads
 fun String.extractUppercaseText(size: Int = 25): List<TextInBrackets> {
-    val reg = """([^)]*)(\b[A-Z0-9][A-Z0-9]['a-zA-Z0-9]{0,8}|\b[A-Z]\b)([^)]*)""".toRegex() // to check use: https://regex101.com/
+    val reg =
+        """([^)]*)(\b[A-Z0-9][A-Z0-9]['a-zA-Z0-9]{0,8}|\b[A-Z]\b)([^)]*)""".toRegex() // to check use: https://regex101.com/
 
     return reg.findAll(this).map {
         check(it.groupValues.size == 4) { "Groups size not 4 but ${it.groupValues.size}" }
@@ -28,7 +28,6 @@ fun String.extractUppercaseText(size: Int = 25): List<TextInBrackets> {
 
         TextInBrackets(helper, it.groupValues[2])
     }.toList()
-
 }
 
 

@@ -29,29 +29,26 @@ abstract class AbstractNeo4JRepository(
     //     }
     // }
 
-    internal inline fun <reified R> load(id:String): R {
-        return sessionFactory.openSession().load(R::class.java,id)
+    internal inline fun <reified R> loadOrNull(id: String): R? {
+        return sessionFactory.openSession().load(R::class.java, id)
     }
 
-    internal inline fun <reified R> loadOrNull(id:String): R? {
+    internal inline fun <reified R> load(id: String): R {
+        val result = sessionFactory.openSession().load(R::class.java, id)
+        check(result != null) { "Couldn't load $id of type ${R::class.java}" }
+        return result
+    }
+
+    internal inline fun <reified R> queryForObject(cypher: String, parameters: Map<String, Any>): R? {
         return try {
-            sessionFactory.openSession().load(R::class.java,id)
-        }  catch (ex: Throwable) {
+            sessionFactory.openSession().queryForObject(R::class.java, cypher, parameters)
+        } catch (ex: Throwable) {
             log.warn("Error in load ${ex.message}")
             null
         }
     }
 
-    internal inline fun <reified R> queryForObject( cypher:String, parameters: Map<String, Any>): R? {
-        return try {
-            sessionFactory.openSession().queryForObject(R::class.java,cypher,parameters) 
-        }  catch (ex: Throwable) {
-            log.warn("Error in load ${ex.message}")
-            null
-        }
-    }
-
-    fun <R> save(o: R, depth:Int = 1) {
+    fun <R> save(o: R, depth: Int = 1) {
 
         val session = sessionFactory.openSession()
 

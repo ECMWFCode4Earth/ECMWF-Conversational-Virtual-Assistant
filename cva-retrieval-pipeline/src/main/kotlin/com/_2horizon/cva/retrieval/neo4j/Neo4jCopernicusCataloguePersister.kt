@@ -38,7 +38,7 @@ open class Neo4jCopernicusCataloguePersister(
 
     @EventListener
     @Async
-    open fun cdsCatalogueReceivedEvent(copernicusCatalogueReceivedEvent: CopernicusCatalogueReceivedEvent) {
+    open fun ecmwfPublicationsEventReceived(copernicusCatalogueReceivedEvent: CopernicusCatalogueReceivedEvent) {
         log.info("Neo4j CdsCatalogueReceivedEvent received")
 
         val uiResources = copernicusCatalogueReceivedEvent.uiResources
@@ -56,15 +56,15 @@ open class Neo4jCopernicusCataloguePersister(
 
         uiResources.forEach { r: UiResource ->
 
-            val domains: Set<DatasetDomain> = extractDatasetDomains(r.cdsKeywords)
-            val providers: Set<DatasetProvider> = extractDatasetProviders(r.cdsKeywords)
-            val parameterFamilies: Set<ParameterFamily> = extractParameterFamilies(r.cdsKeywords)
-            val productTypes: Set<ProductType> = extractProductTypes(r.cdsKeywords)
-            val sectors: Set<Sector> = extractSectors(r.cdsKeywords)
-            val spatialCoverages: Set<SpatialCoverage> = extractSpatialCoverages(r.cdsKeywords)
-            val temporalCoverages: Set<TemporalCoverage> = extractTemporalCoverages(r.cdsKeywords)
+            val domains = extractDatasetDomains(r.cdsKeywords)
+            val providers = extractDatasetProviders(r.cdsKeywords)
+            val parameterFamilies = extractParameterFamilies(r.cdsKeywords)
+            val productTypes= extractProductTypes(r.cdsKeywords)
+            val sectors= extractSectors(r.cdsKeywords)
+            val spatialCoverages = extractSpatialCoverages(r.cdsKeywords)
+            val temporalCoverages = extractTemporalCoverages(r.cdsKeywords)
 
-            val terms = r.terms.map { DatasetTerms(it) }.toSet()
+            val terms = r.terms.map { DatasetTerms(it) }
             val docs = r.externalLinks.map { externalLink ->
 
                 val isWiki =
@@ -77,7 +77,7 @@ open class Neo4jCopernicusCataloguePersister(
                     isWiki = isWiki
                 )
 
-            }.toSet()
+            }
 
             if (r.type == "dataset") {
                 val dataset = Dataset(
@@ -132,7 +132,7 @@ open class Neo4jCopernicusCataloguePersister(
                 val relatedDatasets = r.relatedResources.map { relatedResource ->
                     val rel = datasetRepository.load<Dataset>(uiResources.find { it.name == relatedResource.name }!!.id)
                     rel
-                }.toSet()
+                }
 
                 if (relatedDatasets.isNotEmpty())
                     datasetRepository.save(dataset.copy(relatedDatasets = relatedDatasets))
@@ -144,7 +144,7 @@ open class Neo4jCopernicusCataloguePersister(
                 val relatedApplications = r.relatedResources.map { relatedResource ->
                     val rel = datasetRepository.load<Application>(uiResources.find { it.name == relatedResource.name }!!.id)
                     rel
-                }.toSet()
+                }
 
                 if (relatedApplications.isNotEmpty())
                     datasetRepository.save(application.copy(relatedApplications = relatedApplications))
@@ -154,66 +154,66 @@ open class Neo4jCopernicusCataloguePersister(
         log.debug("DONE with Neo4j CdsCatalogueReceivedEvent received")
     }
 
-    private fun extractTemporalCoverages(cdsKeywords: List<String>): Set<TemporalCoverage> {
+    private fun extractTemporalCoverages(cdsKeywords: List<String>): List<TemporalCoverage> {
         val extractKeyword = extractKeywords(cdsKeywords, "Temporal Coverage")
         return if (extractKeyword != null) {
-            setOf(TemporalCoverage(extractKeyword))
+            listOf(TemporalCoverage(extractKeyword))
         } else {
-            emptySet()
+            emptyList()
         }
     }
 
-    private fun extractSpatialCoverages(cdsKeywords: List<String>): Set<SpatialCoverage> {
+    private fun extractSpatialCoverages(cdsKeywords: List<String>): List<SpatialCoverage> {
         val extractKeyword = extractKeywords(cdsKeywords, "Spatial Coverage")
         return if (extractKeyword != null) {
-            setOf(SpatialCoverage(extractKeyword))
+            listOf(SpatialCoverage(extractKeyword))
         } else {
-            emptySet()
+            emptyList()
         }
     }
 
-    private fun extractSectors(cdsKeywords: List<String>): Set<Sector> {
+    private fun extractSectors(cdsKeywords: List<String>): List<Sector> {
         val extractKeyword = extractKeywords(cdsKeywords, "Sector")
         return if (extractKeyword != null) {
-            setOf(Sector(extractKeyword))
+            listOf(Sector(extractKeyword))
         } else {
-            emptySet()
+            emptyList()
         }
     }
 
-    private fun extractProductTypes(cdsKeywords: List<String>): Set<ProductType> {
+    private fun extractProductTypes(cdsKeywords: List<String>): List<ProductType> {
         val extractKeyword = extractKeywords(cdsKeywords, "Product type")
         return if (extractKeyword != null) {
-            setOf(ProductType(extractKeyword))
+            listOf(ProductType(extractKeyword))
         } else {
-            emptySet()
+            emptyList()
         }
     }
 
-    private fun extractParameterFamilies(cdsKeywords: List<String>): Set<ParameterFamily> {
+    private fun extractParameterFamilies(cdsKeywords: List<String>): List<ParameterFamily> {
         val extractKeyword = extractKeywords(cdsKeywords, "Parameter family")
         return if (extractKeyword != null) {
-            setOf(ParameterFamily(extractKeyword))
+            listOf(ParameterFamily(extractKeyword))
         } else {
-            emptySet()
+            emptyList()
         }
     }
 
-    private fun extractDatasetProviders(cdsKeywords: List<String>): Set<DatasetProvider> {
+    private fun extractDatasetProviders(cdsKeywords: List<String>): List<DatasetProvider> {
         val extractKeyword = extractKeywords(cdsKeywords, "Provider")
         return if (extractKeyword != null) {
-            setOf(DatasetProvider(extractKeyword))
+            listOf(DatasetProvider(extractKeyword))
         } else {
-            emptySet()
+            emptyList()
         }
     }
 
-    private fun extractDatasetDomains(cdsKeywords: List<String>): Set<DatasetDomain> {
+    private fun extractDatasetDomains(cdsKeywords: List<String>): List<DatasetDomain> {
         val extractKeyword = extractKeywords(cdsKeywords, "Variable domain")
         return if (extractKeyword != null) {
-            setOf(DatasetDomain(extractKeyword))
+            listOf(DatasetDomain(extractKeyword))
         } else {
-            emptySet()
+            emptyList()
         }
     }
 

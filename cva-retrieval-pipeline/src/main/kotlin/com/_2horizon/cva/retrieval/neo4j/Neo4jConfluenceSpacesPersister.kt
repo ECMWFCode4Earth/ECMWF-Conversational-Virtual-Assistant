@@ -47,7 +47,7 @@ open class Neo4jConfluenceSpacesPersister(
     private val confluenceLinkExtractor: ConfluenceLinkExtractor,
     private val confluenceExperimentalOperations: ConfluenceExperimentalOperations,
     private val confluenceOperations: ConfluenceOperations
-) {
+) : AbstractNeo4Persister(datasetRepository) {
     private val log = LoggerFactory.getLogger(javaClass)
 
     @EventListener
@@ -64,7 +64,7 @@ open class Neo4jConfluenceSpacesPersister(
                 name = space.name,
                 type = space.type,
                 description = space.description.plain.value,
-                labels = space.metadata.labels.results.map { ConfluenceLabel(it.name) }.toSet()
+                labels = space.metadata.labels.results.map { ConfluenceLabel(it.name) }
             )
 
             datasetRepository.save(confluenceSpace)
@@ -106,10 +106,10 @@ open class Neo4jConfluenceSpacesPersister(
                 updatedDate = page.version.`when`,
                 version = page.version.number,
                 updatedBy = updatedByAuthor,
-                labels = page.metadata.labels.results.map { ConfluenceLabel(it.name) }.toSet(),
+                labels = page.metadata.labels.results.map { ConfluenceLabel(it.name) },
                 faqs = questionsInBody,
                 edits = editors,
-                comments = pageComments.toSet(),
+                comments = pageComments,
                 childPage = null,
                 internalLinks = null,
                 externalLinks = null
@@ -162,25 +162,11 @@ open class Neo4jConfluenceSpacesPersister(
 
             val (internalConfluenceLinks, externalLinks) = extractPageLinks(page, spaceKey)
 
-            val internalLinks = internalConfluenceLinks.mapNotNull { link ->
-                datasetRepository.findConfluencePageByTitleAndSpaceKey(link.contentTitle, link.spaceKey)
-
-            }
-            val moreInternalLinks = externalLinks.filter { it.type == ExternalConfluenceLinkType.CONFLUENCE_LINK }
-                .mapNotNull {
-                    datasetRepository.findConfluencePageByTitleAndSpaceKey(
-                        it.properties["contentTitle"].toString(),
-                        it.properties["spaceKey"].toString()
-                    )
-                }
-
-            val moreInternalDirectLinks =
-                externalLinks.filter { it.type == ExternalConfluenceLinkType.CONFLUENCE_DIRECT_LINK }
-                    .map {
-                        datasetRepository.load<ConfluencePage>(it.properties["pageID"].toString())
-                    }
-
-            val allInteralLinks = setOf(internalLinks, moreInternalLinks, moreInternalDirectLinks).flatten().toSet()
+            val allInteralLinks =
+                setOf(
+                    lookupConfluencePagesByInternalConfluenceLink(internalConfluenceLinks),
+                    lookupConfluencePagesByExternalConfluenceLink(externalLinks)
+                ).flatten()
 
             val otherLinks = externalLinks.filterNot { it.type == ExternalConfluenceLinkType.CONFLUENCE_LINK }
                 .map { link ->
@@ -190,7 +176,7 @@ open class Neo4jConfluenceSpacesPersister(
             val confluencePageWithLinks = datasetRepository.load<ConfluencePage>(page.id.toString())
                 .copy(
                     internalLinks = allInteralLinks,
-                    externalLinks = otherLinks.toSet()
+                    externalLinks = otherLinks
                 )
 
             datasetRepository.save(confluencePageWithLinks)
@@ -233,7 +219,7 @@ open class Neo4jConfluenceSpacesPersister(
     private fun extractPageQuestions(
         page: Content,
         extractQuestionsInBody: Boolean = false
-    ): Pair<QuestionAnswer?, Set<QuestionAnswer>> {
+    ): Pair<QuestionAnswer?, List<QuestionAnswer>> {
         val storageDocument = StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body.storage.value)
         val sentences = sentencesDetector.findCoreNlpSentences(storageDocument.text())
         val titleQuestion = if (posTaggerService.questionDetector(page.title)) QuestionAnswer(
@@ -248,9 +234,8 @@ open class Neo4jConfluenceSpacesPersister(
                 .filter { posTaggerService.questionDetector(it) }
                 .map { QuestionAnswer(uuid = UUID.randomUUID().toString(), question = it, answer = null) }
                 .toList()
-                .toSet()
         } else {
-            emptySet()
+            emptyList()
         }
 
         return Pair(titleQuestion, questionsInBody)
@@ -259,7 +244,7 @@ open class Neo4jConfluenceSpacesPersister(
     private fun extractPageEditors(
         page: Content,
         extractVersionHistory: Boolean = false
-    ): Pair<ConfluenceAuthor, Set<ConfluenceAuthor>> {
+    ): Pair<ConfluenceAuthor, List<ConfluenceAuthor>> {
         val updatedBy = page.version.user
         val updatedByAuthor =
             ConfluenceAuthor(updatedBy.userKey, updatedBy.username, updatedBy.displayName, updatedBy.type)
@@ -267,13 +252,13 @@ open class Neo4jConfluenceSpacesPersister(
         val editors = if (extractVersionHistory) {
             retrieveAndSavePageVersions(page.id, page.version.number)
         } else {
-            emptySet()
+            emptyList()
         }
 
         return Pair(updatedByAuthor, editors)
     }
 
-    private fun retrieveAndSavePageVersions(contentId: Long, latestVersionNumber: Int): Set<ConfluenceAuthor> {
+    private fun retrieveAndSavePageVersions(contentId: Long, latestVersionNumber: Int): List<ConfluenceAuthor> {
 
         return latestVersionNumber.downTo(1)
             .toSet()
@@ -300,7 +285,7 @@ open class Neo4jConfluenceSpacesPersister(
                 }
 
                 persistedEditor
-            }.toSet()
+            }
     }
 
     private fun parentChildRelationshipEventReceived(parentChildRelationshipEvent: ConfluenceParentChildRelationshipEvent) {

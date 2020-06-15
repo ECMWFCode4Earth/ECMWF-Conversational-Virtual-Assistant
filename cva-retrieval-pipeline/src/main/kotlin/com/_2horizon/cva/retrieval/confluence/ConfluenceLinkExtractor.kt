@@ -61,68 +61,72 @@ class ConfluenceLinkExtractor {
             }
     }
 
-    private fun createConfluenceLink(href: String): ExternalConfluenceLink? {
+     fun createConfluenceLink(href: String): ExternalConfluenceLink? {
 
-        // skip document attachements
+        // skip document attachments
         if (href.toLowerCase().contains("attachments")) {
             return null
         }
 
-        if (href.toLowerCase().startsWith("https://confluence.ecmwf.int/pages/viewpage.action?pageid=")) {
-            val pageId =
-                href.replace("https://confluence.ecmwf.int/pages/viewpage.action?pageId=", "").split("#").first()
-            check(pageId.toIntOrNull() != null) { "Couldn't extract pageId of $pageId" }
-            return ExternalConfluenceLink(
-                href = href,
-                type = ExternalConfluenceLinkType.CONFLUENCE_DIRECT_LINK,
-                properties = Properties().apply {
-                    setProperty("pageId", pageId)
-                }
-            )
-        } else if (href.toLowerCase().startsWith("https://confluence.ecmwf.int/display")) {
-            val uri = URI(href)
-            val anchor: String? = uri.fragment
-            val pathSegements = uri.path.split("/")
-
-            when (pathSegements.size) {
-                4 -> {
-                    val spaceKey = pathSegements[2]
-                    val contentTitle = URLDecoder.decode(pathSegements[3], Charset.defaultCharset())
-                    val properties = Properties().apply {
-                        setProperty("contentTitle", contentTitle)
-                        setProperty("spaceKey", spaceKey)
+        when {
+            href.toLowerCase().startsWith("https://confluence.ecmwf.int/pages/viewpage.action?pageid=") -> {
+                val pageId =
+                    href.replace("https://confluence.ecmwf.int/pages/viewpage.action?pageId=", "").split("#").first()
+                check(pageId.toIntOrNull() != null) { "Couldn't extract pageId of $pageId" }
+                return ExternalConfluenceLink(
+                    href = href,
+                    type = ExternalConfluenceLinkType.CONFLUENCE_DIRECT_LINK,
+                    properties = Properties().apply {
+                        setProperty("pageId", pageId)
                     }
-                    if (anchor != null) {
-                        properties.setProperty("anchor", anchor)
-                    }
-
-                    return ExternalConfluenceLink(
-                        href = href,
-                        type = ExternalConfluenceLinkType.CONFLUENCE_LINK,
-                        properties = properties
-                    )
-                }
-                3 -> {
-                    val spaceKey = pathSegements[2]
-                    val properties = Properties().apply {
-                        setProperty("spaceKey", spaceKey)
-                    }
-                    return ExternalConfluenceLink(
-                        href = href,
-                        type = ExternalConfluenceLinkType.CONFLUENCE_SITE_LINK,
-                        properties = properties
-                    )
-                }
-                else -> {
-                    log.error("Wrong link pathSegements $pathSegements format for $href")
-                    return null
-                }
+                )
             }
+            href.toLowerCase().startsWith("https://confluence.ecmwf.int/display") -> {
+                val uri = URI(href)
+                val anchor: String? = uri.fragment
+                val pathSegements = uri.path.split("/").filter { it.isNotBlank() }
+
+                when (pathSegements.size) {
+                    3 -> {
+                        val spaceKey = pathSegements[2]
+                        val contentTitle = URLDecoder.decode(pathSegements[3], Charset.defaultCharset())
+                        val properties = Properties().apply {
+                            setProperty("contentTitle", contentTitle)
+                            setProperty("spaceKey", spaceKey)
+                        }
+                        if (anchor != null) {
+                            properties.setProperty("anchor", anchor)
+                        }
+
+                        return ExternalConfluenceLink(
+                            href = href,
+                            type = ExternalConfluenceLinkType.CONFLUENCE_LINK,
+                            properties = properties
+                        )
+                    }
+                    2 -> {
+                        val spaceKey = pathSegements[2]
+                        val properties = Properties().apply {
+                            setProperty("spaceKey", spaceKey)
+                        }
+                        return ExternalConfluenceLink(
+                            href = href,
+                            type = ExternalConfluenceLinkType.CONFLUENCE_SPACE_LINK,
+                            properties = properties
+                        )
+                    }
+                    else -> {
+                        log.error("Wrong link pathSegements $pathSegements format for $href")
+                        return null
+                    }
+                }
 
 
 
-        } else {
-            error("Wrong link href format $href")
+            }
+            else -> {
+                error("Wrong link href format $href")
+            }
         }
     }
 
@@ -169,5 +173,5 @@ data class ExternalConfluenceLink(
 )
 
 enum class ExternalConfluenceLinkType {
-    ECMWF_PUBLICATION, ADS_DATASET, ADS_APPLICATION, CDS_DATASET, CDS_APPLICATION, OTHER, CONFLUENCE_LINK, CONFLUENCE_DIRECT_LINK, CONFLUENCE_SITE_LINK
+    ECMWF_PUBLICATION, ADS_DATASET, ADS_APPLICATION, CDS_DATASET, CDS_APPLICATION, OTHER, CONFLUENCE_LINK, CONFLUENCE_DIRECT_LINK, CONFLUENCE_SPACE_LINK
 }
