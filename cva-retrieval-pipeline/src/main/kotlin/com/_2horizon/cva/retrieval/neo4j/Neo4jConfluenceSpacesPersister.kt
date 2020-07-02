@@ -100,7 +100,6 @@ open class Neo4jConfluenceSpacesPersister(
                 title = page.title,
                 type = page.type,
                 status = page.status,
-                bodyPlain = page.body.view.valueWithoutHtml,
                 titleQuestion = titleQuestion,
                 contentLength = page.body.view.valueWithoutHtml.length,
                 createdDate = page.history.createdDate,
@@ -115,13 +114,15 @@ open class Neo4jConfluenceSpacesPersister(
                 internalLinks = null,
                 externalLinks = null
             )
-
+            confluencePage.bodyPlain = page.body.view.valueWithoutHtml
             datasetRepository.save(confluencePage)
 
         }
 
         handleLinks(pages, spaceKey)
 
+
+        //TODO: fix this
         handleAllChildPages(pages)
 
 
@@ -234,7 +235,10 @@ open class Neo4jConfluenceSpacesPersister(
             sentences
                 .parallelStream()
                 .filter { posTaggerService.questionDetector(it) }
-                .map { QuestionAnswer(faqId = faqId, question = it, answer = null) }
+                .map {
+                    val subFaqId = "${page.id}#${it}"
+                    QuestionAnswer(faqId = subFaqId, question = it, answer = null)
+                }
                 .toList()
         } else {
             emptyList()

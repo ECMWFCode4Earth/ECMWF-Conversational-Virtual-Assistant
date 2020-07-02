@@ -26,7 +26,7 @@ data class ConfluencePage(
     @Index
     val status: String,
 
-    val bodyPlain: String,
+
 
     @Relationship("TITLE_QUESTION")
     val titleQuestion: QuestionAnswer?,
@@ -66,7 +66,9 @@ data class ConfluencePage(
     @Relationship("EXTERNAL_LINK")
     val externalLinks: List<WebLink>?
 
-)
+)    {
+    var bodyPlain: String?=null
+}
 
 
 

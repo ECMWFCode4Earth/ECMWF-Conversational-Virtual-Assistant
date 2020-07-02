@@ -27,10 +27,10 @@ class ConfluenceContentRetriever(
             confluenceSpacesRetriever.retrieveSpaces().spacesList
                 // .filter { it.key != "ECC" }
                 // .filter { it.key == "CUSF" }
-                .filter { it.key == "WIGOSWT" }
+                // .filter { it.key == "WIGOSWT" }
                 // .filter { it.key == "UDOC" }
                 // .filter { it.key == "CPS" }
-                // .filter { it.key == "CKB" }
+                .filter { it.key == "CKB" }
                 .forEach { space -> retrievePages(space.key) }
         }
     }

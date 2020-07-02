@@ -34,12 +34,14 @@ class ConfluenceExtensionKtTest extends Specification {
         r == result
 
         where:
-        href                                                                                                            | result
-        'https://confluence.ecmwf.int/display/ECAC'                                                                     | false
-        'https://confluence.ecmwf.int/display/ECAC/'                                                                    | false
-        'https://confluence.ecmwf.int//display/BUFR/BUFRDC+Home'                                                        | true
-        'https://software.ecmwf.int/wiki/display/BUFR/BUFRDC+Home?preview=/35752427/36012655/bufr_reference_manual.pdf' | true
-        'https://www.ecmwf.int/assets/elearning/eccodes/eccodes2/story_html5.html'                                      | false
+        href                                                                                                              | result
+        'https://confluence.ecmwf.int/display/ECAC'                                                                       | false
+        'https://confluence.ecmwf.int/display/ECAC/'                                                                      | false
+        'https://confluence.ecmwf.int//display/BUFR/BUFRDC+Home'                                                          | true
+        'https://software.ecmwf.int/wiki/display/BUFR/BUFRDC+Home?preview=/35752427/36012655/bufr_reference_manual.pdf'   | true
+        'https://www.ecmwf.int/assets/elearning/eccodes/eccodes2/story_html5.html'                                        | false
+        'https://confluence.ecmwf.int/display/CKB/CAMS%3A+Reanalysis+data+documentation'                                  | true
+        'https://confluence.ecmwf.int/pages/viewpage.action?pageId=83395896#CAMS:Reanalysisdatadocumentation-Knownissues' | true
     }
 
     @Unroll

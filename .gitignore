@@ -21,3 +21,5 @@ config/application*
 local.properties
 .gradletasknamecache
 kube-tmp
+ecmwf-*.json
+flights-bot-*.json

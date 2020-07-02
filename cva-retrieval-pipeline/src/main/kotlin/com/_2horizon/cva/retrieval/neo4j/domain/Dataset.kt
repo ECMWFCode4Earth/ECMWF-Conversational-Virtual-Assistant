@@ -20,6 +20,8 @@ data class Dataset(
 
     val title: String,
 
+    val richAbstract: String,
+
     val downloadable: Boolean,
 
     val type: String,

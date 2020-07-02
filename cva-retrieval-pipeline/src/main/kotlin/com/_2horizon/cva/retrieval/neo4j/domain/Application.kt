@@ -20,6 +20,8 @@ data class Application(
 
     val title: String,
 
+    val richAbstract: String,
+
     var downloadable: Boolean,
 
     var type: String,

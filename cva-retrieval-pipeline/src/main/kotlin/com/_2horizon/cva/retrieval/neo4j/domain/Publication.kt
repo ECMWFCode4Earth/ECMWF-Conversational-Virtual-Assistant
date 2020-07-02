@@ -19,14 +19,34 @@ data class Publication(
     val title: String,
 
     val abstract:String?,
+
+    @Index
     val number:String?,
+
+    @Index
     val secondaryTitle:String?,
+
+    @Index
     val tertiaryTitle:String?,
+
+    @Index
     val year:Int?,
+
+    @Index
     val pubDate:LocalDate?,
+
+    @Index
     val language:String?,
+    
     val pages:String?,
+
+    @Index
     val issue:String?,
+
+    @Index
+    val publicationType:String?,
+
+    @Index
     val section:String?,
     val custom1:String?,
     val custom2:String?,

@@ -63,7 +63,7 @@ class Neo4jEcmwfPublicationsPersister(
                 nodeId = pubDTO.nodeId.toString(),
                 title = pubDTO.title,
 
-                abstract = pubDTO.abstract,
+                abstract = pubDTO.abstractWithoutHtml,
                 number = pubDTO.number,
                 secondaryTitle = pubDTO.secondaryTitle,
                 tertiaryTitle = pubDTO.tertiaryTitle,
@@ -75,7 +75,7 @@ class Neo4jEcmwfPublicationsPersister(
                 section = pubDTO.section,
                 custom1 = pubDTO.custom1,
                 custom2 = pubDTO.custom2,
-
+                publicationType = pubDTO.publicationType,
                 keywords = pubDTO.keywords.map { PublicationKeyword(it) },
                 publicationContributors = pubDTO.contributors.map { PublicationContributor(it) },
                 confluencePages = confluencePageLinks,

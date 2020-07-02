@@ -52,6 +52,7 @@ class POSTaggerServiceTest extends Specification {
         'What are namespaces - ecCodes GRIB FAQ'                                               | true
         'What is MARS?'                                                                        | true
         'Python: How do I install the Python3 bindings - ecCodes FAQ'                          | true
+        'How to use the CDS interactive forms for seasonal forecast datasets'                  | true
         'Read the GTS bulletin keys as well as GRIB/BUFR messages - ecCodes BUFR and GRIB FAQ' | false
         'Manage your data files on our system (ECPDS)'                                         | false
     }

@@ -19,12 +19,14 @@ class DatasetRepository(
 
 
     fun findConfluencePageByTitleAndSpaceKey(title: String,spaceKey:String): ConfluencePage? {
-        val query = "MATCH(p:ConfluencePage) WHERE p.title='\$title' AND p.spaceKey='\$spaceKey' RETURN p"
+        //TODO: check if only colon is included https://confluence.atlassian.com/confkb/the-differences-between-various-url-formats-for-a-confluence-page-278692715.html
+        val query = "MATCH(p:ConfluencePage) WHERE replace(p.title, ':', '')=\$title AND p.spaceKey=\$spaceKey RETURN p"
         val params = mapOf(
-            "title" to title,
+            "title" to title.replace(":",""),
             "spaceKey" to spaceKey
         )
-        return queryForObject<ConfluencePage>(query,params)
+        val page= queryForObject<ConfluencePage>(query,params)
+        return page
     }
 
 

@@ -64,6 +64,7 @@ class ConfluenceOperationsTest extends Specification {
         where:
         contentId | size
         140380476 | 2
+        153391781 | 1
     }
 
    

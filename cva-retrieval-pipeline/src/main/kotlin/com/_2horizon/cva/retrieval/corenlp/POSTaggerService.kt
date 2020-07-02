@@ -31,6 +31,9 @@ class POSTaggerService {
     fun questionDetector(text: String, skippingLength: Int = 250): Boolean {
         log.debug("questionDetector for $text")
 
+        // TODO: improve this
+        if (text.startsWith("How to ")) return true
+
         if (text.length > skippingLength) {
             log.warn("skipping questionDetector for $text")
             return false

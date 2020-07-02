@@ -13,7 +13,7 @@ fun String?.isConfluencePageLink(): Boolean {
     return if (s.startsWith("https://confluence.ecmwf.int/display")) {
         val pathSegements = URI(this).path.split("/").filter { it.isNotBlank() }
         pathSegements.size > 2
-    } else s.startsWith("https://confluence.ecmwf.int/pages/viewpage.action?pageId=")
+    } else s.startsWith("https://confluence.ecmwf.int/pages/viewpage.action?pageid=")
 }
 
 fun String?.isConfluenceSpaceLink(): Boolean {

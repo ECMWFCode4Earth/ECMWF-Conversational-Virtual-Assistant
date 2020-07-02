@@ -15,6 +15,8 @@ val micronautNeo4jOgmVersion: String by project
 val reactorVersion: String by project
 val coreNlpKtVersion: String by project
 val openNlpVersion: String by project
+val dialogflowVersion: String by project
+val micronautGcpVersion: String by project
 
 
 plugins {
@@ -39,7 +41,14 @@ dependencies {
 
     implementation(project(":cva-common"))
     implementation(project(":cva-airtable"))
-    
+
+    // https://cloud.google.com/dialogflow/docs/reference/libraries/java
+    // implementation("com.google.cloud:google-cloud-dialogflow:$dialogflowVersion")
+    implementation(platform("com.google.cloud:libraries-bom:8.0.0"))
+    implementation("com.google.cloud:google-cloud-dialogflow")
+    implementation("io.micronaut.gcp:micronaut-gcp-common:$micronautGcpVersion")
+
+
     // https://jsoup.org/
     implementation("org.jsoup:jsoup:$jsoupVersion")
 

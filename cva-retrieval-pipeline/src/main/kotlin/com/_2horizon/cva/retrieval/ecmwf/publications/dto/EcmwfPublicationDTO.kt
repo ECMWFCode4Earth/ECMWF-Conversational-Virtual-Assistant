@@ -1,5 +1,7 @@
 package com._2horizon.cva.retrieval.ecmwf.publications.dto
 
+import org.jsoup.Jsoup
+import org.jsoup.safety.Whitelist
 import java.time.LocalDate
 
 /**
@@ -29,4 +31,13 @@ data class EcmwfPublicationDTO(
     val publicationPDF: String? = null,
     val publicationLink: String? = null,
     val publicationPDFContent: String? = null
-)
+)     {
+    val abstractWithoutHtml: String?
+        get() {
+            return if (abstract!=null){
+                Jsoup.clean(abstract, Whitelist.none())
+            }   else {
+                null
+            }
+        }
+}

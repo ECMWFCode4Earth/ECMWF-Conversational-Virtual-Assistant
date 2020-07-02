@@ -48,6 +48,7 @@ class CopernicusDataStoreSyncService(
     private fun retrieveClimateDataStoreCatalogue() {
         log.info("Going to retrieveClimateDataStoreCatalogue")
         val uiResources = cdsOperations.getResources().get()
+            // .take(5)
             .map { cdsOperations.getUiResourceByKey(it).get() }
         applicationEventPublisher.publishEvent(CopernicusCatalogueReceivedEvent(Datastore.CDS, uiResources))
     }
