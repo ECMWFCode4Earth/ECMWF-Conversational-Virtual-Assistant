@@ -1,0 +1,64 @@
+= Neo4j knowledge base queries
+
+
+.Show the data model
+```
+CALL db.schema.visualization() YIELD nodes, relationships
+UNWIND nodes AS node
+UNWIND relationships AS rel
+RETURN node,rel
+```
+
+
+```
+MATCH (p:Publication) WHERE toLower(p.abstract) CONTAINS 'ERA5' OR p.title CONTAINS 'ERA5' return p
+```
+
+
+```
+MATCH (q:QuestionAnswer) WHERE toLower(q.question) CONTAINS  toLower(q.question) RETURN q
+```
+
+
+```
+MATCH (p:ConfluencePage) WHERE toLower(p.title) CONTAINS toLower($term) OR toLower(p.bodyPlain) CONTAINS toLower($term) return p
+```
+
+```
+MATCH (d:Dataset) WHERE toLower(d.title) CONTAINS toLower($term) OR toLower(p.bodyPlain) CONTAINS toLower($term) return p
+
+```
+
+
+```
+//
+Question containing forecast
+Question containing grib2
+
+
+Dataset containing era5
+Dataset ConfluencePage
+
+
+ConfluenceSpace
+ConfluenceSpace spaceKey CKB
+ConfluenceSpace ConfluencePage
+ConfluenceSpace ConfluencePage QuestionAnswer
+ConfluenceAuthor displayName Michela ConfluencePage ConfluenceSpace
+
+
+ConfluenceLabel name web
+ConfluenceLabel name web ConfluencePage QuestionAnswer
+
+QuestionAnswer ConfluencePage ConfluenceLabel name c3s
+
+Publication publicationType Report
+
+Publication  PublicationContributor name Anna
+
+SpatialCoverage name
+
+ConfluenceLabel....
+
+label name grib ConfluencePage QuestionAnswer
+```
