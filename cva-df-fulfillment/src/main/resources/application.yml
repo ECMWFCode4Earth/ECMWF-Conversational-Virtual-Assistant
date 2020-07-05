@@ -2,7 +2,6 @@
 micronaut:
   application:
     name: cva-df-fullfillment
-
 ---
 #graphql:
 #  graphiql.enabled: true

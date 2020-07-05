@@ -14,7 +14,8 @@ val checkDependencyUpdatesVersion: String by project
 val jacksonKotlinVersion: String by project
 val objenesisVersion: String by project
 val spockVersion: String by project
-
+val dialogflowVersion: String by project
+val micronautGcpVersion: String by project
 
 plugins {
     groovy
@@ -24,7 +25,7 @@ plugins {
 version = "0.1"
 
 application {
-    mainClassName = "com._2horizon.cva.dialogflow.fullfillment.Application"
+    mainClassName = "com._2horizon.cva.dialogflow.fulfillment.Application"
 }
 
 val developmentOnly by configurations.creating
@@ -35,6 +36,11 @@ configurations {
 }
 
 dependencies {
+
+    // https://cloud.google.com/dialogflow/docs/reference/libraries/java
+    implementation(platform("com.google.cloud:libraries-bom:8.0.0"))
+    implementation("com.google.cloud:google-cloud-dialogflow")
+    implementation("io.micronaut.gcp:micronaut-gcp-common:$micronautGcpVersion")
 
     implementation(project(":cva-common"))
 
@@ -89,8 +95,36 @@ tasks {
     }
 }
 
-allOpen{
+allOpen {
     annotation("io.micronaut.aop.Around")
 }
 
+tasks.create(name = "deploy-jar") {
+
+    dependsOn( "assemble")
+
+    group = "deploy"
+
+    val myServer = org.hidetake.groovy.ssh.core.Remote(
+        mapOf<String, Any>(
+            "host" to "136.156.90.162",
+            "user" to "esowc25",
+            "identity" to File("~/.ssh/id_rsa")
+        )
+    )
+
+    doLast {
+        ssh.run(delegateClosureOf<org.hidetake.groovy.ssh.core.RunHandler> {
+            session(myServer, delegateClosureOf<org.hidetake.groovy.ssh.session.SessionHandler> {
+                put(
+                    hashMapOf(
+                        "from" to File("${project.buildDir.absolutePath}/libs/cva-df-fulfillment-0.1-all.jar"),
+                        "into" to "/home/esowc25/fulfillment-app"
+                    )
+                )
+                execute("sudo systemctl restart fulfillment.service")
+            })
+        })
+    }
+}
 

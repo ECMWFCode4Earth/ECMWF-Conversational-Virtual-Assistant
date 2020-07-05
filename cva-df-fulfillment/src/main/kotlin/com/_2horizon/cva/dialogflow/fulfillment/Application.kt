@@ -1,4 +1,4 @@
-package com._2horizon.cva.dialogflow.fullfillment
+package com._2horizon.cva.dialogflow.fulfillment
 
 import io.micronaut.runtime.Micronaut
 import io.swagger.v3.oas.annotations.OpenAPIDefinition

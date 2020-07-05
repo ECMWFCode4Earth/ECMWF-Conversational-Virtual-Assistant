@@ -36,6 +36,7 @@ plugins {
     id("com.github.johnrengelman.shadow") apply false
     id("org.jlleitschuh.gradle.ktlint-idea") apply false
     id("com.google.cloud.tools.jib") apply false
+    id("org.hidetake.ssh") apply false
     // id("org.asciidoctor.jvm.convert")
     // id("org.asciidoctor.jvm.pdf")
     jacoco
@@ -119,13 +120,14 @@ subprojects {
     }
 
     // All Micronaut subproject
-    if (listOf("cva-airtable", "cva-retrieval-pipeline", "cva-df-fullfillment").contains(name)) {
+    if (listOf("cva-airtable", "cva-retrieval-pipeline", "cva-df-fulfillment").contains(name)) {
         apply(plugin = "org.jetbrains.kotlin.kapt")
         apply(plugin = "org.jetbrains.kotlin.kapt")
         apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
         apply(plugin = "org.jetbrains.kotlin.plugin.allopen")
         apply(plugin = "com.github.johnrengelman.shadow")
         apply(plugin = "com.google.cloud.tools.jib")
+        apply(plugin = "org.hidetake.ssh")
 
         dependencies {
             implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))

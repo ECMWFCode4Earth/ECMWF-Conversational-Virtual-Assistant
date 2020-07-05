@@ -1,0 +1,27 @@
+{
+  "responseId": "b87c0bee-d566-45e9-8aac-d77beb4ab61f-e13762d2",
+  "queryResult": {
+    "queryText": "Show me the latest annual report",
+    "action": "ecmwf.publications.listbytype",
+    "parameters": {
+      "publication_type": "annual report"
+    },
+    "allRequiredParamsPresent": true,
+    "fulfillmentText": "Here you go .... annual report",
+    "fulfillmentMessages": [
+      {
+        "text": {
+          "text": [
+            "Here you go .... annual report"
+          ]
+        }
+      }
+    ],
+    "intent": {
+      "name": "projects/ecmwf-cva/agent/intents/28cecbd9-e9d6-42c9-bc26-c704e648bb8e",
+      "displayName": "pub.test"
+    },
+    "intentDetectionConfidence": 1,
+    "languageCode": "en"
+  }
+}

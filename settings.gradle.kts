@@ -4,7 +4,7 @@ include(
     "cva-common",
     "cva-airtable",
     "cva-retrieval-pipeline",
-    "cva-df-fullfillment"
+    "cva-df-fulfillment"
 
 )
 
@@ -22,6 +22,7 @@ pluginManagement {
         resolve("name.remal.check-dependency-updates")
         resolve("com.google.cloud.tools.jib")
         resolve("org.jlleitschuh.gradle.ktlint-idea")
+        resolve("org.hidetake.ssh")
         // resolve("org.asciidoctor.jvm.convert")
         // resolve("org.asciidoctor.jvm.pdf")
     }
