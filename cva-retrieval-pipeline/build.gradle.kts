@@ -17,6 +17,10 @@ val coreNlpKtVersion: String by project
 val openNlpVersion: String by project
 val dialogflowVersion: String by project
 val micronautGcpVersion: String by project
+val commonCsvVersion: String by project
+val micronautReactorVersion: String by project
+val twitter4jVersion: String by project
+val googleCloudBomVersion: String by project
 
 
 plugins {
@@ -44,7 +48,7 @@ dependencies {
 
     // https://cloud.google.com/dialogflow/docs/reference/libraries/java
     // implementation("com.google.cloud:google-cloud-dialogflow:$dialogflowVersion")
-    implementation(platform("com.google.cloud:libraries-bom:8.0.0"))
+    implementation(platform("com.google.cloud:libraries-bom:$googleCloudBomVersion"))
     implementation("com.google.cloud:google-cloud-dialogflow")
     implementation("io.micronaut.gcp:micronaut-gcp-common:$micronautGcpVersion")
 
@@ -68,6 +72,8 @@ dependencies {
     implementation("org.neo4j:neo4j-ogm-bolt-driver:$micronautNeo4jOgmVersion")
     implementation("org.neo4j:neo4j-ogm-bolt-native-types:$micronautNeo4jOgmVersion")
 
+    // https://commons.apache.org/proper/commons-csv/
+    implementation("org.apache.commons:commons-csv:$commonCsvVersion")
 
     // https://github.com/londogard/smile-nlp-kt
     implementation("com.londogard:smile-nlp-kt:$smileNlpKtVersion")
@@ -83,6 +89,12 @@ dependencies {
 
     // https://opennlp.apache.org/
     implementation("org.apache.opennlp:opennlp-tools:$openNlpVersion")
+
+    //https://micronaut-projects.github.io/micronaut-reactor/latest/guide/
+    implementation("io.micronaut.reactor:micronaut-reactor:$micronautReactorVersion")
+
+    // http://twitter4j.org/en/
+    implementation("org.twitter4j:twitter4j-core:$twitter4jVersion")
 
     implementation("io.swagger.core.v3:swagger-annotations")
     implementation("io.micronaut.graphql:micronaut-graphql")

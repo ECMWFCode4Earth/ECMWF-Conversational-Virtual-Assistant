@@ -7,6 +7,7 @@ import com._2horizon.cva.retrieval.copernicus.dto.ui.UiResource
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
 import com._2horizon.cva.retrieval.nlp.SignificantTerm
 import com._2horizon.cva.retrieval.sitemap.Sitemap
+import twitter4j.Status
 
 /**
  * Created by Frank Lieber (liefra) on 2020-05-11.
@@ -21,5 +22,7 @@ data class SignificantTermsReceivedEvent(val datastore: Datastore, val significa
 
 
 data class ConfluenceParentChildRelationshipEvent(val parentId:Long, val childId:Long)
+
+data class TwitterBulkStatusEvent(val statuses: List<Status>)
 
 

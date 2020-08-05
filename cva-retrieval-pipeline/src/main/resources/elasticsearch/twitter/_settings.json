@@ -1,0 +1,28 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 1
+  },
+  "mappings": {
+    "properties": {
+      "createdAt": {
+        "type": "date"
+      },
+      "text": {
+        "type": "text"
+      },
+      "source": {
+        "type": "keyword"
+      },
+      "retweetedStatusId": {
+        "type": "keyword"
+      },
+      "quotedStatusId": {
+        "type": "keyword"
+      },
+      "geoLocation": {
+        "type": "geo_point"
+      }
+    }
+  }
+}
