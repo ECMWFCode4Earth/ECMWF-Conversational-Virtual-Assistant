@@ -3,8 +3,8 @@ package com._2horizon.cva.dialogflow.manager.dialogflow
 import com._2horizon.cva.dialogflow.manager.dialogflow.model.DialogflowFaqConfigModel
 import com._2horizon.cva.dialogflow.manager.event.DialogflowFaqConfigModelEvent
 import com.google.auth.oauth2.GoogleCredentials
+import com.google.cloud.dialogflow.v2beta1.AgentName
 import com.google.cloud.dialogflow.v2beta1.Intent
-import com.google.cloud.dialogflow.v2beta1.ProjectAgentName
 import io.micronaut.context.annotation.Requires
 import io.micronaut.gcp.GoogleCloudConfiguration
 import io.micronaut.runtime.event.annotation.EventListener
@@ -38,7 +38,7 @@ class DialogflowFaqConfigurationService(
 
         getIntentsClient().use { intentsClient ->
             val response: Intent =
-                intentsClient.createIntent(ProjectAgentName.of(googleCloudConfiguration.projectId), intent)
+                intentsClient.createIntent(AgentName.of(googleCloudConfiguration.projectId), intent)
             System.out.format("Intent created: %s\n", response)
             return response
         }

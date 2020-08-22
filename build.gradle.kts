@@ -120,7 +120,7 @@ subprojects {
     }
 
     // All Micronaut subproject
-    if (listOf("cva-airtable", "cva-retrieval-pipeline", "cva-df-fulfillment").contains(name)) {
+    if (listOf("cva-airtable", "cva-retrieval-pipeline", "cva-df-fulfillment", "cva-df-manager","cva-copernicus").contains(name)) {
         apply(plugin = "org.jetbrains.kotlin.kapt")
         apply(plugin = "org.jetbrains.kotlin.kapt")
         apply(plugin = "org.jetbrains.kotlin.plugin.jpa")

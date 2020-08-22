@@ -39,26 +39,31 @@ class DialogFlowEntitiesConfigService(
 
     val credentialsProvider: FixedCredentialsProvider = FixedCredentialsProvider.create(googleCredentials)
 
-    fun createEntities(dfEntityType:DialogFlowEntityType): EntityType? {
+    fun createEntities(
+        dfEntityType: DialogFlowEntityType,
+        fuzzyExtraction: Boolean = false,
+        autoExpansionMode: EntityType.AutoExpansionMode = EntityType.AutoExpansionMode.AUTO_EXPANSION_MODE_UNSPECIFIED
+    ): EntityType? {
 
-       val entities =  dfEntityType.entities.map {
-             EntityType.Entity.newBuilder().setValue(it.name) .addAllSynonyms(it.synonyms).build()
+        val entities = dfEntityType.entities.map {
+            EntityType.Entity.newBuilder().setValue(it.name).addAllSynonyms(it.synonyms).build()
         }
 
-        val entityType =  EntityType.newBuilder()
+        val entityType = EntityType.newBuilder()
             .setDisplayName(dfEntityType.displayName)
             .setKind(EntityType.Kind.KIND_MAP)
-            .setAutoExpansionMode(EntityType.AutoExpansionMode.AUTO_EXPANSION_MODE_UNSPECIFIED)  // Auto expansion disabled for the entity.
+            .setEnableFuzzyExtraction(fuzzyExtraction)
+            .setAutoExpansionMode(autoExpansionMode) //https://cloud.google.com/dialogflow/docs/entities-options#expansion
             .addAllEntities(entities)
             .build()
 
-        val entityTypeRequest =   CreateEntityTypeRequest.newBuilder()
+        val entityTypeRequest = CreateEntityTypeRequest.newBuilder()
             .setParent(ProjectAgentName.of(googleCloudConfiguration.projectId).toString())
             .setEntityType(entityType)
             .build()
 
         getEntityTypesClient().use { entityTypesClient ->
-           return entityTypesClient.createEntityType(entityTypeRequest)
+            return entityTypesClient.createEntityType(entityTypeRequest)
         }
     }
 
@@ -108,10 +113,10 @@ class DialogFlowEntitiesConfigService(
 
 data class DialogFlowEntityType(
     val displayName: String,
-    val entities:List<DialogFlowEntity>
+    val entities: List<DialogFlowEntity>
 )
 
 data class DialogFlowEntity(
-    val name:String,
-    val synonyms:List<String>
+    val name: String,
+    val synonyms: List<String>
 )

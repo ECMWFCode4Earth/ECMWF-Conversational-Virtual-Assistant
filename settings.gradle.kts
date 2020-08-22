@@ -4,8 +4,9 @@ include(
     "cva-common",
     "cva-airtable",
     "cva-retrieval-pipeline",
-    "cva-df-fulfillment"
-
+    "cva-df-fulfillment",
+    "cva-df-manager",
+    "cva-copernicus"
 )
 
 pluginManagement {

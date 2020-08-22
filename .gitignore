@@ -22,4 +22,6 @@ local.properties
 .gradletasknamecache
 kube-tmp
 ecmwf-*.json
+c3s-cva-*.json
+cams-cva-*.json
 flights-bot-*.json
