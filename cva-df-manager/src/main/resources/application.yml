@@ -1,0 +1,7 @@
+---
+micronaut:
+  application:
+    name: cva-df-manager
+---
+#graphql:
+#  graphiql.enabled: true
