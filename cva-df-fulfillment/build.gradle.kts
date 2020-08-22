@@ -16,6 +16,7 @@ val objenesisVersion: String by project
 val spockVersion: String by project
 val dialogflowVersion: String by project
 val micronautGcpVersion: String by project
+val googleCloudBomVersion: String by project
 
 plugins {
     groovy
@@ -38,11 +39,13 @@ configurations {
 dependencies {
 
     // https://cloud.google.com/dialogflow/docs/reference/libraries/java
-    implementation(platform("com.google.cloud:libraries-bom:8.0.0"))
+    implementation(platform("com.google.cloud:libraries-bom:$googleCloudBomVersion"))
     implementation("com.google.cloud:google-cloud-dialogflow")
     implementation("io.micronaut.gcp:micronaut-gcp-common:$micronautGcpVersion")
 
     implementation(project(":cva-common"))
+    
+    implementation(project(":cva-copernicus"))
 
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
     implementation("io.swagger.core.v3:swagger-annotations")

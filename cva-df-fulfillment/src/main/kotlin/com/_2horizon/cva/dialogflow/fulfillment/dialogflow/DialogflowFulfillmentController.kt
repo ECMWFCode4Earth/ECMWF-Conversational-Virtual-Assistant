@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory
  */
 @Controller("/fulfillment")
 class DialogflowFulfillmentController(
-    private val dfFulfillmentService: DialogflowFulfillmentService
+    private val dfFulfillmentDispatcher: DialogflowFulfillmentDispatcher
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
@@ -20,9 +20,11 @@ class DialogflowFulfillmentController(
 
         log.info("Got a webhookRequestString")
 
-        val webhookResponse = dfFulfillmentService.handle(webhookRequestString)
+        val webhookResponse = dfFulfillmentDispatcher.handle(webhookRequestString)
 
         log.info("Sending back webhookResponse")
+
+        // println(webhookResponse)
         
         return JsonFormat.printer().print(webhookResponse)
     }

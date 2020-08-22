@@ -2,13 +2,17 @@ package com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class RichContent(
-    @JsonProperty("event")
-    val event: Event,
-    @JsonProperty("subtitle")
-    val subtitle: String? = null,
+data class RichContentInfoItem(
+
     @JsonProperty("title")
     val title: String,
+
+    @JsonProperty("subtitle")
+    val subtitle: String,
+
+    @JsonProperty("actionLink")
+    val actionLink: String,
+
     @JsonProperty("type")
-    val type: String = "list"
-)
+    val type: String = "info"
+):RichContentItem

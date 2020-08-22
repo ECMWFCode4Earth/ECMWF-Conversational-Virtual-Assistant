@@ -2,6 +2,12 @@
 micronaut:
   application:
     name: cva-df-fullfillment
+  router:
+    static-resources:
+      default:
+        enabled: true
+        mapping: "/*.html"
+        paths: "classpath:public"
 ---
 #graphql:
 #  graphiql.enabled: true
