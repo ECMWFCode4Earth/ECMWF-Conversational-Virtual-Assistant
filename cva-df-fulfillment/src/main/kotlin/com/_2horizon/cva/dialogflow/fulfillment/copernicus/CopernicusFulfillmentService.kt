@@ -2,6 +2,8 @@ package com._2horizon.cva.dialogflow.fulfillment.copernicus
 
 import com._2horizon.cva.copernicus.CopernicusDataStoreSolrSearchService
 import com._2horizon.cva.dialogflow.fulfillment.AbstractFulfillmentService
+import com._2horizon.cva.dialogflow.fulfillment.FulfillmentState
+import com._2horizon.cva.dialogflow.fulfillment.dialogflow.FulfillmentChain
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentSuggestionChipsItem
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.cloud.dialogflow.v2beta1.WebhookRequest
@@ -21,32 +23,32 @@ class CopernicusFulfillmentService(
 
     private val log = LoggerFactory.getLogger(javaClass)
 
-    override fun handle(webhookRequest: WebhookRequest): WebhookResponse {
+    override fun handle(fulfillmentChain: FulfillmentChain): WebhookResponse.Builder {
 
-        val session = webhookRequest.session
-        val action = webhookRequest.queryResult.action
+        val session = fulfillmentChain.webhookRequest.session
+        val action = fulfillmentChain.webhookRequest.queryResult.action
 
-        return when (action) {
-            "cds.status" -> {
-                retrieveStatusAsRichContent(webhookRequest)
-            }
-            "application.list" -> {
-                retrieveAppsAsRichContent(webhookRequest)
-            }
-            "cds_data_access-dataset-by-name-fallback" -> {
+        return when (fulfillmentChain.fulfillmentState) {
+            // "cds.status" -> {
+            //     retrieveStatusAsRichContent(webhookRequest)
+            // }
+            // "application.list" -> {
+            //     retrieveAppsAsRichContent(webhookRequest)
+            // }
+            FulfillmentState.CF_CDS_DATASET_EXECUTE_DATASET_SEARCH,FulfillmentState.CF_CDS_DATASET_SEARCH_DATASET_BY_NAME_OR_KEYWORD_FALLBACK -> {
                 // retrieveAppsAsRichContent(webhookRequest)
-                retrieveDatasetsAsRichContent(webhookRequest)
+                retrieveDatasetsAsRichContent(fulfillmentChain)
             }
 
             else -> {
-                fallbackResponse()
+               error("CopernicusFulfillmentService couldn't handle state ${fulfillmentChain.fulfillmentState}")
             }
         }
     }
 
-    private fun retrieveDatasetsAsRichContent(webhookRequest: WebhookRequest): WebhookResponse {
+    private fun retrieveDatasetsAsRichContent(fulfillmentChain: FulfillmentChain): WebhookResponse.Builder {
 
-         val queryText = webhookRequest.queryResult.queryText
+        val queryText = fulfillmentChain.webhookRequest.queryResult.queryText
 
         val datasets = copernicusDataStoreSolrSearchService.searchDatasetsByQueryTerm(queryText)
 
@@ -66,14 +68,14 @@ class CopernicusFulfillmentService(
         }
 
         return if (chips.isNotEmpty()) {
-             convertRichContentItemToWebhookResponse(RichContentSuggestionChipsItem(chips.take(5)), webhookRequest)
+             convertRichContentItemToWebhookResponse(RichContentSuggestionChipsItem(chips.take(5)), fulfillmentChain.webhookRequest,fulfillmentChain.webhookResponseBuilder)
         } else {
-            fallbackResponse()
+            error("retrieveDatasetsAsRichContent")
         }
 
     }
 
-    private fun retrieveAppsAsRichContent(webhookRequest: WebhookRequest): WebhookResponse {
+    private fun retrieveAppsAsRichContent(webhookRequest: WebhookRequest,webhookResponseBuilder: WebhookResponse.Builder,): WebhookResponse.Builder {
 
         val image = RichContentSuggestionChipsItem.ChipOption.ChipImage(
             src = RichContentSuggestionChipsItem.ChipOption.ChipImage.ChipImageSrc(
@@ -116,11 +118,11 @@ class CopernicusFulfillmentService(
 
             )
         )
-        return convertRichContentItemToWebhookResponse(item, webhookRequest)
+        return convertRichContentItemToWebhookResponse(item, webhookRequest,webhookResponseBuilder)
     }
 
-    private fun retrieveStatusAsRichContent(webhookRequest: WebhookRequest): WebhookResponse {
+    private fun retrieveStatusAsRichContent(webhookRequest: WebhookRequest,webhookResponseBuilder: WebhookResponse.Builder,): WebhookResponse.Builder {
         val item = copernicusStatusService.retrieveStatusAsRichContent()
-        return convertRichContentItemToWebhookResponse(item, webhookRequest)
+        return convertRichContentItemToWebhookResponse(item, webhookRequest,webhookResponseBuilder)
     }
 }

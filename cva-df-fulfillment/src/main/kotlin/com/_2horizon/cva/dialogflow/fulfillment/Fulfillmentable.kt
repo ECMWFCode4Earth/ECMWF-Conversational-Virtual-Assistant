@@ -1,6 +1,6 @@
 package com._2horizon.cva.dialogflow.fulfillment
 
-import com.google.cloud.dialogflow.v2beta1.WebhookRequest
+import com._2horizon.cva.dialogflow.fulfillment.dialogflow.FulfillmentChain
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse
 
 /**
@@ -8,5 +8,7 @@ import com.google.cloud.dialogflow.v2beta1.WebhookResponse
  */
 interface Fulfillmentable {
 
-    fun handle(webhookRequest: WebhookRequest): WebhookResponse
+    fun handle(
+        fulfillmentChain: FulfillmentChain
+    ): WebhookResponse.Builder
 }

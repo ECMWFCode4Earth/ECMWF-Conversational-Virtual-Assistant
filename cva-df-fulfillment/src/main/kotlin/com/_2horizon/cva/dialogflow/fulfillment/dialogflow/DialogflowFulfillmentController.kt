@@ -1,5 +1,6 @@
 package com._2horizon.cva.dialogflow.fulfillment.dialogflow
 
+import com.google.cloud.dialogflow.v2beta1.WebhookRequest
 import com.google.protobuf.util.JsonFormat
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
@@ -20,7 +21,12 @@ class DialogflowFulfillmentController(
 
         log.info("Got a webhookRequestString")
 
-        val webhookResponse = dfFulfillmentDispatcher.handle(webhookRequestString)
+        val webhookRequest =
+            WebhookRequest.newBuilder().apply { JsonFormat.parser().merge(webhookRequestString, this) }.build()
+
+        // println(webhookRequestString)
+
+        val webhookResponse = dfFulfillmentDispatcher.handle(webhookRequest)
 
         log.info("Sending back webhookResponse")
 

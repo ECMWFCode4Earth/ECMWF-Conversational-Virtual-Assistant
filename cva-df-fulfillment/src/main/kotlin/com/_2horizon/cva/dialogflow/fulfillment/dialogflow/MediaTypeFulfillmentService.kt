@@ -55,16 +55,15 @@ class MediaTypeFulfillmentService(
         )
     )
 
-    override fun handle(webhookRequest: WebhookRequest): WebhookResponse {
+    override fun handle(fulfillmentChain: FulfillmentChain): WebhookResponse.Builder {
 
-
-
-        val session = webhookRequest.session
-        val action = webhookRequest.queryResult.action
+        val session = fulfillmentChain.webhookRequest.session
+        val action = fulfillmentChain.webhookRequest.queryResult.action
+        val webhookRequest = fulfillmentChain.webhookRequest
 
         return when (action) {
             "tenders.list" -> {
-                tendersResponse(webhookRequest)
+                tendersResponse(webhookRequest,fulfillmentChain.webhookResponseBuilder)
             }
             "show.communication_media_type.list" -> {
 
@@ -72,10 +71,10 @@ class MediaTypeFulfillmentService(
                 val mediaTypeParameter = objectMapper.readValue(parametersJson, MediaTypeParameter::class.java)
 
                 when (mediaTypeParameter.communicationMediaType) {
-                    "news" -> mediaTypeItemResponse(newsArticles[0],webhookRequest)
-                    "event" -> nextEventsResponse(webhookRequest)
-                    "press release" -> mediaTypeItemResponse(pressReleases[0], webhookRequest)
-                    else -> mediaTypeItemResponse(newsArticles[0], webhookRequest)
+                    "news" -> mediaTypeItemResponse(newsArticles[0],webhookRequest,fulfillmentChain.webhookResponseBuilder)
+                    "event" -> nextEventsResponse(webhookRequest,fulfillmentChain.webhookResponseBuilder)
+                    "press release" -> mediaTypeItemResponse(pressReleases[0], webhookRequest,fulfillmentChain.webhookResponseBuilder)
+                    else -> mediaTypeItemResponse(newsArticles[0], webhookRequest,fulfillmentChain.webhookResponseBuilder)
                 }
             }
             "communication_media_typelist.communication_media_typelist-next" -> {
@@ -86,18 +85,18 @@ class MediaTypeFulfillmentService(
 
 
                 when (mediaTypeParameter.communicationMediaType) {
-                    "news" -> mediaTypeItemResponse(newsArticles[1], webhookRequest)
-                    "press release" -> mediaTypeItemResponse(pressReleases[1], webhookRequest)
-                    else -> mediaTypeItemResponse(newsArticles[1], webhookRequest)
+                    "news" -> mediaTypeItemResponse(newsArticles[1], webhookRequest,fulfillmentChain.webhookResponseBuilder)
+                    "press release" -> mediaTypeItemResponse(pressReleases[1], webhookRequest,fulfillmentChain.webhookResponseBuilder)
+                    else -> mediaTypeItemResponse(newsArticles[1], webhookRequest,fulfillmentChain.webhookResponseBuilder)
                 }
             }
             else -> {
-                fallbackResponse()
+                error("error in media")
             }
         }
     }
 
-    private fun tendersResponse(webhookRequest: WebhookRequest): WebhookResponse {
+    private fun tendersResponse(webhookRequest: WebhookRequest,webhookResponseBuilder: WebhookResponse.Builder): WebhookResponse.Builder {
         val tenders = listOf(
             RichContentInfoItem(
                 title = "COP_057 Prior information notice: Provision of a Contract Lifecycle Management Tool",
@@ -118,10 +117,10 @@ class MediaTypeFulfillmentService(
                     .addAllText(listOf("Sure. Here are is the list of currently open tenders")).build()
             ).build()
 
-        return convertCustomPayloadToWebhookResponse(customPayload =customPayload, prefixMessages = listOf(prefixMessages) ,webhookRequest = webhookRequest)
+        return convertCustomPayloadToWebhookResponse(customPayload =customPayload, prefixMessages = listOf(prefixMessages) ,webhookRequest = webhookRequest, webhookResponseBuilder = webhookResponseBuilder)
     }
 
-    private fun nextEventsResponse(webhookRequest: WebhookRequest): WebhookResponse {
+    private fun nextEventsResponse(webhookRequest: WebhookRequest,webhookResponseBuilder: WebhookResponse.Builder): WebhookResponse.Builder {
 
         val events = listOf(
 
@@ -156,13 +155,14 @@ class MediaTypeFulfillmentService(
                     .addAllText(listOf("Sure. Here are the upcoming events")).build()
             ).build()
 
-        return convertCustomPayloadToWebhookResponse(customPayload =customPayload, prefixMessages = listOf(prefixMessages),webhookRequest = webhookRequest )
+        return convertCustomPayloadToWebhookResponse(customPayload =customPayload, prefixMessages = listOf(prefixMessages),webhookRequest = webhookRequest, webhookResponseBuilder = webhookResponseBuilder )
     }
 
     private fun mediaTypeItemResponse(
         mediaTypeItem: MediaTypeItem,
-        webhookRequest: WebhookRequest
-    ): WebhookResponse {
+        webhookRequest: WebhookRequest,
+        webhookResponseBuilder: WebhookResponse.Builder
+    ): WebhookResponse.Builder {
 
         val imageItem = RichContentImageItem(rawUrl = mediaTypeItem.image!!, accessibilityText = mediaTypeItem.title)
         val infoItem = RichContentInfoItem(
@@ -180,7 +180,7 @@ class MediaTypeFulfillmentService(
             )
         )
 
-        return convertCustomPayloadToWebhookResponse(customPayload,webhookRequest)
+        return convertCustomPayloadToWebhookResponse(customPayload,webhookRequest,webhookResponseBuilder)
     }
 
 

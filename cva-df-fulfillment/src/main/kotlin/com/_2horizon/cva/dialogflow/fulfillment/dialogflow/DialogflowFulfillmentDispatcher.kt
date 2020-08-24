@@ -1,24 +1,18 @@
 package com._2horizon.cva.dialogflow.fulfillment.dialogflow
 
+import com._2horizon.cva.dialogflow.fulfillment.FulfillmentState
+import com._2horizon.cva.dialogflow.fulfillment.actionAsFulfillmentState
+import com._2horizon.cva.dialogflow.fulfillment.analytics.DialogflowConversionStep
 import com._2horizon.cva.dialogflow.fulfillment.copernicus.CopernicusFulfillmentService
+import com._2horizon.cva.dialogflow.fulfillment.extensions.convertObjectToStruct
+import com._2horizon.cva.dialogflow.fulfillment.extensions.convertStructToObject
+import com._2horizon.cva.dialogflow.fulfillment.fallback.FallbackFulfillmentService
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.google.api.gax.core.FixedCredentialsProvider
 import com.google.auth.oauth2.GoogleCredentials
-import com.google.cloud.dialogflow.v2beta1.AgentsClient
-import com.google.cloud.dialogflow.v2beta1.AgentsSettings
 import com.google.cloud.dialogflow.v2beta1.Context
-import com.google.cloud.dialogflow.v2beta1.ContextsClient
-import com.google.cloud.dialogflow.v2beta1.ContextsSettings
-import com.google.cloud.dialogflow.v2beta1.SessionEntityTypesClient
-import com.google.cloud.dialogflow.v2beta1.SessionEntityTypesSettings
-import com.google.cloud.dialogflow.v2beta1.SessionsClient
-import com.google.cloud.dialogflow.v2beta1.SessionsSettings
 import com.google.cloud.dialogflow.v2beta1.WebhookRequest
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse
-import com.google.protobuf.Struct
-import com.google.protobuf.util.JsonFormat
-import io.micronaut.gcp.GoogleCloudConfiguration
-import java.time.LocalDateTime
+import java.time.OffsetDateTime
 import javax.inject.Singleton
 
 /**
@@ -28,110 +22,145 @@ import javax.inject.Singleton
 class DialogflowFulfillmentDispatcher(
     googleCredentials: GoogleCredentials,
     private val objectMapper: ObjectMapper,
-    private val googleCloudConfiguration: GoogleCloudConfiguration,
     private val mediaTypeFulfillmentService: MediaTypeFulfillmentService,
     private val copernicusFulfillmentService: CopernicusFulfillmentService,
-    private val dfFulfillmentService: DialogflowFulfillmentService
+    private val fallbackFulfillmentService: FallbackFulfillmentService,
+    private val dfFulfillmentService: DialogflowFulfillmentService,
 ) {
+        
 
-    private val credentialsProvider: FixedCredentialsProvider = FixedCredentialsProvider.create(googleCredentials)
+    // long running context names
+    private val intentStack = "intentStack"
 
-    fun handle(webhookRequestString: String): WebhookResponse {
-        val webhookRequest =
-            WebhookRequest.newBuilder().apply { JsonFormat.parser().merge(webhookRequestString, this) }.build()
+    fun handle(webhookRequest: WebhookRequest): WebhookResponse {
 
+        val dialogflowConversionStep = createDialogflowConversionStep(webhookRequest)
 
-        println(webhookRequestString)
+        val intentStack = createOrUpdateIntentStack(webhookRequest)
+        val webhookResponseBuilder = createDefaultWebhookResponseBuilder(intentStack, webhookRequest.session)
+        val fulfillmentState = actionToStateLookup(webhookRequest.queryResult.action)
 
+        // TODO: send log to elastic event
+        println(dialogflowConversionStep)
+
+        val fulfillmentChain = FulfillmentChain(
+            webhookRequest,fulfillmentState,webhookResponseBuilder,intentStack
+        )
+
+        val webhookResponseBuilderResponse: WebhookResponse.Builder =  when (fulfillmentState) {
+            FulfillmentState.FALLBACK_GLOBAL -> fallbackFulfillmentService.handle(
+                fulfillmentChain
+            )
+            FulfillmentState.NOTHING -> webhookResponseBuilder
+            FulfillmentState.CF_CDS_DATASET_EXECUTE_DATASET_SEARCH,
+            FulfillmentState.CF_CDS_DATASET_SEARCH_DATASET_BY_NAME_OR_KEYWORD_FALLBACK -> copernicusFulfillmentService.handle(
+                fulfillmentChain
+            )
+        }
+        return webhookResponseBuilderResponse.build()
+
+        //  when (action) {
+        //
+        //     "cf_cds_show_list_of_datasets"
+        //
+        //     // "show.communication_media_type.list" -> mediaTypeFulfillmentService.handle(webhookRequest)
+        //     //
+        //     // "communication_media_typelist.communication_media_typelist-next" -> mediaTypeFulfillmentService.handle(
+        //     //     webhookRequest
+        //     // )
+        //     //
+        //     // "cds.status" -> copernicusFulfillmentService.handle(webhookRequest)
+        //     //
+        //     // "tenders.list" -> mediaTypeFulfillmentService.handle(webhookRequest)
+        //     //
+        //     // "application.list" -> copernicusFulfillmentService.handle(webhookRequest)
+        //     //
+        //     // "cds_data_access-dataset-by-name-fallback" -> copernicusFulfillmentService.handle(webhookRequest)
+        //
+        //     else -> {
+        //
+        //     }
+        // }
+    }
+
+    private fun actionToStateLookup(action: String): FulfillmentState {
+        return if (action.isNotBlank()) {
+            actionAsFulfillmentState(action)
+        } else {
+            FulfillmentState.NOTHING
+        }
+    }
+
+    private fun createDialogflowConversionStep(webhookRequest: WebhookRequest): DialogflowConversionStep {
+        val now = OffsetDateTime.now()
         val session = webhookRequest.session
-        val cvaFlowName = "$session/contexts/cvaflow"
-
         val queryResult = webhookRequest.queryResult
         val action = queryResult.action
-        val cvaFlow = queryResult.outputContextsList.firstOrNull { it.name == cvaFlowName }
+        val responseId = webhookRequest.responseId
+        val queryText = queryResult.queryText
+        val alternativeQueryResultsCount = webhookRequest.alternativeQueryResultsCount
+        val intentName = queryResult.intent.name
+        val intentDisplayName = queryResult.intent.displayName
+        val intentDetectionConfidence = queryResult.intentDetectionConfidence
+        val outputContextsList = queryResult.outputContextsList
 
-        // val flowContext = getContextsClient().getContext(ContextName.ofProjectSessionContextName(googleCloudConfiguration.projectId,session,"flow"))
+        return DialogflowConversionStep(
+            datetime = now,
+            session = session,
+            action = action,
+            responseId = responseId,
+            queryText = queryText,
+            alternativeQueryResultsCount = alternativeQueryResultsCount,
+            intentName = intentName,
+            intentDisplayName = intentDisplayName,
+            intentDetectionConfidence = intentDetectionConfidence,
+            outputContexts = outputContextsList.map { it.name }
+        )
+    }
 
-        return when (action) {
-            "show.communication_media_type.list" -> mediaTypeFulfillmentService.handle(webhookRequest)
-
-            "communication_media_typelist.communication_media_typelist-next" -> mediaTypeFulfillmentService.handle(
-                webhookRequest
-            )
-
-            "cds.status" -> copernicusFulfillmentService.handle(webhookRequest)
-
-            "tenders.list" -> mediaTypeFulfillmentService.handle(webhookRequest)
-
-            "application.list" -> copernicusFulfillmentService.handle(webhookRequest)
-
-            "cds_data_access-dataset-by-name-fallback" -> copernicusFulfillmentService.handle(webhookRequest)
-
-            else -> {
-                fallbackResponse(session, cvaFlow)
+    private fun createOrUpdateIntentStack(
+        webhookRequest: WebhookRequest
+    ): IntentStack {
+        //  add intent to intent stack
+        val intentStackName = "${webhookRequest.session}/contexts/$intentStack"
+        val intentStackOpt =
+            webhookRequest.queryResult.outputContextsList.firstOrNull { it.name == intentStackName }?.parameters?.let { struct ->
+                objectMapper.convertStructToObject<IntentStack>(struct)
             }
-        }
-    }
 
-    internal fun getContextsClient() =
-        ContextsClient.create(
-            ContextsSettings.newBuilder().setCredentialsProvider(credentialsProvider).build()
-        )
-
-    internal fun getSessionsClient() =
-        SessionsClient.create(
-            SessionsSettings.newBuilder().setCredentialsProvider(credentialsProvider).build()
-        )
-
-    internal fun getAgentsClient() =
-        AgentsClient.create(
-            AgentsSettings.newBuilder().setCredentialsProvider(credentialsProvider).build()
-        )
-
-    internal fun getSessionEntityTypesClient() =
-        SessionEntityTypesClient.create(
-            SessionEntityTypesSettings.newBuilder().setCredentialsProvider(credentialsProvider).build()
-        )
-
-    private fun fallbackResponse(session: String, cvaFlow: Context?): WebhookResponse {
-        val now = "Great idea at ${LocalDateTime.now()}"
-
-        val intentFlow =if (cvaFlow != null) {
-            val parametersJson = JsonFormat.printer().print(cvaFlow.parameters)
-            val intentFlow = objectMapper.readValue(parametersJson, IntentFlow::class.java)
-            intentFlow.flows.add(now)
-            intentFlow
+        return if (intentStackOpt != null) {
+            intentStackOpt.flows.add(intentStack)
+            intentStackOpt
         } else {
-            IntentFlow(mutableListOf(now))
+            IntentStack(mutableListOf(intentStack))
         }
-        val flowContext =Context.newBuilder().setName(
-            "$session/contexts/cvaflow"
-        ).setLifespanCount(100).setParameters( objectToStruct(intentFlow)).build()
-
-        val textMessage = dfFulfillmentService.createTextMessage(now)
-
-        val listReply = dfFulfillmentService.createCustomReply()
-
-        val webhookResponse = WebhookResponse.newBuilder()
-            .addOutputContexts(flowContext)
-            // .addAllOutputContexts(listOf(flowContext))
-            .addAllFulfillmentMessages(
-                listOf(
-                    textMessage,
-                    listReply
-                )
-            )
-            .build()
-
-        return webhookResponse
     }
 
-    private fun objectToStruct(customPayload: Any): Struct {
-        val json = objectMapper.writeValueAsString(customPayload)
+    private fun createOrUpdateIntentStackContext(
+        intentStack: IntentStack,
+        session: String
+    ): Context {
+        //  add intent to intent stack
+        return Context.newBuilder().setName(
+            "$session/contexts/$intentStack"
+        ).setLifespanCount(100).setParameters(objectMapper.convertObjectToStruct(intentStack)).build()
+    }
 
-        val struct = Struct.newBuilder().apply { JsonFormat.parser().merge(json, this) }.build()
-        return struct
+    private fun createDefaultWebhookResponseBuilder(
+        intentStack: IntentStack,
+        session: String
+    ): WebhookResponse.Builder {
+        val intentStackContext = createOrUpdateIntentStackContext(intentStack, session)
+        return WebhookResponse.newBuilder()
+            .addOutputContexts(intentStackContext)
     }
 }
 
-data class IntentFlow(val flows: MutableList<String>)
+data class IntentStack(val flows: MutableList<String>)
+
+data class FulfillmentChain(
+    val webhookRequest: WebhookRequest,
+    val fulfillmentState: FulfillmentState,
+    val webhookResponseBuilder: WebhookResponse.Builder,
+    val intentStack: IntentStack,
+)
