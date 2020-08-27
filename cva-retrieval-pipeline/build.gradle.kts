@@ -131,4 +131,33 @@ allOpen{
     annotation("io.micronaut.aop.Around")
 }
 
+tasks.create(name = "deploy-cva-retrieval-pipeline") {
+
+    dependsOn( "assemble")
+
+    group = "deploy"
+
+    val myServer = org.hidetake.groovy.ssh.core.Remote(
+        mapOf<String, Any>(
+            "host" to "136.156.90.116",
+            "user" to "esowc25",
+            "identity" to File("~/.ssh/id_rsa")
+        )
+    )
+
+    doLast {
+        ssh.run(delegateClosureOf<org.hidetake.groovy.ssh.core.RunHandler> {
+            session(myServer, delegateClosureOf<org.hidetake.groovy.ssh.session.SessionHandler> {
+                put(
+                    hashMapOf(
+                        "from" to File("${project.buildDir.absolutePath}/libs/cva-retrieval-pipeline-0.1-all.jar"),
+                        "into" to "/home/esowc25/cva-retrieval-pipeline-app"
+                    )
+                )
+                execute("sudo systemctl restart retrievalpipeline.service")
+            })
+        })
+    }
+}
+
 
