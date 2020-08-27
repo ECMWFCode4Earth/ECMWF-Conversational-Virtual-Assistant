@@ -1,6 +1,6 @@
 package com._2horizon.cva.retrieval.confluence
 
-import com._2horizon.cva.retrieval.confluence.dto.content.Content
+import com._2horizon.cva.common.confluence.dto.content.Content
 import com._2horizon.cva.retrieval.event.ConfluenceContentEvent
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.micronaut.context.annotation.Requires

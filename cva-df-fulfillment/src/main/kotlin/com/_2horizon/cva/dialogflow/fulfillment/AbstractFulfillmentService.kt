@@ -1,5 +1,6 @@
 package com._2horizon.cva.dialogflow.fulfillment
 
+import com._2horizon.cva.dialogflow.fulfillment.analytics.DialogflowConversionStep
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.CustomPayload
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentItem
 import com._2horizon.cva.dialogflow.fulfillment.extensions.convertObjectToStruct
@@ -7,7 +8,6 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.cloud.dialogflow.v2beta1.Context
 import com.google.cloud.dialogflow.v2beta1.EventInput
 import com.google.cloud.dialogflow.v2beta1.Intent
-import com.google.cloud.dialogflow.v2beta1.WebhookRequest
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse
 import java.time.LocalDateTime
 import javax.inject.Singleton
@@ -18,27 +18,33 @@ import javax.inject.Singleton
 @Singleton
 abstract class AbstractFulfillmentService(
     private val objectMapper: ObjectMapper
-) : Fulfillmentable {
+) {
 
     fun convertRichContentItemToWebhookResponse(
-        item: RichContentItem,
-        webhookRequest: WebhookRequest,
+        items: List<RichContentItem>,
+        dialogflowConversionStep: DialogflowConversionStep,
         webhookResponseBuilder: WebhookResponse.Builder,
+        prefixMessages: List<Intent.Message>? = null,
+        postfixMessages: List<Intent.Message>? = null
     ): WebhookResponse.Builder {
         val customPayload = CustomPayload(
             listOf(
-                listOf(
-                    item
-                )
+                items
             )
         )
 
-        return convertCustomPayloadToWebhookResponse(customPayload, webhookRequest,webhookResponseBuilder)
+        return convertCustomPayloadToWebhookResponse(
+            customPayload,
+            dialogflowConversionStep,
+            webhookResponseBuilder,
+            prefixMessages = prefixMessages,
+            postfixMessages = postfixMessages
+        )
     }
 
     fun convertCustomPayloadToWebhookResponse(
         customPayload: CustomPayload,
-        webhookRequest: WebhookRequest,
+        dialogflowConversionStep: DialogflowConversionStep,
         webhookResponseBuilder: WebhookResponse.Builder,
         prefixMessages: List<Intent.Message>? = null,
         postfixMessages: List<Intent.Message>? = null
@@ -62,8 +68,8 @@ abstract class AbstractFulfillmentService(
             messages.addAll(postfixMessages)
         }
 
-        val existingContext = webhookRequest.queryResult.outputContextsList
-        val session = webhookRequest.session
+        val existingContext = dialogflowConversionStep.outputContextsList
+        val session = dialogflowConversionStep.session
 
         val context = Context.newBuilder()
             .setName("$session/contexts/labels")
@@ -81,7 +87,6 @@ abstract class AbstractFulfillmentService(
             // .addAllOutputContexts(listOf(context))
             // .setFollowupEventInput(event)
             .addAllFulfillmentMessages(messages)
-
     }
 
     // private fun objectToStruct(customPayload: Any): Struct {

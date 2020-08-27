@@ -14,7 +14,7 @@ class FallbackFulfillmentService(
     objectMapper: ObjectMapper,
 ) : AbstractFulfillmentService(objectMapper) {
 
-    override fun handle(fulfillmentChain: FulfillmentChain): WebhookResponse.Builder {
+    fun handle(fulfillmentChain: FulfillmentChain): WebhookResponse.Builder {
         //TODO: improve
         return fulfillmentChain.webhookResponseBuilder
     }

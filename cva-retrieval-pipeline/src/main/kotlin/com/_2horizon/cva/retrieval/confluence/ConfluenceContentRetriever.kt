@@ -1,6 +1,6 @@
 package com._2horizon.cva.retrieval.confluence
 
-import com._2horizon.cva.retrieval.confluence.dto.content.Content
+import com._2horizon.cva.common.confluence.dto.content.Content
 import com._2horizon.cva.retrieval.event.ConfluenceContentEvent
 import io.micronaut.context.annotation.Value
 import io.micronaut.context.event.ApplicationEventPublisher

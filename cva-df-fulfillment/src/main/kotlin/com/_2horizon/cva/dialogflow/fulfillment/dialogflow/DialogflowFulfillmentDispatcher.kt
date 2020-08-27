@@ -3,6 +3,7 @@ package com._2horizon.cva.dialogflow.fulfillment.dialogflow
 import com._2horizon.cva.dialogflow.fulfillment.FulfillmentState
 import com._2horizon.cva.dialogflow.fulfillment.actionAsFulfillmentState
 import com._2horizon.cva.dialogflow.fulfillment.analytics.DialogflowConversionStep
+import com._2horizon.cva.dialogflow.fulfillment.confluence.ConfluenceFulfillmentService
 import com._2horizon.cva.dialogflow.fulfillment.copernicus.CopernicusFulfillmentService
 import com._2horizon.cva.dialogflow.fulfillment.extensions.convertObjectToStruct
 import com._2horizon.cva.dialogflow.fulfillment.extensions.convertStructToObject
@@ -22,12 +23,12 @@ import javax.inject.Singleton
 class DialogflowFulfillmentDispatcher(
     googleCredentials: GoogleCredentials,
     private val objectMapper: ObjectMapper,
-    private val mediaTypeFulfillmentService: MediaTypeFulfillmentService,
+    // private val mediaTypeFulfillmentService: MediaTypeFulfillmentService,
     private val copernicusFulfillmentService: CopernicusFulfillmentService,
     private val fallbackFulfillmentService: FallbackFulfillmentService,
     private val dfFulfillmentService: DialogflowFulfillmentService,
+    private val confluenceFulfillmentService: ConfluenceFulfillmentService,
 ) {
-        
 
     // long running context names
     private val intentStack = "intentStack"
@@ -44,18 +45,26 @@ class DialogflowFulfillmentDispatcher(
         println(dialogflowConversionStep)
 
         val fulfillmentChain = FulfillmentChain(
-            webhookRequest,fulfillmentState,webhookResponseBuilder,intentStack
+            dialogflowConversionStep, fulfillmentState, webhookResponseBuilder, intentStack
         )
 
-        val webhookResponseBuilderResponse: WebhookResponse.Builder =  when (fulfillmentState) {
+        val webhookResponseBuilderResponse: WebhookResponse.Builder = when (fulfillmentState) {
             FulfillmentState.FALLBACK_GLOBAL -> fallbackFulfillmentService.handle(
                 fulfillmentChain
             )
             FulfillmentState.NOTHING -> webhookResponseBuilder
             FulfillmentState.CF_CDS_DATASET_EXECUTE_DATASET_SEARCH,
-            FulfillmentState.CF_CDS_DATASET_SEARCH_DATASET_BY_NAME_OR_KEYWORD_FALLBACK -> copernicusFulfillmentService.handle(
+            FulfillmentState.CF_CDS_DATASET_SEARCH_DATASET_BY_NAME_OR_KEYWORD_FALLBACK -> copernicusFulfillmentService.retrieveDatasetsAsRichContent(
                 fulfillmentChain
             )
+
+            FulfillmentState.CF_CDS_DATASET_QUESTION_CONCERNING_ONE_SELECTED_DATASET -> copernicusFulfillmentService.datasetSelected(
+                fulfillmentChain
+            )
+            FulfillmentState.CF_CDS_DATASET_SHOW_CDS_API_REQUEST_OF_SELECTED_DATASET -> copernicusFulfillmentService.showCdsApiRequestOfSelectedDataset(
+                fulfillmentChain
+            )
+            FulfillmentState.CF_CKB_SEARCH_BY_KEYWORD -> confluenceFulfillmentService.handleSearchByKeyword(fulfillmentChain)
         }
         return webhookResponseBuilderResponse.build()
 
@@ -103,6 +112,7 @@ class DialogflowFulfillmentDispatcher(
         val intentDisplayName = queryResult.intent.displayName
         val intentDetectionConfidence = queryResult.intentDetectionConfidence
         val outputContextsList = queryResult.outputContextsList
+        val parameters = objectMapper.convertStructToObject<Map<String, String>>(queryResult.parameters)
 
         return DialogflowConversionStep(
             datetime = now,
@@ -114,7 +124,9 @@ class DialogflowFulfillmentDispatcher(
             intentName = intentName,
             intentDisplayName = intentDisplayName,
             intentDetectionConfidence = intentDetectionConfidence,
-            outputContexts = outputContextsList.map { it.name }
+            outputContextsList=  outputContextsList,
+            outputContexts = outputContextsList.map { it.name },
+            parameters = parameters,
         )
     }
 
@@ -159,7 +171,7 @@ class DialogflowFulfillmentDispatcher(
 data class IntentStack(val flows: MutableList<String>)
 
 data class FulfillmentChain(
-    val webhookRequest: WebhookRequest,
+    val dialogflowConversionStep: DialogflowConversionStep,
     val fulfillmentState: FulfillmentState,
     val webhookResponseBuilder: WebhookResponse.Builder,
     val intentStack: IntentStack,

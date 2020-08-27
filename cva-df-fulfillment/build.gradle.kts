@@ -102,7 +102,7 @@ allOpen {
     annotation("io.micronaut.aop.Around")
 }
 
-tasks.create(name = "deploy-jar") {
+tasks.create(name = "deploy-cva-df-fulfillment") {
 
     dependsOn( "assemble")
 
@@ -110,7 +110,7 @@ tasks.create(name = "deploy-jar") {
 
     val myServer = org.hidetake.groovy.ssh.core.Remote(
         mapOf<String, Any>(
-            "host" to "136.156.90.162",
+            "host" to "136.156.90.160",
             "user" to "esowc25",
             "identity" to File("~/.ssh/id_rsa")
         )

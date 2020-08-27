@@ -4,6 +4,7 @@ plugins {
 }
 
 val micronautVersion: String by project
+val jsoupVersion: String by project
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
@@ -12,6 +13,9 @@ dependencies {
 
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
     implementation("io.micronaut:micronaut-runtime")
+
+    // https://jsoup.org/
+    implementation("org.jsoup:jsoup:$jsoupVersion")
 
     // Use the Kotlin test library.
     // testImplementation("org.jetbrains.kotlin:kotlin-test")

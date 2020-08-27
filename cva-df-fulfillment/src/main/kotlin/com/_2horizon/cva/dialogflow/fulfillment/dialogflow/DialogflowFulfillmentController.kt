@@ -19,18 +19,14 @@ class DialogflowFulfillmentController(
     @Post("/request")
     fun fulfillment(@Body webhookRequestString: String): String {
 
-        log.info("Got a webhookRequestString")
+        log.debug("Got a webhookRequestString")
 
         val webhookRequest =
             WebhookRequest.newBuilder().apply { JsonFormat.parser().merge(webhookRequestString, this) }.build()
 
-        // println(webhookRequestString)
-
         val webhookResponse = dfFulfillmentDispatcher.handle(webhookRequest)
 
-        log.info("Sending back webhookResponse")
-
-        // println(webhookResponse)
+        log.debug("Sending back webhookResponse")
         
         return JsonFormat.printer().print(webhookResponse)
     }

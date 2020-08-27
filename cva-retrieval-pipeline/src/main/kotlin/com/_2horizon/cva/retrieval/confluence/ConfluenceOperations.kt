@@ -1,9 +1,9 @@
 package com._2horizon.cva.retrieval.confluence
 
-import com._2horizon.cva.retrieval.confluence.dto.content.Content
-import com._2horizon.cva.retrieval.confluence.dto.content.ContentResponse
-import com._2horizon.cva.retrieval.confluence.dto.pagechildren.PageChildrenResponse
-import com._2horizon.cva.retrieval.confluence.dto.space.SpacesResponse
+import com._2horizon.cva.common.confluence.dto.content.Content
+import com._2horizon.cva.common.confluence.dto.content.ContentResponse
+import com._2horizon.cva.common.confluence.dto.pagechildren.PageChildrenResponse
+import com._2horizon.cva.common.confluence.dto.space.SpacesResponse
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.retry.annotation.Retryable

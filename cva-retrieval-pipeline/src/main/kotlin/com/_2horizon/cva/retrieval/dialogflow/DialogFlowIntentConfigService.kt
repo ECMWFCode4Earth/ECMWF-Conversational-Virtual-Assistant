@@ -2,6 +2,7 @@ package com._2horizon.cva.retrieval.dialogflow
 
 import com.google.api.gax.core.FixedCredentialsProvider
 import com.google.auth.oauth2.GoogleCredentials
+import com.google.cloud.dialogflow.v2beta1.AgentName
 import com.google.cloud.dialogflow.v2beta1.AgentsClient
 import com.google.cloud.dialogflow.v2beta1.AgentsSettings
 import com.google.cloud.dialogflow.v2beta1.ContextsClient
@@ -68,7 +69,7 @@ class DialogFlowIntentConfigService(
 
         getIntentsClient().use { intentsClient ->
             val response: Intent =
-                intentsClient.createIntent(ProjectAgentName.of(googleCloudConfiguration.projectId), intent)
+                intentsClient.createIntent(AgentName.of(googleCloudConfiguration.projectId), intent)
             System.out.format("Intent created: %s\n", response)
             return response
         }
@@ -132,7 +133,7 @@ class DialogFlowIntentConfigService(
 
         getIntentsClient().use { intentsClient ->
             val response: Intent =
-                intentsClient.createIntent(ProjectAgentName.of(googleCloudConfiguration.projectId), intent)
+                intentsClient.createIntent(AgentName.of(googleCloudConfiguration.projectId), intent)
             System.out.format("Intent created: %s\n", response)
             return response
         }

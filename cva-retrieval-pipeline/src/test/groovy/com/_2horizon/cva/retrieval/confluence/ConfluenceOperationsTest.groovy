@@ -1,8 +1,8 @@
 package com._2horizon.cva.retrieval.confluence
 
 
-import com._2horizon.cva.retrieval.confluence.dto.pagechildren.PageChildrenResponse
-import com._2horizon.cva.retrieval.confluence.dto.space.SpacesResponse
+import com._2horizon.cva.common.confluence.dto.pagechildren.PageChildrenResponse
+import com._2horizon.cva.common.confluence.dto.space.SpacesResponse
 import io.micronaut.test.annotation.MicronautTest
 import spock.lang.Specification
 import spock.lang.Unroll

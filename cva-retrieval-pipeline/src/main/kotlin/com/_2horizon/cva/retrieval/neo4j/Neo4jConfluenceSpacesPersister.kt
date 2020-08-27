@@ -1,5 +1,7 @@
 package com._2horizon.cva.retrieval.neo4j
 
+import com._2horizon.cva.common.confluence.dto.content.Content
+import com._2horizon.cva.common.confluence.dto.space.Space
 import com._2horizon.cva.retrieval.confluence.ConfluenceExperimentalOperations
 import com._2horizon.cva.retrieval.confluence.ConfluenceLinkExtractor
 import com._2horizon.cva.retrieval.confluence.ConfluenceOperations
@@ -7,8 +9,6 @@ import com._2horizon.cva.retrieval.confluence.ExternalConfluenceLink
 import com._2horizon.cva.retrieval.confluence.ExternalConfluenceLinkType
 import com._2horizon.cva.retrieval.confluence.InternalConfluenceLink
 import com._2horizon.cva.retrieval.confluence.StorageFormatUtil
-import com._2horizon.cva.retrieval.confluence.dto.content.Content
-import com._2horizon.cva.retrieval.confluence.dto.space.Space
 import com._2horizon.cva.retrieval.corenlp.POSTaggerService
 import com._2horizon.cva.retrieval.event.ConfluenceContentEvent
 import com._2horizon.cva.retrieval.event.ConfluenceParentChildRelationshipEvent
@@ -101,8 +101,8 @@ open class Neo4jConfluenceSpacesPersister(
                 type = page.type,
                 status = page.status,
                 titleQuestion = titleQuestion,
-                contentLength = page.body.view.valueWithoutHtml.length,
-                createdDate = page.history.createdDate,
+                contentLength = page.body!!.view.valueWithoutHtml.length,
+                createdDate = page.history!!.createdDate,
                 updatedDate = page.version.`when`,
                 version = page.version.number,
                 updatedBy = updatedByAuthor,
@@ -114,7 +114,7 @@ open class Neo4jConfluenceSpacesPersister(
                 internalLinks = null,
                 externalLinks = null
             )
-            confluencePage.bodyPlain = page.body.view.valueWithoutHtml
+            confluencePage.bodyPlain = page.body!!.view.valueWithoutHtml
             datasetRepository.save(confluencePage)
 
         }
@@ -149,7 +149,7 @@ open class Neo4jConfluenceSpacesPersister(
                     )
                 )
 
-                if (result.children != null && result.children.page.results.isNotEmpty()) {
+                if (result.children != null && result.children!!.page.results.isNotEmpty()) {
                     retrievePageChildren(childId)
                 }
 
@@ -197,9 +197,9 @@ open class Neo4jConfluenceSpacesPersister(
                     title = page.title,
                     type = page.type,
                     status = page.status,
-                    bodyPlain = page.body.view.valueWithoutHtml,
-                    contentLength = page.body.view.valueWithoutHtml.length,
-                    createdDate = page.history.createdDate,
+                    bodyPlain = page.body!!.view.valueWithoutHtml,
+                    contentLength = page.body!!.view.valueWithoutHtml.length,
+                    createdDate = page.history!!.createdDate,
                     updatedDate = page.version.`when`,
                     version = page.version.number,
                     updatedBy = extractPageEditors(page).first
@@ -212,7 +212,7 @@ open class Neo4jConfluenceSpacesPersister(
         page: Content,
         spaceKey: String
     ): Pair<List<InternalConfluenceLink>, List<ExternalConfluenceLink>> {
-        val storageDocument = StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body.storage.value)
+        val storageDocument = StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body!!.storage.value)
         val internalConfluenceLinks = confluenceLinkExtractor.extractInternalConfluenceLinks(storageDocument, spaceKey)
         val externalLinks = confluenceLinkExtractor.extractExternalLinks(storageDocument)
         return Pair(internalConfluenceLinks, externalLinks)
@@ -223,7 +223,7 @@ open class Neo4jConfluenceSpacesPersister(
         extractQuestionsInBody: Boolean = false
     ): Pair<QuestionAnswer?, List<QuestionAnswer>> {
         val faqId = "${page.id}#${page.title}"
-        val storageDocument = StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body.storage.value)
+        val storageDocument = StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body!!.storage.value)
         val sentences = sentencesDetector.findCoreNlpSentences(storageDocument.text())
         val titleQuestion = if (posTaggerService.questionDetector(page.title)) QuestionAnswer(
             faqId = faqId,

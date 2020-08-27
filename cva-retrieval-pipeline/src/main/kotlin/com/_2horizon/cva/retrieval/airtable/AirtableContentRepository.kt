@@ -1,6 +1,6 @@
 package com._2horizon.cva.retrieval.airtable
 
-import com._2horizon.cva.retrieval.confluence.dto.space.MetadataLabels
+import com._2horizon.cva.common.confluence.dto.space.MetadataLabels
 import com._2horizon.cva.retrieval.event.ConfluenceContentEvent
 import dev.fuxing.airtable.AirtableApi
 import dev.fuxing.airtable.AirtableRecord
@@ -47,17 +47,17 @@ class AirtableContentRepository(
                 putField("ID", content.id)
                 putField("SpaceKey", contentEvent.spaceKey)
                 putField("Title", content.title)
-                putField("CreatedDate", content.history.createdDate.format(DateTimeFormatter.ISO_DATE_TIME))
-                putField("CreatedBy", content.history.createdBy.displayName)
+                putField("CreatedDate", content.history!!.createdDate.format(DateTimeFormatter.ISO_DATE_TIME))
+                putField("CreatedBy", content.history!!.createdBy.displayName)
                 putField("UpdatedDate", content.version.`when`.format(DateTimeFormatter.ISO_DATE_TIME))
                 putField("UpdatedBy", content.version.user.displayName)
                 putField("Version", content.version.number)
                 putField("Type", content.type)
                 putField("Status", content.status)
                 putField("Link", "https://confluence.ecmwf.int/pages/viewpage.action?pageId=${content.id}")
-                putField("BodyStorage", content.body.storage.value)
-                putField("BodyView", content.body.view.value)
-                putField("BodyCount", Jsoup.parse(content.body.view.value).text().count())
+                putField("BodyStorage", content.body!!.storage.value)
+                putField("BodyView", content.body!!.view.value)
+                putField("BodyCount", Jsoup.parse(content.body!!.view.value).text().count())
                 putField("Labels", content.metadata.labels.results.map { label -> lookupLabel(label)!!.id }.toSet())
 
             }

@@ -1,5 +1,7 @@
 package com._2horizon.cva.dialogflow.fulfillment.analytics
 
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.google.cloud.dialogflow.v2beta1.Context
 import java.time.OffsetDateTime
 
 /**
@@ -15,5 +17,10 @@ data class DialogflowConversionStep(
     val intentName:String,
     val intentDisplayName:String,
     val intentDetectionConfidence: Float,
+
+    @JsonIgnore
+    val outputContextsList:List<Context>,
+
     val outputContexts:List<String>,
+    val parameters:Map<String,String>,
 )

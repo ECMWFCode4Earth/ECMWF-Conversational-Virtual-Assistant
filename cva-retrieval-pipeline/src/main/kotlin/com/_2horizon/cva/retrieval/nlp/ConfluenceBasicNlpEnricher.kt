@@ -1,6 +1,6 @@
 package com._2horizon.cva.retrieval.nlp
 
-import com._2horizon.cva.retrieval.confluence.dto.content.Content
+import com._2horizon.cva.common.confluence.dto.content.Content
 import com._2horizon.cva.retrieval.copernicus.Datastore
 import com._2horizon.cva.retrieval.event.ConfluenceContentEvent
 import com._2horizon.cva.retrieval.event.SignificantTermsReceivedEvent
@@ -52,7 +52,7 @@ open class ConfluenceBasicNlpEnricher(
     ): List<SignificantTerm> {
         return mutableListOf<TextInBrackets>().apply {
             addAll(content.title.extractTextInBrackets())
-            addAll(content.body.view.valueWithoutHtml.extractTextInBrackets())
+            addAll(content.body!!.view.valueWithoutHtml.extractTextInBrackets())
         }.groupBy { it.textInBrackets }
             .map { entry ->
 

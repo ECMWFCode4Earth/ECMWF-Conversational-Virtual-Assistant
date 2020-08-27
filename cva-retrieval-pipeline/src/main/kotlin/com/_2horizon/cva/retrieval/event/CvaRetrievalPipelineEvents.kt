@@ -1,7 +1,7 @@
 package com._2horizon.cva.retrieval.event
 
-import com._2horizon.cva.retrieval.confluence.dto.content.Content
-import com._2horizon.cva.retrieval.confluence.dto.space.Space
+import com._2horizon.cva.common.confluence.dto.content.Content
+import com._2horizon.cva.common.confluence.dto.space.Space
 import com._2horizon.cva.retrieval.copernicus.Datastore
 import com._2horizon.cva.retrieval.copernicus.dto.ui.UiResource
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO

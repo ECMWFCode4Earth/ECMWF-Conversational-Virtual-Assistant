@@ -1,7 +1,7 @@
 package com._2horizon.cva.retrieval.airtable
 
-import com._2horizon.cva.retrieval.confluence.dto.space.MetadataLabels
-import com._2horizon.cva.retrieval.confluence.dto.space.Space
+import com._2horizon.cva.common.confluence.dto.space.MetadataLabels
+import com._2horizon.cva.common.confluence.dto.space.Space
 import com._2horizon.cva.retrieval.event.ConfluenceSpacesEvent
 import dev.fuxing.airtable.AirtableApi
 import dev.fuxing.airtable.AirtableRecord

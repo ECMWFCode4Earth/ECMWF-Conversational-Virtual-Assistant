@@ -8,7 +8,7 @@ data class RichContentInfoItem(
     val title: String,
 
     @JsonProperty("subtitle")
-    val subtitle: String,
+    val subtitle: String?=null,
 
     @JsonProperty("actionLink")
     val actionLink: String,
