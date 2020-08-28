@@ -114,7 +114,7 @@ class TwitterTimelineCrawler(
             text = text,
             source = source,
             retweetId = retweetId,
-            createdAt = createdAt.toInstant().atOffset(ZoneOffset.UTC),
+            createdAt = createdAt.toInstant().atOffset(ZoneOffset.UTC).toLocalDateTime(),
             userId = userId,
             userScreenName = userScreenName,
             hashtags = hashtags,

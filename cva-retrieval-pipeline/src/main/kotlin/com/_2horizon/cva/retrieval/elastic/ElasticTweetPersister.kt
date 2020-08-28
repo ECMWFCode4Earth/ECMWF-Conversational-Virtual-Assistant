@@ -1,6 +1,7 @@
 package com._2horizon.cva.retrieval.elastic
 
 
+import com._2horizon.cva.common.TWITTER_INDEX
 import com._2horizon.cva.common.twitter.dto.Tweet
 import com._2horizon.cva.retrieval.event.TwitterBulkStatusEvent
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -28,8 +29,6 @@ open class ElasticTweetPersister(
     private val objectMapper: ObjectMapper
 ) {
 
-    val twitterIndex = "twitter"
-
     private val log = LoggerFactory.getLogger(javaClass)
 
     @EventListener
@@ -39,7 +38,7 @@ open class ElasticTweetPersister(
         val tweets = twitterBulkStatusEvent.tweets
         val bulkRequest = BulkRequest()
         tweets.forEach { tweet: Tweet ->
-            val request = IndexRequest(twitterIndex).id(tweet.id.toString())
+            val request = IndexRequest(TWITTER_INDEX).id(tweet.id.toString())
             request.source(objectMapper.writeValueAsString(tweet), XContentType.JSON)
             bulkRequest.add(request)
           
