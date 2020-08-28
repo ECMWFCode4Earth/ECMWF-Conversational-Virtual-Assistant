@@ -1,6 +1,7 @@
 package com._2horizon.cva.retrieval.elastic
 
 
+import com._2horizon.cva.common.twitter.dto.Tweet
 import com._2horizon.cva.retrieval.event.TwitterBulkStatusEvent
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.micronaut.context.annotation.Requirements
@@ -12,7 +13,6 @@ import org.elasticsearch.client.RequestOptions
 import org.elasticsearch.client.RestHighLevelClient
 import org.elasticsearch.common.xcontent.XContentType
 import org.slf4j.LoggerFactory
-import twitter4j.Status
 import javax.inject.Singleton
 
 /**
@@ -36,16 +36,16 @@ open class ElasticTweetPersister(
     open fun twitterBulkStatusEventReceived(twitterBulkStatusEvent: TwitterBulkStatusEvent) {
         log.info("TwitterBulkStatusEvent received")
 
-        val statuses = twitterBulkStatusEvent.statuses
+        val tweets = twitterBulkStatusEvent.tweets
         val bulkRequest = BulkRequest()
-        statuses.forEach { status: Status ->
-            val request = IndexRequest(twitterIndex).id(status.id.toString())
-            request.source(objectMapper.writeValueAsString(status), XContentType.JSON)
+        tweets.forEach { tweet: Tweet ->
+            val request = IndexRequest(twitterIndex).id(tweet.id.toString())
+            request.source(objectMapper.writeValueAsString(tweet), XContentType.JSON)
             bulkRequest.add(request)
           
         }
 
         val bulkResponse = client.bulk(bulkRequest, RequestOptions.DEFAULT)
-        log.info("Got bulkResponse with item size ${bulkResponse.items.size}")
+        log.info("Got bulkResponse with item size ${bulkResponse.items.size}. HasFailures ${bulkResponse.hasFailures()}")
     }
 }

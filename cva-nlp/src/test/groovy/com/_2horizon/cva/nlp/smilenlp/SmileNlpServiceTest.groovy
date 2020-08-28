@@ -1,4 +1,4 @@
-package com._2horizon.cva.retrieval.smilenlp
+package com._2horizon.cva.nlp.smilenlp
 
 
 import io.micronaut.context.annotation.Property

@@ -1,4 +1,4 @@
-package com._2horizon.cva.retrieval.smilenlp
+package com._2horizon.cva.nlp.smilenlp
 
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
 import com._2horizon.cva.retrieval.extract.pdf.PDFToTextService

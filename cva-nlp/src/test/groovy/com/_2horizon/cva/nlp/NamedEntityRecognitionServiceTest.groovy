@@ -1,4 +1,4 @@
-package com._2horizon.cva.retrieval.nlp
+package com._2horizon.cva.nlp
 
 import spock.lang.Shared
 import spock.lang.Specification

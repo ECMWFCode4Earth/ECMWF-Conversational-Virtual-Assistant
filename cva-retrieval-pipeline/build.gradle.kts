@@ -75,21 +75,6 @@ dependencies {
     // https://commons.apache.org/proper/commons-csv/
     implementation("org.apache.commons:commons-csv:$commonCsvVersion")
 
-    // https://github.com/londogard/smile-nlp-kt
-    implementation("com.londogard:smile-nlp-kt:$smileNlpKtVersion")
-
-    implementation("com.github.haifengl:smile-core:$smileCoreVersion")
-    implementation("com.github.haifengl:smile-nlp:$smileCoreVersion")
-
-    // https://stanfordnlp.github.io/CoreNLP/
-    implementation("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion")
-    runtimeOnly("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion:models")
-    runtimeOnly("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion:models-english")
-    runtimeOnly("edu.stanford.nlp:stanford-corenlp:$coreNlpKtVersion:models-english-kbp")
-
-    // https://opennlp.apache.org/
-    implementation("org.apache.opennlp:opennlp-tools:$openNlpVersion")
-
     //https://micronaut-projects.github.io/micronaut-reactor/latest/guide/
     implementation("io.micronaut.reactor:micronaut-reactor:$micronautReactorVersion")
 

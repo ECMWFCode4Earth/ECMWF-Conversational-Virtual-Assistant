@@ -1,4 +1,4 @@
-package com._2horizon.cva.retrieval.nlp
+package com._2horizon.cva.nlp
 
 import edu.stanford.nlp.pipeline.CoreDocument
 import edu.stanford.nlp.pipeline.StanfordCoreNLP

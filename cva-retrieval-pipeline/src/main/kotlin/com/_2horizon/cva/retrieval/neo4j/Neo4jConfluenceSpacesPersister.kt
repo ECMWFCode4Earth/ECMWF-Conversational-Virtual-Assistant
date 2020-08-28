@@ -9,7 +9,6 @@ import com._2horizon.cva.retrieval.confluence.ExternalConfluenceLink
 import com._2horizon.cva.retrieval.confluence.ExternalConfluenceLinkType
 import com._2horizon.cva.retrieval.confluence.InternalConfluenceLink
 import com._2horizon.cva.retrieval.confluence.StorageFormatUtil
-import com._2horizon.cva.retrieval.corenlp.POSTaggerService
 import com._2horizon.cva.retrieval.event.ConfluenceContentEvent
 import com._2horizon.cva.retrieval.event.ConfluenceParentChildRelationshipEvent
 import com._2horizon.cva.retrieval.event.ConfluenceSpacesEvent
@@ -18,10 +17,8 @@ import com._2horizon.cva.retrieval.neo4j.domain.ConfluenceComment
 import com._2horizon.cva.retrieval.neo4j.domain.ConfluenceLabel
 import com._2horizon.cva.retrieval.neo4j.domain.ConfluencePage
 import com._2horizon.cva.retrieval.neo4j.domain.ConfluenceSpace
-import com._2horizon.cva.retrieval.neo4j.domain.QuestionAnswer
 import com._2horizon.cva.retrieval.neo4j.domain.WebLink
 import com._2horizon.cva.retrieval.neo4j.repo.DatasetRepository
-import com._2horizon.cva.retrieval.nlp.SentencesDetector
 import io.micronaut.context.annotation.Requirements
 import io.micronaut.context.annotation.Requires
 import io.micronaut.runtime.event.annotation.EventListener
@@ -41,8 +38,8 @@ import kotlin.streams.toList
 @Singleton
 open class Neo4jConfluenceSpacesPersister(
     private val datasetRepository: DatasetRepository,
-    private val sentencesDetector: SentencesDetector,
-    private val posTaggerService: POSTaggerService,
+    // private val sentencesDetector: SentencesDetector,
+    // private val posTaggerService: POSTaggerService,
     private val confluenceLinkExtractor: ConfluenceLinkExtractor,
     private val confluenceExperimentalOperations: ConfluenceExperimentalOperations,
     private val confluenceOperations: ConfluenceOperations
@@ -89,33 +86,34 @@ open class Neo4jConfluenceSpacesPersister(
 
             val (updatedByAuthor, editors) = extractPageEditors(page, extended)
 
-            val (titleQuestion, questionsInBody) = extractPageQuestions(page, extended)
-
-            val pageComments = extractPageComments(page)
-
-            val confluencePage = ConfluencePage(
-                space = confluenceSpace,
-                contentId = page.id.toString(),
-                spaceKey = spaceKey,
-                title = page.title,
-                type = page.type,
-                status = page.status,
-                titleQuestion = titleQuestion,
-                contentLength = page.body!!.view.valueWithoutHtml.length,
-                createdDate = page.history!!.createdDate,
-                updatedDate = page.version.`when`,
-                version = page.version.number,
-                updatedBy = updatedByAuthor,
-                labels = page.metadata.labels.results.map { ConfluenceLabel(it.name) },
-                faqs = questionsInBody,
-                edits = editors,
-                comments = pageComments,
-                childPage = null,
-                internalLinks = null,
-                externalLinks = null
-            )
-            confluencePage.bodyPlain = page.body!!.view.valueWithoutHtml
-            datasetRepository.save(confluencePage)
+            TODO("Fix after ")
+            // val (titleQuestion, questionsInBody) = extractPageQuestions(page, extended)
+            //
+            // val pageComments = extractPageComments(page)
+            //
+            // val confluencePage = ConfluencePage(
+            //     space = confluenceSpace,
+            //     contentId = page.id.toString(),
+            //     spaceKey = spaceKey,
+            //     title = page.title,
+            //     type = page.type,
+            //     status = page.status,
+            //     titleQuestion = titleQuestion,
+            //     contentLength = page.body!!.view.valueWithoutHtml.length,
+            //     createdDate = page.history!!.createdDate,
+            //     updatedDate = page.version.`when`,
+            //     version = page.version.number,
+            //     updatedBy = updatedByAuthor,
+            //     labels = page.metadata.labels.results.map { ConfluenceLabel(it.name) },
+            //     faqs = questionsInBody,
+            //     edits = editors,
+            //     comments = pageComments,
+            //     childPage = null,
+            //     internalLinks = null,
+            //     externalLinks = null
+            // )
+            // confluencePage.bodyPlain = page.body!!.view.valueWithoutHtml
+            // datasetRepository.save(confluencePage)
 
         }
 
@@ -218,34 +216,34 @@ open class Neo4jConfluenceSpacesPersister(
         return Pair(internalConfluenceLinks, externalLinks)
     }
 
-    private fun extractPageQuestions(
-        page: Content,
-        extractQuestionsInBody: Boolean = false
-    ): Pair<QuestionAnswer?, List<QuestionAnswer>> {
-        val faqId = "${page.id}#${page.title}"
-        val storageDocument = StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body!!.storage.value)
-        val sentences = sentencesDetector.findCoreNlpSentences(storageDocument.text())
-        val titleQuestion = if (posTaggerService.questionDetector(page.title)) QuestionAnswer(
-            faqId = faqId,
-            question = page.title,
-            answer = null
-        ) else null
-
-        val questionsInBody = if (extractQuestionsInBody) {
-            sentences
-                .parallelStream()
-                .filter { posTaggerService.questionDetector(it) }
-                .map {
-                    val subFaqId = "${page.id}#${it}"
-                    QuestionAnswer(faqId = subFaqId, question = it, answer = null)
-                }
-                .toList()
-        } else {
-            emptyList()
-        }
-
-        return Pair(titleQuestion, questionsInBody)
-    }
+    // private fun extractPageQuestions(
+    //     page: Content,
+    //     extractQuestionsInBody: Boolean = false
+    // ): Pair<QuestionAnswer?, List<QuestionAnswer>> {
+    //     val faqId = "${page.id}#${page.title}"
+    //     val storageDocument = StorageFormatUtil.createDocumentFromStructuredStorageFormat(page.body!!.storage.value)
+    //     val sentences = sentencesDetector.findCoreNlpSentences(storageDocument.text())
+    //     val titleQuestion = if (posTaggerService.questionDetector(page.title)) QuestionAnswer(
+    //         faqId = faqId,
+    //         question = page.title,
+    //         answer = null
+    //     ) else null
+    //
+    //     val questionsInBody = if (extractQuestionsInBody) {
+    //         sentences
+    //             .parallelStream()
+    //             .filter { posTaggerService.questionDetector(it) }
+    //             .map {
+    //                 val subFaqId = "${page.id}#${it}"
+    //                 QuestionAnswer(faqId = subFaqId, question = it, answer = null)
+    //             }
+    //             .toList()
+    //     } else {
+    //         emptyList()
+    //     }
+    //
+    //     return Pair(titleQuestion, questionsInBody)
+    // }
 
     private fun extractPageEditors(
         page: Content,

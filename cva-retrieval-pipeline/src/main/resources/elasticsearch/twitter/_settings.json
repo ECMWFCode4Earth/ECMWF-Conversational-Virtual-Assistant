@@ -14,14 +14,23 @@
       "source": {
         "type": "keyword"
       },
-      "retweetedStatusId": {
+      "userScreenName": {
         "type": "keyword"
       },
-      "quotedStatusId": {
+      "hashtags": {
         "type": "keyword"
       },
-      "geoLocation": {
-        "type": "geo_point"
+      "urls": {
+        "type": "keyword"
+      },
+      "expandedUrls": {
+        "type": "keyword"
+      },
+      "mediaURLs": {
+        "type": "keyword"
+      },
+      "mediaExpandedUrls": {
+        "type": "keyword"
       }
     }
   }

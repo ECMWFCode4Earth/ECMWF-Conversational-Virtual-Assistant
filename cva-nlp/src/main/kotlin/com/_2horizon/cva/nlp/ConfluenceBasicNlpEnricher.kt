@@ -1,4 +1,4 @@
-package com._2horizon.cva.retrieval.nlp
+package com._2horizon.cva.nlp
 
 import com._2horizon.cva.common.confluence.dto.content.Content
 import com._2horizon.cva.retrieval.copernicus.Datastore

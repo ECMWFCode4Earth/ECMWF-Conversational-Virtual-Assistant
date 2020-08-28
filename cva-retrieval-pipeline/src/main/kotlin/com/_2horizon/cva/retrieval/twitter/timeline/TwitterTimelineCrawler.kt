@@ -1,5 +1,6 @@
 package com._2horizon.cva.retrieval.twitter.timeline
 
+import com._2horizon.cva.common.twitter.dto.Tweet
 import com._2horizon.cva.retrieval.event.TwitterBulkStatusEvent
 import com._2horizon.cva.retrieval.twitter.api.TwitterApiService
 import com._2horizon.cva.retrieval.twitter.config.TwitterConfig
@@ -15,6 +16,7 @@ import reactor.util.retry.Retry
 import twitter4j.Paging
 import twitter4j.Status
 import java.time.Duration
+import java.time.ZoneOffset
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 import javax.inject.Singleton
@@ -38,20 +40,16 @@ class TwitterTimelineCrawler(
     private val ECMWF = 370094706L
     private val CopernicusECMWF = 3346529644L
 
-
-
     private val crawlerRunning = AtomicBoolean()
 
     @EventListener
-    fun onStartupEvent(startupEvent: StartupEvent){
+    fun onStartupEvent(startupEvent: StartupEvent) {
         userTimeline()
     }
 
     private fun getUserIds(): Mono<List<Long>> {
         return Mono.just(listOf(CopernicusECMWF))
     }
-
-
 
     // @Scheduled(cron = "\${app.twitter.crawler.cron}")
     fun userTimeline() {
@@ -79,7 +77,8 @@ class TwitterTimelineCrawler(
 
                         log.debug("Done crawling ${statuses.size}. Remaining ${idsCount.decrementAndGet()}")
 
-                        eventPublisher.publishEvent(TwitterBulkStatusEvent(statuses))
+                        val tweets = statuses.map(::convertStatusToTweet)
+                        eventPublisher.publishEvent(TwitterBulkStatusEvent(tweets))
                     }
                     .doOnError { "User timeline error ${it.message}" }
                     .doOnTerminate {
@@ -87,20 +86,44 @@ class TwitterTimelineCrawler(
                         crawlerRunning.set(false)
                     }
                     .subscribe()
-
-
             } else {
                 log.info("Skipping TwitterTimelineCrawler because another instance still running")
             }
-
         } else {
             log.warn("TwitterTimelineCrawler disabled")
         }
-
-
     }
 
+    fun convertStatusToTweet(status: Status): Tweet {
 
+        val id = status.id
+        val text = status.text
+        val source = status.source
+        val retweetId = status.retweetedStatus?.id
+        val createdAt = status.createdAt
+        val userId = status.user.id
+        val userScreenName = status.user.screenName
+        val hashtags = status.hashtagEntities.map { it.text }
+        val urls = status.urlEntities.map { it.url }
+        val expandedUrls = status.urlEntities.map { it.expandedURL }
+        val mediaURLs = status.mediaEntities.map { it.mediaURLHttps }
+        val mediaExpandedUrls = status.mediaEntities.map { it.mediaURLHttps }
+
+        return Tweet(
+            id = id,
+            text = text,
+            source = source,
+            retweetId = retweetId,
+            createdAt = createdAt.toInstant().atOffset(ZoneOffset.UTC),
+            userId = userId,
+            userScreenName = userScreenName,
+            hashtags = hashtags,
+            urls = urls ,
+            expandedUrls = expandedUrls ,
+            mediaURLs = mediaURLs ,
+            mediaExpandedUrls = mediaExpandedUrls ,
+        )
+    }
 
     fun crawlUserTweets(userId: Long): Mono<MutableList<Status>> {
         var nextPage = true
@@ -117,7 +140,6 @@ class TwitterTimelineCrawler(
                     }
 
                     statuses
-
                 } else {
                     nextPage = false
                     emptyList<Status>()
@@ -132,7 +154,5 @@ class TwitterTimelineCrawler(
             .doOnError { log.error(it.message) }
             .doOnNext { log.debug("Found ${it.size} tweets for user $userId") }
     }
-
-
 }
 
