@@ -1,8 +1,0 @@
----
-micronaut:
-  application:
-    name: cva-copernicus
-
----
-#graphql:
-#  graphiql.enabled: true

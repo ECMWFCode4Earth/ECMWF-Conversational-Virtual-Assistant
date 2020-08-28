@@ -17,6 +17,8 @@ val spockVersion: String by project
 val dialogflowVersion: String by project
 val micronautGcpVersion: String by project
 val googleCloudBomVersion: String by project
+val elasticsearchRestVersion: String by project
+val elasticsearchBeyonderVersion: String by project
 
 plugins {
     groovy
@@ -42,6 +44,10 @@ dependencies {
     implementation(platform("com.google.cloud:libraries-bom:$googleCloudBomVersion"))
     implementation("com.google.cloud:google-cloud-dialogflow")
     implementation("io.micronaut.gcp:micronaut-gcp-common:$micronautGcpVersion")
+
+    // elasticsearch
+    implementation("org.elasticsearch.client:elasticsearch-rest-high-level-client:$elasticsearchRestVersion")
+    implementation("fr.pilato.elasticsearch:elasticsearch-beyonder:$elasticsearchBeyonderVersion")
 
     implementation(project(":cva-common"))
     
