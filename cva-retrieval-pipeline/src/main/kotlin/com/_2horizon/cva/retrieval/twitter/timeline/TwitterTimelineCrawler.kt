@@ -3,8 +3,8 @@ package com._2horizon.cva.retrieval.twitter.timeline
 import com._2horizon.cva.common.twitter.dto.Tweet
 import com._2horizon.cva.retrieval.event.TwitterBulkStatusEvent
 import com._2horizon.cva.retrieval.twitter.api.TwitterApiService
-import com._2horizon.cva.retrieval.twitter.config.TwitterConfig
 import io.micronaut.context.annotation.Requires
+import io.micronaut.context.annotation.Value
 import io.micronaut.context.event.ApplicationEventPublisher
 import io.micronaut.context.event.StartupEvent
 import io.micronaut.runtime.event.annotation.EventListener
@@ -25,20 +25,16 @@ import javax.inject.Singleton
  * Created by Frank Lieber (liefra) on 2020-08-04.
  */
 @Singleton
-@Requires(property = "app.twitter.crawler.enabled", value = "true")
+@Requires(property = "app.feature.retrieval-pipeline.twitter.crawler.enabled", value = "true")
 class TwitterTimelineCrawler(
-    private val twitterConfig: TwitterConfig,
     private val twitterApiService: TwitterApiService,
-    private val eventPublisher: ApplicationEventPublisher
+    private val eventPublisher: ApplicationEventPublisher,
+    @Value("\${app.feature.retrieval-pipeline.twitter.crawler.enabled}") private val crawlerEnabled: Boolean,
+    @Value("\${app.feature.retrieval-pipeline.twitter.users}") private val users: List<Long>,
+    @Value("\${app.feature.retrieval-pipeline.twitter.crawler.max-pages}") private val maxPages: Int,
 ) {
 
     private val log = LoggerFactory.getLogger(TwitterTimelineCrawler::class.java)
-
-    private val maxPages = 16 // The API restricts more than 16*200 = 3200
-
-    private val liefraId = 85857730L
-    private val ECMWF = 370094706L
-    private val CopernicusECMWF = 3346529644L
 
     private val crawlerRunning = AtomicBoolean()
 
@@ -48,13 +44,13 @@ class TwitterTimelineCrawler(
     }
 
     private fun getUserIds(): Mono<List<Long>> {
-        return Mono.just(listOf(CopernicusECMWF))
+        return Mono.just(users)
     }
 
     // @Scheduled(cron = "\${app.twitter.crawler.cron}")
     fun userTimeline() {
 
-        if (twitterConfig.crawler.enabled!!) {
+        if (crawlerEnabled) {
 
             if (!crawlerRunning.get()) {
                 crawlerRunning.set(true)
@@ -118,10 +114,10 @@ class TwitterTimelineCrawler(
             userId = userId,
             userScreenName = userScreenName,
             hashtags = hashtags,
-            urls = urls ,
-            expandedUrls = expandedUrls ,
-            mediaURLs = mediaURLs ,
-            mediaExpandedUrls = mediaExpandedUrls ,
+            urls = urls,
+            expandedUrls = expandedUrls,
+            mediaURLs = mediaURLs,
+            mediaExpandedUrls = mediaExpandedUrls,
         )
     }
 
