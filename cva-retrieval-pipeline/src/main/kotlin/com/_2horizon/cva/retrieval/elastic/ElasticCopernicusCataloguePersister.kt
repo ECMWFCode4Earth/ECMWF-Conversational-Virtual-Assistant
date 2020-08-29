@@ -22,7 +22,7 @@ import javax.inject.Singleton
     Requires(beans = [RestHighLevelClient::class]),
     Requires(property = "app.feature.ingest-pipeline.elastic-ingest-enabled", value = "true")
 )
-open class ElasticCopericusCataloguePersister(
+open class ElasticCopernicusCataloguePersister(
     private val client: RestHighLevelClient,
     private val objectMapper: ObjectMapper
 ) {

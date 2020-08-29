@@ -1,0 +1,39 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 1
+  },
+  "mappings": {
+    "properties": {
+      "source": {
+        "type": "keyword"
+      },
+      "startDate": {
+        "type": "date"
+      },
+      "endDate": {
+        "type": "date"
+      },
+      "title": {
+        "type": "text"
+      },
+      "teaser": {
+        "type": "text"
+      },
+      "content": {
+        "type": "text"
+      },
+      "contentHtml": {
+        "type": "text",
+        "index": "false"
+      },
+      "url": {
+        "type": "keyword"
+      },
+      "img": {
+        "type": "keyword"
+      }
+    }
+  }
+}
+

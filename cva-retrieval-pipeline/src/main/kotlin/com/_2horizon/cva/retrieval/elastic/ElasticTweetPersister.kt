@@ -1,7 +1,7 @@
 package com._2horizon.cva.retrieval.elastic
 
 
-import com._2horizon.cva.common.TWITTER_INDEX
+import com._2horizon.cva.common.elastic.TWITTER_INDEX
 import com._2horizon.cva.common.twitter.dto.Tweet
 import com._2horizon.cva.retrieval.event.TwitterBulkStatusEvent
 import com.fasterxml.jackson.databind.ObjectMapper
