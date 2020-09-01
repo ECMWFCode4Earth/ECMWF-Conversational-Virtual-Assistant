@@ -1,14 +1,18 @@
 package com._2horizon.cva.dialogflow.fulfillment.analytics
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.cloud.dialogflow.v2beta1.Context
-import java.time.OffsetDateTime
+import java.time.LocalDateTime
 
 /**
  * Created by Frank Lieber (liefra) on 2020-08-23.
  */
 data class DialogflowConversionStep(
-    val datetime:OffsetDateTime,
+    @JsonProperty("dateTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    val dateTime:LocalDateTime,
     val session:String,
     val action:String,
     val responseId:String,
@@ -21,6 +25,6 @@ data class DialogflowConversionStep(
     @JsonIgnore
     val outputContextsList:List<Context>,
 
-    val outputContexts:List<String>,
-    val parameters:Map<String,String>,
+    val outputContexts:List<String> = emptyList(),
+    val parameters:Map<String,String> = emptyMap(),
 )

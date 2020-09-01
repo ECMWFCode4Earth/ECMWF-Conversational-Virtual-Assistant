@@ -162,7 +162,7 @@ class CopernicusPortalDrupalRetrieveService(
                     val contentElement = Jsoup.parse(html).selectFirst("section.main--section")
                     val contentHtml = contentElement.html()
                     val content = contentElement.text()
-                    item.copy(contentHtml = contentHtml, contentRaw = content, content = "${item.title}. $content")
+                    item.copy(contentHtml = contentHtml, contentStripped = content, content = "${item.title}. $content")
                 }
             }
             .collectList()
@@ -205,7 +205,7 @@ class CopernicusPortalDrupalRetrieveService(
                 id = "${contentSource}|${url}",
                 source = contentSource,
                 content = title,
-                date = LocalDateTime.of(startDate, LocalTime.MIDNIGHT),
+                dateTime = LocalDateTime.of(startDate, LocalTime.MIDNIGHT),
                 nodeType = nodeType,
                 url = url,
                 title = title,
@@ -257,7 +257,7 @@ class CopernicusPortalDrupalRetrieveService(
                 id = "${contentSource}|${url}",
                 source = contentSource,
                 content = title,
-                date = LocalDateTime.of(publishedAt, LocalTime.MIDNIGHT),
+                dateTime = LocalDateTime.of(publishedAt, LocalTime.MIDNIGHT),
                 nodeType = nodeType,
                 url = url,
                 img = img,

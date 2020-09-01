@@ -14,9 +14,9 @@ data class CopernicusPageNode(
     override val id: String,
     override val source: ContentSource,
     override val content: String,
-    @JsonProperty("date")
+    @JsonProperty("dateTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    override val date: LocalDateTime,
+    override val dateTime: LocalDateTime,
 
     val url: String,
     val title: String,
@@ -38,7 +38,7 @@ data class CopernicusPageNode(
 
     val teaser: String? = null,
     val contentHtml: String? = null,
-    val contentRaw: String? = null,
+    val contentStripped: String? = null,
 ) : ElasticBaseDTO
 
 

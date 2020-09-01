@@ -5,6 +5,12 @@
   },
   "mappings": {
     "properties": {
+      "dateTime": {
+        "type": "date"
+      },
+      "content": {
+        "type": "text"
+      },
       "source": {
         "type": "keyword"
       },
@@ -20,7 +26,7 @@
       "teaser": {
         "type": "text"
       },
-      "content": {
+      "contentStripped": {
         "type": "text"
       },
       "contentHtml": {

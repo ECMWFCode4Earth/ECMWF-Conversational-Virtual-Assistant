@@ -5,14 +5,20 @@
   },
   "mappings": {
     "properties": {
+      "dateTime": {
+        "type": "date"
+      },
+      "content": {
+        "type": "text"
+      },
+      "source": {
+        "type": "keyword"
+      },
       "createdAt": {
         "type": "date"
       },
       "text": {
         "type": "text"
-      },
-      "source": {
-        "type": "keyword"
       },
       "userScreenName": {
         "type": "keyword"

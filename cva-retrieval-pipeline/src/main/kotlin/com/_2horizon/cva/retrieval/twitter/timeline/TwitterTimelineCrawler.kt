@@ -110,7 +110,7 @@ class TwitterTimelineCrawler(
             id = id.toString(),
             source = ContentSource.TWITTER,
             content = text,
-            date = createdAt,
+            dateTime = createdAt,
             tweetId = id,
             text = text,
             tweetSource = source,

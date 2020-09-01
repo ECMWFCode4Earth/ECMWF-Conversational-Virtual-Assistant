@@ -1,5 +1,6 @@
 package com._2horizon.cva.dialogflow.fulfillment.dialogflow
 
+import com._2horizon.cva.common.dialogflow.Agent
 import com.google.cloud.dialogflow.v2beta1.WebhookRequest
 import com.google.protobuf.util.JsonFormat
 import io.micronaut.http.annotation.Body
@@ -12,22 +13,34 @@ import org.slf4j.LoggerFactory
  */
 @Controller("/fulfillment")
 class DialogflowFulfillmentController(
-    private val dfFulfillmentDispatcher: DialogflowFulfillmentDispatcher
+    private val dfFulfillmentDispatcherC3S: C3SDialogflowFulfillmentDispatcher
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
-    @Post("/request")
-    fun fulfillment(@Body webhookRequestString: String): String {
+    @Post("/c3s-request")
+    fun c3sFulfillment(@Body webhookRequestString: String): String = fulfillment(webhookRequestString, Agent.C3S_CVA)
 
-        log.debug("Got a webhookRequestString")
+    @Post("/cams-request")
+    fun camsFulfillment(@Body webhookRequestString: String): String = fulfillment(webhookRequestString, Agent.CAMS_CVA)
 
-        val webhookRequest =
-            WebhookRequest.newBuilder().apply { JsonFormat.parser().merge(webhookRequestString, this) }.build()
+    @Post("/ecmwf-request")
+    fun ecmwfFulfillment(@Body webhookRequestString: String): String =
+        fulfillment(webhookRequestString, Agent.ECMWF_CVA)
 
-        val webhookResponse = dfFulfillmentDispatcher.handle(webhookRequest)
+    private fun fulfillment(webhookRequestString: String, agent: Agent): String {
+        val webhookRequest = convertJsonToWebhookRequest(webhookRequestString)
 
-        log.debug("Sending back webhookResponse")
-        
+        val webhookResponse = if (agent == Agent.C3S_CVA) {
+            dfFulfillmentDispatcherC3S.handle(webhookRequest)
+        } else {
+            TODO()
+        }
+
         return JsonFormat.printer().print(webhookResponse)
     }
+
+    private fun convertJsonToWebhookRequest(webhookRequestString: String): WebhookRequest =
+        WebhookRequest.newBuilder().apply { JsonFormat.parser().merge(webhookRequestString, this) }.build()
 }
+
+

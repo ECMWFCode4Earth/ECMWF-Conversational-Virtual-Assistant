@@ -9,7 +9,7 @@ interface ElasticBaseDTO {
     val id: String
     val source: ContentSource
     val content: String
-    val date: LocalDateTime
+    val dateTime: LocalDateTime
 }
 
 enum class ContentSource{

@@ -8,32 +8,28 @@
       "dateTime": {
         "type": "date"
       },
-      "content": {
-        "type": "text"
-      },
-      "source": {
+      "session": {
         "type": "keyword"
       },
-      "publishedAt": {
-        "type": "date"
-      },
-      "title": {
-        "type": "text"
-      },
-      "teaser": {
-        "type": "text"
-      },
-      "contentStripped": {
-        "type": "text"
-      },
-      "contentHtml": {
-        "type": "text",
-        "index": "false"
-      },
-      "url": {
+      "action": {
         "type": "keyword"
       },
-      "img": {
+      "responseId": {
+        "type": "keyword"
+      },
+      "queryText": {
+        "type": "text"
+      },
+      "intentName": {
+        "type": "keyword"
+      },
+      "intentDisplayName": {
+        "type": "keyword"
+      },
+      "outputContexts": {
+        "type": "keyword"
+      },
+      "parameters": {
         "type": "keyword"
       }
     }
