@@ -1,5 +1,6 @@
 package com._2horizon.cva.retrieval.twitter.timeline
 
+import com._2horizon.cva.common.elastic.ContentSource
 import com._2horizon.cva.common.twitter.dto.Tweet
 import com._2horizon.cva.retrieval.event.TwitterBulkStatusEvent
 import com._2horizon.cva.retrieval.twitter.api.TwitterApiService
@@ -96,7 +97,7 @@ class TwitterTimelineCrawler(
         val text = status.text
         val source = status.source
         val retweetId = status.retweetedStatus?.id
-        val createdAt = status.createdAt
+        val createdAt = status.createdAt.toInstant().atOffset(ZoneOffset.UTC).toLocalDateTime()
         val userId = status.user.id
         val userScreenName = status.user.screenName
         val hashtags = status.hashtagEntities.map { it.text }
@@ -106,11 +107,15 @@ class TwitterTimelineCrawler(
         val mediaExpandedUrls = status.mediaEntities.map { it.mediaURLHttps }
 
         return Tweet(
-            id = id,
+            id = id.toString(),
+            source = ContentSource.TWITTER,
+            content = text,
+            date = createdAt,
+            tweetId = id,
             text = text,
-            source = source,
+            tweetSource = source,
             retweetId = retweetId,
-            createdAt = createdAt.toInstant().atOffset(ZoneOffset.UTC).toLocalDateTime(),
+            createdAt = createdAt,
             userId = userId,
             userScreenName = userScreenName,
             hashtags = hashtags,

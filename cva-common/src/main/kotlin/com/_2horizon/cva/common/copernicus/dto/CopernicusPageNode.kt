@@ -5,6 +5,7 @@ import com._2horizon.cva.common.elastic.ElasticBaseDTO
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 /**
  * Created by Frank Lieber (liefra) on 2020-08-28.
@@ -12,6 +13,11 @@ import java.time.LocalDate
 data class CopernicusPageNode(
     override val id: String,
     override val source: ContentSource,
+    override val content: String,
+    @JsonProperty("date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    override val date: LocalDateTime,
+
     val url: String,
     val title: String,
     val nodeType: NodeType,
@@ -32,7 +38,7 @@ data class CopernicusPageNode(
 
     val teaser: String? = null,
     val contentHtml: String? = null,
-    val content: String? = null,
+    val contentRaw: String? = null,
 ) : ElasticBaseDTO
 
 

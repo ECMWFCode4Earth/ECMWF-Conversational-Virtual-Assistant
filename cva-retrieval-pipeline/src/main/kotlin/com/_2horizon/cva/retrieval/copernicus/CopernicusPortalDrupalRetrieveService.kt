@@ -20,6 +20,8 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.time.Duration
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 import javax.inject.Singleton
@@ -160,7 +162,7 @@ class CopernicusPortalDrupalRetrieveService(
                     val contentElement = Jsoup.parse(html).selectFirst("section.main--section")
                     val contentHtml = contentElement.html()
                     val content = contentElement.text()
-                    item.copy(contentHtml = contentHtml, content = content)
+                    item.copy(contentHtml = contentHtml, contentRaw = content, content = "${item.title}. $content")
                 }
             }
             .collectList()
@@ -192,7 +194,7 @@ class CopernicusPortalDrupalRetrieveService(
             val startDateElement = item.select("div.calendardate-start")
             val endDateElement = item.select("div.calendardate-end")
 
-            val startDate = extractLocalDate(startDateElement)
+            val startDate = extractLocalDate(startDateElement)!!
             val endDate = extractLocalDate(endDateElement)
 
             val url = item.selectFirst("a[href]").attr("href")
@@ -202,6 +204,8 @@ class CopernicusPortalDrupalRetrieveService(
             CopernicusPageNode(
                 id = "${contentSource}|${url}",
                 source = contentSource,
+                content = title,
+                date = LocalDateTime.of(startDate, LocalTime.MIDNIGHT),
                 nodeType = nodeType,
                 url = url,
                 title = title,
@@ -252,6 +256,8 @@ class CopernicusPortalDrupalRetrieveService(
             CopernicusPageNode(
                 id = "${contentSource}|${url}",
                 source = contentSource,
+                content = title,
+                date = LocalDateTime.of(publishedAt, LocalTime.MIDNIGHT),
                 nodeType = nodeType,
                 url = url,
                 img = img,
