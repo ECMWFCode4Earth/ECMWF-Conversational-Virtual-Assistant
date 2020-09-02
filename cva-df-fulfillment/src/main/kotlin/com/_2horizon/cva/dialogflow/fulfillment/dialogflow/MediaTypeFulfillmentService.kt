@@ -120,43 +120,7 @@
 //         return convertCustomPayloadToWebhookResponse(customPayload =customPayload, prefixMessages = listOf(prefixMessages) ,webhookRequest = webhookRequest, webhookResponseBuilder = webhookResponseBuilder)
 //     }
 //
-//     private fun nextEventsResponse(webhookRequest: WebhookRequest,webhookResponseBuilder: WebhookResponse.Builder): WebhookResponse.Builder {
 //
-//         val events = listOf(
-//
-//             RichContentInfoItem(
-//                 title = "C3S User Learning Services online training event, Finland",
-//                 subtitle = "EVENT: 19th AUG 2020 - 16th SEP 2020",
-//                 actionLink = "https://climate.copernicus.eu/c3s-user-learning-services-online-training-event-finland"
-//             ),
-//             RichContentDividerItem(),
-//             RichContentInfoItem(
-//                 title = "User workshop on Copernicus regional reanalysis for Europe and the European Arctic",
-//                 subtitle = "EVENT: 24th SEP 2020",
-//                 actionLink = "https://climate.copernicus.eu/index.php/user-workshop-copernicus-regional-reanalysis-europe-and-european-arctic"
-//             ),
-//             RichContentDividerItem(),
-//             RichContentInfoItem(
-//                 title = "C3S User Learning Services training event, France",
-//                 subtitle = "EVENT: 25th SEP 2020 - 23th OCT 2020",
-//                 actionLink = "https://climate.copernicus.eu/c3s-user-learning-services-training-event-france"
-//             )
-//         )
-//
-//         val customPayload = CustomPayload(
-//             listOf(
-//                 events
-//             )
-//         )
-//
-//         val prefixMessages =   Intent.Message.newBuilder()
-//             .setText(
-//                 Intent.Message.Text.newBuilder()
-//                     .addAllText(listOf("Sure. Here are the upcoming events")).build()
-//             ).build()
-//
-//         return convertCustomPayloadToWebhookResponse(customPayload =customPayload, prefixMessages = listOf(prefixMessages),webhookRequest = webhookRequest, webhookResponseBuilder = webhookResponseBuilder )
-//     }
 //
 //     private fun mediaTypeItemResponse(
 //         mediaTypeItem: MediaTypeItem,

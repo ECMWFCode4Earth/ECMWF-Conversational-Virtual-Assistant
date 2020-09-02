@@ -31,7 +31,7 @@ class DialogflowFulfillmentController(
         val webhookRequest = convertJsonToWebhookRequest(webhookRequestString)
 
         val webhookResponse = if (agent == Agent.C3S_CVA) {
-            dfFulfillmentDispatcherC3S.handle(webhookRequest)
+            dfFulfillmentDispatcherC3S.handle(webhookRequest, agent)
         } else {
             TODO()
         }

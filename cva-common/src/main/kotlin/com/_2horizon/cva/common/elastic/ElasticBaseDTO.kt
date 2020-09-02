@@ -12,6 +12,14 @@ interface ElasticBaseDTO {
     val dateTime: LocalDateTime
 }
 
-enum class ContentSource{
-    TWITTER, C3S,CAMS
+enum class ContentSource {
+    TWITTER, C3S, CAMS
+}
+
+fun ContentSource.baseUri(): String {
+    return when (this) {
+        ContentSource.C3S -> "https://climate.copernicus.eu"
+        ContentSource.TWITTER -> "https://twitter.com/CivGame/status"
+        ContentSource.CAMS -> "https://atmosphere.copernicus.eu"
+    }
 }

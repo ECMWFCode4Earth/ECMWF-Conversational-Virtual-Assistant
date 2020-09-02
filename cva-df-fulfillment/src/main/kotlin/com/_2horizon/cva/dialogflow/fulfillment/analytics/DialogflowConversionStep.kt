@@ -25,6 +25,10 @@ data class DialogflowConversionStep(
     @JsonIgnore
     val outputContextsList:List<Context>,
 
-    val outputContexts:List<String> = emptyList(),
+    @JsonIgnore
     val parameters:Map<String,String> = emptyMap(),
+
+    val outputContexts:List<String> = emptyList(),
+    val parameterKeys:List<String> = emptyList(),
+    val parameterValues:List<String> = emptyList(),
 )

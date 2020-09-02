@@ -14,6 +14,9 @@
       "source": {
         "type": "keyword"
       },
+      "nodeType": {
+        "type": "keyword"
+      },
       "publishedAt": {
         "type": "date"
       },

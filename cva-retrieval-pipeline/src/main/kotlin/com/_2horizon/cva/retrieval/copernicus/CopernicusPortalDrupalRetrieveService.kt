@@ -3,6 +3,7 @@ package com._2horizon.cva.retrieval.copernicus
 import com._2horizon.cva.common.copernicus.dto.CopernicusPageNode
 import com._2horizon.cva.common.copernicus.dto.NodeType
 import com._2horizon.cva.common.elastic.ContentSource
+import com._2horizon.cva.common.elastic.baseUri
 import com._2horizon.cva.retrieval.copernicus.c3s.portal.C3SPortalOperations
 import com._2horizon.cva.retrieval.copernicus.cams.portal.CamsPortalOperations
 import com._2horizon.cva.retrieval.event.BasicPageNodesEvent
@@ -159,7 +160,7 @@ class CopernicusPortalDrupalRetrieveService(
                 }
 
                 htmlFlowable.map { html ->
-                    val contentElement = Jsoup.parse(html).selectFirst("section.main--section")
+                    val contentElement = Jsoup.parse(html, basicPageNodesEvent.contentSource.baseUri()).selectFirst("section.main--section")
                     val contentHtml = contentElement.html()
                     val content = contentElement.text()
                     item.copy(contentHtml = contentHtml, contentStripped = content, content = "${item.title}. $content")
@@ -197,12 +198,12 @@ class CopernicusPortalDrupalRetrieveService(
             val startDate = extractLocalDate(startDateElement)!!
             val endDate = extractLocalDate(endDateElement)
 
-            val url = item.selectFirst("a[href]").attr("href")
+            val url = item.selectFirst("a[href]").attr("abs:src")
             val title = item.selectFirst("h3").text()
 
             val teaser = item.selectFirst("div.teaser").text()
             CopernicusPageNode(
-                id = "${contentSource}|${url}",
+                id = url,
                 source = contentSource,
                 content = title,
                 dateTime = LocalDateTime.of(startDate, LocalTime.MIDNIGHT),
@@ -240,13 +241,13 @@ class CopernicusPortalDrupalRetrieveService(
         html: String
     ): Mono<List<CopernicusPageNode>> {
 
-        val document = Jsoup.parse(html)
+        val document = Jsoup.parse(html, contentSource.baseUri())
 
         val items = document.selectFirst("section.main--section").select("li.list--item")
 
         val pageItems = items.map { item ->
-            val url = item.selectFirst("a[href]").attr("href")
-            val img = item.selectFirst("img[src]").attr("src")
+            val url = item.selectFirst("a[href]").attr("abs:href")
+            val img = item.selectFirst("img[src]").attr("abs:src")
             val title = item.selectFirst("h3").text()
             val publishedAt = LocalDate.parse(
                 item.selectFirst("span.label").text(),
@@ -254,7 +255,7 @@ class CopernicusPortalDrupalRetrieveService(
             )
             val teaser = item.selectFirst("div.teaser").text()
             CopernicusPageNode(
-                id = "${contentSource}|${url}",
+                id = url,
                 source = contentSource,
                 content = title,
                 dateTime = LocalDateTime.of(publishedAt, LocalTime.MIDNIGHT),
