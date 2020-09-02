@@ -18,6 +18,7 @@ import com.google.cloud.dialogflow.v2beta1.Context
 import com.google.cloud.dialogflow.v2beta1.WebhookRequest
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse
 import io.micronaut.context.event.ApplicationEventPublisher
+import reactor.core.publisher.Mono
 import java.time.OffsetDateTime
 import java.time.ZoneId
 import javax.inject.Singleton
@@ -41,7 +42,7 @@ class C3SDialogflowFulfillmentDispatcher(
     // long running context names
     private val intentStack = "intentStack"
 
-    fun handle(webhookRequest: WebhookRequest, agent: Agent): WebhookResponse {
+    fun handle(webhookRequest: WebhookRequest, agent: Agent): Mono<WebhookResponse.Builder> {
 
         val dialogflowConversionStep = createDialogflowConversionStep(webhookRequest)
 
@@ -56,34 +57,33 @@ class C3SDialogflowFulfillmentDispatcher(
             agent, dialogflowConversionStep, fulfillmentState, webhookResponseBuilder, intentStack
         )
 
-        val webhookResponseBuilderResponse: WebhookResponse.Builder = when (fulfillmentState) {
-            C3SFulfillmentState.FALLBACK_GLOBAL -> fallbackFulfillmentService.handle(
-                fulfillmentChain
-            )
-            C3SFulfillmentState.NOTHING -> webhookResponseBuilder
-            C3SFulfillmentState.CDS_DATASET_EXECUTE_DATASET_SEARCH,
-            C3SFulfillmentState.CDS_DATASET_SEARCH_DATASET_BY_NAME_OR_KEYWORD_FALLBACK -> copernicusFulfillmentService.retrieveDatasetsAsRichContent(
-                fulfillmentChain
-            )
-
-            C3SFulfillmentState.CDS_DATASET_QUESTION_CONCERNING_ONE_SELECTED_DATASET -> copernicusFulfillmentService.datasetSelected(
-                fulfillmentChain
-            )
-            C3SFulfillmentState.CDS_DATASET_SHOW_CDS_API_REQUEST_OF_SELECTED_DATASET -> copernicusFulfillmentService.showCdsApiRequestOfSelectedDataset(
-                fulfillmentChain
-            )
-            C3SFulfillmentState.CKB_SEARCH_BY_KEYWORD -> confluenceFulfillmentService.handleSearchByKeyword(
+        val monoWebhookResponseBuilderResponse: Mono<WebhookResponse.Builder> = when (fulfillmentState) {
+            // C3SFulfillmentState.FALLBACK_GLOBAL -> fallbackFulfillmentService.handle(
+            //     fulfillmentChain
+            // )
+            // C3SFulfillmentState.NOTHING -> webhookResponseBuilder
+            // C3SFulfillmentState.CDS_DATASET_EXECUTE_DATASET_SEARCH,
+            // C3SFulfillmentState.CDS_DATASET_SEARCH_DATASET_BY_NAME_OR_KEYWORD_FALLBACK -> copernicusFulfillmentService.retrieveDatasetsAsRichContent(
+            //     fulfillmentChain
+            // )
+            //
+            // C3SFulfillmentState.CDS_DATASET_QUESTION_CONCERNING_ONE_SELECTED_DATASET -> copernicusFulfillmentService.datasetSelected(
+            //     fulfillmentChain
+            // )
+            C3SFulfillmentState.CONFLUENCE_SEARCH_BY_KEYWORD -> confluenceFulfillmentService.handleSearchByKeyword(
                 fulfillmentChain
             )
             C3SFulfillmentState.CDS_SHOW_LIVE_STATUS -> copernicusStatusService.showLiveStatus(fulfillmentChain)
+
             C3SFulfillmentState.PORTAL_SHOW_LATEST_COMMUNICATION_MEDIA_TYPE -> communicationMediaTypeFulfillmentService.showLatestCommunicationMediaType(
                 fulfillmentChain
             )
             C3SFulfillmentState.PORTAL_SEARCH_COMMUNICATION_MEDIA_TYPE_BY_KEYWORD -> communicationMediaTypeFulfillmentService.searchMediaTypeByKeyword(
                 fulfillmentChain
             )
+            else -> TODO()
         }
-        return webhookResponseBuilderResponse.build()
+        return monoWebhookResponseBuilderResponse
     }
 
     private fun actionToStateLookup(action: String): C3SFulfillmentState {

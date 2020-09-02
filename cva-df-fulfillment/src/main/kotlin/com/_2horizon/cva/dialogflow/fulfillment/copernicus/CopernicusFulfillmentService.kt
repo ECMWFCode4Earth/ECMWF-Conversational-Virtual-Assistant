@@ -21,7 +21,7 @@ import javax.inject.Singleton
 @Singleton
 class CopernicusFulfillmentService(
     objectMapper: ObjectMapper,
-    private val copernicusStatusService: CopernicusStatusService,
+    // private val copernicusStatusService: CopernicusStatusService,
     private val copernicusDataStoreSolrSearchService: CopernicusDataStoreSolrSearchService
 ) : AbstractFulfillmentService(objectMapper) {
 

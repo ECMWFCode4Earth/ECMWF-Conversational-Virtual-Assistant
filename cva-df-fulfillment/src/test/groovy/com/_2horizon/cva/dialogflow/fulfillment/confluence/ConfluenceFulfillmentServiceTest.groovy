@@ -17,7 +17,7 @@ class ConfluenceFulfillmentServiceTest extends Specification {
 
     def "Should searchByKeyword"() {
         when:
-        def r = service.searchByKeyword('api')
+        def r = service.searchByKeyword('api').block()
 
         then:
         r.contents.size()>10

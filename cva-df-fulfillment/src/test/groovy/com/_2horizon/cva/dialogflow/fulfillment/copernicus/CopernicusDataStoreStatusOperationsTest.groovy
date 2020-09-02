@@ -14,12 +14,9 @@ class CopernicusDataStoreStatusOperationsTest extends Specification {
     @Inject
     CopernicusDataStoreStatusOperations api
 
-
-
-
     def "Should get the live activity status of the Copernicus Data Store"() {
         when:
-        def r = api.liveActivityStatus().get()
+        def r = api.liveActivityStatus().block()
 
         then:
         r.running > 0

@@ -19,6 +19,7 @@ val micronautGcpVersion: String by project
 val googleCloudBomVersion: String by project
 val elasticsearchRestVersion: String by project
 val elasticsearchBeyonderVersion: String by project
+val micronautReactorVersion: String by project
 
 plugins {
     groovy
@@ -67,6 +68,10 @@ dependencies {
     kapt("io.micronaut:micronaut-inject-java")
     kapt("io.micronaut:micronaut-validation")
     kapt("io.micronaut.configuration:micronaut-openapi")
+
+    //https://micronaut-projects.github.io/micronaut-reactor/latest/guide/
+    implementation("io.micronaut.reactor:micronaut-reactor:$micronautReactorVersion")
+    implementation("io.micronaut.reactor:micronaut-reactor-http-client:$micronautReactorVersion")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
     runtimeOnly("ch.qos.logback:logback-classic:$logbackVersion")

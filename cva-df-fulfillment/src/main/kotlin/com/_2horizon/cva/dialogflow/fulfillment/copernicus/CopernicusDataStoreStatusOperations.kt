@@ -3,7 +3,7 @@ package com._2horizon.cva.dialogflow.fulfillment.copernicus
 import com._2horizon.cva.dialogflow.fulfillment.copernicus.dto.CopernicusDataStoreStatus
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.annotation.Client
-import java.util.Optional
+import reactor.core.publisher.Mono
 
 /**
  * Created by Frank Lieber (liefra) on 2020-07-06.
@@ -13,5 +13,5 @@ import java.util.Optional
 interface CopernicusDataStoreStatusOperations {
 
     @Get("/live/activity/status")
-    fun liveActivityStatus( ): Optional<CopernicusDataStoreStatus>
+    fun liveActivityStatus( ): Mono<CopernicusDataStoreStatus>
 }

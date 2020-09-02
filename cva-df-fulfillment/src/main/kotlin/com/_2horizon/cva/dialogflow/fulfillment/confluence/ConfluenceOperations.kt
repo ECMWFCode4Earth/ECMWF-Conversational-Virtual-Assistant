@@ -10,14 +10,16 @@ import io.micronaut.retry.annotation.Retryable
 @Retryable(attempts = "5", multiplier = "1.5")
 interface ConfluenceOperations {
 
-
-    // @Get("/content/search?cql=text~\\{\"{keyword}\"\\}+and+type=page+and+space={space}&start={start}&limit={limit}")
-    // fun keywordSearch(
+    // // @Get("/content/search?cql=text~\\{\"{keyword}\"\\}+and+type=page+and+space={space}&start={start}&limit={limit}")
+    // @Get("/content/search?cql=text~\\{\"\\{keyword\\}\"\\}+and+type=page+and+space={space}&start={start}&limit={limit}")
+    // fun searchByKeyword(
     //     keyword:String,
     //     space:String="CKB",
     //     limit: Int = 200,
     //     start: Int = 0
-    // ): Optional<ContentResponse>
+    // ): Mono<ContentResponse>
+
+
 
     // @Get("/space?start={start}&limit={limit}&type={type}&expand=metadata.labels,description.view,description.plain,icon")
     // fun spacesWithMetadataLabelsAndDescriptionAndIcon(

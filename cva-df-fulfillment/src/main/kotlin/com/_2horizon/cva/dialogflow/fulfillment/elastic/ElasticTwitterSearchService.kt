@@ -2,7 +2,9 @@ package com._2horizon.cva.dialogflow.fulfillment.elastic
 
 import com._2horizon.cva.common.elastic.TWITTER_INDEX
 import com._2horizon.cva.common.twitter.dto.Tweet
+import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.elasticsearch.action.ActionListener
 import org.elasticsearch.action.search.SearchRequest
 import org.elasticsearch.action.search.SearchResponse
 import org.elasticsearch.client.RequestOptions
@@ -11,13 +13,14 @@ import org.elasticsearch.common.unit.Fuzziness
 import org.elasticsearch.common.unit.TimeValue
 import org.elasticsearch.index.query.QueryBuilder
 import org.elasticsearch.index.query.QueryBuilders
-import org.elasticsearch.rest.RestStatus
 import org.elasticsearch.search.builder.SearchSourceBuilder
 import org.elasticsearch.search.sort.FieldSortBuilder
 import org.elasticsearch.search.sort.ScoreSortBuilder
 import org.elasticsearch.search.sort.SortBuilder
 import org.elasticsearch.search.sort.SortOrder
 import org.slf4j.LoggerFactory
+import reactor.core.publisher.Mono
+import reactor.core.publisher.MonoSink
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -38,14 +41,14 @@ class ElasticTwitterSearchService(
         return tweets
     }
 
-    fun findLatestTweet(userScreenName: String): List<Tweet> {
+    fun findLatestTweet(userScreenName: String): Mono<List<Tweet>> {
         val query: QueryBuilder = QueryBuilders.boolQuery()
             .must(QueryBuilders.termQuery("userScreenName", userScreenName))
 
         return executeSearch(query, listOf(getDateTimeSort()))
     }
 
-    fun findTweetByKeyword(userScreenName: String, keyword: String): List<Tweet> {
+    fun findTweetByKeyword(userScreenName: String, keyword: String): Mono<List<Tweet>> {
 
         val matchQuery = QueryBuilders.matchQuery("content", keyword)
             .fuzziness(Fuzziness.AUTO)
@@ -56,11 +59,10 @@ class ElasticTwitterSearchService(
             .must(QueryBuilders.termQuery("userScreenName", userScreenName))
             .must(matchQuery)
 
-
         return executeSearch(query, listOf(getScoreSort(), getDateTimeSort()))
     }
 
-    private fun executeSearch(query: QueryBuilder, sortBuilders: List<SortBuilder<*>>): List<Tweet> {
+    private fun executeSearch(query: QueryBuilder, sortBuilders: List<SortBuilder<*>>): Mono<List<Tweet>> {
         val searchSourceBuilder = SearchSourceBuilder()
             .query(query)
             .trackTotalHits(true)
@@ -73,11 +75,35 @@ class ElasticTwitterSearchService(
         val searchRequest = SearchRequest(TWITTER_INDEX).apply {
             source(searchSourceBuilder)
         }
-        val searchResponse = client.search(searchRequest, RequestOptions.DEFAULT)
 
-        check(searchResponse.status() == RestStatus.OK) { "Wrong Elastic result ${searchResponse.status()}" }
+        return doSearch(searchRequest)
+            .map(::convertSearchResponse)
+    }
 
-        return convertSearchResponse(searchResponse)
+    private fun doSearch(searchRequest: SearchRequest): Mono<SearchResponse> {
+        return Mono.create { sink ->
+            try {
+                searchAsync(searchRequest, listenerToSink(sink))
+            } catch (e: JsonProcessingException) {
+                sink.error(e)
+            }
+        }
+    }
+
+    private fun searchAsync(searchRequest: SearchRequest, listener: ActionListener<SearchResponse>) {
+        client.searchAsync(searchRequest, RequestOptions.DEFAULT, listener)
+    }
+
+    private fun <T> listenerToSink(sink: MonoSink<T>): ActionListener<T> {
+        return object : ActionListener<T> {
+            override fun onResponse(response: T) {
+                sink.success(response)
+            }
+
+            override fun onFailure(e: Exception) {
+                sink.error(e)
+            }
+        }
     }
 
     private fun getScoreSort(sort: SortOrder = SortOrder.DESC) = ScoreSortBuilder().order(sort)
