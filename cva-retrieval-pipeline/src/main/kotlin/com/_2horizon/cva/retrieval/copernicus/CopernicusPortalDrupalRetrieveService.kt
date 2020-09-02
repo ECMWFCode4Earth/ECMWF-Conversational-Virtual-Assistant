@@ -23,6 +23,7 @@ import java.time.Duration
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 import javax.inject.Singleton
@@ -203,6 +204,7 @@ class CopernicusPortalDrupalRetrieveService(
 
             val teaser = item.selectFirst("div.teaser").text()
             CopernicusPageNode(
+                verifiedAt = LocalDateTime.now(ZoneId.of("UTC")),
                 id = url,
                 source = contentSource,
                 content = title,
@@ -255,6 +257,7 @@ class CopernicusPortalDrupalRetrieveService(
             )
             val teaser = item.selectFirst("div.teaser").text()
             CopernicusPageNode(
+                verifiedAt = LocalDateTime.now(ZoneId.of("UTC")),
                 id = url,
                 source = contentSource,
                 content = title,

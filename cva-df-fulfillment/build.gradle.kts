@@ -20,6 +20,7 @@ val googleCloudBomVersion: String by project
 val elasticsearchRestVersion: String by project
 val elasticsearchBeyonderVersion: String by project
 val micronautReactorVersion: String by project
+val smileCoreVersion: String by project
 
 plugins {
     groovy
@@ -53,6 +54,10 @@ dependencies {
     implementation(project(":cva-common"))
     
     implementation(project(":cva-copernicus"))
+
+    // https://haifengl.github.io/nlp.html
+    implementation("com.github.haifengl:smile-core:$smileCoreVersion")
+    implementation("com.github.haifengl:smile-nlp:$smileCoreVersion")
 
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
     implementation("io.swagger.core.v3:swagger-annotations")

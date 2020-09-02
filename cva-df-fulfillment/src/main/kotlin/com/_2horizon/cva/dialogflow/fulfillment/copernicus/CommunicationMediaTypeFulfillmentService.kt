@@ -9,6 +9,7 @@ import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichCon
 import com._2horizon.cva.dialogflow.fulfillment.elastic.ElasticMediaTypeSearchService
 import com._2horizon.cva.dialogflow.fulfillment.elastic.ElasticTwitterSearchService
 import com._2horizon.cva.dialogflow.fulfillment.extensions.asIntentMessage
+import com._2horizon.cva.dialogflow.fulfillment.extensions.convertToRichAccordionList
 import com._2horizon.cva.dialogflow.fulfillment.extensions.convertToRichContentList
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse
@@ -35,19 +36,19 @@ class CommunicationMediaTypeFulfillmentService(
         val items: Mono<List<List<RichContentItem>>> = when (communicationMediaType) {
             "news" -> { // main entity id
                 elasticMediaTypeSearchService.findLatestNews(fulfillmentChain.agent.convertToContentSource())
-                    .map { pageNodes -> pageNodes.map { tweet -> tweet.convertToRichContentList() } }
+                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
             }
             "press release" -> { // main entity id
                 elasticMediaTypeSearchService.findLatestPressRelease(fulfillmentChain.agent.convertToContentSource())
-                    .map { pageNodes -> pageNodes.map { tweet -> tweet.convertToRichContentList() } }
+                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
             }
             "case study" -> { // main entity id
                 elasticMediaTypeSearchService.findLatestCaseStudy(fulfillmentChain.agent.convertToContentSource())
-                    .map { pageNodes -> pageNodes.map { tweet -> tweet.convertToRichContentList() } }
+                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
             }
             "demonstrator project" -> { // main entity id
                 elasticMediaTypeSearchService.findLatestDemonstratorProject(fulfillmentChain.agent.convertToContentSource())
-                    .map { pageNodes -> pageNodes.map { tweet -> tweet.convertToRichContentList() } }
+                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
             }
             "tweet" -> { // main entity id
                 elasticTwitterSearchService.findLatestTweet(fulfillmentChain.agent.convertToTwitterUserScreenname())
@@ -91,28 +92,28 @@ class CommunicationMediaTypeFulfillmentService(
                     fulfillmentChain.agent.convertToContentSource(),
                     keyword
                 )
-                    .map { pageNodes -> pageNodes.map { tweet -> tweet.convertToRichContentList() } }
+                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
             }
             "press release" -> { // main entity id
                 elasticMediaTypeSearchService.findPressReleaseByKeyword(
                     fulfillmentChain.agent.convertToContentSource(),
                     keyword
                 )
-                    .map { pageNodes -> pageNodes.map { tweet -> tweet.convertToRichContentList() } }
+                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
             }
             "case study" -> { // main entity id
                 elasticMediaTypeSearchService.findCaseStudyByKeyword(
                     fulfillmentChain.agent.convertToContentSource(),
                     keyword
                 )
-                    .map { pageNodes -> pageNodes.map { tweet -> tweet.convertToRichContentList() } }
+                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
             }
             "demonstrator project" -> { // main entity id
                 elasticMediaTypeSearchService.findDemonstratorProjectByKeyword(
                     fulfillmentChain.agent.convertToContentSource(),
                     keyword
                 )
-                    .map { pageNodes -> pageNodes.map { tweet -> tweet.convertToRichContentList() } }
+                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
             }
             "tweet" -> { // main entity id
                 elasticTwitterSearchService.findTweetByKeyword(
@@ -135,7 +136,7 @@ class CommunicationMediaTypeFulfillmentService(
 
             if (itemsList.isNotEmpty()) {
                 convertCustomPayloadToWebhookResponse(
-                    CustomPayload(itemsList.take(1)), // only show one in result
+                    CustomPayload(itemsList.take(5)), 
                     fulfillmentChain.dialogflowConversionStep,
                     fulfillmentChain.webhookResponseBuilder,
                     prefixMessages = listOf("Wow, I found so many interesting ${communicationMediaType.capitalize()}s. Here is the most recent one.".asIntentMessage()),

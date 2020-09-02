@@ -3,6 +3,7 @@ package com._2horizon.cva.dialogflow.fulfillment.extensions
 import com._2horizon.cva.common.copernicus.dto.CopernicusPageNode
 import com._2horizon.cva.common.copernicus.dto.asHumanReadable
 import com._2horizon.cva.common.twitter.dto.Tweet
+import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentAccordionItem
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentImageItem
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentInfoItem
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentItem
@@ -39,6 +40,23 @@ fun CopernicusPageNode.convertToRichContentList(): MutableList<RichContentItem> 
     items.add(infoItem)
     return items
 }
+fun CopernicusPageNode.convertToRichAccordionList(): MutableList<RichContentItem> {
+    val items = mutableListOf<RichContentItem>()
+
+    val infoItem = RichContentAccordionItem(
+        title = this.title,
+        subtitle = "${this.nodeType.asHumanReadable()}: ${this.publishedAt}",
+        text = """
+<img src="${this.img!!}" style="height:20vh" /><br>
+<p>${this.teaser}</p>
+<a href="${this.url}">Click to read more</a>             
+        """.trimIndent()
+    )
+    items.add(infoItem)
+    return items
+}
+
+
 
 fun Tweet.convertToRichContentList(): MutableList<RichContentItem> {
     val items = mutableListOf<RichContentItem>()

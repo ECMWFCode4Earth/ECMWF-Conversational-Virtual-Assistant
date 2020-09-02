@@ -58,9 +58,9 @@ class C3SDialogflowFulfillmentDispatcher(
         )
 
         val monoWebhookResponseBuilderResponse: Mono<WebhookResponse.Builder> = when (fulfillmentState) {
-            // C3SFulfillmentState.FALLBACK_GLOBAL -> fallbackFulfillmentService.handle(
-            //     fulfillmentChain
-            // )
+            C3SFulfillmentState.FALLBACK_GLOBAL -> fallbackFulfillmentService.handle(
+                fulfillmentChain
+            )
             // C3SFulfillmentState.NOTHING -> webhookResponseBuilder
             // C3SFulfillmentState.CDS_DATASET_EXECUTE_DATASET_SEARCH,
             // C3SFulfillmentState.CDS_DATASET_SEARCH_DATASET_BY_NAME_OR_KEYWORD_FALLBACK -> copernicusFulfillmentService.retrieveDatasetsAsRichContent(

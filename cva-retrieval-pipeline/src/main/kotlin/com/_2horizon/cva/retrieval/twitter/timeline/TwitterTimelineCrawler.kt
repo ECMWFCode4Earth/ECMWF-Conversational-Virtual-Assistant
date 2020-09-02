@@ -17,6 +17,8 @@ import reactor.util.retry.Retry
 import twitter4j.Paging
 import twitter4j.Status
 import java.time.Duration
+import java.time.LocalDateTime
+import java.time.ZoneId
 import java.time.ZoneOffset
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
@@ -107,6 +109,7 @@ class TwitterTimelineCrawler(
         val mediaExpandedUrls = status.mediaEntities.map { it.mediaURLHttps }
 
         return Tweet(
+            verifiedAt = LocalDateTime.now(ZoneId.of("UTC")),
             id = id.toString(),
             source = ContentSource.TWITTER,
             content = text,
