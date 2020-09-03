@@ -34,21 +34,21 @@ class ElasticTwitterSearchService(
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
-    private fun convertSearchResponse(searchResponse: SearchResponse): List<Tweet> {
+    private fun convertSearchResponse(searchResponse: SearchResponse): TweetResponse {
         val totalHits = searchResponse.hits.totalHits?.value ?: error("totalHits not enabled in query")
         val hits = searchResponse.hits
         val tweets = searchResponse.hits.map { hit -> objectMapper.readValue(hit.sourceAsString, Tweet::class.java) }
-        return tweets
+        return TweetResponse(totalHits = totalHits, tweets = tweets)
     }
 
-    fun findLatestTweet(userScreenName: String): Mono<List<Tweet>> {
+    fun findLatestTweet(userScreenName: String): Mono<TweetResponse> {
         val query: QueryBuilder = QueryBuilders.boolQuery()
             .must(QueryBuilders.termQuery("userScreenName", userScreenName))
 
-        return executeSearch(query, listOf(getDateTimeSort()))
+        return executeSearch(query, size = 3, from = 0, listOf(getDateTimeSort()))
     }
 
-    fun findTweetByKeyword(userScreenName: String, keyword: String): Mono<List<Tweet>> {
+    fun findTweetByKeyword(userScreenName: String, keyword: String, size: Int = 3, from: Int = 0): Mono<TweetResponse> {
 
         val matchQuery = QueryBuilders.matchQuery("content", keyword)
             .fuzziness(Fuzziness.AUTO)
@@ -59,15 +59,20 @@ class ElasticTwitterSearchService(
             .must(QueryBuilders.termQuery("userScreenName", userScreenName))
             .must(matchQuery)
 
-        return executeSearch(query, listOf(getScoreSort(), getDateTimeSort()))
+        return executeSearch(query, size = size, from = from, listOf(getScoreSort(), getDateTimeSort()))
     }
 
-    private fun executeSearch(query: QueryBuilder, sortBuilders: List<SortBuilder<*>>): Mono<List<Tweet>> {
+    private fun executeSearch(
+        query: QueryBuilder,
+        size: Int,
+        from: Int,
+        sortBuilders: List<SortBuilder<*>>
+    ): Mono<TweetResponse> {
         val searchSourceBuilder = SearchSourceBuilder()
             .query(query)
             .trackTotalHits(true)
-            .from(0)
-            .size(10)
+            .from(from)
+            .size(size)
             .timeout(TimeValue(3, TimeUnit.SECONDS))
 
         sortBuilders.forEach { fsb -> searchSourceBuilder.sort(fsb) }
@@ -109,3 +114,5 @@ class ElasticTwitterSearchService(
     private fun getScoreSort(sort: SortOrder = SortOrder.DESC) = ScoreSortBuilder().order(sort)
     private fun getDateTimeSort(sort: SortOrder = SortOrder.DESC) = FieldSortBuilder("dateTime").order(sort)
 }
+
+data class TweetResponse(val totalHits: Long, val tweets: List<Tweet>)

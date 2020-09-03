@@ -27,10 +27,10 @@ class ConfluenceFulfillmentService(
 
     private val log = LoggerFactory.getLogger(javaClass)
 
-    fun searchByKeyword(keyword: String): Mono<ContentResponse> {
+    fun searchByKeyword(keyword: String, size: Int = 15, from: Int = 0): Mono<ContentResponse> {
 
         val uri =
-            UriBuilder.of("/content/search?cql=text~{%22$keyword%22}+and+type=page+and+space=CKB&expand=history,version,metadata.labels&start=0&limit=8")
+            UriBuilder.of("/content/search?cql=text~{%22$keyword%22}+and+type=page+and+space=CKB&expand=history,version,metadata.labels&start=${from}&limit=${size}")
                 .build()
 
         return httpClient.retrieve(GET<ContentResponse>(uri), ContentResponse::class.java).single()

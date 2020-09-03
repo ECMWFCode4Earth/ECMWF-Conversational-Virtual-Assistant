@@ -13,8 +13,11 @@ import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichCon
 import com._2horizon.cva.dialogflow.fulfillment.elastic.ElasticMediaTypeSearchService
 import com._2horizon.cva.dialogflow.fulfillment.elastic.ElasticTwitterSearchService
 import com._2horizon.cva.dialogflow.fulfillment.extensions.asIntentMessage
+import com._2horizon.cva.dialogflow.fulfillment.extensions.posTagging
+import com._2horizon.cva.dialogflow.fulfillment.extensions.splitIntoWords
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse
+import org.slf4j.LoggerFactory
 import reactor.core.publisher.Mono
 import javax.inject.Singleton
 
@@ -29,19 +32,25 @@ class FallbackFulfillmentService(
     private val confluenceFulfillmentService: ConfluenceFulfillmentService,
 ) : AbstractFulfillmentService(objectMapper) {
 
+    private val log = LoggerFactory.getLogger(javaClass)
+
     fun handle(fc: FulfillmentChain): Mono<WebhookResponse.Builder> {
 
+
         val keyword = fc.dialogflowConversionStep.queryText
+        val words = keyword.splitIntoWords()
+        val posTags = posTagging(words)
+        log.info("$words --> $posTags")
         val tweetsMono =
-            elasticTwitterSearchService.findTweetByKeyword(fc.agent.convertToTwitterUserScreenname(), keyword)
-        val newsMono = elasticMediaTypeSearchService.findNewsByKeyword(fc.agent.convertToContentSource(), keyword)
+            elasticTwitterSearchService.findTweetByKeyword(fc.agent.convertToTwitterUserScreenname(), keyword, size = 0)
+        val newsMono = elasticMediaTypeSearchService.findNewsByKeyword(fc.agent.convertToContentSource(), keyword, size = 0)
         val pressReleasesMono =
-            elasticMediaTypeSearchService.findPressReleaseByKeyword(fc.agent.convertToContentSource(), keyword)
+            elasticMediaTypeSearchService.findPressReleaseByKeyword(fc.agent.convertToContentSource(), keyword, size = 0)
         val caseStudiesMono =
-            elasticMediaTypeSearchService.findCaseStudyByKeyword(fc.agent.convertToContentSource(), keyword)
-        val demonstratorProectsMono =
-            elasticMediaTypeSearchService.findDemonstratorProjectByKeyword(fc.agent.convertToContentSource(), keyword)
-        val confluenceContentMono = confluenceFulfillmentService.searchByKeyword(keyword = keyword)
+            elasticMediaTypeSearchService.findCaseStudyByKeyword(fc.agent.convertToContentSource(), keyword, size = 0)
+        val demonstratorProjectsMono =
+            elasticMediaTypeSearchService.findDemonstratorProjectByKeyword(fc.agent.convertToContentSource(), keyword, size = 0)
+        val confluenceContentMono = confluenceFulfillmentService.searchByKeyword(keyword = keyword, size = 15)
 
         val items =
             Mono.zip(
@@ -49,7 +58,7 @@ class FallbackFulfillmentService(
                 newsMono,
                 pressReleasesMono,
                 caseStudiesMono,
-                demonstratorProectsMono,
+                demonstratorProjectsMono,
                 confluenceContentMono
             )
                 .map {
@@ -63,10 +72,10 @@ class FallbackFulfillmentService(
                     val items = mutableListOf<RichContentItem>()
 
 
-                    if (news.isNotEmpty()) {
+                    if (news.totalHits>0) {
                         items.add(
                             RichContentListItem(
-                                "News ${news.size}",
+                                "News (${news.totalHits})",
                                 subtitle = "Click to view News",
                                 event = Event(
                                     name = C3SFulfillmentState.PORTAL_SEARCH_COMMUNICATION_MEDIA_TYPE_BY_KEYWORD.toString()
@@ -79,10 +88,10 @@ class FallbackFulfillmentService(
                             )
                         )
                     }
-                    if (pressReleases.isNotEmpty()) {
+                    if (pressReleases.totalHits>0) {
                         items.add(
                             RichContentListItem(
-                                "Press Releases ${pressReleases.size}",
+                                "Press Releases (${pressReleases.totalHits})",
                                 subtitle = "Click to view Press Releases",
                                 event = Event(
                                     name = C3SFulfillmentState.PORTAL_SEARCH_COMMUNICATION_MEDIA_TYPE_BY_KEYWORD.toString()
@@ -95,10 +104,10 @@ class FallbackFulfillmentService(
                             )
                         )
                     }
-                    if (caseStudies.isNotEmpty()) {
+                    if (caseStudies.totalHits>0) {
                         items.add(
                             RichContentListItem(
-                                "Case Studies ${pressReleases.size}",
+                                "Case Studies (${pressReleases.totalHits})",
                                 subtitle = "Click to view Case Studies",
                                 event = Event(
                                     name = C3SFulfillmentState.PORTAL_SEARCH_COMMUNICATION_MEDIA_TYPE_BY_KEYWORD.toString()
@@ -111,10 +120,10 @@ class FallbackFulfillmentService(
                             )
                         )
                     }
-                    if (demonstratorProects.isNotEmpty()) {
+                    if (demonstratorProects.totalHits>0) {
                         items.add(
                             RichContentListItem(
-                                "Demonstrator Projects ${pressReleases.size}",
+                                "Demonstrator Projects (${pressReleases.totalHits})",
                                 subtitle = "Click to view Demonstrator Projects",
                                 event = Event(
                                     name = C3SFulfillmentState.PORTAL_SEARCH_COMMUNICATION_MEDIA_TYPE_BY_KEYWORD.toString()
@@ -143,10 +152,10 @@ class FallbackFulfillmentService(
                         )
                     }
 
-                    if (tweets.isNotEmpty()) {
+                    if (tweets.totalHits>0) {
                         items.add(
                             RichContentListItem(
-                                "Tweets ${tweets.size}", subtitle = "Click to view Tweets", event = Event(
+                                "Tweets (${tweets.totalHits})", subtitle = "Click to view Tweets", event = Event(
                                     name = C3SFulfillmentState.PORTAL_SEARCH_COMMUNICATION_MEDIA_TYPE_BY_KEYWORD.toString()
                                         .toLowerCase(),
                                     parameters = mapOf(
@@ -169,7 +178,7 @@ class FallbackFulfillmentService(
                 CustomPayload(listOf(itemList)),
                 fc.dialogflowConversionStep,
                 fc.webhookResponseBuilder,
-                prefixMessages = listOf("Found the following messages".asIntentMessage()),
+                prefixMessages = listOf("Hmmm, I'm not sure what exactly you are looking for, but I found the following related items:".asIntentMessage()),
             )
         }
     }

@@ -34,43 +34,63 @@ class ElasticMediaTypeSearchService(
     private val client: RestHighLevelClient,
 ) {
 
-    fun findLatestPressRelease(cs: ContentSource): Mono<List<CopernicusPageNode>> {
+    fun findLatestPressRelease(cs: ContentSource): Mono<CopernicusPageNodeResponse> {
         return findLatestMediaType(cs, NodeType.PRESS_RELEASE)
     }
 
-    fun findLatestNews(cs: ContentSource): Mono<List<CopernicusPageNode>> {
+    fun findLatestNews(cs: ContentSource): Mono<CopernicusPageNodeResponse> {
         return findLatestMediaType(cs, NodeType.NEWS)
     }
 
-    fun findLatestCaseStudy(cs: ContentSource):Mono<List<CopernicusPageNode>>{
+    fun findLatestCaseStudy(cs: ContentSource): Mono<CopernicusPageNodeResponse> {
         return findLatestMediaType(cs, NodeType.CASE_STUDY)
     }
 
-    fun findLatestDemonstratorProject(cs: ContentSource): Mono<List<CopernicusPageNode>> {
+    fun findLatestDemonstratorProject(cs: ContentSource): Mono<CopernicusPageNodeResponse> {
         return findLatestMediaType(cs, NodeType.DEMONSTRATOR_PROJECT)
     }
 
-    fun findPressReleaseByKeyword(cs: ContentSource, keyword: String): Mono<List<CopernicusPageNode>> {
-        return findMediaTypeByKeyword(cs, NodeType.PRESS_RELEASE, keyword)
+    fun findPressReleaseByKeyword(
+        cs: ContentSource,
+        keyword: String,
+        size: Int = 3,
+        from: Int = 0
+    ): Mono<CopernicusPageNodeResponse> {
+        return findMediaTypeByKeyword(cs, NodeType.PRESS_RELEASE, keyword, size = size, from = from)
     }
 
-    fun findNewsByKeyword(cs: ContentSource, keyword: String): Mono<List<CopernicusPageNode>> {
-        return findMediaTypeByKeyword(cs, NodeType.NEWS, keyword)
+    fun findNewsByKeyword(
+        cs: ContentSource,
+        keyword: String,
+        size: Int = 3,
+        from: Int = 0
+    ): Mono<CopernicusPageNodeResponse> {
+        return findMediaTypeByKeyword(cs, NodeType.NEWS, keyword, size = size, from = from)
     }
 
-    fun findCaseStudyByKeyword(cs: ContentSource, keyword: String): Mono<List<CopernicusPageNode>> {
-        return findMediaTypeByKeyword(cs, NodeType.CASE_STUDY, keyword)
+    fun findCaseStudyByKeyword(
+        cs: ContentSource,
+        keyword: String,
+        size: Int = 3,
+        from: Int = 0
+    ): Mono<CopernicusPageNodeResponse> {
+        return findMediaTypeByKeyword(cs, NodeType.CASE_STUDY, keyword, size = size, from = from)
     }
 
-    fun findDemonstratorProjectByKeyword(cs: ContentSource, keyword: String): Mono<List<CopernicusPageNode>> {
-        return findMediaTypeByKeyword(cs, NodeType.DEMONSTRATOR_PROJECT, keyword)
+    fun findDemonstratorProjectByKeyword(
+        cs: ContentSource,
+        keyword: String,
+        size: Int = 3,
+        from: Int = 0
+    ): Mono<CopernicusPageNodeResponse> {
+        return findMediaTypeByKeyword(cs, NodeType.DEMONSTRATOR_PROJECT, keyword, size = size, from = from)
     }
 
     private fun findMediaTypeByKeyword(
         cs: ContentSource,
         nodeType: NodeType,
-        keyword: String
-    ): Mono<List<CopernicusPageNode>> {
+        keyword: String, size: Int = 3, from: Int = 0
+    ): Mono<CopernicusPageNodeResponse> {
 
         val matchQuery = QueryBuilders.matchQuery("content", keyword)
             .fuzziness(Fuzziness.AUTO)
@@ -82,23 +102,28 @@ class ElasticMediaTypeSearchService(
             .must(QueryBuilders.termQuery("nodeType", nodeType))
             .must(matchQuery)
 
-        return executeSearch(query,listOf(getScoreSort(), getDateTimeSort()))
+        return executeSearch(query, size = size, from = from, listOf(getScoreSort(), getDateTimeSort()))
     }
 
-    private fun findLatestMediaType(cs: ContentSource, nodeType: NodeType): Mono<List<CopernicusPageNode>> {
+    private fun findLatestMediaType(cs: ContentSource, nodeType: NodeType): Mono<CopernicusPageNodeResponse> {
         val query: QueryBuilder = QueryBuilders.boolQuery()
             .must(QueryBuilders.termQuery("source", cs))
             .must(QueryBuilders.termQuery("nodeType", nodeType))
 
-        return executeSearch(query, listOf(getDateTimeSort()))
+        return executeSearch(query, size = 1, from = 0, listOf(getDateTimeSort()))
     }
 
-    private fun executeSearch(query: QueryBuilder, sortBuilders: List<SortBuilder<*>>): Mono<List<CopernicusPageNode>> {
+    private fun executeSearch(
+        query: QueryBuilder,
+        size: Int = 3,
+        from: Int = 0,
+        sortBuilders: List<SortBuilder<*>>
+    ): Mono<CopernicusPageNodeResponse> {
         val searchSourceBuilder = SearchSourceBuilder()
             .query(query)
             .trackTotalHits(true)
-            .from(0)
-            .size(3)
+            .from(from)
+            .size(size)
             .timeout(TimeValue(3, TimeUnit.SECONDS))
 
         sortBuilders.forEach { fsb -> searchSourceBuilder.sort(fsb) }
@@ -136,19 +161,20 @@ class ElasticMediaTypeSearchService(
         }
     }
 
-    private fun convertSearchResponse(searchResponse: SearchResponse): List<CopernicusPageNode> {
+    private fun convertSearchResponse(searchResponse: SearchResponse): CopernicusPageNodeResponse {
         val totalHits = searchResponse.hits.totalHits?.value ?: error("totalHits not enabled in query")
         val hits = searchResponse.hits
-        val results = searchResponse.hits.map { hit ->
+        val pageNodes = searchResponse.hits.map { hit ->
             objectMapper.readValue(
                 hit.sourceAsString,
                 CopernicusPageNode::class.java
             )
         }
-        return results
+        return CopernicusPageNodeResponse(totalHits = totalHits, pageNodes = pageNodes)
     }
 
     private fun getScoreSort(sort: SortOrder = SortOrder.DESC) = ScoreSortBuilder().order(sort)
     private fun getDateTimeSort(sort: SortOrder = SortOrder.DESC) = FieldSortBuilder("dateTime").order(sort)
-
 }
+
+data class CopernicusPageNodeResponse(val totalHits: Long, val pageNodes: List<CopernicusPageNode>)

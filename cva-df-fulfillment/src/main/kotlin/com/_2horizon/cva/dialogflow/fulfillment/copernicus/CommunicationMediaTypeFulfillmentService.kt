@@ -36,23 +36,23 @@ class CommunicationMediaTypeFulfillmentService(
         val items: Mono<List<List<RichContentItem>>> = when (communicationMediaType) {
             "news" -> { // main entity id
                 elasticMediaTypeSearchService.findLatestNews(fulfillmentChain.agent.convertToContentSource())
-                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
+                    .map { pageNodesResponse -> pageNodesResponse.pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
             }
             "press release" -> { // main entity id
                 elasticMediaTypeSearchService.findLatestPressRelease(fulfillmentChain.agent.convertToContentSource())
-                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
+                    .map { pageNodesResponse -> pageNodesResponse.pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
             }
             "case study" -> { // main entity id
                 elasticMediaTypeSearchService.findLatestCaseStudy(fulfillmentChain.agent.convertToContentSource())
-                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
+                    .map { pageNodesResponse -> pageNodesResponse.pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
             }
             "demonstrator project" -> { // main entity id
                 elasticMediaTypeSearchService.findLatestDemonstratorProject(fulfillmentChain.agent.convertToContentSource())
-                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
+                    .map { pageNodesResponse -> pageNodesResponse.pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
             }
             "tweet" -> { // main entity id
                 elasticTwitterSearchService.findLatestTweet(fulfillmentChain.agent.convertToTwitterUserScreenname())
-                    .map { tweets -> tweets.map { tweet -> tweet.convertToRichContentList() } }
+                    .map { tweetResponse -> tweetResponse.tweets.map { tweet -> tweet.convertToRichContentList() } }
             }
             else -> {
                 TODO()
@@ -92,35 +92,35 @@ class CommunicationMediaTypeFulfillmentService(
                     fulfillmentChain.agent.convertToContentSource(),
                     keyword
                 )
-                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
+                    .map { pageNodesResponse -> pageNodesResponse.pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
             }
             "press release" -> { // main entity id
                 elasticMediaTypeSearchService.findPressReleaseByKeyword(
                     fulfillmentChain.agent.convertToContentSource(),
                     keyword
                 )
-                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
+                    .map { pageNodesResponse -> pageNodesResponse.pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
             }
             "case study" -> { // main entity id
                 elasticMediaTypeSearchService.findCaseStudyByKeyword(
                     fulfillmentChain.agent.convertToContentSource(),
                     keyword
                 )
-                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
+                    .map { pageNodesResponse -> pageNodesResponse.pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
             }
             "demonstrator project" -> { // main entity id
                 elasticMediaTypeSearchService.findDemonstratorProjectByKeyword(
                     fulfillmentChain.agent.convertToContentSource(),
                     keyword
                 )
-                    .map { pageNodes -> pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
+                    .map { pageNodesResponse -> pageNodesResponse.pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
             }
             "tweet" -> { // main entity id
                 elasticTwitterSearchService.findTweetByKeyword(
                     fulfillmentChain.agent.convertToTwitterUserScreenname(),
                     keyword
                 )
-                    .map { tweets -> tweets.map { tweet -> tweet.convertToRichContentList() } }
+                    .map { tweetResponse -> tweetResponse.tweets.map { tweet -> tweet.convertToRichContentList() } }
             }
 
             "event" -> { // main entity id
