@@ -187,7 +187,7 @@ class CopernicusPortalDrupalRetrieveService(
         html: String
     ): Mono<List<CopernicusPageNode>> {
 
-        val document = Jsoup.parse(html)
+        val document = Jsoup.parse(html, contentSource.baseUri())
 
         val items = document.selectFirst("section.main--section").select("li.list--item")
 
@@ -199,7 +199,7 @@ class CopernicusPortalDrupalRetrieveService(
             val startDate = extractLocalDate(startDateElement)!!
             val endDate = extractLocalDate(endDateElement)
 
-            val url = item.selectFirst("a[href]").attr("abs:src")
+            val url = item.selectFirst("a[href]").attr("abs:href")
             val title = item.selectFirst("h3").text()
 
             val teaser = item.selectFirst("div.teaser").text()
