@@ -21,6 +21,7 @@ val elasticsearchRestVersion: String by project
 val elasticsearchBeyonderVersion: String by project
 val micronautReactorVersion: String by project
 val smileCoreVersion: String by project
+val jsoupVersion: String by project
 
 plugins {
     groovy
@@ -50,6 +51,9 @@ dependencies {
     // elasticsearch
     implementation("org.elasticsearch.client:elasticsearch-rest-high-level-client:$elasticsearchRestVersion")
     implementation("fr.pilato.elasticsearch:elasticsearch-beyonder:$elasticsearchBeyonderVersion")
+
+    // https://jsoup.org/
+    implementation("org.jsoup:jsoup:$jsoupVersion")
 
     implementation(project(":cva-common"))
     
