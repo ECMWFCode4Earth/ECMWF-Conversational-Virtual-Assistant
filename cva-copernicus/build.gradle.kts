@@ -15,6 +15,9 @@ val jacksonKotlinVersion: String by project
 val objenesisVersion: String by project
 val spockVersion: String by project
 val jsoupVersion: String by project
+val micronautReactorVersion: String by project
+val solrjVersion: String by project
+val solrjAsyncVersion: String by project
 
 
 plugins {
@@ -37,10 +40,14 @@ configurations {
 
 dependencies {
 
-
+    //https://micronaut-projects.github.io/micronaut-reactor/latest/guide/
+    implementation("io.micronaut.reactor:micronaut-reactor:$micronautReactorVersion")
 
     // https://lucene.apache.org/solr/guide
-    implementation("org.apache.solr:solr-solrj:8.5.2")
+    implementation("org.apache.solr:solr-solrj:$solrjVersion")
+
+    // https://inoio.github.io/solrs/
+    implementation("io.ino:solrs_2.12:$solrjAsyncVersion")
 
     // https://jsoup.org/
     implementation("org.jsoup:jsoup:$jsoupVersion")
