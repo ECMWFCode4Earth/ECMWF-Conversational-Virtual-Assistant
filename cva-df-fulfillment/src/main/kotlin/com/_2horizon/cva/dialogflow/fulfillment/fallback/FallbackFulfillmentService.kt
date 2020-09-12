@@ -2,6 +2,7 @@ package com._2horizon.cva.dialogflow.fulfillment.fallback
 
 import com._2horizon.cva.common.dialogflow.convertToContentSource
 import com._2horizon.cva.common.dialogflow.convertToTwitterUserScreenname
+import com._2horizon.cva.copernicus.CopernicusDataStoreAsyncSolrSearchService
 import com._2horizon.cva.dialogflow.fulfillment.AbstractFulfillmentService
 import com._2horizon.cva.dialogflow.fulfillment.C3SFulfillmentState
 import com._2horizon.cva.dialogflow.fulfillment.confluence.ConfluenceFulfillmentService
@@ -30,6 +31,7 @@ class FallbackFulfillmentService(
     private val elasticMediaTypeSearchService: ElasticMediaTypeSearchService,
     private val elasticTwitterSearchService: ElasticTwitterSearchService,
     private val confluenceFulfillmentService: ConfluenceFulfillmentService,
+    private val copernicusDataStoreAsyncSolrSearchService: CopernicusDataStoreAsyncSolrSearchService,
 ) : AbstractFulfillmentService(objectMapper) {
 
     private val log = LoggerFactory.getLogger(javaClass)
@@ -51,6 +53,8 @@ class FallbackFulfillmentService(
         val demonstratorProjectsMono =
             elasticMediaTypeSearchService.findDemonstratorProjectByKeyword(fc.agent.convertToContentSource(), keyword, size = 0)
         val confluenceContentMono = confluenceFulfillmentService.searchByKeyword(keyword = keyword, size = 15)
+        val copernicusDatasetsMono = copernicusDataStoreAsyncSolrSearchService.searchDatasetsByQueryTerm(keyword)
+        val copernicusApplicationsMono = copernicusDataStoreAsyncSolrSearchService.searchApplicationsByQueryTerm(keyword)
 
         val items =
             Mono.zip(
@@ -59,17 +63,74 @@ class FallbackFulfillmentService(
                 pressReleasesMono,
                 caseStudiesMono,
                 demonstratorProjectsMono,
-                confluenceContentMono
+                confluenceContentMono,
+                copernicusDatasetsMono,
+                copernicusApplicationsMono,
             )
                 .map {
                     val tweets = it.t1
                     val news = it.t2
                     val pressReleases = it.t3
                     val caseStudies = it.t4
-                    val demonstratorProects = it.t5
+                    val demonstratorProjects = it.t5
                     val confluenceContent = it.t6
+                    val copernicusDatasets = it.t7
+                    val copernicusApplications = it.t8
 
                     val items = mutableListOf<RichContentItem>()
+
+                    // TODO: correct the event
+                    if (copernicusDatasets.size>0) {
+                        items.add(
+                            RichContentListItem(
+                                "CDS Datasets (${copernicusDatasets.size})",
+                                subtitle = "Click to view CDS Datasets",
+                                event = Event(
+                                    name = C3SFulfillmentState.PORTAL_SEARCH_COMMUNICATION_MEDIA_TYPE_BY_KEYWORD.toString()
+                                        .toLowerCase(),
+                                    parameters = mapOf(
+                                        Pair("keyword", keyword),
+                                        Pair("communication_media_type", "news"),
+                                    )
+                                )
+                            )
+                        )
+                    }
+
+                    // TODO: correct the event
+                    if (copernicusApplications.size>0) {
+                        items.add(
+                            RichContentListItem(
+                                "CDS Applications (${copernicusApplications.size})",
+                                subtitle = "Click to view CDS Applications",
+                                event = Event(
+                                    name = C3SFulfillmentState.PORTAL_SEARCH_COMMUNICATION_MEDIA_TYPE_BY_KEYWORD.toString()
+                                        .toLowerCase(),
+                                    parameters = mapOf(
+                                        Pair("keyword", keyword),
+                                        Pair("communication_media_type", "news"),
+                                    )
+                                )
+                            )
+                        )
+                    }
+
+                    if (news.totalHits>0) {
+                        items.add(
+                            RichContentListItem(
+                                "News (${news.totalHits})",
+                                subtitle = "Click to view News",
+                                event = Event(
+                                    name = C3SFulfillmentState.PORTAL_SEARCH_COMMUNICATION_MEDIA_TYPE_BY_KEYWORD.toString()
+                                        .toLowerCase(),
+                                    parameters = mapOf(
+                                        Pair("keyword", keyword),
+                                        Pair("communication_media_type", "news"),
+                                    )
+                                )
+                            )
+                        )
+                    }
 
 
                     if (news.totalHits>0) {
@@ -120,7 +181,7 @@ class FallbackFulfillmentService(
                             )
                         )
                     }
-                    if (demonstratorProects.totalHits>0) {
+                    if (demonstratorProjects.totalHits>0) {
                         items.add(
                             RichContentListItem(
                                 "Demonstrator Projects (${pressReleases.totalHits})",
@@ -139,7 +200,7 @@ class FallbackFulfillmentService(
                     if (confluenceContent.contents.isNotEmpty()) {
                         items.add(
                             RichContentListItem(
-                                "CKB pages ${confluenceContent.contents.size}",
+                                "CKB pages (${confluenceContent.contents.size})",
                                 subtitle = "Click to view CKB pages",
                                 event = Event(
                                     name = C3SFulfillmentState.CONFLUENCE_SEARCH_BY_KEYWORD.toString().toLowerCase(),

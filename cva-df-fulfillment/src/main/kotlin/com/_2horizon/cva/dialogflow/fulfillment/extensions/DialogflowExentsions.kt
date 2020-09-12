@@ -49,7 +49,7 @@ fun CopernicusPageNode.convertToRichAccordionList(): MutableList<RichContentItem
         text = """
 <img src="${this.img!!}" style="height:20vh" /><br>
 <p>${this.teaser}</p>
-<a href="${this.url}">Click to read more</a>             
+<a href="${this.url}" target="_blank">Click to read more</a>             
         """.trimIndent()
     )
     items.add(infoItem)
