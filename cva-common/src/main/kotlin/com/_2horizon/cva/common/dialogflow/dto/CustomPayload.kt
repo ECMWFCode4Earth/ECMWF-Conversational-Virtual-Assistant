@@ -1,4 +1,4 @@
-package com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto
+package com._2horizon.cva.common.dialogflow.dto
 
 
 import com.fasterxml.jackson.annotation.JsonProperty

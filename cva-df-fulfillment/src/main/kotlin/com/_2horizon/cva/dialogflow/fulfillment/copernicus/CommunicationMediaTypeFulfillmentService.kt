@@ -2,10 +2,10 @@ package com._2horizon.cva.dialogflow.fulfillment.copernicus
 
 import com._2horizon.cva.common.dialogflow.convertToContentSource
 import com._2horizon.cva.common.dialogflow.convertToTwitterUserScreenname
+import com._2horizon.cva.common.dialogflow.dto.CustomPayload
+import com._2horizon.cva.common.dialogflow.dto.RichContentItem
 import com._2horizon.cva.dialogflow.fulfillment.AbstractFulfillmentService
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.FulfillmentChain
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.CustomPayload
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentItem
 import com._2horizon.cva.dialogflow.fulfillment.elastic.ElasticMediaTypeSearchService
 import com._2horizon.cva.dialogflow.fulfillment.elastic.ElasticTwitterSearchService
 import com._2horizon.cva.dialogflow.fulfillment.extensions.asIntentMessage

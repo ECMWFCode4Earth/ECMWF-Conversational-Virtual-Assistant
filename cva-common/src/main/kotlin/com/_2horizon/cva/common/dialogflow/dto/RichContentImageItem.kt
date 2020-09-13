@@ -1,4 +1,4 @@
-package com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto
+package com._2horizon.cva.common.dialogflow.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
@@ -8,5 +8,5 @@ data class RichContentImageItem(
     @JsonProperty("accessibilityText")
     val accessibilityText: String,
     @JsonProperty("type")
-    val type: String = "image"
+    override val type: String = "image"
 ):RichContentItem

@@ -1,4 +1,4 @@
-package com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto
+package com._2horizon.cva.common.dialogflow.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
@@ -14,5 +14,5 @@ data class RichContentInfoItem(
     val actionLink: String,
 
     @JsonProperty("type")
-    val type: String = "info"
+    override val type: String = "info"
 ):RichContentItem

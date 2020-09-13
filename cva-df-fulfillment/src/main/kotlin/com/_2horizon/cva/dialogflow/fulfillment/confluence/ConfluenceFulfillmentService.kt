@@ -1,10 +1,10 @@
 package com._2horizon.cva.dialogflow.fulfillment.confluence
 
 import com._2horizon.cva.common.confluence.dto.content.ContentResponse
+import com._2horizon.cva.common.dialogflow.dto.RichContentDividerItem
+import com._2horizon.cva.common.dialogflow.dto.RichContentInfoItem
 import com._2horizon.cva.dialogflow.fulfillment.AbstractFulfillmentService
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.FulfillmentChain
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentDividerItem
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentInfoItem
 import com._2horizon.cva.dialogflow.fulfillment.extensions.asIntentMessage
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse

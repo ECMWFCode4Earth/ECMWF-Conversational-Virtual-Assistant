@@ -1,14 +1,14 @@
 package com._2horizon.cva.dialogflow.fulfillment.copernicus
 
+import com._2horizon.cva.common.dialogflow.dto.Event
+import com._2horizon.cva.common.dialogflow.dto.RichContentAccordionItem
+import com._2horizon.cva.common.dialogflow.dto.RichContentDividerItem
+import com._2horizon.cva.common.dialogflow.dto.RichContentInfoItem
+import com._2horizon.cva.common.dialogflow.dto.RichContentItem
+import com._2horizon.cva.common.dialogflow.dto.RichContentListItem
 import com._2horizon.cva.copernicus.CopernicusDataStoreSolrSearchService
 import com._2horizon.cva.dialogflow.fulfillment.AbstractFulfillmentService
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.FulfillmentChain
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.Event
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentAccordionItem
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentDividerItem
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentInfoItem
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentItem
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentListItem
 import com._2horizon.cva.dialogflow.fulfillment.extensions.asIntentMessage
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse

@@ -1,4 +1,4 @@
-package com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto
+package com._2horizon.cva.common.dialogflow.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
@@ -16,5 +16,5 @@ data class RichContentAccordionItem(
     val image: RichContentImage? = null,
 
     @JsonProperty("type")
-    val type: String = "accordion"
+    override val type: String = "accordion"
 ) : RichContentItem

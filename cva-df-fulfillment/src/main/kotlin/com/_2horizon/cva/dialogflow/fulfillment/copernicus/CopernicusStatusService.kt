@@ -1,10 +1,10 @@
 package com._2horizon.cva.dialogflow.fulfillment.copernicus
 
+import com._2horizon.cva.common.dialogflow.dto.RichContentDescriptionItem
+import com._2horizon.cva.common.dialogflow.dto.RichContentItem
 import com._2horizon.cva.dialogflow.fulfillment.AbstractFulfillmentService
 import com._2horizon.cva.dialogflow.fulfillment.copernicus.dto.CopernicusDataStoreStatus
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.FulfillmentChain
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentDescriptionItem
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentItem
 import com._2horizon.cva.dialogflow.fulfillment.extensions.asIntentMessage
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse

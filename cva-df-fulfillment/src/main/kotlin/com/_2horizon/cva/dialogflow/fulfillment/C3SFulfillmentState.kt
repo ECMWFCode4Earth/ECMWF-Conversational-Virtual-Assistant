@@ -20,7 +20,7 @@ fun actionAsFulfillmentState(id:String): C3SFulfillmentState {
         "portal_show_latest_communication_media_type" -> C3SFulfillmentState.PORTAL_SHOW_LATEST_COMMUNICATION_MEDIA_TYPE
         "portal_search_communication_media_type_by_keyword" -> C3SFulfillmentState.PORTAL_SEARCH_COMMUNICATION_MEDIA_TYPE_BY_KEYWORD
         "confluence_search_by_keyword" -> C3SFulfillmentState.CONFLUENCE_SEARCH_BY_KEYWORD
-        "fallback.global" -> C3SFulfillmentState.FALLBACK_GLOBAL
+        "Default_Fallback_Intent" -> C3SFulfillmentState.FALLBACK_GLOBAL
 
 
         "cds_dataset_search_dataset_by_name_or_keyword_fallback" -> C3SFulfillmentState.CDS_DATASET_SEARCH_DATASET_BY_NAME_OR_KEYWORD_FALLBACK

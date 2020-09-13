@@ -2,11 +2,11 @@ package com._2horizon.cva.dialogflow.fulfillment.extensions
 
 import com._2horizon.cva.common.copernicus.dto.CopernicusPageNode
 import com._2horizon.cva.common.copernicus.dto.asHumanReadable
+import com._2horizon.cva.common.dialogflow.dto.RichContentAccordionItem
+import com._2horizon.cva.common.dialogflow.dto.RichContentImageItem
+import com._2horizon.cva.common.dialogflow.dto.RichContentInfoItem
+import com._2horizon.cva.common.dialogflow.dto.RichContentItem
 import com._2horizon.cva.common.twitter.dto.Tweet
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentAccordionItem
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentImageItem
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentInfoItem
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentItem
 import com.google.cloud.dialogflow.v2beta1.Intent
 
 /**

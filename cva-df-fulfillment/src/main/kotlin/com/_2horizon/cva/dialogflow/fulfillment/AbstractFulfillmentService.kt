@@ -1,8 +1,8 @@
 package com._2horizon.cva.dialogflow.fulfillment
 
+import com._2horizon.cva.common.dialogflow.dto.CustomPayload
+import com._2horizon.cva.common.dialogflow.dto.RichContentItem
 import com._2horizon.cva.dialogflow.fulfillment.analytics.DialogflowConversionStep
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.CustomPayload
-import com._2horizon.cva.dialogflow.fulfillment.dialogflow.messenger.dto.RichContentItem
 import com._2horizon.cva.dialogflow.fulfillment.extensions.convertObjectToStruct
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.cloud.dialogflow.v2beta1.Context
