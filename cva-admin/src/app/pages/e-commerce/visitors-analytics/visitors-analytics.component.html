@@ -1,7 +1,7 @@
 <nb-card size="medium">
   <nb-card-header>
-    <h3>Visitors Analytics</h3>
-    <div class="subtitle">Consumption</div>
+    <h3>Conversational Sessions</h3>
+    <div class="subtitle">All session VS Fallbacks</div>
   </nb-card-header>
   <nb-card-body>
     <div class="chart-container">
@@ -12,7 +12,7 @@
     </div>
   </nb-card-body>
 
-  <ngx-slide-out [showVisitorsStatistics]="true">
+  <ngx-slide-out [showVisitorsStatistics]="false">
     <ngx-visitors-statistics [value]="pieChartValue"></ngx-visitors-statistics>
   </ngx-slide-out>
 </nb-card>

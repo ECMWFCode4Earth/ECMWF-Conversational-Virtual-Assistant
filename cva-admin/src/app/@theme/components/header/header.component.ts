@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService} from '@nebular/theme';
+import {NbMediaBreakpointsService, NbMenuItem, NbMenuService, NbSidebarService, NbThemeService} from '@nebular/theme';
 
 import {UserData} from '../../../@core/data/users';
 import {LayoutService} from '../../../@core/utils';
 import {map, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {NbAuthJWTToken, NbAuthService} from '@nebular/auth';
 
 @Component({
   selector: 'ngx-header',
@@ -16,6 +17,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   user: any;
+
+  agents = [
+    {
+      value: 'c3s_cva',
+      name: 'C3S',
+    },
+    {
+      value: 'cams_cva',
+      name: 'CAMS',
+    },
+    {
+      value: 'ecmwf_cva',
+      name: 'ECMWF',
+    },
+  ];
 
   themes = [
     {
@@ -37,11 +53,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ];
 
   currentTheme = 'default';
+  currentAgent = 'c3s_cva';
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  userMenu: NbMenuItem[] = [{title: 'Profile'}, {title: 'Log out', link: '/auth/logout', icon: 'log-in-outline'}];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
+              private authService: NbAuthService,
               private themeService: NbThemeService,
               private userService: UserData,
               private layoutService: LayoutService,
@@ -51,9 +69,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
-    this.userService.getUsers()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((users: any) => this.user = users.nick);
+    this.authService.onTokenChange()
+      .subscribe((token: NbAuthJWTToken) => {
+
+        if (token.isValid()) {
+          this.user = token.getPayload();
+        }
+
+      });
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
@@ -78,6 +101,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   changeTheme(themeName: string) {
     this.themeService.changeTheme(themeName);
+  }
+  changeAgent(agentName: string) {
+    // TODO: handle agent change
   }
 
   toggleSidebar(): boolean {

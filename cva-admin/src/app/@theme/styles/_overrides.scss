@@ -9,3 +9,10 @@
     }
   }
 }
+
+
+// hide the registration link, as registration is disabled
+section[aria-label="Register"], a.text-link[href="/auth/register"] {
+  visibility: hidden !important;
+}
+

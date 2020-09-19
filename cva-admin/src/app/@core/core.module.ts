@@ -1,11 +1,11 @@
 import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {NbAuthModule, NbDummyAuthStrategy} from '@nebular/auth';
+import {NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy} from '@nebular/auth';
 import {NbRoleProvider, NbSecurityModule} from '@nebular/security';
 import {of as observableOf} from 'rxjs';
 
 import {throwIfAlreadyLoaded} from './module-import-guard';
-import {AnalyticsService, LayoutService, PlayerService, SeoService, StateService,} from './utils';
+import {AnalyticsService, LayoutService, PlayerService, SeoService, StateService} from './utils';
 import {UserData} from './data/users';
 import {ElectricityData} from './data/electricity';
 import {SmartTableData} from './data/smart-table';
@@ -46,6 +46,7 @@ import {StatsProgressBarService} from './mock/stats-progress-bar.service';
 import {VisitorsAnalyticsService} from './mock/visitors-analytics.service';
 import {SecurityCamerasService} from './mock/security-cameras.service';
 import {MockDataModule} from './mock/mock-data.module';
+import {environment} from "../../environments/environment";
 
 const socialLinks = [
   {
@@ -100,17 +101,86 @@ export const NB_CORE_PROVIDERS = [
   ...NbAuthModule.forRoot({
 
     strategies: [
-      NbDummyAuthStrategy.setup({
+      NbPasswordAuthStrategy.setup({
         name: 'email',
-        delay: 3000,
+        token: {
+          class: NbAuthJWTToken,
+          key: 'access_token',
+        },
+        baseEndpoint: environment.baseEndpoint,
+        refreshToken: {
+          endpoint: '/api/auth/refresh-token',
+          method: 'post',
+        },
+        login: {
+          redirect: {
+            success: '/dashboard/',
+            failure: null, // stay on the same page
+          },
+          endpoint: '/api/auth/login',
+          method: 'post',
+        },
+        register: false,
+        logout: {
+          endpoint: '/api/auth/logout',
+          method: 'post',
+        },
+        requestPass: {
+          endpoint: '/api/auth/request-password-reset',
+          method: 'post',
+        },
+        resetPass: {
+          endpoint: '/api/auth/reset-password',
+          method: 'post',
+        },
       }),
     ],
     forms: {
       login: {
+        redirectDelay: 500, // delay before redirect after a successful login
+        strategy: 'email',  // strategy id key.
+        rememberMe: true,   // whether to show or not the `rememberMe` checkbox
+        showMessages: {     // show/not show success/error messages
+          success: true,
+          error: true,
+        },
+      },
+      requestPassword: {
+        redirectDelay: 500,
+        strategy: 'email',
+        showMessages: {
+          success: true,
+          error: true,
+        },
         socialLinks: socialLinks,
       },
-      register: {
+      resetPassword: {
+        redirectDelay: 500,
+        strategy: 'email',
+        showMessages: {
+          success: true,
+          error: true,
+        },
         socialLinks: socialLinks,
+      },
+      logout: {
+        redirectDelay: 500,
+        strategy: 'email',
+      },
+      validation: {
+        password: {
+          required: true,
+          minLength: 6,
+          maxLength: 50,
+        },
+        email: {
+          required: true,
+        },
+        fullName: {
+          required: false,
+          minLength: 4,
+          maxLength: 50,
+        },
       },
     },
   }).providers,
