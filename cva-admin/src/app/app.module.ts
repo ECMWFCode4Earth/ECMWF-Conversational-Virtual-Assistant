@@ -21,7 +21,6 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import {AuthGuard} from './auth-guard.service';
-import {DialogflowService} from './dialogflow.service';
 import {NbAuthJWTInterceptor} from '@nebular/auth';
 
 @NgModule({
@@ -44,7 +43,6 @@ import {NbAuthJWTInterceptor} from '@nebular/auth';
     ThemeModule.forRoot(),
   ],
   providers: [
-    DialogflowService,
     AuthGuard,
     // Interceptor Service for JWT Injection & URL Filters
     {provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},

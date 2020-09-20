@@ -1,10 +1,17 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProgressInfo} from '../../@core/data/stats-progress-bar';
+import {KpiDashboardService} from './kpi-dashboard.service';
+import {Observable} from 'rxjs';
+import {AgentChangeService} from '../../agent-change.service';
 
-interface CardSettings {
-  title: string;
-  iconClass: string;
-  type: string;
+export interface IntentError {
+  displayName: string;
+  errors: string[];
+}
+
+export interface ConversionStep {
+  localDate: string;
+  sessions: number;
+  fallbacks: number;
 }
 
 @Component({
@@ -16,19 +23,49 @@ export class KpiDashboardComponent implements OnInit, OnDestroy {
 
   private alive = true;
 
-  progressInfoData: ProgressInfo[] = [];
+  intentCount$: Observable<number>;
+  trainingSentencesCount$: Observable<number>;
+  intentErrors$: Observable<IntentError[]>;
+  conversionSessionStats$: Observable<ConversionStep[]>;
 
-  constructor() {
-    this.progressInfoData.push({title: 'Number of intents', value: 123, activeProgress: 100, description: 'something'});
+  type = 'month';
+  types = ['week', 'month', 'year'];
+
+  constructor(
+    private kds: KpiDashboardService,
+    private acs: AgentChangeService,
+  ) {
   }
 
   ngOnInit(): void {
+    this.acs.selectedAgent$.subscribe((agent: string) => this.initDashBoard(agent));
   }
 
+  private initDashBoard(agent: string) {
+    this.retrieveIntentCount(agent);
+    this.retrieveTrainingSentencesCount(agent);
+    this.loadIntentErrors(agent);
+    this.retrieveConversionSessionStats(agent);
+  }
 
   ngOnDestroy() {
     this.alive = true;
   }
 
+  private loadIntentErrors(agent: string) {
+    this.intentErrors$ = this.kds.findAllIntentErrors(agent);
+  }
+
+  private retrieveIntentCount(agent: string) {
+    this.intentCount$ = this.kds.intentCount(agent);
+  }
+
+  private retrieveTrainingSentencesCount(agent: string) {
+    this.trainingSentencesCount$ = this.kds.trainingSentencesCount(agent);
+  }
+
+  private retrieveConversionSessionStats(agent: string) {
+    this.conversionSessionStats$ = this.kds.conversionSessionStats(agent);
+  }
 
 }

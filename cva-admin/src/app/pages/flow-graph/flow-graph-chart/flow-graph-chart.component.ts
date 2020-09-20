@@ -1,110 +1,88 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
-import {NbThemeService} from '@nebular/theme';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators';
+import {parse} from 'echarts/extension/dataTool/gexf';
 
 @Component({
   selector: 'ngx-flow-graph-chart',
   templateUrl: './flow-graph-chart.component.html',
   styleUrls: ['./flow-graph-chart.component.scss'],
 })
-export class FlowGraphChartComponent implements OnInit, AfterViewInit, OnDestroy {
+export class FlowGraphChartComponent implements OnInit {
 
   options: any = {};
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
+
+  constructor(
+    private http: HttpClient,
+  ) {
   }
 
   ngOnInit(): void {
-  }
+    this.options = this.http.get('/api/flow-graph/index', {responseType: 'text'}).pipe(
+      map((xml) => {
+        const graph = parse(xml);
+        const categories = [];
+        categories[0] = {
+          name: 'No Events',
+        };
+        categories[1] = {
+          name: 'Contains Events',
+        };
 
-  ngAfterViewInit() {
-    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+        graph.nodes.forEach((node) => {
 
-      const colors: any = config.variables;
-      const echarts: any = config.variables.echarts;
-
-      this.options = {
-        backgroundColor: echarts.bg,
-        color: [colors.danger, colors.primary, colors.info],
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c}',
-        },
-        legend: {
-          left: 'left',
-          data: ['Line 1', 'Line 2', 'Line 3'],
-          textStyle: {
-            color: echarts.textColor,
+          node.itemStyle = null;
+          node.symbolSize = node.attributes.size;
+          node.value = node.attributes.size;
+          node.category = node.attributes.category;
+          // Use random x, y
+          node.x = node.y = null;
+          node.draggable = true;
+        });
+        return {
+          title: {
+            text: 'CVA flows',
+            top: 'bottom',
+            left: 'right',
           },
-        },
-        xAxis: [
-          {
-            type: 'category',
-            data: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
-            axisTick: {
-              alignWithLabel: true,
+          tooltip: {},
+          legend: [
+            {
+              data: categories.map((a) => a.name),
             },
-            axisLine: {
+          ],
+          animationDurationUpdate: 1500,
+          animationEasingUpdate: 'quinticInOut',
+          series: [
+            {
+              type: 'graph',
+              layout: 'force',
+              data: graph.nodes,
+              links: graph.links,
+              categories,
+              roam: true,
+              label: {
+                normal: {
+                  position: 'right',
+                },
+              },
+              force: {
+                repulsion: 100,
+              },
+
+              focusNodeAdjacency: true,
               lineStyle: {
-                color: echarts.axisLineColor,
+                width: 0.5,
+                curveness: 0.3,
+                opacity: 0.7,
               },
             },
-            axisLabel: {
-              textStyle: {
-                color: echarts.textColor,
-              },
-            },
-          },
-        ],
-        yAxis: [
-          {
-            type: 'log',
-            axisLine: {
-              lineStyle: {
-                color: echarts.axisLineColor,
-              },
-            },
-            splitLine: {
-              lineStyle: {
-                color: echarts.splitLineColor,
-              },
-            },
-            axisLabel: {
-              textStyle: {
-                color: echarts.textColor,
-              },
-            },
-          },
-        ],
-        grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true,
-        },
-        series: [
-          {
-            name: 'Line 1',
-            type: 'line',
-            data: [1, 3, 9, 27, 81, 247, 741, 2223, 6669],
-          },
-          {
-            name: 'Line 2',
-            type: 'line',
-            data: [1, 2, 4, 8, 16, 32, 64, 128, 256],
-          },
-          {
-            name: 'Line 3',
-            type: 'line',
-            data: [1 / 2, 1 / 4, 1 / 8, 1 / 16, 1 / 32, 1 / 64, 1 / 128, 1 / 256, 1 / 512],
-          },
-        ],
-      };
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.themeSubscription.unsubscribe();
+          ],
+        };
+      }),
+    );
   }
 
 

@@ -3,14 +3,34 @@
 $shadow-green: #00977e;
 
 @include nb-install-component() {
-  .progress-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 2rem;
+  nb-card {
+    position: relative;
+    overflow: hidden;
+  }
 
-    &:first-child {
-      margin-top: 0;
+  nb-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: nb-theme(card-header-with-select-padding-top);
+    padding-bottom: nb-theme(card-header-with-select-padding-bottom);
+    margin-bottom: -1px;
+  }
+
+  ngx-session-kpi-chart {
+    flex: 1;
+  }
+
+  ::ng-deep {
+    .echart {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+
+    canvas {
+      border-bottom-left-radius: nb-theme(card-border-radius);
+      border-bottom-right-radius: nb-theme(card-border-radius);
     }
   }
 
@@ -23,4 +43,7 @@ $shadow-green: #00977e;
 .header-link {
   float: right;
 }
+
+
+
 

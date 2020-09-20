@@ -41,23 +41,6 @@
       }
     }
 
-    &.off {
-      color: nb-theme(text-hint-color);
-
-      .status,
-      .title,
-      .icon {
-        color: nb-theme(text-hint-color);
-      }
-
-      @each $status in nb-get-statuses() {
-        .icon.status-#{$status} {
-          box-shadow: none;
-          background-image: linear-gradient(to right, transparent, transparent);
-        }
-      }
-    }
-
     .details {
       display: flex;
       flex-direction: column;

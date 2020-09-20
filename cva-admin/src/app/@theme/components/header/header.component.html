@@ -5,8 +5,8 @@
     </a>
     <a class="logo" href="#" (click)="navigateHome()">CVA <span>Admin</span></a>
   </div>
-  <nb-select [selected]="currentAgent" (selectedChange)="changeAgent($event)" status="info">
-    <nb-option *ngFor="let agent of agents" [value]="agent.value"> {{ agent.name }}</nb-option>
+  <nb-select [selected]="agentChangeService.selectedAgent$ | async" (selectedChange)="changeAgent($event)" status="info">
+    <nb-option *ngFor="let agent of agentChangeService.agents" [value]="agent.value"> {{ agent.name }}</nb-option>
   </nb-select>
 <!--  <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">-->
 <!--    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>-->

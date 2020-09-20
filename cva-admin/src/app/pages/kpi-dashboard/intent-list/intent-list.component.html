@@ -1,0 +1,15 @@
+<nb-card class="list-card" *ngIf="intentErrors.length > 0">
+  <nb-card-header class="text-danger h4">Intent Errors</nb-card-header>
+  <nb-card-body>
+    <nb-list>
+      <nb-list-item *ngFor="let intentError of intentErrors; index as i">
+        {{ intentError.displayName }}
+        <ul>
+          <li *ngFor="let error of intentError.errors" class="text-danger">{{error}}</li>
+        </ul>
+      </nb-list-item>
+    </nb-list>
+  </nb-card-body>
+</nb-card>
+
+
