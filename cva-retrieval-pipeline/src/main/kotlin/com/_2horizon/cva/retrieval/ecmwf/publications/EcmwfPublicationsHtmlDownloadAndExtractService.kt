@@ -24,11 +24,11 @@ class EcmwfPublicationsHtmlDownloadAndExtractService {
         check(publicationPDF.size < 2) { "publicationPDF size not 1 but $publicationPDF" }
         check(publicationPDF.size < 2) { "publicationPDF size not 1 but $publicationPDF" }
 
-         return PublicationExtraMetadata(
-             publicationType = publicationType,
-             publicationPDF = publicationPDF.firstOrNull(),
-             publicationLink = publicationLink.firstOrNull()
-         )
+        return PublicationExtraMetadata(
+            publicationType = publicationType,
+            publicationPDF = publicationPDF.firstOrNull(),
+            publicationLink = publicationLink.firstOrNull()
+        )
     }
 
     private fun downloadPublicationHtml(nodeId: Int): Document {
@@ -45,7 +45,7 @@ class EcmwfPublicationsHtmlDownloadAndExtractService {
         .first()
 
     private fun extractEcmwfPublicationPDF(htmlDoc: Document): List<String> {
-        return if (htmlDoc.select(".field-name-field-publication-file").size>0) {
+        return if (htmlDoc.select(".field-name-field-publication-file").size > 0) {
             htmlDoc.select(".field-name-field-publication-file")
                 .select("a")
                 .map { a -> a.attr("abs:href") }
@@ -53,8 +53,9 @@ class EcmwfPublicationsHtmlDownloadAndExtractService {
             emptyList()
         }
     }
+
     private fun extractEcmwfPublicationLink(htmlDoc: Document): List<String> {
-        return if (htmlDoc.select(".region-sidebar-second").size>0) {
+        return if (htmlDoc.select(".region-sidebar-second").size > 0) {
             htmlDoc.select(".region-sidebar-second")
                 .select("a[href]")
                 .map { a -> a.attr("abs:href") }
@@ -64,10 +65,11 @@ class EcmwfPublicationsHtmlDownloadAndExtractService {
         }
     }
 }
+
 data class PublicationExtraMetadata(
-    val publicationType :String,
-    val publicationPDF :String?,
-    val publicationLink :String?
+    val publicationType: String,
+    val publicationPDF: String?,
+    val publicationLink: String?
 )
 
 

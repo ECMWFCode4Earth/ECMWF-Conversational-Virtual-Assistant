@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr"
+<html dir="ltr" lang="en"
       prefix="og: http://ogp.me/ns# content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
 <head>
-    <link rel="profile" href="http://www.w3.org/1999/xhtml/vocab"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"/>
-    <meta http-equiv="cleartype" content="on">
-    <meta name="theme-color" content="#ffffff">
+    <link href="http://www.w3.org/1999/xhtml/vocab" rel="profile"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=2.0" name="viewport"/>
+    <meta content="on" http-equiv="cleartype">
+    <meta content="#ffffff" name="theme-color">
     <!-- preload fonts, to ensure they will be streamed with http2 -->
-    <link rel="preload" as="font" crossorigin type="font/woff"
-          href="https://www.ecmwf.int/sites/all/themes/ecmwf_bootstrap_2017/dist/fonts/opensans/opensans-regular-webfont.woff">
-    <link rel="preload" as="font" crossorigin type="font/woff"
-          href="https://www.ecmwf.int/sites/all/themes/ecmwf_bootstrap_2017/dist/fonts/opensans/opensans-bold-webfont.woff">
-    <link rel="preload" as="font" crossorigin type="font/woff"
-          href="https://www.ecmwf.int/sites/all/themes/ecmwf_bootstrap_2017/dist/fonts/opensans/opensans-light-webfont.woff">
-    <link rel="preload" as="font" crossorigin type="font/woff"
-          href="https://www.ecmwf.int/sites/all/themes/ecmwf_bootstrap_2017/dist/fonts/opensans/opensans-italic-webfont.woff">
+    <link as="font" crossorigin href="https://www.ecmwf.int/sites/all/themes/ecmwf_bootstrap_2017/dist/fonts/opensans/opensans-regular-webfont.woff" rel="preload"
+          type="font/woff">
+    <link as="font" crossorigin href="https://www.ecmwf.int/sites/all/themes/ecmwf_bootstrap_2017/dist/fonts/opensans/opensans-bold-webfont.woff" rel="preload"
+          type="font/woff">
+    <link as="font" crossorigin href="https://www.ecmwf.int/sites/all/themes/ecmwf_bootstrap_2017/dist/fonts/opensans/opensans-light-webfont.woff" rel="preload"
+          type="font/woff">
+    <link as="font" crossorigin href="https://www.ecmwf.int/sites/all/themes/ecmwf_bootstrap_2017/dist/fonts/opensans/opensans-italic-webfont.woff" rel="preload"
+          type="font/woff">
 
     <!-- favicon smetadata tags are added by hook_init()@ecmwf_ui (msapplication-config, manifest, mask-icon, apple-touch-icon) -->
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="shortcut icon"
-          href="https://www.ecmwf.int/sites/all/themes/ecmwf_bootstrap_2017/src/images/favicon.ico.production.ico"
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link href="https://www.ecmwf.int/sites/all/themes/ecmwf_bootstrap_2017/src/images/favicon.ico.production.ico"
+          rel="shortcut icon"
           type="image/vnd.microsoft.icon"/>
     <script type="application/ld+json">{
         "@context": "http://schema.org",
@@ -60,39 +60,39 @@
             }
         ]
     }</script>
-    <meta name="msapplication-config" content="https://www.ecmwf.int/favicon/browserconfig.xml"/>
-    <link rel="manifest" href="https://www.ecmwf.int/favicon/manifest.json"/>
-    <link rel="apple-touch-icon" size="180x180" href="https://www.ecmwf.int/favicon/apple-touch-icon.png"/>
-    <link rel="mask-icon" color="#5bbad5" href="https://www.ecmwf.int/favicon/safari-pinned-tab.svg"/>
-    <meta name="abstract"
-          content="Since June 2018, all operational configurations of the Integrated Forecasting System (IFS) have been coupled to an ocean/sea-ice model, which has substantially increased the computational cost of research and development activities at ECMWF. The purpose of this memorandum is to assess whether some aspects of model development and testing at ECMWF can be undertaken with lower resolution oceanconfigurations without comprising the scientific integrity of the results. Although the higher resolution ocean configuration outperforms its lower resolution counterpart, there are many aspects of model testing and development for which the absolute model performance is less relevant than the difference (i.e. Δ) between two experiments. This study considers whether Δ estimated using a lower resolution ocean model (i.e. ΔLRO) can be considered an appropriate proxy for Δ estimated using a higher resolutionocean model (i.e. ΔHRO) for a variety of deterministic and probabilistic metrics at different lead times. In general, ΔLRO is an extremely good proxy for ΔHRO in medium-range forecasts (days 1-15), provided that ocean initial conditions used in lower and higher resolution systems are as consistent as possible. ΔLRO is also good proxy for ΔHRO in extended-range forecasts (weeks 1-4), particularly for metrics that are computed from forecast anomalies relative to a hindcast climatology. At extended-range lead times, we find a stronger sensitivity to changes in atmospheric resolution (50 km to 31 km) than changes in ocean resolution (100 km to 25 km). At seasonal (and longer) timescales, ΔLRO is a useful proxy for ΔHRO for some metrics (e.g. changes to the model climatology), but the approximation begins to break down due to a divergence of SST biases in lower and higher resolution systems. Finally, although lower resolution ocean configurations will continue to be a useful tool for research and development purposes at ECMWF, there will always be cases where it is necessary to use the highest resolution ocean model that is affordable."/>
-    <meta name="generator" content="Drupal 7 (http://drupal.org)"/>
-    <link rel="canonical"
-          href="https://www.ecmwf.int/en/elibrary/19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model"/>
-    <link rel="shortlink" href="https://www.ecmwf.int/node/19325"/>
-    <meta property="og:site_name" content="ECMWF"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url"
-          content="https://www.ecmwf.int/en/elibrary/19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model"/>
-    <meta property="og:title"
-          content="Reduced-resolution ocean configurations for efficient testing with the ECMWF coupled model"/>
-    <meta name="dcterms.title"
-          content="Reduced-resolution ocean configurations for efficient testing with the ECMWF coupled model"/>
-    <meta name="dcterms.creator" content="Roberts"/>
-    <meta name="dcterms.date" content="2020 01/2020"/>
-    <meta name="dcterms.type" content="Text"/>
-    <meta name="dcterms.format" content="text/html"/>
-    <meta name="dcterms.identifier"
-          content="https://www.ecmwf.int/en/elibrary/19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model"/>
-    <meta name="dcterms.created" content="2020 01/2020"/>
+    <meta content="https://www.ecmwf.int/favicon/browserconfig.xml" name="msapplication-config"/>
+    <link href="https://www.ecmwf.int/favicon/manifest.json" rel="manifest"/>
+    <link href="https://www.ecmwf.int/favicon/apple-touch-icon.png" rel="apple-touch-icon" size="180x180"/>
+    <link color="#5bbad5" href="https://www.ecmwf.int/favicon/safari-pinned-tab.svg" rel="mask-icon"/>
+    <meta content="Since June 2018, all operational configurations of the Integrated Forecasting System (IFS) have been coupled to an ocean/sea-ice model, which has substantially increased the computational cost of research and development activities at ECMWF. The purpose of this memorandum is to assess whether some aspects of model development and testing at ECMWF can be undertaken with lower resolution oceanconfigurations without comprising the scientific integrity of the results. Although the higher resolution ocean configuration outperforms its lower resolution counterpart, there are many aspects of model testing and development for which the absolute model performance is less relevant than the difference (i.e. Δ) between two experiments. This study considers whether Δ estimated using a lower resolution ocean model (i.e. ΔLRO) can be considered an appropriate proxy for Δ estimated using a higher resolutionocean model (i.e. ΔHRO) for a variety of deterministic and probabilistic metrics at different lead times. In general, ΔLRO is an extremely good proxy for ΔHRO in medium-range forecasts (days 1-15), provided that ocean initial conditions used in lower and higher resolution systems are as consistent as possible. ΔLRO is also good proxy for ΔHRO in extended-range forecasts (weeks 1-4), particularly for metrics that are computed from forecast anomalies relative to a hindcast climatology. At extended-range lead times, we find a stronger sensitivity to changes in atmospheric resolution (50 km to 31 km) than changes in ocean resolution (100 km to 25 km). At seasonal (and longer) timescales, ΔLRO is a useful proxy for ΔHRO for some metrics (e.g. changes to the model climatology), but the approximation begins to break down due to a divergence of SST biases in lower and higher resolution systems. Finally, although lower resolution ocean configurations will continue to be a useful tool for research and development purposes at ECMWF, there will always be cases where it is necessary to use the highest resolution ocean model that is affordable."
+          name="abstract"/>
+    <meta content="Drupal 7 (http://drupal.org)" name="generator"/>
+    <link href="https://www.ecmwf.int/en/elibrary/19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model"
+          rel="canonical"/>
+    <link href="https://www.ecmwf.int/node/19325" rel="shortlink"/>
+    <meta content="ECMWF" property="og:site_name"/>
+    <meta content="website" property="og:type"/>
+    <meta content="https://www.ecmwf.int/en/elibrary/19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model"
+          property="og:url"/>
+    <meta content="Reduced-resolution ocean configurations for efficient testing with the ECMWF coupled model"
+          property="og:title"/>
+    <meta content="Reduced-resolution ocean configurations for efficient testing with the ECMWF coupled model"
+          name="dcterms.title"/>
+    <meta content="Roberts" name="dcterms.creator"/>
+    <meta content="2020 01/2020" name="dcterms.date"/>
+    <meta content="Text" name="dcterms.type"/>
+    <meta content="text/html" name="dcterms.format"/>
+    <meta content="https://www.ecmwf.int/en/elibrary/19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model"
+          name="dcterms.identifier"/>
+    <meta content="2020 01/2020" name="dcterms.created"/>
     <title>Reduced-resolution ocean configurations for efficient testing with the ECMWF coupled model | ECMWF</title>
-    <link type="text/css" rel="stylesheet"
-          href="https://www.ecmwf.int/sites/default/files/css/css_E--E6-VNAnCs9EhK-XvUuZ7Opr6qNH9Vz3DM06fPMIc.css"
-          media="all"/>
+    <link href="https://www.ecmwf.int/sites/default/files/css/css_E--E6-VNAnCs9EhK-XvUuZ7Opr6qNH9Vz3DM06fPMIc.css" media="all"
+          rel="stylesheet"
+          type="text/css"/>
     <!--[if lt IE 9]>
     <script src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" async="" src="//siteimproveanalytics.com/js/siteanalyze_6037683.js"></script>
+    <script async="" src="//siteimproveanalytics.com/js/siteanalyze_6037683.js" type="text/javascript"></script>
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -126,8 +126,8 @@ European Centre for Medium-Range Weather Forecasts
 <body class="html not-front logged-in two-sidebars page-node page-node- page-node-19325 node-type-biblio env-production en page-node-reduced-resolution-ocean-configurations-for-efficient-testing-with-the-ecmwf-coupled-model">
 <!-- Google Tag Manager (noscript) -->
 <noscript>
-    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-P5T597"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <iframe height="0"
+            src="//www.googletagmanager.com/ns.html?id=GTM-P5T597" style="display:none;visibility:hidden" width="0"></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
@@ -136,17 +136,17 @@ European Centre for Medium-Range Weather Forecasts
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button class="navbar-toggle collapsed" id="toggle-user" type="button" data-toggle="collapse"
-                        data-target="#navbar-user" aria-label="Toggle user menu" aria-expanded="false"
-                        aria-controls="navbar-user"><span class="fa fa-user-circle" aria-hidden="true"></span></button>
-                <button class="navbar-toggle collapsed" id="toggle-search" type="button" data-toggle="collapse"
-                        data-target="#navbar-search" aria-label="Search" aria-expanded="false"
-                        aria-controls="navbar-search"><span class="fa fa-search" aria-hidden="true"></span></button>
-                <button class="navbar-toggle collapsed" id="toggle-menu" type="button" data-toggle="collapse"
-                        data-target="#navbar-menu" aria-label="Toggle main menu" aria-expanded="false"
-                        aria-controls="navbar-menu"><span class="fa fa-bars" aria-hidden="true"></span></button>
-                <a class="navbar-brand production" id="header-logo" href="https://www.ecmwf.int/en"
-                   aria-label="Go to ECMWF home page"></a>
+                <button aria-controls="navbar-user" aria-expanded="false" aria-label="Toggle user menu" class="navbar-toggle collapsed"
+                        data-target="#navbar-user" data-toggle="collapse" id="toggle-user"
+                        type="button"><span aria-hidden="true" class="fa fa-user-circle"></span></button>
+                <button aria-controls="navbar-search" aria-expanded="false" aria-label="Search" class="navbar-toggle collapsed"
+                        data-target="#navbar-search" data-toggle="collapse" id="toggle-search"
+                        type="button"><span aria-hidden="true" class="fa fa-search"></span></button>
+                <button aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle main menu" class="navbar-toggle collapsed"
+                        data-target="#navbar-menu" data-toggle="collapse" id="toggle-menu"
+                        type="button"><span aria-hidden="true" class="fa fa-bars"></span></button>
+                <a aria-label="Go to ECMWF home page" class="navbar-brand production" href="https://www.ecmwf.int/en"
+                   id="header-logo"></a>
             </div>
             <div class="row visible-xs-block">
                 <hr>
@@ -154,16 +154,16 @@ European Centre for Medium-Range Weather Forecasts
 
             <div class="region region-header">
 
-                <div class="header-menu collapse navbar-collapse navbar-right" id="navbar-user" aria-expanded="false">
+                <div aria-expanded="false" class="header-menu collapse navbar-collapse navbar-right" id="navbar-user">
 
 
                     <ul class="nav navbar-nav">
                         <li class="first leaf hidden-xs"><a href="/en/about/contact-us"><span
                                 class="fa fa-envelope-o"></span>Contact</a></li>
                         <li class="last expanded dropdown">
-                            <div class="btn-group"><a href="/user" rel="nofollow"
-                                                      class="navbar-btn btn btn-link hidden-xs dropdown-toggle"
-                                                      data-target="#" data-toggle="dropdown"><span
+                            <div class="btn-group"><a class="navbar-btn btn btn-link hidden-xs dropdown-toggle" data-target="#"
+                                                      data-toggle="dropdown"
+                                                      href="/user" rel="nofollow"><span
                                     class="fa fa-user-circle"></span>Frank Lieber <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li class="first leaf"><a href="/user">Account</a></li>
@@ -177,47 +177,47 @@ European Centre for Medium-Range Weather Forecasts
                         </li>
                     </ul>
                 </div>
-                <div id="block-search-form" class="block block-search clearfix">
+                <div class="block block-search clearfix" id="block-search-form">
 
 
-                    <form class="form-search content-search"
+                    <form accept-charset="UTF-8"
                           action="/en/elibrary/19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model"
-                          method="post" id="search-block-form" accept-charset="UTF-8">
+                          class="form-search content-search" id="search-block-form" method="post">
                         <div>
-                            <div class="header-menu collapse navbar-collapse navbar-right" id="navbar-search"
-                                 aria-expanded="false">
+                            <div aria-expanded="false" class="header-menu collapse navbar-collapse navbar-right"
+                                 id="navbar-search">
                                 <h2 class="element-invisible">Search form</h2>
-                                <div class="input-group"><input title="Enter the terms you wish to search for."
-                                                                class="apachesolr-autocomplete input-sm form-control form-text"
+                                <div class="input-group"><input class="apachesolr-autocomplete input-sm form-control form-text"
                                                                 data-apachesolr-autocomplete-id="search-block-form"
-                                                                placeholder="Search site..." type="text"
-                                                                id="edit-search-block-form--2" name="search_block_form"
-                                                                value="" size="15" maxlength="128"/><span
-                                        class="input-group-btn"><button aria-label="search" type="submit"
-                                                                        class="btn btn-default btn-sm"><span
-                                        class="fa fa-search hidden-xs" aria-hidden="true"></span><span
-                                        class="fa fa-arrow-circle-right visible-xs" aria-hidden="true"></span></button></span>
+                                                                id="edit-search-block-form--2"
+                                                                maxlength="128" name="search_block_form"
+                                                                placeholder="Search site..." size="15"
+                                                                title="Enter the terms you wish to search for." type="text" value=""/><span
+                                        class="input-group-btn"><button aria-label="search" class="btn btn-default btn-sm"
+                                                                        type="submit"><span
+                                        aria-hidden="true" class="fa fa-search hidden-xs"></span><span
+                                        aria-hidden="true" class="fa fa-arrow-circle-right visible-xs"></span></button></span>
                                 </div>
                                 <div class="form-actions form-wrapper form-group" id="edit-actions">
-                                    <button class="element-invisible btn btn-primary form-submit" type="submit"
-                                            id="edit-submit" name="op" value="Search">Search
+                                    <button class="element-invisible btn btn-primary form-submit" id="edit-submit"
+                                            name="op" type="submit" value="Search">Search
                                     </button>
                                 </div>
-                                <input type="hidden" name="form_build_id"
+                                <input name="form_build_id" type="hidden"
                                        value="form-a8GlEFDifIuiXP5Y8r7hMgbtAmC16Oj_WiS7J7V1gRA"/>
-                                <input type="hidden" name="form_token"
+                                <input name="form_token" type="hidden"
                                        value="pb7AtRRgFyAvmgHOvVU1wMc2oGv6TM7RNxSzpb2TQ9A"/>
-                                <input type="hidden" name="form_id" value="search_block_form"/>
+                                <input name="form_id" type="hidden" value="search_block_form"/>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <div class="header-menu collapse" id="navbar-menu" aria-expanded="false">
+            <div aria-expanded="false" class="header-menu collapse" id="navbar-menu">
 
                 <div class="region region-navigation">
-                    <div id="block-menu-block-1" class="block block-menu-block clearfix">
+                    <div class="block block-menu-block clearfix" id="block-menu-block-1">
 
 
                         <div class="menu-block-wrapper menu-block-1 menu-name-main-menu parent-mlid-0 menu-level-1">
@@ -277,8 +277,8 @@ European Centre for Medium-Range Weather Forecasts
 
             <div class="col-sm-8 col-md-6">
                 <div class="region region-sidebar-first">
-                    <div id="block-ecmwf-publications-publications-back-to-search"
-                         class="block block-ecmwf-publications clearfix">
+                    <div class="block block-ecmwf-publications clearfix"
+                         id="block-ecmwf-publications-publications-back-to-search">
 
 
                         <a href="https://www.ecmwf.int/en/publications/search">◀ View Publications search</a>
@@ -290,18 +290,18 @@ European Centre for Medium-Range Weather Forecasts
 
 
                 <div class="region region-content">
-                    <div id="block-system-main" class="block block-system clearfix">
+                    <div class="block block-system clearfix" id="block-system-main">
 
 
-                        <article id="node-19325" class="node node-biblio clearfix"
-                                 about="/en/elibrary/19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model"
+                        <article about="/en/elibrary/19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model" class="node node-biblio clearfix"
+                                 id="node-19325"
                                  typeof="sioc:Item foaf:Document">
                             <header>
-                                <span property="dc:title"
+                                <span class="rdf-meta element-hidden"
                                       content="Reduced-resolution ocean configurations for efficient testing with the ECMWF coupled model"
-                                      class="rdf-meta element-hidden"></span><span property="sioc:num_replies"
+                                      property="dc:title"></span><span class="rdf-meta element-hidden"
                                                                                    content="0" datatype="xsd:integer"
-                                                                                   class="rdf-meta element-hidden"></span>
+                                                                                   property="sioc:num_replies"></span>
                             </header>
                             <div id="biblio-node"><span class="Z3988"
                                                         title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.title=Reduced-resolution+ocean+configurations+for+efficient+testing+with+the+ECMWF+coupled+model&amp;rft.date=2020&amp;rft.aulast=Roberts&amp;rft.aufirst=Christopher&amp;rft.au=Weisheimer%2C+Antje&amp;rft.au=Johnson%2C+Stephanie&amp;rft.au=Stockdale%2C+Tim&amp;rft.au=Alonso-Balmaseda%2C+Magdalena&amp;rft.au=Browne%2C+Philip&amp;rft.au=Dawson%2C+Andrew&amp;rft.au=Leutbecher%2C+Martin&amp;rft.au=Vitart%2C+Fr%C3%A9d%C3%A9ric&amp;rft.au=Vitart%2C+Fr%C3%A9d%C3%A9ric"></span>
@@ -398,26 +398,26 @@ European Centre for Medium-Range Weather Forecasts
                                     <ul class="links list-inline">
                                         <li class="0 first"><a
                                                 href="http://scholar.google.com/scholar?btnG=Search%2BScholar&amp;as_q=%22Reduced-resolution%2Bocean%2Bconfigurations%2Bfor%2Befficient%2Btesting%2Bwith%2Bthe%2BECMWF%2Bcoupled%2Bmodel%22&amp;as_sauthors=Roberts&amp;as_occt=any&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;as_sdtAAP=1&amp;as_sdtp=1"
-                                                title="Click to search Google Scholar for this entry" rel="nofollow">Google
+                                                rel="nofollow" title="Click to search Google Scholar for this entry">Google
                                             Scholar</a></li>
                                         <li class="biblio_crossref"><a href="http://dx.doi.org/10.21957/6fz18mn9r"
                                                                        title="Click to view the CrossRef listing for this node">DOI</a>
                                         </li>
                                         <li class="biblio_bibtex"><a href="/en/elibrary/export/bibtex/19325"
-                                                                     title="Click to download the BibTeX formatted file"
-                                                                     rel="nofollow">BibTeX</a></li>
+                                                                     rel="nofollow"
+                                                                     title="Click to download the BibTeX formatted file">BibTeX</a></li>
                                         <li class="biblio_tagged"><a href="/en/elibrary/export/tagged/19325"
-                                                                     title="Click to download the EndNote Tagged formatted file"
-                                                                     rel="nofollow">Tagged</a></li>
+                                                                     rel="nofollow"
+                                                                     title="Click to download the EndNote Tagged formatted file">Tagged</a></li>
                                         <li class="biblio_marc"><a href="/en/elibrary/export/marc/19325"
-                                                                   title="Click to download the MARC formatted file"
-                                                                   rel="nofollow">MARC</a></li>
+                                                                   rel="nofollow"
+                                                                   title="Click to download the MARC formatted file">MARC</a></li>
                                         <li class="biblio_xml"><a href="/en/elibrary/export/xml/19325"
-                                                                  title="Click to download the EndNote XML formatted file"
-                                                                  rel="nofollow">EndNote XML</a></li>
+                                                                  rel="nofollow"
+                                                                  title="Click to download the EndNote XML formatted file">EndNote XML</a></li>
                                         <li class="biblio_ris last"><a href="/en/elibrary/export/ris/19325"
-                                                                       title="Click to download the RIS formatted file"
-                                                                       rel="nofollow">RIS</a></li>
+                                                                       rel="nofollow"
+                                                                       title="Click to download the RIS formatted file">RIS</a></li>
                                     </ul>
                                 </footer>
                         </article>
@@ -432,9 +432,9 @@ European Centre for Medium-Range Weather Forecasts
                 <div class="region region-sidebar-second">
                     <div class="field field-name-field-publication-file field-type-file field-label-hidden">
                         <div class="field-items">
-                            <div class="field-item even"><span class="file"><img class="file-icon" alt="PDF icon"
-                                                                                 title="application/pdf"
-                                                                                 src="/modules/file/icons/application-pdf.png"/> <a
+                            <div class="field-item even"><span class="file"><img alt="PDF icon" class="file-icon"
+                                                                                 src="/modules/file/icons/application-pdf.png"
+                                                                                 title="application/pdf"/> <a
                                     href="/file/285919/download?token=iqRJ4EhB" type="application/pdf; length=5889174">Download</a> <span
                                     class="file-size">(5.62 MB)</span></span></div>
                         </div>
@@ -617,17 +617,17 @@ European Centre for Medium-Range Weather Forecasts
                 </div>
                 <div class="col-xs-24 col-sm-24 col-lg-8 col-lg-pull-8 text-center-xs text-center-sm text-center-md text-center-lg">
                     <ul id="social-icons">
-                        <li><a href="https://twitter.com/ecmwf" aria-label="Follow us on Twitter" target="_blank"
-                               rel="noopener"><span aria-hidden="true" class="fa fa-twitter">&nbsp;</span></a></li>
+                        <li><a aria-label="Follow us on Twitter" href="https://twitter.com/ecmwf" rel="noopener"
+                               target="_blank"><span aria-hidden="true" class="fa fa-twitter">&nbsp;</span></a></li>
                         <li>
-                            <a href="https://www.facebook.com/pages/European-Centre-for-Medium-Range-Weather-Forecasts/108346845856630"
-                               aria-label="Visit our Facebook page" target="_blank" rel="noopener"><span
+                            <a aria-label="Visit our Facebook page"
+                               href="https://www.facebook.com/pages/European-Centre-for-Medium-Range-Weather-Forecasts/108346845856630" rel="noopener" target="_blank"><span
                                     aria-hidden="true" class="fa fa-facebook">&nbsp;</span></a></li>
-                        <li><a href="https://www.linkedin.com/company/ecmwf" aria-label="Visit our LinkedIn page"
-                               target="_blank" rel="noopener"><span aria-hidden="true"
+                        <li><a aria-label="Visit our LinkedIn page" href="https://www.linkedin.com/company/ecmwf"
+                               rel="noopener" target="_blank"><span aria-hidden="true"
                                                                     class="fa fa-linkedin">&nbsp;</span></a></li>
-                        <li><a href="https://www.flickr.com/photos/ecmwf" aria-label="Visit our Flickr page"
-                               target="_blank" rel="noopener"><span aria-hidden="true"
+                        <li><a aria-label="Visit our Flickr page" href="https://www.flickr.com/photos/ecmwf"
+                               rel="noopener" target="_blank"><span aria-hidden="true"
                                                                     class="fa fa-flickr">&nbsp;</span></a></li>
                     </ul>
                 </div>
@@ -692,13 +692,13 @@ jQuery.migrateTrace = false;</script>
 
 
 <!-- OP IFRAME, from keycloak then redirected to accounts-->
-<iframe title='empty' style='visibility: hidden;' width='0' height='0' tabindex='-1' id='openidc-op'
-        src='/oidc.cgi?session=iframe_op'></iframe>
+<iframe height='0' id='openidc-op' src='/oidc.cgi?session=iframe_op' style='visibility: hidden;' tabindex='-1' title='empty'
+        width='0'></iframe>
 
 
 <!-- RP IFRAME, from mod_auth_oidc -->
-<iframe title='empty' style='visibility: hidden;' width='0' height='0' tabindex='-1' id='openidc-rp'
-        src='/oidc.cgi?session=iframe_rp&poll=10000&login_uri=https%3A%2F%2Fwww.ecmwf.int%2Fuser%2Flogin%2Fsso%3Fdestination%3D%2Fen%2Felibrary%2F19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model'></iframe>
+<iframe height='0' id='openidc-rp' src='/oidc.cgi?session=iframe_rp&poll=10000&login_uri=https%3A%2F%2Fwww.ecmwf.int%2Fuser%2Flogin%2Fsso%3Fdestination%3D%2Fen%2Felibrary%2F19325-reduced-resolution-ocean-configurations-efficient-testing-ecmwf-coupled-model' style='visibility: hidden;' tabindex='-1' title='empty'
+        width='0'></iframe>
 
 
 <!-- RP IFRAME, from Drupal (experimental) -->

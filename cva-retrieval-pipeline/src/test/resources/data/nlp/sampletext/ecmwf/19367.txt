@@ -69,7 +69,7 @@ ECMWF’s services
 www.ecmwf.int/en/about/media-centre/media-resources
 doi: 10.21957/dc76mm20n3
 
-Matthew Manoussakis et al.
+ Matthew Manoussakis et al.
 
 Unlocking the hidden value of machine data to improve ECMWF’s services
 
@@ -120,7 +120,7 @@ kinds of activity. Some benefits and use cases are presented below.
 
 doi: 10.21957/dc76mm20n3
 
-Matthew Manoussakis et al.
+ Matthew Manoussakis et al.
 
 Unlocking the hidden value of machine data to improve ECMWF’s services
 
@@ -156,7 +156,7 @@ doi: 10.21957/dc76mm20n3
 
 3
 
-Matthew Manoussakis et al.
+ Matthew Manoussakis et al.
 
 Unlocking the hidden value of machine data to improve ECMWF’s services
 
@@ -187,7 +187,7 @@ essential to maintain during the migration to our new data centre in Bologna.
 
 doi: 10.21957/dc76mm20n3
 
-Matthew Manoussakis et al.
+ Matthew Manoussakis et al.
 
 Unlocking the hidden value of machine data to improve ECMWF’s services
 
@@ -222,7 +222,7 @@ doi: 10.21957/dc76mm20n3
 
 5
 
-Matthew Manoussakis et al.
+ Matthew Manoussakis et al.
 
 Unlocking the hidden value of machine data to improve ECMWF’s services
 

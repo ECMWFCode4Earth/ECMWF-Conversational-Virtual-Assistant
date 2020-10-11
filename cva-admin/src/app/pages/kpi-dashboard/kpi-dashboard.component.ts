@@ -27,7 +27,7 @@ export class KpiDashboardComponent implements OnInit, OnDestroy {
   trainingSentencesCount$: Observable<number>;
   intentErrors$: Observable<IntentError[]>;
   conversionSessionStats$: Observable<ConversionStep[]>;
-
+  agent: string;
   type = 'month';
   types = ['week', 'month', 'year'];
 
@@ -42,10 +42,11 @@ export class KpiDashboardComponent implements OnInit, OnDestroy {
   }
 
   private initDashBoard(agent: string) {
+    this.agent = agent;
     this.retrieveIntentCount(agent);
     this.retrieveTrainingSentencesCount(agent);
     this.loadIntentErrors(agent);
-    this.retrieveConversionSessionStats(agent);
+    this.retrieveConversionSessionStats(agent, this.type);
   }
 
   ngOnDestroy() {
@@ -64,8 +65,11 @@ export class KpiDashboardComponent implements OnInit, OnDestroy {
     this.trainingSentencesCount$ = this.kds.trainingSentencesCount(agent);
   }
 
-  private retrieveConversionSessionStats(agent: string) {
-    this.conversionSessionStats$ = this.kds.conversionSessionStats(agent);
+  private retrieveConversionSessionStats(agent: string, type: string) {
+    this.conversionSessionStats$ = this.kds.conversionSessionStats(agent, type);
   }
 
+  dateSelectionChanged($event: any) {
+    this.retrieveConversionSessionStats(this.agent, $event);
+  }
 }

@@ -53,7 +53,7 @@ class ElasticMediaTypeSearchService(
     fun findPressReleaseByKeyword(
         cs: ContentSource,
         keyword: String,
-        size: Int = 3,
+        size: Int = 5,
         from: Int = 0
     ): Mono<CopernicusPageNodeResponse> {
         return findMediaTypeByKeyword(cs, NodeType.PRESS_RELEASE, keyword, size = size, from = from)
@@ -62,7 +62,7 @@ class ElasticMediaTypeSearchService(
     fun findNewsByKeyword(
         cs: ContentSource,
         keyword: String,
-        size: Int = 3,
+        size: Int = 5,
         from: Int = 0
     ): Mono<CopernicusPageNodeResponse> {
         return findMediaTypeByKeyword(cs, NodeType.NEWS, keyword, size = size, from = from)
@@ -71,7 +71,7 @@ class ElasticMediaTypeSearchService(
     fun findCaseStudyByKeyword(
         cs: ContentSource,
         keyword: String,
-        size: Int = 3,
+        size: Int = 5,
         from: Int = 0
     ): Mono<CopernicusPageNodeResponse> {
         return findMediaTypeByKeyword(cs, NodeType.CASE_STUDY, keyword, size = size, from = from)
@@ -80,7 +80,7 @@ class ElasticMediaTypeSearchService(
     fun findDemonstratorProjectByKeyword(
         cs: ContentSource,
         keyword: String,
-        size: Int = 3,
+        size: Int = 5,
         from: Int = 0
     ): Mono<CopernicusPageNodeResponse> {
         return findMediaTypeByKeyword(cs, NodeType.DEMONSTRATOR_PROJECT, keyword, size = size, from = from)
@@ -89,7 +89,7 @@ class ElasticMediaTypeSearchService(
     private fun findMediaTypeByKeyword(
         cs: ContentSource,
         nodeType: NodeType,
-        keyword: String, size: Int = 3, from: Int = 0
+        keyword: String, size: Int = 5, from: Int = 0
     ): Mono<CopernicusPageNodeResponse> {
 
         val matchQuery = QueryBuilders.matchQuery("content", keyword)

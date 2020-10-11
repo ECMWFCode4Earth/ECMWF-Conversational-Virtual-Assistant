@@ -1,6 +1,5 @@
 package com._2horizon.cva.retrieval.copernicus.dto
 
-
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class TermsItem(

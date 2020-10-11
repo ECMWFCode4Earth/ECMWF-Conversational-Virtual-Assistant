@@ -15,8 +15,7 @@ interface ConfluenceExperimentalOperations {
 
     @Get("/content/{contentId}/version/{version}")
     fun contentVersion(
-        contentId:Long,
+        contentId: Long,
         version: Int
     ): Optional<ContentVersion>
-
 }

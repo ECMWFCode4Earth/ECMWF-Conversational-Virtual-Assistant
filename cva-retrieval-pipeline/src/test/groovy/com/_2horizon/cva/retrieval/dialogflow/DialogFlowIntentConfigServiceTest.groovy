@@ -56,7 +56,7 @@ class DialogFlowIntentConfigServiceTest extends Specification {
 
         where:
         displayName | trainingPhrasesList                     | messageTexts
-        'faq2.test'  | ['What does ECMWF stand for?', 'ECMWF'] | ['European Centre for Medium-Range Weather Forecasts']
+        'faq2.test' | ['What does ECMWF stand for?', 'ECMWF'] | ['European Centre for Medium-Range Weather Forecasts']
     }
 
     @Unroll
@@ -85,7 +85,7 @@ class DialogFlowIntentConfigServiceTest extends Specification {
         when:
         Intent i = service.updateIntent(intent, updateIntent, fm)
 
-        
+
         then:
         i.trainingPhrasesList == trainingPhrasesList
         i.displayName == displayName
@@ -103,7 +103,7 @@ class DialogFlowIntentConfigServiceTest extends Specification {
 
         then:
         assert i.name.endsWith(indentUuid)
-        assert i.trainingPhrasesList.size()>0
+        assert i.trainingPhrasesList.size() > 0
 
         where:
         displayName | indentUuid

@@ -37,4 +37,4 @@ data class Tweet(
     val expandedUrls: List<String> = emptyList(),
     val mediaURLs: List<String> = emptyList(),
     val mediaExpandedUrls: List<String> = emptyList(),
-) :ElasticBaseDTO
+) : ElasticBaseDTO

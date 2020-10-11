@@ -1,6 +1,5 @@
 package com._2horizon.cva.copernicus
 
-
 import com._2horizon.cva.copernicus.dto.Resource
 import com._2horizon.cva.copernicus.dto.TermsList
 import com._2horizon.cva.copernicus.dto.ui.UiResource
@@ -33,8 +32,6 @@ interface ClimateDataStoreOperations {
 
     @Get("/v2.ui/terms/list")
     fun getUiTermsList(): Optional<TermsList>
-
-
 }
 
 

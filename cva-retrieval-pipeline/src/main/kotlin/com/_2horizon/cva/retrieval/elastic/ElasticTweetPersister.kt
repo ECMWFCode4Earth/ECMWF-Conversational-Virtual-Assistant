@@ -1,6 +1,5 @@
 package com._2horizon.cva.retrieval.elastic
 
-
 import com._2horizon.cva.common.elastic.TWITTER_INDEX
 import com._2horizon.cva.common.twitter.dto.Tweet
 import com._2horizon.cva.retrieval.event.TwitterBulkStatusEvent
@@ -41,7 +40,7 @@ open class ElasticTweetPersister(
             val request = IndexRequest(TWITTER_INDEX).id(tweet.id.toString())
             request.source(objectMapper.writeValueAsString(tweet), XContentType.JSON)
             bulkRequest.add(request)
-          
+
         }
 
         val bulkResponse = client.bulk(bulkRequest, RequestOptions.DEFAULT)

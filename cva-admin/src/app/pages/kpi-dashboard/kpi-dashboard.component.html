@@ -47,7 +47,7 @@
         <nb-card-header>
           <span>Dialogflow session and fallbacks</span>
 
-          <nb-select [(selected)]="type">
+          <nb-select [(selected)]="type" (selectedChange)="dateSelectionChanged($event)">
             <nb-option *ngFor="let t of types" [value]="t">{{ t }}</nb-option>
           </nb-select>
         </nb-card-header>

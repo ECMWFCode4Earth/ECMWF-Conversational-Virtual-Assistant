@@ -161,7 +161,8 @@ class CopernicusPortalDrupalRetrieveService(
                 }
 
                 htmlFlowable.map { html ->
-                    val contentElement = Jsoup.parse(html, basicPageNodesEvent.contentSource.baseUri()).selectFirst("section.main--section")
+                    val contentElement = Jsoup.parse(html, basicPageNodesEvent.contentSource.baseUri())
+                        .selectFirst("section.main--section")
                     val contentHtml = contentElement.html()
                     val content = contentElement.text()
                     item.copy(contentHtml = contentHtml, contentStripped = content, content = "${item.title}. $content")

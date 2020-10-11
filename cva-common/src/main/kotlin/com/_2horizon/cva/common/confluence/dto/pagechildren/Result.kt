@@ -1,6 +1,5 @@
 package com._2horizon.cva.common.confluence.dto.pagechildren
 
-
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class Result(
@@ -9,7 +8,7 @@ data class Result(
 
     @JsonProperty("id")
     val id: Long,
-   
+
     @JsonProperty("status")
     val status: String,
 

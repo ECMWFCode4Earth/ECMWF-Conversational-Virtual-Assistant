@@ -21,7 +21,7 @@ class ConfluenceSpacesRetriever(
 
     @EventListener
     fun onStartup(startupEvent: StartupEvent) {
-        if (retrievalPipelineSpacesEnabled){
+        if (retrievalPipelineSpacesEnabled) {
             retrieveSpaces()
         }
     }

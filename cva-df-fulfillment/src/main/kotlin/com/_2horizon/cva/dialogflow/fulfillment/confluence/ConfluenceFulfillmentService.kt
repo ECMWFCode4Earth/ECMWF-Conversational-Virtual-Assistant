@@ -12,7 +12,6 @@ import io.micronaut.http.HttpRequest.GET
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.http.uri.UriBuilder
 import io.micronaut.reactor.http.client.ReactorHttpClient
-import org.slf4j.LoggerFactory
 import reactor.core.publisher.Mono
 import javax.inject.Singleton
 
@@ -25,24 +24,60 @@ class ConfluenceFulfillmentService(
     private val objectMapper: ObjectMapper
 ) : AbstractFulfillmentService(objectMapper) {
 
-    private val log = LoggerFactory.getLogger(javaClass)
+    fun handleSearchByFallbackKeyword(
+        fc: FulfillmentChain,
+        space: String,
+        size: Int = 15,
+        from: Int = 0
+    ): Mono<WebhookResponse.Builder> {
 
-    fun searchByKeyword(keyword: String, size: Int = 15, from: Int = 0): Mono<ContentResponse> {
+        val keyword = fc.dialogflowConversionStep.queryText
+
+        val responseItems = searchByKeyword(keyword = keyword, space = space, size = size, from = from)
+            .map { contentResponse ->
+                contentResponse.contents.map { content ->
+                    listOf(
+                        RichContentInfoItem(
+                            title = content.title,
+                            actionLink = "https://confluence.ecmwf.int/pages/viewpage.action?pageId=${content.id}"
+                        ),
+                        RichContentDividerItem()
+                    )
+                }.flatten()
+            }
+
+
+        return responseItems.map { richContentItems ->
+            convertRichContentItemToWebhookResponse(
+                richContentItems,
+                fc.dialogflowConversionStep,
+                fc.webhookResponseBuilder,
+                listOf("I found the following results in the $space wiki".asIntentMessage())
+            )
+        }
+    }
+
+    fun searchByKeyword(keyword: String, space: String, size: Int = 15, from: Int = 0): Mono<ContentResponse> {
 
         val uri =
-            UriBuilder.of("/content/search?cql=text~{%22$keyword%22}+and+type=page+and+space=CKB&expand=history,version,metadata.labels&start=${from}&limit=${size}")
+            UriBuilder.of("/content/search?cql=text~{%22$keyword%22}+and+type=page+and+space=$space&expand=history,version,metadata.labels&start=${from}&limit=${size}")
                 .build()
 
         return httpClient.retrieve(GET<ContentResponse>(uri), ContentResponse::class.java).single()
     }
 
-    fun handleSearchByKeyword(fulfillmentChain: FulfillmentChain): Mono<WebhookResponse.Builder> {
+    fun handleSearchByKeyword(
+        fulfillmentChain: FulfillmentChain,
+        space: String,
+        size: Int = 15,
+        from: Int = 0
+    ): Mono<WebhookResponse.Builder> {
 
         val parameters = fulfillmentChain.dialogflowConversionStep.parameters
 
         val keyword = parameters["keyword"] ?: return Mono.just(fulfillmentChain.webhookResponseBuilder)
 
-        val responseItems = searchByKeyword(keyword)
+        val responseItems = searchByKeyword(keyword = keyword, space = space, size = size, from = from)
             .map { contentResponse ->
                 contentResponse.contents.map { content ->
                     listOf(
@@ -61,24 +96,8 @@ class ConfluenceFulfillmentService(
                 richContentItems,
                 fulfillmentChain.dialogflowConversionStep,
                 fulfillmentChain.webhookResponseBuilder,
-                listOf("I found the following results in the CKB".asIntentMessage())
+                listOf("I found the following results in the $space wiki".asIntentMessage())
             )
         }
     }
-
-    // fun searchByKeyword(keyword: String): ContentResponse {
-    //
-    //     val json =
-    //         URL("https://confluence.ecmwf.int/rest/api/content/search?cql=text~{%22$keyword%22}+and+type=page+and+space=CKB&expand=history,version,metadata.labels&start=0&limit=8").readText()
-    //     val contentResponse = objectMapper.readValue(json, ContentResponse::class.java)
-    //     return contentResponse
-    // }
-    //
-    // fun searchByKeywordWithBody(keyword: String): ContentResponse {
-    //
-    //     val json =
-    //         URL("https://confluence.ecmwf.int/rest/api/content/search?cql=text~{%22$keyword%22}+and+type=page+and+space=CKB&expand=history,version,metadata.labels,body.view,body.storage&start=0&limit=8").readText()
-    //     val contentResponse = objectMapper.readValue(json, ContentResponse::class.java)
-    //     return contentResponse
-    // }
 }

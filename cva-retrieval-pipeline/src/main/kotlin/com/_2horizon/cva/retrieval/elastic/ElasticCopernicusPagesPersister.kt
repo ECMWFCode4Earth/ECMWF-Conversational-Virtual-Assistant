@@ -1,6 +1,5 @@
 package com._2horizon.cva.retrieval.elastic
 
-
 import com._2horizon.cva.common.copernicus.dto.CopernicusPageNode
 import com._2horizon.cva.common.copernicus.dto.NodeType
 import com._2horizon.cva.common.elastic.COPERNICUS_EVENT_NODES_INDEX
@@ -37,10 +36,10 @@ open class ElasticCopernicusPagesPersister(
     open fun contentPageNodesEventReceived(contentPageNodesEvent: ContentPageNodesEvent) {
         log.info("ContentPageNodesEvent received")
 
-        val bulkRequest = if (contentPageNodesEvent.nodeType==NodeType.EVENT){
-            createBulkRequest(contentPageNodesEvent.itemCopernicuses,COPERNICUS_EVENT_NODES_INDEX)
-        }   else{
-            createBulkRequest(contentPageNodesEvent.itemCopernicuses,COPERNICUS_PAGE_NODES_INDEX)
+        val bulkRequest = if (contentPageNodesEvent.nodeType == NodeType.EVENT) {
+            createBulkRequest(contentPageNodesEvent.itemCopernicuses, COPERNICUS_EVENT_NODES_INDEX)
+        } else {
+            createBulkRequest(contentPageNodesEvent.itemCopernicuses, COPERNICUS_PAGE_NODES_INDEX)
         }
         val bulkResponse = client.bulk(bulkRequest, RequestOptions.DEFAULT)
         log.info("Got bulkResponse with item size ${bulkResponse.items.size}. HasFailures ${bulkResponse.hasFailures()}")

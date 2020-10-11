@@ -28,7 +28,7 @@ class DialogFlowEntitiesConfigServiceTest extends Specification {
         def entities = service.listEntities()
 
         then:
-        entities.size()>0
+        entities.size() > 0
 
     }
 
@@ -37,8 +37,8 @@ class DialogFlowEntitiesConfigServiceTest extends Specification {
     def "Should createEntities"() {
         given:
         def dfet = new DialogFlowEntityType("PUBLICATION_TYPE", [
-                new  DialogFlowEntity("newsletter", ["Newsletter"]) ,
-                new  DialogFlowEntity("annual report", ["Annual Report", "annualreport"])
+                new DialogFlowEntity("newsletter", ["Newsletter"]),
+                new DialogFlowEntity("annual report", ["Annual Report", "annualreport"])
         ])
 
         when:

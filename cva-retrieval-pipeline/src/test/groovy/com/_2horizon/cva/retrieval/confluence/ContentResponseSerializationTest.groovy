@@ -15,7 +15,6 @@ class ContentResponseSerializationTest extends Specification {
 
     @Inject
     ObjectMapper objectMapper
-    
 
 
     def "Should read the content json string into ContentResponse"() {

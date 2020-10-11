@@ -9,4 +9,4 @@ data class RichContentImageItem(
     val accessibilityText: String,
     @JsonProperty("type")
     override val type: String = "image"
-):RichContentItem
+) : RichContentItem

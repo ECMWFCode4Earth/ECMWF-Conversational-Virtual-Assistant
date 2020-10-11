@@ -31,6 +31,4 @@ class TwitterConfig {
     class CrawlerProperties {
         var enabled: Boolean? = null
     }
-
-
 }

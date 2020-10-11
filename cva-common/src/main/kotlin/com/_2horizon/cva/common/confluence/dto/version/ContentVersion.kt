@@ -1,6 +1,5 @@
 package com._2horizon.cva.common.confluence.dto.version
 
-
 import com._2horizon.cva.common.confluence.dto.content.User
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.OffsetDateTime
@@ -8,7 +7,7 @@ import java.time.OffsetDateTime
 data class ContentVersion(
     @JsonProperty("by")
     val user: User,
-    
+
     @JsonProperty("hidden")
     val hidden: Boolean,
 

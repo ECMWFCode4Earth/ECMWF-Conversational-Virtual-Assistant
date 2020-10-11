@@ -17,7 +17,7 @@ class ContentSerializationTest extends Specification {
     @Inject
     ObjectMapper objectMapper
 
-   @Unroll
+    @Unroll
     def "Should read the content #contentID json string into Content"() {
         given:
         String json = new File("./src/test/resources/data/confluence/content/content-${contentID}.json").text
@@ -29,7 +29,7 @@ class ContentSerializationTest extends Specification {
         content.title == title
 
         where:
-        contentID    | title
+        contentID   | title
         "133262398" | 'ERA5: How to calculate wind speed and wind direction from u and v components of the wind?'
         "140385202" | 'ERA5-Land: data documentation'
 

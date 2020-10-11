@@ -123,7 +123,8 @@ class ConfluenceLinkExtractor {
                     }
                 }
             }
-            canonicalUrl.toLowerCase().startsWith("https://confluence.ecmwf.int/pages/viewrecentblogposts.action?key=") -> {
+            canonicalUrl.toLowerCase()
+                .startsWith("https://confluence.ecmwf.int/pages/viewrecentblogposts.action?key=") -> {
                 // TODO: Handle blog posts
                 log.warn("Skipping blog post $canonicalUrl ")
                 return null

@@ -31,12 +31,12 @@ data class EcmwfPublicationDTO(
     val publicationPDF: String? = null,
     val publicationLink: String? = null,
     val publicationPDFContent: String? = null
-)     {
+) {
     val abstractWithoutHtml: String?
         get() {
-            return if (abstract!=null){
+            return if (abstract != null) {
                 Jsoup.clean(abstract, Whitelist.none())
-            }   else {
+            } else {
                 null
             }
         }

@@ -31,19 +31,17 @@ class AtmosphereDataStoreUiResourcesTest extends Specification {
     @Unroll
     def "Should retrieve UI resource #key by key of AtmosphereDataStore API"() {
         when:
-        UiResource uiResource = camsOperations.getUiResourceByKey(key)get()
+        UiResource uiResource = camsOperations.getUiResourceByKey(key) get()
 
         then:
         uiResource.id == id
         uiResource.type == type
 
         where:
-        key                          | id                                                 | type
+        key                                    | id                                                              | type
         'cams-global-greenhouse-gas-inversion' | 'eu.copernicus.atmosphere.cams-global-greenhouse-gas-inversion' | 'dataset'
         'cams-global-reanalysis-eac4-monthly'  | 'eu.copernicus.atmosphere.cams-global-reanalysis-eac4-monthly'  | 'dataset'
     }
-
-
 
 
 }

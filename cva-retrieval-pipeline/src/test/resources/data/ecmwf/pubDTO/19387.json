@@ -1,13 +1,19 @@
 {
-  "nodeId" : 19387,
-  "title" : "All-sky microwave radiances assimilated with an ensemble Kalman filter",
-  "contributors" : [ "Alan J. Geer", "Massimo Bonavita", "Mats Hamrud" ],
-  "abstract" : "<p> Recent success in assimilating cloud and precipitation-affected satellite observations using the ‘allsky’ approach is thought to have benefitted from variational data assimilation, particularly its ability to handle moderate non-linearity and non-Gaussianity, and to extract wind information through the generalised tracer effect. Ensemble assimilation relies on assumptions including linearity and Gaussianity that might cause difficulties when using all-sky observations. Here, all-sky assimilation is evaluated in a global ensemble Kalman filter (EnKF) system of near operational quality, derived from an operational four-dimensional variational (4D-Var) system. To get EnKF working successfully required a new all-sky observation error model (the most successful approach was to inflate error as a multiple of the ensemble spread) and adjustments to localisation. With these improvements, assimilation of 8 microwave humidity instruments gave 2% to 4% improvement in forecast scores whether using EnKF or 4D-Var. Correlations from the ensemble showed that all-sky observations generated sensitivity to wind, temperature and humidity. EnKF increments shared many similarities with those in 4D-Var. Hence both 4D-Var and ensemble data assimilation were able to make good use of allsky observations, including the extraction of wind information. In absolute terms the EnKF forecast performance in the troposphere was still worse than the 4D-Var, though the gap could be reduced by going from 50 to 100 ensemble members. EnKF errors were larger in the stratosphere, where there are excessive gravity-wave increments that are not connected with all-sky assimilation.</p>",
-  "number" : "861",
-  "secondaryTitle" : "ECMWF Technical Memoranda",
-  "year" : 2020,
-  "pubDates" : [ "02/2020" ],
-  "language" : "eng",
-  "publicationType" : "Technical memorandum",
-  "publicationPDF" : "https://www.ecmwf.int/file/286548/download?token=l8xbkB6o"
+  "nodeId": 19387,
+  "title": "All-sky microwave radiances assimilated with an ensemble Kalman filter",
+  "contributors": [
+    "Alan J. Geer",
+    "Massimo Bonavita",
+    "Mats Hamrud"
+  ],
+  "abstract": "<p> Recent success in assimilating cloud and precipitation-affected satellite observations using the ‘allsky’ approach is thought to have benefitted from variational data assimilation, particularly its ability to handle moderate non-linearity and non-Gaussianity, and to extract wind information through the generalised tracer effect. Ensemble assimilation relies on assumptions including linearity and Gaussianity that might cause difficulties when using all-sky observations. Here, all-sky assimilation is evaluated in a global ensemble Kalman filter (EnKF) system of near operational quality, derived from an operational four-dimensional variational (4D-Var) system. To get EnKF working successfully required a new all-sky observation error model (the most successful approach was to inflate error as a multiple of the ensemble spread) and adjustments to localisation. With these improvements, assimilation of 8 microwave humidity instruments gave 2% to 4% improvement in forecast scores whether using EnKF or 4D-Var. Correlations from the ensemble showed that all-sky observations generated sensitivity to wind, temperature and humidity. EnKF increments shared many similarities with those in 4D-Var. Hence both 4D-Var and ensemble data assimilation were able to make good use of allsky observations, including the extraction of wind information. In absolute terms the EnKF forecast performance in the troposphere was still worse than the 4D-Var, though the gap could be reduced by going from 50 to 100 ensemble members. EnKF errors were larger in the stratosphere, where there are excessive gravity-wave increments that are not connected with all-sky assimilation.</p>",
+  "number": "861",
+  "secondaryTitle": "ECMWF Technical Memoranda",
+  "year": 2020,
+  "pubDates": [
+    "02/2020"
+  ],
+  "language": "eng",
+  "publicationType": "Technical memorandum",
+  "publicationPDF": "https://www.ecmwf.int/file/286548/download?token=l8xbkB6o"
 }

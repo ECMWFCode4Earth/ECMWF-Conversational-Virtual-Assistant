@@ -1,6 +1,5 @@
 package com._2horizon.cva.dialogflow.fulfillment.copernicus.dto
 
-
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class Reason(

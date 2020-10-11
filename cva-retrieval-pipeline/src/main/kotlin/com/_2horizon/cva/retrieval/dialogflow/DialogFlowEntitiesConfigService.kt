@@ -1,27 +1,12 @@
 package com._2horizon.cva.retrieval.dialogflow
 
-import com.google.api.gax.core.FixedCredentialsProvider
-import com.google.auth.oauth2.GoogleCredentials
-import com.google.cloud.dialogflow.v2beta1.AgentsClient
-import com.google.cloud.dialogflow.v2beta1.AgentsSettings
-import com.google.cloud.dialogflow.v2beta1.ContextsClient
-import com.google.cloud.dialogflow.v2beta1.ContextsSettings
 import com.google.cloud.dialogflow.v2beta1.CreateEntityTypeRequest
-import com.google.cloud.dialogflow.v2beta1.DocumentsClient
-import com.google.cloud.dialogflow.v2beta1.DocumentsSettings
 import com.google.cloud.dialogflow.v2beta1.EntityType
-import com.google.cloud.dialogflow.v2beta1.EntityTypesClient
-import com.google.cloud.dialogflow.v2beta1.EntityTypesSettings
-import com.google.cloud.dialogflow.v2beta1.IntentsClient
-import com.google.cloud.dialogflow.v2beta1.IntentsSettings
-import com.google.cloud.dialogflow.v2beta1.KnowledgeBasesClient
-import com.google.cloud.dialogflow.v2beta1.KnowledgeBasesSettings
 import com.google.cloud.dialogflow.v2beta1.ListEntityTypesRequest
 import com.google.cloud.dialogflow.v2beta1.ProjectAgentName
-import com.google.cloud.dialogflow.v2beta1.SessionEntityTypesClient
-import com.google.cloud.dialogflow.v2beta1.SessionEntityTypesSettings
-import io.micronaut.gcp.GoogleCloudConfiguration
+import com.google.cloud.dialogflow.v2beta1.UpdateEntityTypeRequest
 import org.slf4j.LoggerFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 /**
@@ -31,15 +16,30 @@ import javax.inject.Singleton
  */
 @Singleton
 class DialogFlowEntitiesConfigService(
-    googleCredentials: GoogleCredentials,
-    private val googleCloudConfiguration: GoogleCloudConfiguration
-
+    @param:Named("c3SDialogflowClientsHolder") private val c3s: DialogflowClientsHolder,
+    @param:Named("camsDialogflowClientsHolder") private val cams: DialogflowClientsHolder,
+    @param:Named("ecmwfDialogflowClientsHolder") private val ecmwf: DialogflowClientsHolder,
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
-    val credentialsProvider: FixedCredentialsProvider = FixedCredentialsProvider.create(googleCredentials)
+    fun updateEntities(
+        agentName: String,
+        entityType: EntityType,
+    ): EntityType? {
+
+        val dfClientsHolder = lookupDialogflowClientsHolder(agentName)
+
+        val entityTypeRequest = UpdateEntityTypeRequest.newBuilder()
+            .setEntityType(entityType)
+            .build()
+
+        dfClientsHolder.getEntityTypesClient().use { entityTypesClient ->
+            return entityTypesClient.updateEntityType(entityTypeRequest)
+        }
+    }
 
     fun createEntities(
+        agentName: String,
         dfEntityType: DialogFlowEntityType,
         fuzzyExtraction: Boolean = false,
         autoExpansionMode: EntityType.AutoExpansionMode = EntityType.AutoExpansionMode.AUTO_EXPANSION_MODE_UNSPECIFIED
@@ -57,22 +57,39 @@ class DialogFlowEntitiesConfigService(
             .addAllEntities(entities)
             .build()
 
+        val dfClientsHolder = lookupDialogflowClientsHolder(agentName)
+
         val entityTypeRequest = CreateEntityTypeRequest.newBuilder()
-            .setParent(ProjectAgentName.of(googleCloudConfiguration.projectId).toString())
+            .setParent(ProjectAgentName.of(dfClientsHolder.projectId).toString())
             .setEntityType(entityType)
             .build()
 
-        getEntityTypesClient().use { entityTypesClient ->
+        dfClientsHolder.getEntityTypesClient().use { entityTypesClient ->
             return entityTypesClient.createEntityType(entityTypeRequest)
         }
     }
 
-    fun listEntities(): List<EntityType> {
+    internal fun lookupDialogflowClientsHolder(agentName: String): DialogflowClientsHolder {
+        return when (agentName) {
+            "ADS" -> cams
+            "CDS" -> c3s
+            "ECMWF" -> ecmwf
+            else -> error("Agent name couldn't be resolved $agentName")
+        }
+    }
 
-        getEntityTypesClient().use { entityTypesClient ->
+    // fun listEntityType(dfClientsHolder: DialogflowClientsHolder, entityTypeName: String): List<EntityType.Entity> {
+    //     return dfClientsHolder.getEntityTypesClient().use { entityTypesClient ->
+    //         entityTypesClient.getEntityType(entityTypeName).entitiesList
+    //     }
+    // }
+
+    fun listAllEntityTypes(dfClientsHolder: DialogflowClientsHolder): List<EntityType> {
+
+        dfClientsHolder.getEntityTypesClient().use { entityTypesClient ->
             val listEntityTypesRequest = ListEntityTypesRequest.newBuilder()
                 .setParent(
-                    ProjectAgentName.of(googleCloudConfiguration.projectId).toString()
+                    ProjectAgentName.of(dfClientsHolder.projectId).toString()
                 )
                 .build()
 
@@ -84,31 +101,6 @@ class DialogFlowEntitiesConfigService(
 
         }
     }
-
-    private fun getSessionEntityTypesClient() =
-        SessionEntityTypesClient.create(
-            SessionEntityTypesSettings.newBuilder().setCredentialsProvider(credentialsProvider).build()
-        )
-
-    private fun getKnowledgeBasesClient() =
-        KnowledgeBasesClient.create(
-            KnowledgeBasesSettings.newBuilder().setCredentialsProvider(credentialsProvider).build()
-        )
-
-    private fun getDocumentsClient() =
-        DocumentsClient.create(DocumentsSettings.newBuilder().setCredentialsProvider(credentialsProvider).build())
-
-    private fun getContextsClient() =
-        ContextsClient.create(ContextsSettings.newBuilder().setCredentialsProvider(credentialsProvider).build())
-
-    private fun getIntentsClient() =
-        IntentsClient.create(IntentsSettings.newBuilder().setCredentialsProvider(credentialsProvider).build())
-
-    private fun getAgentsClient() =
-        AgentsClient.create(AgentsSettings.newBuilder().setCredentialsProvider(credentialsProvider).build())
-
-    private fun getEntityTypesClient() =
-        EntityTypesClient.create(EntityTypesSettings.newBuilder().setCredentialsProvider(credentialsProvider).build())
 }
 
 data class DialogFlowEntityType(

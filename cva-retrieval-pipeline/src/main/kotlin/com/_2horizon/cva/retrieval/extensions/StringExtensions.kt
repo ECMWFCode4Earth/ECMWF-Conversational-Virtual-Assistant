@@ -30,8 +30,6 @@ fun String.extractUppercaseText(size: Int = 25): List<TextInBrackets> {
     }.toList()
 }
 
-
-
 data class TextInBrackets(
     val textPriorBrackets: String,
     val textInBrackets: String

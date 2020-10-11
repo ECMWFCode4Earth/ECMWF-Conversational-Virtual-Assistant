@@ -12,7 +12,7 @@ Raluca Radu and Dinand Schepers
 (1 Universität Wien)
 January 2020
 
-Series: ECMWF Technical Memoranda
+ Series: ECMWF Technical Memoranda
 A full list of ECMWF Publications can be found on our web site under:
 http://www.ecmwf.int/en/research/publications
 Contact: library@ecmwf.int
@@ -25,7 +25,7 @@ be reprinted or translated in whole or in part without the written permission of
 The information within this publication is given in good faith and considered to be true, but ECMWF accepts
 no liability for error, omission and for loss or damage arising from its use.
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Abstract
 The ERA5 analyses of lower stratospheric temperature exhibit a pronounced cold bias for the years
@@ -78,7 +78,7 @@ Technical Memorandum No.859
 
 1
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 currently produces analyses within a few days of real time, and a back extension that will complete the
 data record from 1950 to the present day is nearly finished.
@@ -126,7 +126,7 @@ that was not well understood (Hersbach et al., 2020). EDA performance had been b
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 production for the better-observed period from 2000 onwards, especially from early August 2004
 onwards when data from the Microwave Limb Sounder (MLS) on NASA’s Aura satellite was available.
@@ -179,7 +179,7 @@ Technical Memorandum No.859
 
 3
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 the background departures (i.e. the differences between the observations and corresponding background
 forecasts) are spread in model space and between variables. In the IFS data assimilation system, B is
@@ -240,7 +240,7 @@ longer for the 1979 Bcli (with an associated e-folding distance of 425 km) than 
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 distance 260 km), although much shorter than for the ERA-Interim Bcli (e-folding distance 960 km). The
 plots in the right panel show the horizontal correlation length scales for vorticity at the two selected
@@ -280,7 +280,7 @@ Technical Memorandum No.859
 
 5
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 not present in ERA5. Also evident in Figure 2(a) is a poorer fit for ERA-Interim following the volcanic
 eruption of Mt Pinatubo in June 1991. As discussed by Dee and Uppala (2009) and Simmons et al.
@@ -307,7 +307,7 @@ the RICH scheme of Haimberger et al. (2012) with additional adjustment for solar
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 adjustments averaged monthly over all assimilated radiosonde data for the 40-60 hPa layer are shown
 in panel (b) of Figure 2. These adjustments are what is subtracted from the raw radiosonde temperatures
@@ -358,7 +358,7 @@ Technical Memorandum No.859
 
 7
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 than ERA-Interim from the late 1990s until close to the present day. This is not the case for ERA5 alone,
 as ERA5 has a small net cold bias relative to radiosonde data for 2000-2006. The remaining warm bias
@@ -383,7 +383,7 @@ following the launch of the COSMIC receivers in 2006 to ensure close agreement b
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 in subsequent years. The exception to this is a pronounced spike in late 2013 in panel (e). This stems
 from the ERA-Interim reanalysis, and is due to a technical problem in the ERA-Interim production
@@ -413,7 +413,7 @@ Technical Memorandum No.859
 
 9
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 et al. (2019), and is consistent with ERA5’s use of a smaller radiosonde bias adjustment in the first half
 of the period, discussed earlier, and with a residual effect of the cold bias of the ERA5 background
@@ -448,7 +448,7 @@ resulting in warmer analyses in ERA5 and ERA5.1 than in ERA-Interim at 50 hPa ov
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 larger bias estimate used in ERA5 is due to its use of the RICH scheme, which uses data only from
 reference stations outside China for adjustment of the time series of Chinese radiosonde data. The
@@ -499,7 +499,7 @@ Technical Memorandum No.859
 
 11
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Figure 6 (a) Monthly average observation-background differences for all assimilated bias-adjusted
 radiosonde temperature data (K) above 7 hPa, for ERA-Interim and ERA5 from January 1979 to
@@ -523,7 +523,7 @@ this poor behaviour of ERA5 has yet to be understood.
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Figure 7 Global-mean temperature anomalies (K) relative to 1981-2010 at 1, 2, 3, 5, 7 and 10 hPa
 from JRA-55, ERA-Interim and ERA5 analyses from January 1979 to August 2019 and ERA5.1
@@ -541,7 +541,7 @@ Technical Memorandum No.859
 
 13
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Figure 8 Twelve-month running averages of global-mean temperatures (ºC) at 1, 2, 3, 5, 7 and 10 hPa
 from JRA-55, ERA-Interim and ERA5 analyses from January 1979 to August 2019 and ERA5.1
@@ -558,7 +558,7 @@ issues in ERA5 noted above.
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 The absolute temperature differences between ERA5 and JRA-55 are substantial early in the period, as
 large as 6 to 8K at 2 and 3 hPa. Although they decrease over time, they nevertheless average 4 to 5K at
@@ -608,7 +608,7 @@ Technical Memorandum No.859
 
 15
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 for 2007-2011, although the observations indicate a much slower tropical ascent rate than do any of the
 ERA analyses. ERA5 for 2007-2011 is more similar to ERA5.1 for 2000-2004 than it is to ERA5 for
@@ -626,7 +626,7 @@ ERA-Interim and ERA5 from 1997 to 2010, and for ERA5.1 from January 2000 to Dece
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Figure 10 Pressure-latitude cross-sections of four-year-average zonal-mean water vapour (mole
 fraction in ppm) for the month of November for (a) ERA-Interim, (b) ERA5 and (c) ERA5.1, for 20002004, and for (d) ERA-Interim, (e) ERA5 and (f) Aura MLS retrievals, for 2007-2011.
@@ -659,7 +659,7 @@ Technical Memorandum No.859
 
 17
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Figure 11 Monthly global-mean ozone partial pressure (mPa) at 5, 10, 30, 50, 70 and 100 hPa from
 the HRES and EDA ensemble-mean ERA5 analyses from January 1979 to November 2019, and
@@ -675,7 +675,7 @@ there in the HRES analyses.
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Figure 12 Twelve-month running averages of global-mean ozone partial pressure (mPa) at 5, 10, 30,
 50, 70 and 100 hPa from the HRES and EDA ensemble mean ERA5 analyses, from January 1979 to
@@ -694,7 +694,7 @@ Technical Memorandum No.859
 
 19
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 The most problematic issue highlighted in Figures 11 and 12 is the behaviour of the ERA5.1 EDA,
 particularly at 70 hPa. At this level, the ERA5.1 EDA analyses have large positive ozone anomalies
@@ -747,7 +747,7 @@ million km2, albeit only briefly and marginally, in early October. 2002 and 2019
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 extreme dynamical disruptions of the polar vortex, as illustrated in the following section. In 2002 the
 ozone hole grows to reach about twenty million km2 soon after the middle of September, but decreases
@@ -783,7 +783,7 @@ Technical Memorandum No.859
 
 21
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Figure 14 Left: Area (millions of sq km) of the ozone hole from ERA5 (orange), ERA5.1 (red) and
 CAMS (blue) analyses from July to December of each year from 2000 (top) to 2006 (bottom).
@@ -802,7 +802,7 @@ but the higher values of ERA5.1 compared with ERA5 in 2000, 2001 and 2002 are fo
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 poorer agreement with the unassimilated data. The converse is true of 2003 and 2004, when ERA5 (but
 not ERA5.1) exhibits noisy values at the South Pole with peak values up to 100 Dobson units or more
@@ -825,7 +825,7 @@ Technical Memorandum No.859
 
 23
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 ERA5 EDA shown in the upper-right panel is higher still relative to that from ERA5.1 at the South Pole,
 and the high-ozone region is broader in extent. In addition, the spread of the EDA (lower panels) is
@@ -864,7 +864,7 @@ for 2003 and 2004, the general performance of ERA5 in this regard is much improv
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Interim. ERA-Interim was known to produce extremely high values of ozone near the South Pole in July
 and August some years. The extent to which this happened varied from year to year, and the behaviour
@@ -886,7 +886,7 @@ Technical Memorandum No.859
 
 25
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 ERA-Interim is in quite good agreement with ERA5 at the South Pole for other times of year, but tends
 not to fit the ground-based data quite as well. Somewhat high ERA-Interim values can be seen in January
@@ -914,7 +914,7 @@ at the time was discussed by Simmons et al. (2005).
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Figure 19 Analyses over the southern hemisphere of the abundance of water vapour (mole fraction in
 ppm; shaded) and Montgomery potential (contour interval 3000m2s-2) on the 850K isentropic surface,
@@ -939,7 +939,7 @@ Technical Memorandum No.859
 
 27
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Indian Ocean sector loses less material in this way, and is eventually re-established as the primary polar
 vortex, albeit a much weaker one than is usual for October. This succession of events was also seen in
@@ -963,7 +963,7 @@ ozone is relatively high in the tropics and low in the polar vortex (or vortices
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 to aid comparison with Figure 19. Ozone is subject to the same dynamical influences that change the
 distribution of water vapour, but it also changes due to parameterized chemistry and the assimilation of
@@ -995,7 +995,7 @@ Technical Memorandum No.859
 
 29
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 including water vapour and ozone as shown in Figure 21, were extruded from the vortex and extended
 in streamers around the equatorward side of the anticyclone. As in 2002, secondary vortices developed
@@ -1038,7 +1038,7 @@ before, and the sharper filamentary structures of ERA5 and ERA5.1 compared with 
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 again evident. The secondary vortex is also defined better in the newer, higher-resolution reanalyses.
 ERA5.1 is once more very close synoptically to ERA5.
@@ -1066,7 +1066,7 @@ Technical Memorandum No.859
 
 31
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 and the small amplitude at lower levels in the 2000s (Kawatani and Hamilton, 2013) most evident at 70
 hPa. Although the latter was suggestive at the time of a weakening trend in the QBO, cycles in the
@@ -1080,7 +1080,7 @@ from January 1979 to October 2019.
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Examination of time series of the observation fits indicates a small improvement for ERA5.1 compared
 with ERA5. This occurs not only for the analysis itself but also for the background forecasts: much of
@@ -1104,7 +1104,7 @@ Technical Memorandum No.859
 
 33
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 from (a) 450 to 550 hPa, and (b) 650 to 750 hPa. The ERA5.1 fits are much closer to those from ERA5
 than seen for levels higher in the atmosphere. They have a slightly smaller annual cycle.
@@ -1129,7 +1129,7 @@ seen at 50 hPa. Nevertheless, the differences between ERA5.1 and ERA-Interim for
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 more similar to the 1999 differences between ERA5 and ERA-Interim than are the differences for 2000
 between ERA5 and ERA-Interim. ERA5.1 is slightly cooler on average than ERA5 at 500 hPa.
@@ -1166,7 +1166,7 @@ Technical Memorandum No.859
 
 35
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 bring some improvement in global-mean temperature at 10 hPa and above for a short period. The
 pronounced near-tropopause cold bias of ERA5 in the period 2000-2006 has implications also for the
@@ -1198,7 +1198,7 @@ the Exploitation of Meteorological Satellites (EUMETSAT).
 
 Technical Memorandum No.859
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 References
 Bonavita, M, E. Holm, L. Isaksen and M. Fisher (2016). The evolution of the ECMWF hybrid data
@@ -1248,7 +1248,7 @@ Technical Memorandum No.859
 
 37
 
-Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
+ Global stratospheric temperature bias in ERA5, and aspects of ERA5.1
 
 Browne, R. Buizza, P. Dahlgren, D. Dee, R. Dragani, M. Diamantakis, J. Flemming, R. Forbes, A.
 Geer, T. Haiden, E. Hólm, L. Haimberger, R. Hogan, A. Horányi, M. Janisková, P. Laloyaux, P.

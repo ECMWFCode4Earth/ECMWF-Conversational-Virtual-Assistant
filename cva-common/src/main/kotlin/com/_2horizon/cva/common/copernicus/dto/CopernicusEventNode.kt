@@ -27,7 +27,7 @@ data class CopernicusEventNode(
 
     val title: String,
 
-    val location: String,
+    val location: String?,
 
     @JsonProperty("startDate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -35,7 +35,7 @@ data class CopernicusEventNode(
 
     @JsonProperty("endDate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    val endDate: LocalDate,
+    val endDate: LocalDate? = null,
 
     val teaser: String,
     val nodeType: NodeType,

@@ -12,4 +12,4 @@ data class RichContentDescriptionItem(
 
     @JsonProperty("type")
     override val type: String = "description"
-):RichContentItem
+) : RichContentItem

@@ -20,7 +20,6 @@ val googleCloudBomVersion: String by project
 val elasticsearchRestVersion: String by project
 val elasticsearchBeyonderVersion: String by project
 val micronautReactorVersion: String by project
-val smileCoreVersion: String by project
 val jsoupVersion: String by project
 
 plugins {
@@ -43,6 +42,9 @@ configurations {
 
 dependencies {
 
+    implementation(project(":cva-common"))
+    implementation(project(":cva-copernicus"))
+
     // https://cloud.google.com/dialogflow/docs/reference/libraries/java
     implementation(platform("com.google.cloud:libraries-bom:$googleCloudBomVersion"))
     implementation("com.google.cloud:google-cloud-dialogflow")
@@ -54,14 +56,6 @@ dependencies {
 
     // https://jsoup.org/
     implementation("org.jsoup:jsoup:$jsoupVersion")
-
-    implementation(project(":cva-common"))
-    
-    implementation(project(":cva-copernicus"))
-
-    // https://haifengl.github.io/nlp.html
-    implementation("com.github.haifengl:smile-core:$smileCoreVersion")
-    implementation("com.github.haifengl:smile-nlp:$smileCoreVersion")
 
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
     implementation("io.swagger.core.v3:swagger-annotations")
@@ -124,13 +118,13 @@ allOpen {
 
 tasks.create(name = "deploy-cva-df-fulfillment") {
 
-    dependsOn( "assemble")
+    dependsOn("assemble")
 
     group = "deploy"
 
     val myServer = org.hidetake.groovy.ssh.core.Remote(
         mapOf<String, Any>(
-            "host" to "136.156.90.160",
+            "host" to "fulfilment-cva.ecmwf.int",
             "user" to "esowc25",
             "identity" to File("~/.ssh/id_rsa")
         )

@@ -1,6 +1,5 @@
 package com._2horizon.cva.dialogflow.manager.dialogflow.copernicus
 
-
 import com.google.api.gax.core.FixedCredentialsProvider
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.cloud.dialogflow.v2beta1.CreateEntityTypeRequest
@@ -25,20 +24,20 @@ class CopernicusDialogflowConfigurationService(
 
     val credentialsProvider: FixedCredentialsProvider = FixedCredentialsProvider.create(googleCredentials)
 
-    fun createEntities(dfEntityType:DialogFlowEntityType): EntityType {
+    fun createEntities(dfEntityType: DialogFlowEntityType): EntityType {
 
-        val entities =  dfEntityType.entities.map {
-            EntityType.Entity.newBuilder().setValue(it.name) .addAllSynonyms(it.synonyms).build()
+        val entities = dfEntityType.entities.map {
+            EntityType.Entity.newBuilder().setValue(it.name).addAllSynonyms(it.synonyms).build()
         }
 
-        val entityType =  EntityType.newBuilder()
+        val entityType = EntityType.newBuilder()
             .setDisplayName(dfEntityType.displayName)
             .setKind(EntityType.Kind.KIND_MAP)
             .setAutoExpansionMode(EntityType.AutoExpansionMode.AUTO_EXPANSION_MODE_UNSPECIFIED)  // Auto expansion disabled for the entity.
             .addAllEntities(entities)
             .build()
 
-        val entityTypeRequest =   CreateEntityTypeRequest.newBuilder()
+        val entityTypeRequest = CreateEntityTypeRequest.newBuilder()
             .setParent(ProjectAgentName.of(googleCloudConfiguration.projectId).toString())
             .setEntityType(entityType)
             .build()
@@ -66,24 +65,22 @@ class CopernicusDialogflowConfigurationService(
         }
     }
 
-
     fun addCopernicusDataStoreType(): EntityType {
 
         TODO("not sure if this should be an entity")
         val entities = listOf(
-            DialogFlowEntity("CDS", listOf("Climate Data Store", "Climate Data","Climate Store")),
+            DialogFlowEntity("CDS", listOf("Climate Data Store", "Climate Data", "Climate Store")),
             DialogFlowEntity("tweet", listOf()),
             DialogFlowEntity("press release", listOf("Pressrelease")),
             DialogFlowEntity("event", listOf("Events"))
         )
 
         val communicationMediaType = DialogFlowEntityType(
-            displayName = "communication_media_type" ,
+            displayName = "communication_media_type",
             entities = entities
         )
         return createEntities(communicationMediaType)
     }
-
 
     fun addCommunicationMediaType(): EntityType {
 
@@ -95,10 +92,10 @@ class CopernicusDialogflowConfigurationService(
         )
 
         val communicationMediaType = DialogFlowEntityType(
-            displayName = "communication_media_type" ,
+            displayName = "communication_media_type",
             entities = entities
         )
-       return createEntities(communicationMediaType)
+        return createEntities(communicationMediaType)
     }
 
     private fun getEntityTypesClient() =
@@ -107,12 +104,12 @@ class CopernicusDialogflowConfigurationService(
 
 data class DialogFlowEntityType(
     val displayName: String,
-    val entities:List<DialogFlowEntity>
+    val entities: List<DialogFlowEntity>
 )
 
 data class DialogFlowEntity(
-    val name:String,
-    val synonyms:List<String>
+    val name: String,
+    val synonyms: List<String>
 )
 
 

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull
 class AirtableConfig {
 
     @NotNull
-    var apiKey:String?=null
+    var apiKey: String? = null
 }
 
 

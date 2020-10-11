@@ -1,7 +1,7 @@
 package com._2horizon.cva.retrieval.copernicus
 
-import com._2horizon.cva.retrieval.copernicus.c3s.datasets.ClimateDataStoreOperations
-import com._2horizon.cva.retrieval.copernicus.cams.datasets.AtmosphereDataStoreOperations
+import com._2horizon.cva.copernicus.CopernicusDataStoreAsyncSolrSearchService
+import com._2horizon.cva.copernicus.dto.solr.CopernicusSolrResult
 import com._2horizon.cva.retrieval.event.CopernicusCatalogueReceivedEvent
 import io.micronaut.context.annotation.Value
 import io.micronaut.context.event.ApplicationEventPublisher
@@ -15,8 +15,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class CopernicusDataStoreSyncService(
-    private val cdsOperations: ClimateDataStoreOperations,
-    private val adsOperations: AtmosphereDataStoreOperations,
+    private val copernicusDataStoreAsyncSolrSearchService: CopernicusDataStoreAsyncSolrSearchService,
     private val applicationEventPublisher: ApplicationEventPublisher,
     @Value("\${app.feature.retrieval-pipeline.copernicus.cds.enabled:false}") private val retrievalPipelineCdsEnabled: Boolean,
     @Value("\${app.feature.retrieval-pipeline.copernicus.ads.enabled:false}") private val retrievalPipelineAdsEnabled: Boolean
@@ -40,20 +39,23 @@ class CopernicusDataStoreSyncService(
 
     private fun retrieveAtmosphereStoreCatalogue() {
         log.info("Going to retrieveAtmosphereStoreCatalogue")
-        val uiResources = adsOperations.getResources().get()
-            .map { adsOperations.getUiResourceByKey(it).get() }
-        applicationEventPublisher.publishEvent(CopernicusCatalogueReceivedEvent(Datastore.ADS, uiResources))
+
+        copernicusDataStoreAsyncSolrSearchService.findAllApplications()
+            .subscribe { results: List<CopernicusSolrResult> ->
+                applicationEventPublisher.publishEvent(CopernicusCatalogueReceivedEvent(Datastore.ADS, results))
+            }
     }
 
     private fun retrieveClimateDataStoreCatalogue() {
         log.info("Going to retrieveClimateDataStoreCatalogue")
-        val uiResources = cdsOperations.getResources().get()
-            // .take(5)
-            .map { cdsOperations.getUiResourceByKey(it).get() }
-        applicationEventPublisher.publishEvent(CopernicusCatalogueReceivedEvent(Datastore.CDS, uiResources))
+
+        copernicusDataStoreAsyncSolrSearchService.findAllDatasets()
+            .subscribe { results: List<CopernicusSolrResult> ->
+                applicationEventPublisher.publishEvent(CopernicusCatalogueReceivedEvent(Datastore.CDS, results))
+            }
     }
 }
 
-enum class Datastore{
-    ADS,CDS,ECMWF_PUBLICATIONS,CONFLUENCE
+enum class Datastore {
+    ADS, CDS, ECMWF_PUBLICATIONS, CONFLUENCE
 }

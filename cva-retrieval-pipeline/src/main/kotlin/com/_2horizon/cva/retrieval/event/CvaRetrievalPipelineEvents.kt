@@ -6,8 +6,8 @@ import com._2horizon.cva.common.copernicus.dto.CopernicusPageNode
 import com._2horizon.cva.common.copernicus.dto.NodeType
 import com._2horizon.cva.common.elastic.ContentSource
 import com._2horizon.cva.common.twitter.dto.Tweet
+import com._2horizon.cva.copernicus.dto.solr.CopernicusSolrResult
 import com._2horizon.cva.retrieval.copernicus.Datastore
-import com._2horizon.cva.retrieval.copernicus.dto.ui.UiResource
 import com._2horizon.cva.retrieval.ecmwf.publications.dto.EcmwfPublicationDTO
 import com._2horizon.cva.retrieval.sitemap.Sitemap
 
@@ -19,7 +19,7 @@ data class ConfluenceSpacesEvent(val spacesList: List<Space>)
 data class SitemapEvent(val sitemapsList: List<Sitemap>)
 data class EcmwfPublicationsEvent(val ecmwfPublicationDTOs: List<EcmwfPublicationDTO>)
 data class EcmwfPublicationsWithPdfContentEvent(val ecmwfPublicationDTOs: List<EcmwfPublicationDTO>)
-data class CopernicusCatalogueReceivedEvent(val datastore: Datastore, val uiResources: List<UiResource>)
+data class CopernicusCatalogueReceivedEvent(val datastore: Datastore, val results: List<CopernicusSolrResult>)
 data class ConfluenceParentChildRelationshipEvent(val parentId: Long, val childId: Long)
 data class TwitterBulkStatusEvent(val tweets: List<Tweet>)
 data class BasicPageNodesEvent(

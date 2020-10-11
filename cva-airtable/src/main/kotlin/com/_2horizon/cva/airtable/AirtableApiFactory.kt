@@ -8,10 +8,10 @@ import io.micronaut.context.annotation.Factory
  * Created by Frank Lieber (liefra) on 2020-05-06.
  */
 @Factory
-class AirtableApiFactory (private val config: AirtableConfig){
+class AirtableApiFactory(private val config: AirtableConfig) {
 
     @Bean
     fun api(): AirtableApi {
-       return AirtableApi(config.apiKey!!)
+        return AirtableApi(config.apiKey!!)
     }
 }

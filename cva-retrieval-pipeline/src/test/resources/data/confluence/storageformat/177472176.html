@@ -1,51 +1,165 @@
-
-<p><ac:structured-macro ac:name="anchor" ac:schema-version="1" ac:macro-id="36d1a232-05a5-4be8-bbd7-f3d50ee1f17f"><ac:parameter ac:name="">#FAQ</ac:parameter></ac:structured-macro></p>
-<p><strong><span style="color: rgb(0,0,255);"><em>When does the information inserted in OSCAR/Surface (e.g., a new station.) show in the WIGOS Data Quality Monitoring System webtool?</em></span></strong></p>
-<p style="text-align: justify;">The WIGOS Data Quality Monitoring System webtool retrieves metadata information from OSCAR/Surface on a daily basis. For example, the availability maps are generated in near-real time by comparing the observations received by the NWP Centers against the schedules retrieved from OSCAR/Surface. Therefore, if the metadata has been updated today, tomorrow's maps should reflect that change. If a new station is added to OSCAR/Surface, it should appear on the WDQMS availability map on the next day. If that does not happen, it means that some fields may have not been correctly populated in OSCAR/Surface and this needs to be reported to the RWCs.</p>
-<p style="text-align: justify;"><br /></p>
-<p><em><strong><span style="color: rgb(0,0,255);">What is the cut off time in the different temporal categories (i.e, 6-hour, daily and alert)?</span></strong></em></p>
-<p style="text-align: justify;">The interval categories are defined as follows. The 6-hourly intervals are centred on the main synoptic hours: 00 (21 UTC &le; t &lt; 03 UTC); 06 (03 UTC &le; t &lt; 09 UTC); 12 (09 UTC &le; t &lt; 15 UTC); and 18&nbsp; (15 UTC &le; t &lt; 21 UTC), where t refers to observation time. The daily interval is the union of the four 6-hourly intervals as defined above, therefore is the 24-hour period within the interval 21 UTC &le; t &lt; 21 UTC, where t is the observation time and the lower &ldquo;21UTC&rdquo; limit is the day before. The alert maps represent a 5-day moving average, therefore rely on daily values for a 5-day period.</p>
-<p><br /></p>
-<p><em><strong><span style="color: rgb(0,0,255);">Do Centers consider TAC or BUFR bulletins to calculate the statistics displayed on the web tool?</span></strong></em></p>
-<p style="text-align: justify;"><span style="color: rgb(57,63,69);">The Centres take into account both TAC and BUFR, giving preference to the reports that were used in their assimilation systems. This means that the statistics computed for each station, interval and variable, will include mainly the observations assimilated (either TAC or BUFR) because observation duplicates are not considered in WDQMS. On the quality maps for surface observations, the</span> 6-hourly intervals for a particular monitoring centre allow you to see the details of individual observations that contribute for the average value displayed on the map. This means that it is possible to check the O-B value, the usage (Status, i.e., used or not used because it was rejected by/before the assimilation) and the type of report (Type, i.e., TAC or BUFR) of a particular observation (identified by date and time) by hovering the mouse over each dot in the time series. For the upper-air, this information is provided on the 6-hourly availability maps for a single NWP Centre. Clicking on a dot on the map shows a pop-up with detailed information about the station data availability over the selected period. For the 6-hourly periods, details of the observations received such as Layer (Trop - from surface up 100hPa- and Stra -from 100hPa up balloon burst), Variable and observation type (TAC or the new high resolution BUFR reports) and status (used / not used, &ldquo;used&rdquo; meaning that at least one level/variable was assimilated) are provided.</p>
-<p style="text-align: justify;"><br /></p>
-<p style="text-align: justify;"><span style="color: rgb(0,0,255);"><em><strong>What bulletin type does NCEP assimilate, TAC, BUFR or both?&nbsp;</strong></em></span></p>
-<p style="text-align: justify;">NCEP does not provide this information to WDQMS (that is why it is shown as Type: n/a) as they&nbsp;don't currently pass info into their DA database on whether the observation source was TAC or BUFR. However, most data NCEP uses is TAC.</p>
-<p><br /></p>
-<p><strong><em><span style="color: rgb(0,0,255);">Why does DWD surface availability maps always show less observations than ECMWF for example, with orange dots being the dominant feature?</span></em></strong>&nbsp;</p>
-<p style="text-align: justify;">The quality monitoring information provided by the four NWP Centres (DWD, ECMWF, JMA and NCEP) is based on the feedback from their data assimilation (DA) system, therefore reflect their specific characteristics. DWD DA does not have the model background available for the observations they do not intend to assimilate, whereas ECMWF calculates the model background for all the observations made available to DA, even for the ones that the model is not supposed to use in the assimilation (e.g. observations from stations that are in the blacklist due to known poor quality).&nbsp; The frequency at which the observations are used within each assimilation window (i.e. 3-hourly at DWD and hourly at ECMWF) explains the discrepancy seen in the number of received by DWD (2 in 6-hour interval) and ECMWF (6 in a 6-hour interval).&nbsp;</p>
-<p><br /></p>
+<p>
+    <ac:structured-macro ac:macro-id="36d1a232-05a5-4be8-bbd7-f3d50ee1f17f" ac:name="anchor" ac:schema-version="1">
+        <ac:parameter ac:name="">#FAQ</ac:parameter>
+    </ac:structured-macro>
+</p>
+<p><strong><span style="color: rgb(0,0,255);"><em>When does the information inserted in OSCAR/Surface (e.g., a new station.) show in the WIGOS Data Quality Monitoring System webtool?</em></span></strong>
+</p>
+<p style="text-align: justify;">The WIGOS Data Quality Monitoring System webtool retrieves metadata information from
+    OSCAR/Surface on a daily basis. For example, the availability maps are generated in near-real time by comparing the
+    observations received by the NWP Centers against the schedules retrieved from OSCAR/Surface. Therefore, if the
+    metadata has been updated today, tomorrow's maps should reflect that change. If a new station is added to
+    OSCAR/Surface, it should appear on the WDQMS availability map on the next day. If that does not happen, it means
+    that some fields may have not been correctly populated in OSCAR/Surface and this needs to be reported to the
+    RWCs.</p>
+<p style="text-align: justify;"><br/></p>
+<p><em><strong><span style="color: rgb(0,0,255);">What is the cut off time in the different temporal categories (i.e, 6-hour, daily and alert)?</span></strong></em>
+</p>
+<p style="text-align: justify;">The interval categories are defined as follows. The 6-hourly intervals are centred on
+    the main synoptic hours: 00 (21 UTC &le; t &lt; 03 UTC); 06 (03 UTC &le; t &lt; 09 UTC); 12 (09 UTC &le; t &lt; 15
+    UTC); and 18&nbsp; (15 UTC &le; t &lt; 21 UTC), where t refers to observation time. The daily interval is the union
+    of the four 6-hourly intervals as defined above, therefore is the 24-hour period within the interval 21 UTC &le; t
+    &lt; 21 UTC, where t is the observation time and the lower &ldquo;21UTC&rdquo; limit is the day before. The alert
+    maps represent a 5-day moving average, therefore rely on daily values for a 5-day period.</p>
+<p><br/></p>
+<p><em><strong><span style="color: rgb(0,0,255);">Do Centers consider TAC or BUFR bulletins to calculate the statistics displayed on the web tool?</span></strong></em>
+</p>
+<p style="text-align: justify;"><span style="color: rgb(57,63,69);">The Centres take into account both TAC and BUFR, giving preference to the reports that were used in their assimilation systems. This means that the statistics computed for each station, interval and variable, will include mainly the observations assimilated (either TAC or BUFR) because observation duplicates are not considered in WDQMS. On the quality maps for surface observations, the</span>
+    6-hourly intervals for a particular monitoring centre allow you to see the details of individual observations that
+    contribute for the average value displayed on the map. This means that it is possible to check the O-B value, the
+    usage (Status, i.e., used or not used because it was rejected by/before the assimilation) and the type of report
+    (Type, i.e., TAC or BUFR) of a particular observation (identified by date and time) by hovering the mouse over each
+    dot in the time series. For the upper-air, this information is provided on the 6-hourly availability maps for a
+    single NWP Centre. Clicking on a dot on the map shows a pop-up with detailed information about the station data
+    availability over the selected period. For the 6-hourly periods, details of the observations received such as Layer
+    (Trop - from surface up 100hPa- and Stra -from 100hPa up balloon burst), Variable and observation type (TAC or the
+    new high resolution BUFR reports) and status (used / not used, &ldquo;used&rdquo; meaning that at least one
+    level/variable was assimilated) are provided.</p>
+<p style="text-align: justify;"><br/></p>
+<p style="text-align: justify;"><span style="color: rgb(0,0,255);"><em><strong>What bulletin type does NCEP assimilate, TAC, BUFR or both?&nbsp;</strong></em></span>
+</p>
+<p style="text-align: justify;">NCEP does not provide this information to WDQMS (that is why it is shown as Type: n/a)
+    as they&nbsp;don't currently pass info into their DA database on whether the observation source was TAC or BUFR.
+    However, most data NCEP uses is TAC.</p>
+<p><br/></p>
+<p><strong><em><span style="color: rgb(0,0,255);">Why does DWD surface availability maps always show less observations than ECMWF for example, with orange dots being the dominant feature?</span></em></strong>&nbsp;
+</p>
+<p style="text-align: justify;">The quality monitoring information provided by the four NWP Centres (DWD, ECMWF, JMA and
+    NCEP) is based on the feedback from their data assimilation (DA) system, therefore reflect their specific
+    characteristics. DWD DA does not have the model background available for the observations they do not intend to
+    assimilate, whereas ECMWF calculates the model background for all the observations made available to DA, even for
+    the ones that the model is not supposed to use in the assimilation (e.g. observations from stations that are in the
+    blacklist due to known poor quality).&nbsp; The frequency at which the observations are used within each
+    assimilation window (i.e. 3-hourly at DWD and hourly at ECMWF) explains the discrepancy seen in the number of
+    received by DWD (2 in 6-hour interval) and ECMWF (6 in a 6-hour interval).&nbsp;</p>
+<p><br/></p>
 <p><em><strong><span style="color: rgb(0,0,255);">What does O-B departures mean?</span></strong></em></p>
-<p style="text-align: justify;">O-B departures stands for Observation-minus-Background departures, i.e., the difference between the observed value and the model equivalent available from the NWP assimilation system. This background value is derived from the model&rsquo;s short-range forecast and is used as an independent estimate against which observations are compared. Although the O-B statistics are used here to ascertain the quality of the observations, a mismatch between observations and model short range forecast is not always due to poor quality observations.&nbsp; There can be other reasons for this mismatch, such as inaccurate metadata or model errors. Sometimes it is difficult to differentiate between some of the causes, mainly between observation issues and model errors. Having access to monitoring results from different NWP centres is an important feature of the WDQMS webtool as it allows to better diagnose the cause of some statistical anomalies, and to disentangle observation errors from model errors.&nbsp;</p>
-<p style="text-align: justify;"><br /></p>
-<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">Why am I not able to visualise the performance reports for a particular Centre and selected Period on some dates?</span></em></strong></p>
-<p style="text-align: justify;">The WDQMS web tool relies on four monitoring report files that are provided by each NWP Centre daily. Therefore, if any of these files from individual Centres are missing the web tool will not be able to display the performance reports for the period and Centre in question. One way to check whether the information was uploaded into WDQMS database is to click on &ldquo;Database Status&rdquo; on the right-hand side of the menu panel. This provides access to detailed information about the status of the daily upload of surface and upper-air files generated by each NWP Centre. The four files, identified by the four main synoptic hours (00, 06, 12 and 18 UTC) are displayed as green dots if uploaded and as red dots if missing in the WDQMS database.</p>
-<p><br /></p>
-<p><strong><em><span style="color: rgb(0,0,255);">What does &ldquo;near-real time&rdquo; mean in the context of WDQMS?</span></em></strong></p>
-<p style="text-align: justify;">The provisions of NWP data quality reports (four daily, centred at the main synoptic hours, 00, 06 12 and 18UTC) typically happens 24 hours after the actual observation. Each NWP Centre makes four files available daily, and their content is uploaded into the WDQMS database. As soon as the information has been uploaded, the system initiates the aggregation process and calculates the statistics required for displaying the availability and performance maps. The most recent performance maps always pertain to the previous day.</p>
-<p><br /></p>
+<p style="text-align: justify;">O-B departures stands for Observation-minus-Background departures, i.e., the difference
+    between the observed value and the model equivalent available from the NWP assimilation system. This background
+    value is derived from the model&rsquo;s short-range forecast and is used as an independent estimate against which
+    observations are compared. Although the O-B statistics are used here to ascertain the quality of the observations, a
+    mismatch between observations and model short range forecast is not always due to poor quality observations.&nbsp;
+    There can be other reasons for this mismatch, such as inaccurate metadata or model errors. Sometimes it is difficult
+    to differentiate between some of the causes, mainly between observation issues and model errors. Having access to
+    monitoring results from different NWP centres is an important feature of the WDQMS webtool as it allows to better
+    diagnose the cause of some statistical anomalies, and to disentangle observation errors from model errors.&nbsp;</p>
+<p style="text-align: justify;"><br/></p>
+<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">Why am I not able to visualise the performance reports for a particular Centre and selected Period on some dates?</span></em></strong>
+</p>
+<p style="text-align: justify;">The WDQMS web tool relies on four monitoring report files that are provided by each NWP
+    Centre daily. Therefore, if any of these files from individual Centres are missing the web tool will not be able to
+    display the performance reports for the period and Centre in question. One way to check whether the information was
+    uploaded into WDQMS database is to click on &ldquo;Database Status&rdquo; on the right-hand side of the menu panel.
+    This provides access to detailed information about the status of the daily upload of surface and upper-air files
+    generated by each NWP Centre. The four files, identified by the four main synoptic hours (00, 06, 12 and 18 UTC) are
+    displayed as green dots if uploaded and as red dots if missing in the WDQMS database.</p>
+<p><br/></p>
+<p><strong><em><span
+        style="color: rgb(0,0,255);">What does &ldquo;near-real time&rdquo; mean in the context of WDQMS?</span></em></strong>
+</p>
+<p style="text-align: justify;">The provisions of NWP data quality reports (four daily, centred at the main synoptic
+    hours, 00, 06 12 and 18UTC) typically happens 24 hours after the actual observation. Each NWP Centre makes four
+    files available daily, and their content is uploaded into the WDQMS database. As soon as the information has been
+    uploaded, the system initiates the aggregation process and calculates the statistics required for displaying the
+    availability and performance maps. The most recent performance maps always pertain to the previous day.</p>
+<p><br/></p>
 <p><strong><em><span style="color: rgb(0,0,255);">What does GBON stand for?</span></em></strong></p>
-<p style="text-align: justify;">WMO has developed the overall concept of Global Basic Observing Network (GBON) that defines a minimal set of surface-based operational observing stations for which a certain frequency of reporting is mandatory to support global NWP. The WDQMS webtool includes an option for displaying the availability performance based on GBON requirements (at the moment, only the draft provisions are available) to support the future implementation of GBON. According to the draft provisions the expected frequency of observations is: hourly for surface-based and 12-hourly for the upper-air observations. This means that the expected number of land-surface observations used to compute 6-hourly and daily availability performance indices are 6 and 24, respectively. For upper-air observations, the daily availability performance maps are based on a total of 2 expected observations per day.</p>
-<p><br /></p>
-<p><em><strong><span style="color: rgb(0,0,255);">What are the differences between OSCAR/Surface and GBON baselines?</span></strong></em></p>
-<p style="text-align: justify;">The availability performance maps are obtained by comparing the number of observations received by a particular NWP Centre during a certain period and the number of observations that were expected during this period. The number of expected observations using OSCAR/Surface as baseline are calculated based on the schedule recorded in OSCAR/surface for each WIGOS station. The GBON draft provisions, on the other hand, define a fixed number of expected observations that should be common to all (GBON) stations. Currently, for land-surface observations, the GBON baseline represents a more ambitious target, as some of the stations are still measuring only every 3 hours. Regarding upper-air observations, the differences between OSCAR/surface and GBON are less noticeable because a default schedule of 2 observations per day (00 and 12 UTC) is used when OSCAR/Surface does not have a schedule available (which is quite common at the moment).</p>
-<p style="text-align: justify;"><br /></p>
-<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">What does the option &ldquo;All&rdquo; under the &ldquo;Monitoring Centre&rdquo; button in the control panel provide?</span></em></strong></p>
-<p style="text-align: justify;">This option allows to aggregate results across NWP Centres. Based on the output of each NWP Centre, the best availability and quality result per station, variable and period is used to generate a combined performance report. The combined availability performance report is generated by taking the maximum availability result amongst all Centres (i.e. the information will come from the Centre with the highest total in the period). Regarding the quality, the result that will be retained is the one from the NWP model whose background field is closest to the observed value (i.e., the information will come from the Centre with the smallest O-B departures averaged over the period of interest).</p>
-<p><br /></p>
-<p><strong><em><span style="color: rgb(0,0,255);">What does &ldquo;Alert&rdquo; mean in the WDQMS context?</span></em></strong></p>
-<p style="text-align: justify;">The Alert is an option in the temporal aggregation based on 5-day moving averages designed to warn WMO Regional WIGOS Centres about potential quality issues. This measure is used to take into account the persistence of an existing daily problem. In cases in which the problem deteriorates, the daily map will reflect that quicker than the 5-day average map. However, when suddenly there is a daily outlier and the reason for that is model error (such as in the case of a bad short-range forecast) it will be better to have the alert based on a 5-day average because the issue will probably not be seen in the 5-day average and therefore will not trigger a false alarm.</p>
-<p style="text-align: justify;"><br /></p>
-<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">Why do the O-B statistics of variables like 2-metre temperature and 2-metre relative humidity show worse results than surface pressure?</span></em></strong></p>
-<p style="text-align: justify;">The O-B departures of 2-metre temperature and 2-metre relative humidity are more affected by model bias and representiveness issues than surface pressure. Large anomalies in 2-metre temperature for example can be found in winter times and in areas with steep orography which models cannot always resolve strong temperature inversions and thereby lead to poor forecast of 2-metre temperature. Moreover, the global atmospheric models use surface pressure in the assimilation, but not 2-metre temperature or 2-m humidity over land due to larger errors in the forecast model.</p>
-<p style="text-align: justify;"><br /></p>
-<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">How can it be possible to have a result above 100% on the availability maps (pink dots)?</span></em></strong></p>
-<p style="text-align: justify;">The availability performance is obtained by comparing the number of received observations against the number of expected to be exchanged internationally according to the schedule recorded in OSCAR/Surface (in percentage). Therefore, the maps displaying the availability performance for each station not only highlight differences in reporting performances, but also issues related to the stations metadata recorded in OSCAR/Surface. Availability performance above 100% is a typical example of the need to update the metadata so that it reflects the actual station measurement practices.</p>
-<p style="text-align: justify;"><br /></p>
-<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">Which surface pressure values are considered in the quality maps: station level pressure or pressure reduced to mean sea level?</span></em></strong></p>
-<p style="text-align: justify;">According to WMO regulation B/C1 (BUFR), both station level pressure and pressure reduced to sea level should be reported in SYNOP messages (for high elevation stations the height of a standard pressure level replaces the pressure reduced to sea level). The monitoring report files normally provides the O-B departures for the surface pressure value used in their assimilation systems, which can be either station pressure or mean sea level pressure. For example, the ECMWF data assimilation system tends to give preference to station level pressure, and only when this quantity is missing the mean sea level pressure is used.</p>
-<p style="text-align: justify;"><br /></p>
-<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">Why do some stations appear in the geopotential and not in the surface pressure quality maps?</span></em></strong></p>
-<p style="text-align: justify;">The monitoring report files provided by the NWP Centres include information either on surface pressure or on geopotential height depending on each of the reported observation was used in their data assimilation systems. In mountain areas, the stations report the geopotential height of a standard pressure level instead of mean sea level pressure, and some Centres (e.g. ECMWF and JMA) are able to assimilate these observations and provide O-B departure values.</p>
-<p style="text-align: justify;"><br /></p>
-<p style="text-align: justify;"><br /></p>
+<p style="text-align: justify;">WMO has developed the overall concept of Global Basic Observing Network (GBON) that
+    defines a minimal set of surface-based operational observing stations for which a certain frequency of reporting is
+    mandatory to support global NWP. The WDQMS webtool includes an option for displaying the availability performance
+    based on GBON requirements (at the moment, only the draft provisions are available) to support the future
+    implementation of GBON. According to the draft provisions the expected frequency of observations is: hourly for
+    surface-based and 12-hourly for the upper-air observations. This means that the expected number of land-surface
+    observations used to compute 6-hourly and daily availability performance indices are 6 and 24, respectively. For
+    upper-air observations, the daily availability performance maps are based on a total of 2 expected observations per
+    day.</p>
+<p><br/></p>
+<p><em><strong><span
+        style="color: rgb(0,0,255);">What are the differences between OSCAR/Surface and GBON baselines?</span></strong></em>
+</p>
+<p style="text-align: justify;">The availability performance maps are obtained by comparing the number of observations
+    received by a particular NWP Centre during a certain period and the number of observations that were expected during
+    this period. The number of expected observations using OSCAR/Surface as baseline are calculated based on the
+    schedule recorded in OSCAR/surface for each WIGOS station. The GBON draft provisions, on the other hand, define a
+    fixed number of expected observations that should be common to all (GBON) stations. Currently, for land-surface
+    observations, the GBON baseline represents a more ambitious target, as some of the stations are still measuring only
+    every 3 hours. Regarding upper-air observations, the differences between OSCAR/surface and GBON are less noticeable
+    because a default schedule of 2 observations per day (00 and 12 UTC) is used when OSCAR/Surface does not have a
+    schedule available (which is quite common at the moment).</p>
+<p style="text-align: justify;"><br/></p>
+<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">What does the option &ldquo;All&rdquo; under the &ldquo;Monitoring Centre&rdquo; button in the control panel provide?</span></em></strong>
+</p>
+<p style="text-align: justify;">This option allows to aggregate results across NWP Centres. Based on the output of each
+    NWP Centre, the best availability and quality result per station, variable and period is used to generate a combined
+    performance report. The combined availability performance report is generated by taking the maximum availability
+    result amongst all Centres (i.e. the information will come from the Centre with the highest total in the period).
+    Regarding the quality, the result that will be retained is the one from the NWP model whose background field is
+    closest to the observed value (i.e., the information will come from the Centre with the smallest O-B departures
+    averaged over the period of interest).</p>
+<p><br/></p>
+<p><strong><em><span
+        style="color: rgb(0,0,255);">What does &ldquo;Alert&rdquo; mean in the WDQMS context?</span></em></strong></p>
+<p style="text-align: justify;">The Alert is an option in the temporal aggregation based on 5-day moving averages
+    designed to warn WMO Regional WIGOS Centres about potential quality issues. This measure is used to take into
+    account the persistence of an existing daily problem. In cases in which the problem deteriorates, the daily map will
+    reflect that quicker than the 5-day average map. However, when suddenly there is a daily outlier and the reason for
+    that is model error (such as in the case of a bad short-range forecast) it will be better to have the alert based on
+    a 5-day average because the issue will probably not be seen in the 5-day average and therefore will not trigger a
+    false alarm.</p>
+<p style="text-align: justify;"><br/></p>
+<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">Why do the O-B statistics of variables like 2-metre temperature and 2-metre relative humidity show worse results than surface pressure?</span></em></strong>
+</p>
+<p style="text-align: justify;">The O-B departures of 2-metre temperature and 2-metre relative humidity are more
+    affected by model bias and representiveness issues than surface pressure. Large anomalies in 2-metre temperature for
+    example can be found in winter times and in areas with steep orography which models cannot always resolve strong
+    temperature inversions and thereby lead to poor forecast of 2-metre temperature. Moreover, the global atmospheric
+    models use surface pressure in the assimilation, but not 2-metre temperature or 2-m humidity over land due to larger
+    errors in the forecast model.</p>
+<p style="text-align: justify;"><br/></p>
+<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">How can it be possible to have a result above 100% on the availability maps (pink dots)?</span></em></strong>
+</p>
+<p style="text-align: justify;">The availability performance is obtained by comparing the number of received
+    observations against the number of expected to be exchanged internationally according to the schedule recorded in
+    OSCAR/Surface (in percentage). Therefore, the maps displaying the availability performance for each station not only
+    highlight differences in reporting performances, but also issues related to the stations metadata recorded in
+    OSCAR/Surface. Availability performance above 100% is a typical example of the need to update the metadata so that
+    it reflects the actual station measurement practices.</p>
+<p style="text-align: justify;"><br/></p>
+<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">Which surface pressure values are considered in the quality maps: station level pressure or pressure reduced to mean sea level?</span></em></strong>
+</p>
+<p style="text-align: justify;">According to WMO regulation B/C1 (BUFR), both station level pressure and pressure
+    reduced to sea level should be reported in SYNOP messages (for high elevation stations the height of a standard
+    pressure level replaces the pressure reduced to sea level). The monitoring report files normally provides the O-B
+    departures for the surface pressure value used in their assimilation systems, which can be either station pressure
+    or mean sea level pressure. For example, the ECMWF data assimilation system tends to give preference to station
+    level pressure, and only when this quantity is missing the mean sea level pressure is used.</p>
+<p style="text-align: justify;"><br/></p>
+<p style="text-align: justify;"><strong><em><span style="color: rgb(0,0,255);">Why do some stations appear in the geopotential and not in the surface pressure quality maps?</span></em></strong>
+</p>
+<p style="text-align: justify;">The monitoring report files provided by the NWP Centres include information either on
+    surface pressure or on geopotential height depending on each of the reported observation was used in their data
+    assimilation systems. In mountain areas, the stations report the geopotential height of a standard pressure level
+    instead of mean sea level pressure, and some Centres (e.g. ECMWF and JMA) are able to assimilate these observations
+    and provide O-B departure values.</p>
+<p style="text-align: justify;"><br/></p>
+<p style="text-align: justify;"><br/></p>

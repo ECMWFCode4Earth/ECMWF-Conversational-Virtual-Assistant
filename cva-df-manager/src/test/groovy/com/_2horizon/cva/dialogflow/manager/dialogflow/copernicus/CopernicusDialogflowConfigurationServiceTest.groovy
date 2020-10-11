@@ -26,7 +26,7 @@ class CopernicusDialogflowConfigurationServiceTest extends Specification {
         def entities = service.listEntities()
 
         then:
-        entities.size()>0
+        entities.size() > 0
 
     }
 

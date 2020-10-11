@@ -7,8 +7,8 @@ import java.util.TimeZone
 
 @OpenAPIDefinition(
     info = Info(
-            title = "cva-retrieval-pipeline",
-            version = "0.0"
+        title = "cva-retrieval-pipeline",
+        version = "0.0"
     )
 )
 object Application {
@@ -17,8 +17,8 @@ object Application {
     fun main(args: Array<String>) {
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"))
         Micronaut.build()
-                .packages("cva-retrieval-pipeline")
-                .mainClass(Application.javaClass)
-                .start()
+            .packages("cva-retrieval-pipeline")
+            .mainClass(Application.javaClass)
+            .start()
     }
 }

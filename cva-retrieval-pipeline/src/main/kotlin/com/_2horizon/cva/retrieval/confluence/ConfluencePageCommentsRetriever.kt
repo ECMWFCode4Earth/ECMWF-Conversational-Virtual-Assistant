@@ -11,7 +11,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class ConfluencePageCommentsRetriever(
-    private val confluenceOperations:ConfluenceOperations ,
+    private val confluenceOperations: ConfluenceOperations,
     private val applicationEventPublisher: ApplicationEventPublisher
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
@@ -26,19 +26,19 @@ class ConfluencePageCommentsRetriever(
     // }
 
     @EventListener
-    fun onStartup(startupEvent: StartupEvent){
-        
+    fun onStartup(startupEvent: StartupEvent) {
+
         // retrievePageComments(140380476)
     }
 
-    fun retrievePageComments(pageId:Long){
+    fun retrievePageComments(pageId: Long) {
 
-       confluenceOperations.contentComments(pageId)
-           .get()
-           .contents
-            .forEach {result ->
+        confluenceOperations.contentComments(pageId)
+            .get()
+            .contents
+            .forEach { result ->
 
-               val childId =  result.id
+                val childId = result.id
 
                 // applicationEventPublisher.publishEvent(ConfluenceParentChildRelationshipEvent(parentId = parentId, childId = childId))
                 //
@@ -47,7 +47,5 @@ class ConfluencePageCommentsRetriever(
                 // }
 
             }
-
-
     }
 }

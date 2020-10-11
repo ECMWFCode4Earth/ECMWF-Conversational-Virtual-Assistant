@@ -27,8 +27,8 @@ export class KpiDashboardService {
     return this.http.get<number>(`/api/dashboard/training-sentences-count/${agent}`);
   }
 
-  conversionSessionStats(agent: string): Observable<ConversionStep[]> {
-    return this.http.get<ConversionStep[]>(`/api/dashboard/conversion-session-stats/${agent}`);
+  conversionSessionStats(agent: string, type: string): Observable<ConversionStep[]> {
+    return this.http.get<ConversionStep[]>(`/api/dashboard/conversion-session-stats/${agent}/${type}`);
   }
 
 

@@ -24,17 +24,33 @@ class CopernicusDataStoreAsyncSolrSearchService {
     private val adsClient: JavaAsyncSolrClient =
         JavaAsyncSolrClient.create("https://ads.atmosphere.copernicus.eu/solr/drupal")
 
+    fun findDatasetById(id: String): Mono<CopernicusSolrResult> {
+        return search("id:$id", "dataset").map { it.first() }
+    }
+
+    fun findApplicationById(id: String): Mono<CopernicusSolrResult> {
+        return search("id:$id", "application").map { it.first() }
+    }
+
+    fun findAllDatasets(): Mono<List<CopernicusSolrResult>> {
+        return search("*:*", "dataset")
+    }
+
+    fun findAllApplications(): Mono<List<CopernicusSolrResult>> {
+        return search("*:*", "application")
+    }
+
     fun searchDatasetsByQueryTerm(term: String): Mono<List<CopernicusSolrResult>> {
-        return search(term, "dataset")
+        return search("(gn_content:\"$term\")^100", "dataset")
     }
 
     fun searchApplicationsByQueryTerm(term: String): Mono<List<CopernicusSolrResult>> {
-        return search(term, "application")
+        return search("(gn_content:\"$term\")^100", "application")
     }
 
-    private fun search(term: String, type: String): Mono<List<CopernicusSolrResult>> {
+    private fun search(q: String, type: String): Mono<List<CopernicusSolrResult>> {
 
-        val query = SolrQuery("(gn_content:\"$term\")^100")
+        val query = SolrQuery(q)
         query.addFilterQuery("ss_type:$type")
         query.highlight = true
         query.highlightSimplePre = "<mark>"
@@ -56,9 +72,8 @@ class CopernicusDataStoreAsyncSolrSearchService {
                         title = r["ss_gn_title"] as String,
                         type = r["ss_type"] as String,
                         abstract = r["ss_gn_abstract"] as String,
-                        keywords = r["sm_field_cds_keywords\$description"] as List<String>,
+                        keywords = r["sm_field_cds_keywords\$description"] as List<String>? ?: emptyList(),
                         highlights = highlighting[r["id"] as String]!!["gn_content"] ?: emptyList()
-
                     )
                 }
 

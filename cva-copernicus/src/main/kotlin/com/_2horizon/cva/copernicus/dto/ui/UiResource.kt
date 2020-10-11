@@ -1,7 +1,5 @@
 package com._2horizon.cva.copernicus.dto.ui
 
-
-
 import com._2horizon.cva.copernicus.dto.WmsSample
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.JsonNode
@@ -39,7 +37,7 @@ data class UiResource(
     val downloadable: Boolean,
 
     @JsonProperty("responsible_individual")
-    val responsibleIndividual: String?,   
+    val responsibleIndividual: String?,
 
     @JsonProperty("responsible_organisation")
     val responsibleOrganisation: String?,
@@ -95,7 +93,6 @@ data class UiResource(
     // @JsonProperty("reference_block")
     // val referenceBlock: List<Any>,
 
-
     @JsonProperty("related_resources")
     val relatedResources: List<RelatedResource>,
 
@@ -113,13 +110,13 @@ data class UiResource(
 
     @JsonProperty("rich_abstract")
     val richAbstract: String,
-    
+
     @JsonProperty("terms")
     val terms: List<String>,
-    
+
     @JsonProperty("wms_sample")
     val wmsSample: WmsSample?
-)    {
+) {
     val richAbstractCleaned: String
         get() = Jsoup.clean(richAbstract, Whitelist.none())
 }

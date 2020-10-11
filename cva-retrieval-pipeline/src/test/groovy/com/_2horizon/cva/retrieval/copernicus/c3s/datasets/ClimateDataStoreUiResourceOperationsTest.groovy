@@ -30,7 +30,7 @@ class ClimateDataStoreUiResourceOperationsTest extends Specification {
     @Unroll
     def "Should retrieve UI resource #key by key of ClimateDataStore API"() {
         when:
-        UiResource uiResource = c3sOperations.getUiResourceByKey(key)get()
+        UiResource uiResource = c3sOperations.getUiResourceByKey(key) get()
 
         then:
         uiResource.id == id
@@ -41,8 +41,6 @@ class ClimateDataStoreUiResourceOperationsTest extends Specification {
         'cems-fire-historical'       | 'eu.copernicus.climate.cems-fire-historical'       | 'dataset'
         'sis-fisheries-ocean-fronts' | 'eu.copernicus.climate.sis-fisheries-ocean-fronts' | 'dataset'
     }
-
-
 
 
 }

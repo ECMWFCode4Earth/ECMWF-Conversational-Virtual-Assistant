@@ -17,7 +17,7 @@ class ConfluenceOperationsTest extends Specification {
 
     def "Should retrieve Confluence spaces"() {
         when:
-        ContentResponse response = confluenceOperations.searchByKeyword("api",'CKB',200,0).block()
+        ContentResponse response = confluenceOperations.searchByKeyword("api", 'CKB', 200, 0).block()
 
         then:
         response.contents.size() == 10
@@ -26,6 +26,4 @@ class ConfluenceOperationsTest extends Specification {
     }
 
 
-
-   
 }

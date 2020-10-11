@@ -18,6 +18,9 @@ val dialogflowVersion: String by project
 val micronautGcpVersion: String by project
 val jsoupVersion: String by project
 val googleCloudBomVersion: String by project
+val micronautReactorVersion: String by project
+val gexf4jVersion: String by project
+val elasticsearchRestVersion: String by project
 
 plugins {
     groovy
@@ -39,6 +42,9 @@ configurations {
 
 dependencies {
 
+    implementation(project(":cva-common"))
+    implementation(project(":cva-airtable"))
+
     // https://cloud.google.com/dialogflow/docs/reference/libraries/java
     implementation(platform("com.google.cloud:libraries-bom:$googleCloudBomVersion"))
     implementation("com.google.cloud:google-cloud-dialogflow")
@@ -47,8 +53,14 @@ dependencies {
     // https://jsoup.org/
     implementation("org.jsoup:jsoup:$jsoupVersion")
 
-    implementation(project(":cva-common"))
-    implementation(project(":cva-airtable"))
+    // elasticsearch
+    implementation("org.elasticsearch.client:elasticsearch-rest-high-level-client:$elasticsearchRestVersion")
+
+    // https://github.com/francesco-ficarola/gexf4j
+    implementation("it.uniroma1.dis.wsngroup.gexf4j:gexf4j:$gexf4jVersion")
+
+    //https://micronaut-projects.github.io/micronaut-reactor/latest/guide/
+    implementation("io.micronaut.reactor:micronaut-reactor:$micronautReactorVersion")
 
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
     implementation("io.swagger.core.v3:swagger-annotations")
@@ -59,9 +71,12 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
     implementation("io.micronaut:micronaut-http-server-netty")
     implementation("io.micronaut:micronaut-runtime")
+    implementation("io.micronaut.security:micronaut-security")
+    implementation("io.micronaut.security:micronaut-security-jwt")
 
     kapt(platform("io.micronaut:micronaut-bom:$micronautVersion"))
     kapt("io.micronaut:micronaut-inject-java")
+    kapt("io.micronaut.security:micronaut-security-annotations")
     kapt("io.micronaut:micronaut-validation")
     kapt("io.micronaut.configuration:micronaut-openapi")
 
@@ -105,15 +120,15 @@ allOpen {
     annotation("io.micronaut.aop.Around")
 }
 
-tasks.create(name = "deploy-jar") {
+tasks.create(name = "deploy-cva-df-manager-app") {
 
-    dependsOn( "assemble")
+    dependsOn("assemble")
 
     group = "deploy"
 
     val myServer = org.hidetake.groovy.ssh.core.Remote(
         mapOf<String, Any>(
-            "host" to "136.156.90.162",
+            "host" to "manage-cva.ecmwf.int",
             "user" to "esowc25",
             "identity" to File("~/.ssh/id_rsa")
         )
@@ -125,10 +140,10 @@ tasks.create(name = "deploy-jar") {
                 put(
                     hashMapOf(
                         "from" to File("${project.buildDir.absolutePath}/libs/cva-df-manager-0.1-all.jar"),
-                        "into" to "/home/esowc25/manager-app"
+                        "into" to "/home/esowc25/cva-df-manager-app"
                     )
                 )
-                execute("sudo systemctl restart manager.service")
+                execute("sudo systemctl restart cva-manager.service")
             })
         })
     }

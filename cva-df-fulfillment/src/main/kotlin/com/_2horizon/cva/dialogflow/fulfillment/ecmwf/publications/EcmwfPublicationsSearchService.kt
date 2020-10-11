@@ -14,7 +14,7 @@ class EcmwfPublicationsSearchService(
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
-    fun findNumberOfResultsByKeyword(keyword:String):Mono<Int>{
+    fun findNumberOfResultsByKeyword(keyword: String): Mono<Int> {
         return ecmwfPublicationSearchOperations.search(keyword).map(::convert)
     }
 

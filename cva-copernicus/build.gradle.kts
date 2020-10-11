@@ -40,6 +40,8 @@ configurations {
 
 dependencies {
 
+    implementation(project(":cva-common"))
+
     //https://micronaut-projects.github.io/micronaut-reactor/latest/guide/
     implementation("io.micronaut.reactor:micronaut-reactor:$micronautReactorVersion")
 
@@ -51,8 +53,6 @@ dependencies {
 
     // https://jsoup.org/
     implementation("org.jsoup:jsoup:$jsoupVersion")
-
-    implementation(project(":cva-common"))
 
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
     implementation("io.swagger.core.v3:swagger-annotations")
@@ -105,7 +105,7 @@ tasks {
     }
 }
 
-allOpen{
+allOpen {
     annotation("io.micronaut.aop.Around")
 }
 

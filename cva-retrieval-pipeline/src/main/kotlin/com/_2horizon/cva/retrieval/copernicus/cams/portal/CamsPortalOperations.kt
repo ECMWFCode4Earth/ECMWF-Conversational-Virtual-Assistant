@@ -14,15 +14,13 @@ import reactor.core.publisher.Mono
 interface CamsPortalOperations {
 
     @Get("/news")
-    fun getNews(@QueryValue("q") q:String = "news", @QueryValue("page") page:Int=0): Mono<String>
+    fun getNews(@QueryValue("q") q: String = "news", @QueryValue("page") page: Int = 0): Mono<String>
 
     @Get("/press-releases")
-    fun getPressReleases(@QueryValue("q") q:String = "press-releases", @QueryValue("page") page:Int=0): Mono<String>
+    fun getPressReleases(@QueryValue("q") q: String = "press-releases", @QueryValue("page") page: Int = 0): Mono<String>
 
     @Get("/events")
-    fun getEvents(@QueryValue("q") q:String = "events", @QueryValue("page") page:Int=0): Mono<String>
-
-
+    fun getEvents(@QueryValue("q") q: String = "events", @QueryValue("page") page: Int = 0): Mono<String>
 }
 
 

@@ -7,10 +7,10 @@ import com._2horizon.cva.common.dialogflow.dto.RichContentItem
 import com._2horizon.cva.dialogflow.fulfillment.AbstractFulfillmentService
 import com._2horizon.cva.dialogflow.fulfillment.dialogflow.FulfillmentChain
 import com._2horizon.cva.dialogflow.fulfillment.elastic.ElasticMediaTypeSearchService
-import com._2horizon.cva.dialogflow.fulfillment.elastic.ElasticTwitterSearchService
 import com._2horizon.cva.dialogflow.fulfillment.extensions.asIntentMessage
 import com._2horizon.cva.dialogflow.fulfillment.extensions.convertToRichAccordionList
 import com._2horizon.cva.dialogflow.fulfillment.extensions.convertToRichContentList
+import com._2horizon.cva.dialogflow.fulfillment.twitter.TwitterFulfillmentService
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse
 import org.slf4j.LoggerFactory
@@ -22,9 +22,9 @@ import javax.inject.Singleton
  */
 @Singleton
 class CommunicationMediaTypeFulfillmentService(
-    private val objectMapper: ObjectMapper,
+    objectMapper: ObjectMapper,
     private val elasticMediaTypeSearchService: ElasticMediaTypeSearchService,
-    private val elasticTwitterSearchService: ElasticTwitterSearchService,
+    private val twitterFulfillmentService: TwitterFulfillmentService,
 ) : AbstractFulfillmentService(objectMapper) {
     private val log = LoggerFactory.getLogger(javaClass)
 
@@ -51,8 +51,7 @@ class CommunicationMediaTypeFulfillmentService(
                     .map { pageNodesResponse -> pageNodesResponse.pageNodes.map { pageNode -> pageNode.convertToRichContentList() } }
             }
             "tweet" -> { // main entity id
-                elasticTwitterSearchService.findLatestTweet(fulfillmentChain.agent.convertToTwitterUserScreenname())
-                    .map { tweetResponse -> tweetResponse.tweets.map { tweet -> tweet.convertToRichContentList() } }
+                twitterFulfillmentService.findLatestTweet(fulfillmentChain.agent.convertToTwitterUserScreenname())
             }
             else -> {
                 TODO()
@@ -65,7 +64,13 @@ class CommunicationMediaTypeFulfillmentService(
                     CustomPayload(itemsList.take(1)), // only show one in result
                     fulfillmentChain.dialogflowConversionStep,
                     fulfillmentChain.webhookResponseBuilder,
-                    prefixMessages = listOf("Wow, I found so many interesting ${communicationMediaType.capitalize()} articles. Here is the most recent one.".asIntentMessage()),
+                    prefixMessages = listOf(
+                        "Wow, I found so many interesting ${
+                            createCommunicationMediaTypeLabel(
+                                communicationMediaType
+                            )
+                        }. Here is the most recent one.".asIntentMessage()
+                    ),
                 )
             } else {
                 convertCustomPayloadToWebhookResponse(
@@ -77,6 +82,13 @@ class CommunicationMediaTypeFulfillmentService(
             }
         }
     }
+
+    private fun createCommunicationMediaTypeLabel(communicationMediaType: String): String =
+        if (communicationMediaType == "news") {
+            "news articles"
+        } else {
+            "${communicationMediaType}s"
+        }
 
     fun searchMediaTypeByKeyword(fulfillmentChain: FulfillmentChain): Mono<WebhookResponse.Builder> {
 
@@ -116,15 +128,10 @@ class CommunicationMediaTypeFulfillmentService(
                     .map { pageNodesResponse -> pageNodesResponse.pageNodes.map { pageNode -> pageNode.convertToRichAccordionList() } }
             }
             "tweet" -> { // main entity id
-                elasticTwitterSearchService.findTweetByKeyword(
-                    fulfillmentChain.agent.convertToTwitterUserScreenname(),
-                    keyword
+                twitterFulfillmentService.findTweetsByKeyword(
+                    twitterUserScreenname = fulfillmentChain.agent.convertToTwitterUserScreenname(),
+                    keyword = keyword
                 )
-                    .map { tweetResponse -> tweetResponse.tweets.map { tweet -> tweet.convertToRichContentList() } }
-            }
-
-            "event" -> { // main entity id
-                TODO("event not setup yet")
             }
 
             else -> {
@@ -136,10 +143,16 @@ class CommunicationMediaTypeFulfillmentService(
 
             if (itemsList.isNotEmpty()) {
                 convertCustomPayloadToWebhookResponse(
-                    CustomPayload(itemsList.take(5)), 
+                    CustomPayload(itemsList.take(5)),
                     fulfillmentChain.dialogflowConversionStep,
                     fulfillmentChain.webhookResponseBuilder,
-                    prefixMessages = listOf("Wow, I found so many interesting ${communicationMediaType.capitalize()}s. Here is the most recent one.".asIntentMessage()),
+                    prefixMessages = listOf(
+                        "I found so many interesting ${
+                            createCommunicationMediaTypeLabel(
+                                communicationMediaType
+                            )
+                        }. Here are the most relevant ones.".asIntentMessage()
+                    ),
                 )
             } else {
                 convertCustomPayloadToWebhookResponse(

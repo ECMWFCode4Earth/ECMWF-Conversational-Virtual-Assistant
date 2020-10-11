@@ -33,7 +33,7 @@ class AirtableSitemapsRepository(
         log.debug("SitemapEvent received")
 
         val sitemapRecords = sitemapsEvent.sitemapsList
-            .map { sitemap ->    
+            .map { sitemap ->
 
                 val urlSegments = URI(sitemap.loc).path.split("/").filter { it.isNotEmpty() }
 

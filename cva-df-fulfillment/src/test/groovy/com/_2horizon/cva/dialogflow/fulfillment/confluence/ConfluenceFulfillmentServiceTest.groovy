@@ -20,6 +20,6 @@ class ConfluenceFulfillmentServiceTest extends Specification {
         def r = service.searchByKeyword('api').block()
 
         then:
-        r.contents.size()>10
+        r.contents.size() > 10
     }
 }

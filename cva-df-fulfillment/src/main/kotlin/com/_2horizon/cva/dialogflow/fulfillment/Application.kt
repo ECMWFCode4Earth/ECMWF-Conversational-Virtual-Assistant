@@ -6,8 +6,8 @@ import io.swagger.v3.oas.annotations.info.Info
 
 @OpenAPIDefinition(
     info = Info(
-            title = "cva-df-fullfillment",
-            version = "0.0"
+        title = "cva-df-fullfillment",
+        version = "0.0"
     )
 )
 object Application {
@@ -15,8 +15,8 @@ object Application {
     @JvmStatic
     fun main(args: Array<String>) {
         Micronaut.build()
-                .packages("cva-df-fullfillment")
-                .mainClass(Application.javaClass)
-                .start()
+            .packages("cva-df-fullfillment")
+            .mainClass(Application.javaClass)
+            .start()
     }
 }

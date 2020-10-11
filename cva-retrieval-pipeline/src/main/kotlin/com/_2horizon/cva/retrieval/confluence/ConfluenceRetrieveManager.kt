@@ -9,6 +9,4 @@ import javax.inject.Singleton
 @Singleton
 class ConfluenceRetrieveManager {
     private val log = LoggerFactory.getLogger(javaClass)
-
-
 }

@@ -59,7 +59,7 @@ class ElasticTwitterSearchService(
             .must(QueryBuilders.termQuery("userScreenName", userScreenName))
             .must(matchQuery)
 
-        return executeSearch(query, size = size, from = from, listOf(getScoreSort(), getDateTimeSort()))
+        return executeSearch(query, size = size, from = from, listOf(getDateTimeSort()))
     }
 
     private fun executeSearch(

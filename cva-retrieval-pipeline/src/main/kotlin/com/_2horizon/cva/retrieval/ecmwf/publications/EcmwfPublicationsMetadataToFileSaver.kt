@@ -23,12 +23,11 @@ open class EcmwfPublicationsMetadataToFileSaver(
     open fun ecmwfPublicationEventReceived(ecmwfPublicationsEvent: EcmwfPublicationsEvent) {
         log.debug("EcmwfPublicationToFileSaver: EcmwfPublicationEvent received")
 
-         ecmwfPublicationsEvent.ecmwfPublicationDTOs.
-            forEach { pubDTO ->
-                File("$publicationsPath/json/${pubDTO.nodeId}.json").writeText(
-                    objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(pubDTO)
-                )
-            }
+        ecmwfPublicationsEvent.ecmwfPublicationDTOs.forEach { pubDTO ->
+            File("$publicationsPath/json/${pubDTO.nodeId}.json").writeText(
+                objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(pubDTO)
+            )
+        }
     }
 
     fun readInLocalEcmwfPublicationDTO(nodeId: Int): EcmwfPublicationDTO {

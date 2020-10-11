@@ -19,8 +19,6 @@ interface ConfluenceOperations {
     //     start: Int = 0
     // ): Mono<ContentResponse>
 
-
-
     // @Get("/space?start={start}&limit={limit}&type={type}&expand=metadata.labels,description.view,description.plain,icon")
     // fun spacesWithMetadataLabelsAndDescriptionAndIcon(
     //     limit: Int = 500,
@@ -47,7 +45,5 @@ interface ConfluenceOperations {
     //     limit: Int = 500,
     //     start: Int = 0
     // ): PageChildrenResponse
-
-
 
 }

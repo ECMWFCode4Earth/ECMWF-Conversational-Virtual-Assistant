@@ -14,6 +14,9 @@
       "action": {
         "type": "keyword"
       },
+      "agent": {
+        "type": "keyword"
+      },
       "responseId": {
         "type": "keyword"
       },

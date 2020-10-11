@@ -49,3 +49,9 @@ Accept: application/json
 # Get all pages in space
 GET https://confluence.ecmwf.int/rest/api/content?type=page&spaceKey=CKB&start=0&limit=1&expand=history,version,metadata.labels,body.view,body.view,body.storage
 Accept: application/json
+
+
+###
+#
+GET https://confluence.ecmwf.int/rest/api/content/search?cql=text~{%22ecmwf%22}+and+type=page+and+space=UDOC&expand=history,version,metadata.labels&start=0&limit=1
+Accept: application/json

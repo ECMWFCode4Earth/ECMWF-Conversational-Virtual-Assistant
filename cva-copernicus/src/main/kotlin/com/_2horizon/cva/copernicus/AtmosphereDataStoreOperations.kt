@@ -32,8 +32,6 @@ interface AtmosphereDataStoreOperations {
 
     @Get("/v2.ui/terms/list")
     fun getUiTermsList(): Optional<TermsList>
-
-
 }
 
 

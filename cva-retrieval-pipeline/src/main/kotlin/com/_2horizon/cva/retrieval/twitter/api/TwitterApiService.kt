@@ -14,7 +14,6 @@ class TwitterApiService(private val twitterConfig: TwitterConfig) {
 
     private val log = LoggerFactory.getLogger(TwitterApiService::class.java)
 
-
     val twitter: Twitter by lazy {
         val confBuilder = ConfigurationBuilder()
             .setOAuthConsumerKey(twitterConfig.consumerKey)
@@ -27,7 +26,4 @@ class TwitterApiService(private val twitterConfig: TwitterConfig) {
 
         twitter4j.TwitterFactory(confBuilder.build()).instance
     }
-
-
-
 }

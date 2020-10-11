@@ -1,5 +1,6 @@
 package com._2horizon.cva.dialogflow.fulfillment.extensions
 
+import com._2horizon.cva.common.copernicus.dto.CopernicusEventNode
 import com._2horizon.cva.common.copernicus.dto.CopernicusPageNode
 import com._2horizon.cva.common.copernicus.dto.asHumanReadable
 import com._2horizon.cva.common.dialogflow.dto.RichContentAccordionItem
@@ -26,6 +27,30 @@ fun List<String>.asIntentMessage(): Intent.Message {
         ).build()
 }
 
+fun CopernicusEventNode.convertToRichContentList(): MutableList<RichContentItem> {
+    val items = mutableListOf<RichContentItem>()
+
+    val loc = if (this.location != null) {
+        "${this.location} - "
+    } else {
+        ""
+    }
+
+    val ed = if (this.endDate != null) {
+        " to ${this.endDate}"
+    } else {
+        ""
+    }
+
+    val infoItem = RichContentInfoItem(
+        title = this.title,
+        subtitle = "${loc}Date: ${this.startDate}$ed",
+        actionLink = this.url
+    )
+    items.add(infoItem)
+    return items
+}
+
 fun CopernicusPageNode.convertToRichContentList(): MutableList<RichContentItem> {
     val items = mutableListOf<RichContentItem>()
 
@@ -40,6 +65,7 @@ fun CopernicusPageNode.convertToRichContentList(): MutableList<RichContentItem> 
     items.add(infoItem)
     return items
 }
+
 fun CopernicusPageNode.convertToRichAccordionList(): MutableList<RichContentItem> {
     val items = mutableListOf<RichContentItem>()
 
@@ -56,12 +82,10 @@ fun CopernicusPageNode.convertToRichAccordionList(): MutableList<RichContentItem
     return items
 }
 
-
-
 fun Tweet.convertToRichContentList(): MutableList<RichContentItem> {
     val items = mutableListOf<RichContentItem>()
 
-    if (this.mediaExpandedUrls.isNotEmpty() ) {
+    if (this.mediaExpandedUrls.isNotEmpty()) {
         items.add(RichContentImageItem(rawUrl = this.mediaExpandedUrls.first(), accessibilityText = ""))
     }
     val infoItem = RichContentInfoItem(

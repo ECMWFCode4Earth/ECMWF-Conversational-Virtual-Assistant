@@ -28,7 +28,6 @@ class CopernicusAirtableReadInService(
 
     @EventListener
     fun onStartUp(startupEvent: StartupEvent) {
-
         readInFaqs()
     }
 
@@ -40,7 +39,7 @@ class CopernicusAirtableReadInService(
 
             val readyForUpload = r.getFieldBoolean("For upload")
 
-            if (readyForUpload!=null && readyForUpload) {
+            if (readyForUpload != null && readyForUpload) {
 
                 val intentId = r.getFieldString("IntentID") ?: error("IntentID field not found")
 

@@ -14,19 +14,18 @@ import reactor.core.publisher.Mono
  */
 @Controller("/fulfillment")
 class DialogflowFulfillmentController(
-    private val dfFulfillmentDispatcherC3S: C3SDialogflowFulfillmentDispatcher
+    private val dfFulfillmentDispatcherC3S: C3sDialogflowFulfillmentDispatcher,
+    private val dfFulfillmentDispatcherEcmwf: EcmwfDialogflowFulfillmentDispatcher,
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
     @Post("/c3s-request")
-    fun c3sFulfillment(@Body webhookRequestString: String) = fulfillment(webhookRequestString, Agent.C3S_CVA)
+    fun c3sFulfillment(@Body webhookRequestString: String): Mono<String> =
+        fulfillment(webhookRequestString, Agent.C3S_CVA)
 
-    // @Post("/cams-request")
-    // fun camsFulfillment(@Body webhookRequestString: String): String = fulfillment(webhookRequestString, Agent.CAMS_CVA)
-    //
-    // @Post("/ecmwf-request")
-    // fun ecmwfFulfillment(@Body webhookRequestString: String): String =
-    //     fulfillment(webhookRequestString, Agent.ECMWF_CVA)
+    @Post("/ecmwf-request")
+    fun ecmwfFulfillment(@Body webhookRequestString: String): Mono<String> =
+        fulfillment(webhookRequestString, Agent.ECMWF_CVA)
 
     private fun fulfillment(webhookRequestString: String, agent: Agent): Mono<String> {
         val webhookRequest = convertJsonToWebhookRequest(webhookRequestString)
@@ -34,7 +33,7 @@ class DialogflowFulfillmentController(
         val webhookResponse = if (agent == Agent.C3S_CVA) {
             dfFulfillmentDispatcherC3S.handle(webhookRequest, agent)
         } else {
-            TODO()
+            dfFulfillmentDispatcherEcmwf.handle(webhookRequest, agent)
         }
 
         return webhookResponse.map { webhookResponse -> JsonFormat.printer().print(webhookResponse) }

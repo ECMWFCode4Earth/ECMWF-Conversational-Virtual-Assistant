@@ -9,11 +9,14 @@ import org.jsoup.parser.Parser
  */
 
 class StorageFormatUtil {
-    companion object{
+    companion object {
 
         @JvmOverloads
         @JvmStatic
-        fun createDocumentFromStructuredStorageFormat(storageFormat: String, removeCodeBlock: Boolean = true): Document {
+        fun createDocumentFromStructuredStorageFormat(
+            storageFormat: String,
+            removeCodeBlock: Boolean = true
+        ): Document {
             val document = Jsoup.parse(storageFormat, "", Parser.xmlParser())
 
             if (removeCodeBlock) {

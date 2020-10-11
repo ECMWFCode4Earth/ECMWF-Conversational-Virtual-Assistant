@@ -16,6 +16,7 @@ fun Agent.convertToContentSource(): ContentSource {
         else -> error("Couldn't convert agent $this to ContentSource")
     }
 }
+
 fun Agent.convertToTwitterUserScreenname(): String {
     return when (this) {
         Agent.C3S_CVA -> "CopernicusECMWF"

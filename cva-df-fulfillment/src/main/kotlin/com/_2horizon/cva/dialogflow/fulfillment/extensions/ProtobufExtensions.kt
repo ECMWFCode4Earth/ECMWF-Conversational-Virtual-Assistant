@@ -20,7 +20,7 @@ fun Struct.convertToJsonString(): String = JsonFormat.printer().print(this)
 // }
 
 inline fun <reified T> ObjectMapper.convertStructToObject(struct: Struct): T {
-    val json =  JsonFormat.printer().print(struct)
+    val json = JsonFormat.printer().print(struct)
     return this.readValue(json, T::class.java)
 }
 

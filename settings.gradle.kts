@@ -6,8 +6,7 @@ include(
     "cva-retrieval-pipeline",
     "cva-df-fulfillment",
     "cva-df-manager",
-    "cva-copernicus",
-    "cva-nlp"
+    "cva-copernicus"
 )
 
 pluginManagement {

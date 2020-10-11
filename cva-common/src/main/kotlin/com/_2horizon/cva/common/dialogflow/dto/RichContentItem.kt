@@ -9,7 +9,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
     include = JsonTypeInfo.As.PROPERTY,
-    property = "type")
+    property = "type"
+)
 @JsonSubTypes(
     JsonSubTypes.Type(value = RichContentInfoItem::class, name = "info"),
     JsonSubTypes.Type(value = RichContentButtonItem::class, name = "button"),

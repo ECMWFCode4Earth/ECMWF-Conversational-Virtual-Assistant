@@ -7,8 +7,8 @@ object Application {
     @JvmStatic
     fun main(args: Array<String>) {
         Micronaut.build()
-                .packages("cva-copernicus")
-                .mainClass(Application.javaClass)
-                .start()
+            .packages("cva-copernicus")
+            .mainClass(Application.javaClass)
+            .start()
     }
 }

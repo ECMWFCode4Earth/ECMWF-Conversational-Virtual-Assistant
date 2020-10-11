@@ -1,6 +1,5 @@
 package com._2horizon.cva.common.confluence.dto.content
 
-
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.jsoup.Jsoup
 import org.jsoup.safety.Whitelist

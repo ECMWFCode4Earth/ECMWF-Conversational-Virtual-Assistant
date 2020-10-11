@@ -7,10 +7,10 @@ import smile.nlp.tokenizer.SimpleTokenizer
 /**
  * Created by Frank Lieber (liefra) on 2020-09-02.
  */
-fun String.splitIntoWords(splitContraction:Boolean=false): List<String> {
-     return SimpleTokenizer(splitContraction).split(this).toList()
+fun String.splitIntoWords(splitContraction: Boolean = false): List<String> {
+    return SimpleTokenizer(splitContraction).split(this).toList()
 }
 
 fun posTagging(words: List<String>): List<PennTreebankPOS> {
-   return HMMPOSTagger.getDefault().tag(words.toTypedArray()).toList()
+    return HMMPOSTagger.getDefault().tag(words.toTypedArray()).toList()
 }

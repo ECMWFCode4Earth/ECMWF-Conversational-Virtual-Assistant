@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {parse} from 'echarts/extension/dataTool/gexf';
+import {AgentChangeService} from '../../../agent-change.service';
 
 @Component({
   selector: 'ngx-flow-graph-chart',
@@ -16,11 +17,17 @@ export class FlowGraphChartComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
+    private acs: AgentChangeService,
   ) {
   }
 
   ngOnInit(): void {
-    this.options = this.http.get('/api/flow-graph/index', {responseType: 'text'}).pipe(
+    this.acs.selectedAgent$.subscribe((agent: string) => this.initFlowGraph(agent));
+  }
+
+
+  private initFlowGraph(agent: string) {
+    this.options = this.http.get(`/api/flow-graph/index/${agent}`, {responseType: 'text'}).pipe(
       map((xml) => {
         const graph = parse(xml);
         const categories = [];
@@ -84,6 +91,4 @@ export class FlowGraphChartComponent implements OnInit {
       }),
     );
   }
-
-
 }

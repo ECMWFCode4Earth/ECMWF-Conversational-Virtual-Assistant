@@ -1,11 +1,8 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-
 val airtableVersion: String by project
 val jsoupVersion: String by project
-val smileNlpKtVersion: String by project
-val smileCoreVersion: String by project
 val commonsIoVersion: String by project
 val pdfBoxVersion: String by project
 val elasticsearchRestVersion: String by project
@@ -45,13 +42,12 @@ dependencies {
 
     implementation(project(":cva-common"))
     implementation(project(":cva-airtable"))
+    implementation(project(":cva-copernicus"))
 
     // https://cloud.google.com/dialogflow/docs/reference/libraries/java
-    // implementation("com.google.cloud:google-cloud-dialogflow:$dialogflowVersion")
     implementation(platform("com.google.cloud:libraries-bom:$googleCloudBomVersion"))
     implementation("com.google.cloud:google-cloud-dialogflow")
     implementation("io.micronaut.gcp:micronaut-gcp-common:$micronautGcpVersion")
-
 
     // https://jsoup.org/
     implementation("org.jsoup:jsoup:$jsoupVersion")
@@ -66,12 +62,6 @@ dependencies {
     implementation("org.elasticsearch.client:elasticsearch-rest-high-level-client:$elasticsearchRestVersion")
     implementation("fr.pilato.elasticsearch:elasticsearch-beyonder:$elasticsearchBeyonderVersion")
 
-    // Neo4j
-    implementation("io.micronaut.configuration:micronaut-neo4j-bolt:$micronautNeo4jBoltVersion")
-    implementation("org.neo4j:neo4j-ogm-core:$micronautNeo4jOgmVersion")
-    implementation("org.neo4j:neo4j-ogm-bolt-driver:$micronautNeo4jOgmVersion")
-    implementation("org.neo4j:neo4j-ogm-bolt-native-types:$micronautNeo4jOgmVersion")
-
     // https://commons.apache.org/proper/commons-csv/
     implementation("org.apache.commons:commons-csv:$commonCsvVersion")
 
@@ -84,7 +74,7 @@ dependencies {
     implementation("io.swagger.core.v3:swagger-annotations")
     implementation("io.micronaut.graphql:micronaut-graphql")
     kapt("io.micronaut.configuration:micronaut-openapi")
-    
+
 }
 
 tasks {
@@ -112,19 +102,19 @@ noArg {
     annotation("org.neo4j.ogm.annotation.RelationshipEntity")
 }
 
-allOpen{
+allOpen {
     annotation("io.micronaut.aop.Around")
 }
 
 tasks.create(name = "deploy-cva-retrieval-pipeline") {
 
-    dependsOn( "assemble")
+    dependsOn("assemble")
 
     group = "deploy"
 
     val myServer = org.hidetake.groovy.ssh.core.Remote(
         mapOf<String, Any>(
-            "host" to "136.156.90.116",
+            "host" to "manage-cva.ecmwf.int",
             "user" to "esowc25",
             "identity" to File("~/.ssh/id_rsa")
         )

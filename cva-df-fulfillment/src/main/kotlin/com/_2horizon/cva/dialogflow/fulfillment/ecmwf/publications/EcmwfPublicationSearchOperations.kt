@@ -1,6 +1,5 @@
 package com._2horizon.cva.dialogflow.fulfillment.ecmwf.publications
 
-
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.PathVariable
 import io.micronaut.http.client.annotation.Client
@@ -13,5 +12,5 @@ import reactor.core.publisher.Mono
 interface EcmwfPublicationSearchOperations {
 
     @Get("/search/{keyword}")
-    fun search(@PathVariable keyword:String): Mono<String>
+    fun search(@PathVariable keyword: String): Mono<String>
 }

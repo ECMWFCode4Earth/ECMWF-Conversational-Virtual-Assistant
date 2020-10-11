@@ -13,5 +13,5 @@ import reactor.core.publisher.Mono
 interface CopernicusDataStoreStatusOperations {
 
     @Get("/live/activity/status")
-    fun liveActivityStatus( ): Mono<CopernicusDataStoreStatus>
+    fun liveActivityStatus(): Mono<CopernicusDataStoreStatus>
 }

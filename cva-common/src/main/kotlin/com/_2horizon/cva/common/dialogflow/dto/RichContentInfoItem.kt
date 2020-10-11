@@ -8,11 +8,11 @@ data class RichContentInfoItem(
     val title: String,
 
     @JsonProperty("subtitle")
-    val subtitle: String?=null,
+    val subtitle: String? = null,
 
     @JsonProperty("actionLink")
     val actionLink: String,
 
     @JsonProperty("type")
     override val type: String = "info"
-):RichContentItem
+) : RichContentItem

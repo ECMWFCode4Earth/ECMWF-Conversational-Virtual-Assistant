@@ -40,8 +40,6 @@ dependencies {
     kapt("io.micronaut:micronaut-inject-java")
     kapt("io.micronaut:micronaut-validation")
 
-
-
 }
 
 tasks {
@@ -63,7 +61,7 @@ tasks {
     }
 }
 
-allOpen{
+allOpen {
     annotation("io.micronaut.aop.Around")
 }
 
