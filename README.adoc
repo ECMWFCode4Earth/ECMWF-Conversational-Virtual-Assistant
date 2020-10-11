@@ -10,7 +10,7 @@ To achieve this, we will build up a modern processing pipeline which retrieves c
 
 Users who will make use of our chatbot will hopefully find answers faster than before, and ECMWF's support team gets more time to focus on critical support cases.
 
-NOTE: Currently, all components of the source code are experimental and will be frequently changed. The final version will be available end of August 2020.
+NOTE: Currently, all components of the source code are experimental and will be frequently changed. The final version will be available end of September 2020.
 
 .High-level architecture overview
 image::asciidoc/img/CVA-bot-High-level.png[]
