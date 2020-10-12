@@ -12,6 +12,7 @@ import dev.fuxing.airtable.formula.AirtableFormula
 import dev.fuxing.airtable.formula.LogicalOperator
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
+import io.micronaut.runtime.event.annotation.EventListener
 import org.slf4j.LoggerFactory
 import javax.inject.Singleton
 
@@ -29,7 +30,7 @@ class AirtableSpacesRepository(
     private val spacesTable = api.base(spacesBase).table("Spaces")
     private val labelsTable = api.base(spacesBase).table("Labels")
 
-    // @EventListener
+    @EventListener
     fun spacesReceived(spacesEvent: ConfluenceSpacesEvent) {
         log.debug("ConfluenceSpacesEvent received")
 

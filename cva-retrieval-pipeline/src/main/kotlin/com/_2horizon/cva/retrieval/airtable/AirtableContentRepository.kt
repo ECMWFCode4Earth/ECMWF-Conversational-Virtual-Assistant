@@ -10,6 +10,7 @@ import dev.fuxing.airtable.formula.AirtableFormula
 import dev.fuxing.airtable.formula.LogicalOperator
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
+import io.micronaut.runtime.event.annotation.EventListener
 import org.jsoup.Jsoup
 import org.slf4j.LoggerFactory
 import java.time.format.DateTimeFormatter
@@ -29,7 +30,7 @@ class AirtableContentRepository(
     private val contentTable = api.base(contentBase).table("Content")
     private val labelsTable = api.base(contentBase).table("Labels")
 
-    // @EventListener
+    @EventListener
     fun spacesReceived(contentEvent: ConfluenceContentEvent) {
         log.debug("ConfluenceContentEvent received")
 

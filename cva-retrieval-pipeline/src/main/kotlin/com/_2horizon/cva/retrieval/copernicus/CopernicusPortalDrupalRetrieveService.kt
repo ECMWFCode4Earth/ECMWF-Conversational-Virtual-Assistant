@@ -6,14 +6,15 @@ import com._2horizon.cva.common.elastic.ContentSource
 import com._2horizon.cva.common.elastic.baseUri
 import com._2horizon.cva.retrieval.copernicus.c3s.portal.C3SPortalOperations
 import com._2horizon.cva.retrieval.copernicus.cams.portal.CamsPortalOperations
+import com._2horizon.cva.retrieval.elastic.ElasticCopernicusPagesSearch
 import com._2horizon.cva.retrieval.event.BasicPageNodesEvent
 import com._2horizon.cva.retrieval.event.ContentPageNodesEvent
 import io.micronaut.context.annotation.Value
 import io.micronaut.context.event.ApplicationEventPublisher
-import io.micronaut.context.event.StartupEvent
 import io.micronaut.http.client.RxHttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.runtime.event.annotation.EventListener
+import io.micronaut.scheduling.annotation.Scheduled
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
 import org.slf4j.LoggerFactory
@@ -39,6 +40,7 @@ class CopernicusPortalDrupalRetrieveService(
     private val c3sPortalOperations: C3SPortalOperations,
     private val camsPortalOperations: CamsPortalOperations,
     private val applicationEventPublisher: ApplicationEventPublisher,
+    private val elasticCopernicusPagesSearch: ElasticCopernicusPagesSearch,
     @Value("\${app.feature.retrieval-pipeline.copernicus.portal.c3s.enabled:false}") private val retrievalPipelinePortalC3SEnabled: Boolean,
     @Value("\${app.feature.retrieval-pipeline.copernicus.portal.cams.enabled:false}") private val retrievalPipelinePortalCAMSEnabled: Boolean
 ) {
@@ -46,8 +48,8 @@ class CopernicusPortalDrupalRetrieveService(
 
     private val crawlDelay: Duration = Duration.ofMillis(500)
 
-    @EventListener
-    fun onStartupEvent(startupEvent: StartupEvent) {
+    @Scheduled(cron = "\${app.feature.retrieval-pipeline.copernicus.portal-cron}")
+    fun crawlCopernicusPortals() {
         if (retrievalPipelinePortalC3SEnabled) {
 
             retrieveRemotePageNodes(
@@ -109,6 +111,10 @@ class CopernicusPortalDrupalRetrieveService(
         }
     }
 
+    /**
+     * Retrieves the portal holder pages to retrieve basic [CopernicusPageNode] properties.
+     * After retrieval of all basic page nodes, publishes [BasicPageNodesEvent]
+     */
     private fun retrieveRemotePageNodes(
         contentSource: ContentSource,
         nodeType: NodeType,
@@ -143,8 +149,16 @@ class CopernicusPortalDrupalRetrieveService(
     fun onBasicPageItemsEvent(basicPageNodesEvent: BasicPageNodesEvent) {
 
         Flux.fromIterable(basicPageNodesEvent.itemCopernicuses)
-            .delayElements(crawlDelay)
             .flatMap { item ->
+                elasticCopernicusPagesSearch.pageNodeNotExists(item.url, item.nodeType, item.source).zipWith(
+                    Mono.just(item)
+                )
+            }
+            .filter {  it.t1 } // take only pageNodes which do not exist yet
+            .delayElements(crawlDelay)
+            .flatMap { tuple ->
+
+                val item = tuple.t2
 
                 val htmlFlowable = when (basicPageNodesEvent.contentSource) {
                     ContentSource.C3S -> {

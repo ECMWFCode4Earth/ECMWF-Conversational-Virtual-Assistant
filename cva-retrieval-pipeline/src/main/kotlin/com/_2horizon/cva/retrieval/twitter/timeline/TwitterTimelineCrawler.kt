@@ -7,8 +7,7 @@ import com._2horizon.cva.retrieval.twitter.api.TwitterApiService
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
 import io.micronaut.context.event.ApplicationEventPublisher
-import io.micronaut.context.event.StartupEvent
-import io.micronaut.runtime.event.annotation.EventListener
+import io.micronaut.scheduling.annotation.Scheduled
 import org.slf4j.LoggerFactory
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -41,16 +40,11 @@ class TwitterTimelineCrawler(
 
     private val crawlerRunning = AtomicBoolean()
 
-    @EventListener
-    fun onStartupEvent(startupEvent: StartupEvent) {
-        userTimeline()
-    }
-
     private fun getUserIds(): Mono<List<Long>> {
         return Mono.just(users)
     }
 
-    // @Scheduled(cron = "\${app.twitter.crawler.cron}")
+    @Scheduled(cron = "\${app.feature.retrieval-pipeline.twitter.crawler.cron}")
     fun userTimeline() {
 
         if (crawlerEnabled) {

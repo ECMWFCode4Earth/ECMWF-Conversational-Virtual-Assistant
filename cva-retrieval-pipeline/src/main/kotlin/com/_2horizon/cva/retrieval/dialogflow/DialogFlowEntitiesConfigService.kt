@@ -78,11 +78,6 @@ class DialogFlowEntitiesConfigService(
         }
     }
 
-    // fun listEntityType(dfClientsHolder: DialogflowClientsHolder, entityTypeName: String): List<EntityType.Entity> {
-    //     return dfClientsHolder.getEntityTypesClient().use { entityTypesClient ->
-    //         entityTypesClient.getEntityType(entityTypeName).entitiesList
-    //     }
-    // }
 
     fun listAllEntityTypes(dfClientsHolder: DialogflowClientsHolder): List<EntityType> {
 

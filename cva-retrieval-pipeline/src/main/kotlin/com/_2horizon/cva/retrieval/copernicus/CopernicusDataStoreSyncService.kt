@@ -5,8 +5,7 @@ import com._2horizon.cva.copernicus.dto.solr.CopernicusSolrResult
 import com._2horizon.cva.retrieval.event.CopernicusCatalogueReceivedEvent
 import io.micronaut.context.annotation.Value
 import io.micronaut.context.event.ApplicationEventPublisher
-import io.micronaut.context.event.StartupEvent
-import io.micronaut.runtime.event.annotation.EventListener
+import io.micronaut.scheduling.annotation.Scheduled
 import org.slf4j.LoggerFactory
 import javax.inject.Singleton
 
@@ -22,8 +21,8 @@ class CopernicusDataStoreSyncService(
 ) {
     private val log = LoggerFactory.getLogger(javaClass)
 
-    @EventListener
-    fun onStartup(startupEvent: StartupEvent) {
+    @Scheduled(cron = "\${app.feature.retrieval-pipeline.copernicus.data-store-cron}")
+    fun copernicusDataStoreSync() {
         if (retrievalPipelineCdsEnabled) {
             retrieveClimateDataStoreCatalogue()
         } else {

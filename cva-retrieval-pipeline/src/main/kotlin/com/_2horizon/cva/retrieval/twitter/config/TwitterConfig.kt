@@ -22,9 +22,6 @@ class TwitterConfig {
     @NotNull
     var accessTokenSecret: String? = null
 
-    // @NotNull
-    // var crawlerEnabled: Boolean? = null
-
     @ConfigurationBuilder(configurationPrefix = "crawler")
     val crawler = CrawlerProperties()
 
