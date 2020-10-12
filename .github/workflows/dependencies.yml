@@ -24,3 +24,11 @@ jobs:
       - name: 'Check cva-retrieval-pipeline dependency updates'
         run: |
           ./gradlew cva-retrieval-pipeline:checkDependencyUpdates
+
+      - name: 'Check cva-df-fulfillment dependency updates'
+        run: |
+          ./gradlew cva-df-fulfillment:checkDependencyUpdates
+
+      - name: 'Check cva-df-manager dependency updates'
+        run: |
+          ./gradlew cva-df-manager:checkDependencyUpdates
