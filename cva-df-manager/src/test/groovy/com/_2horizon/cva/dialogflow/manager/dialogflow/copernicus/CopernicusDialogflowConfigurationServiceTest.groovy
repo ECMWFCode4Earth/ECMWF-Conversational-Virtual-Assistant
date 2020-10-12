@@ -30,15 +30,5 @@ class CopernicusDialogflowConfigurationServiceTest extends Specification {
 
     }
 
-    @Unroll
-//    @Ignore
-    def "Should create communication_media_type Entities"() {
 
-        when:
-        def ret = service.addCommunicationMediaType()
-
-        then:
-        ret.displayName == "communication_media_type"
-
-    }
 }
