@@ -1,4 +1,4 @@
-package com._2horizon.cva.retrieval
+package com._2horizon.cva.copernicus
 
 import io.micronaut.runtime.Micronaut
 
