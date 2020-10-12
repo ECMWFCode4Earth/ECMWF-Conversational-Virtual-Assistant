@@ -23,12 +23,12 @@ jobs:
       - name: 'Check Java Version'
         run: |
           java --version
-#      - name: 'Run asciidoctorPdf task'
-#        run: |
-#          ./gradlew asciidoctorPdf
-#      - name: 'Publish documentation PDF'
-#        if: always()
-#        uses: actions/upload-artifact@v2-preview
-#        with:
-#          name: 'ECMWF-Conversational-Virtual-Assistant-documentation.pdf'
-#          path: build/docs/asciidocPdf/ECMWF-Conversational-Virtual-Assistant.pdf
+      - name: 'Run asciidoctorPdf task'
+        run: |
+          ./gradlew asciidoctorPdf
+      - name: 'Publish documentation PDF'
+        if: always()
+        uses: actions/upload-artifact@v2-preview
+        with:
+          name: 'ECMWF-Conversational-Virtual-Assistant-documentation.pdf'
+          path: build/docs/asciidocPdf/ECMWF-Conversational-Virtual-Assistant.pdf

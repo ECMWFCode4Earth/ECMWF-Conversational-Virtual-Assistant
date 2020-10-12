@@ -24,7 +24,7 @@ pluginManagement {
         resolve("com.google.cloud.tools.jib")
         resolve("org.jlleitschuh.gradle.ktlint-idea")
         resolve("org.hidetake.ssh")
-        // resolve("org.asciidoctor.jvm.convert")
-        // resolve("org.asciidoctor.jvm.pdf")
+        resolve("org.asciidoctor.jvm.convert")
+        resolve("org.asciidoctor.jvm.pdf")
     }
 }
