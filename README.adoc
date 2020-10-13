@@ -5,7 +5,7 @@
 
 image::https://github.com/esowc/ECMWF-Conversational-Virtual-Assistant/workflows/ECMWF-virtual-assistant-tests/badge.svg[]
 
-include::{includedir}/intro.adoc[]
+include::asciidoc/section/intro.adoc[]
 
 == High-level overview
 
