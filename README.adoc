@@ -1,16 +1,25 @@
-= ECMWF Conversational Virtual Assistant
+= ECMWF and C3S Conversational Virtual Assistant
+:icons: font
 
 image::https://github.com/esowc/ECMWF-Conversational-Virtual-Assistant/workflows/ECMWF-virtual-assistant-tests/badge.svg[]
 
 This is the source code belonging to the Machine Learning and Artificial Intelligence challenge https://github.com/esowc/challenges_2020/issues/9[#25] of the https://esowc.ecmwf.int/[ECMWF Summer of Weather Code 2020] programme.
 
-The goal of https://github.com/esowc/challenges_2020/issues/9[our challenge] is to create a chatbot with which external users can have conversions to get their questions answered without the need to make use of other, existing support channels.
+The goal of https://github.com/esowc/challenges_2020/issues/9[our challenge] is to create a Conversational Virtual Assistant (CVA).
 
-To achieve this, we will build up a modern processing pipeline which retrieves content from ECMWF's helpdesk and support-related pages, apply natural language understanding algorithms to build up a semantic knowledge graph and use this knowledge graph to train the Dialogflow-based chatbot.
 
-Users who will make use of our chatbot will hopefully find answers faster than before, and ECMWF's support team gets more time to focus on critical support cases.
+This Conversational Virtual Assistant will provide users of the European Centre for Medium-Range Weather Forecasts (ECMWF), Copernicus Climate Change Service (C3S) and the Copernicus Atmosphere Monitoring Service (CAMS) an intuitive and easy to use self-service chat-like interface to get their questions answered without the need to contact the dedicated support services.
 
-NOTE: Currently, all components of the source code are experimental and will be frequently changed. The final version will be available end of September 2020.
+To achieve this, we are using natural language processing and machine learning technologies and have implemented a basic knowledge graph connecting to the various relevant content sources. Content sources are for instance the dataset and applications of the Copernicus Climate Datastore, published news articles and press releases, help pages of the support wiki, support forums and so on.
+
+Users who will make use of our chatbot will hopefully find answers faster than before, and ECMWF and C3S's support teams gets more time to focus on critical support cases.
 
 .High-level architecture overview
 image::asciidoc/img/CVA-bot-High-level.png[]
+
+<1> Blabla.
+<2> Foobar.
+<3> Aknathnaratnathgarat.
+
+
+NOTE: 

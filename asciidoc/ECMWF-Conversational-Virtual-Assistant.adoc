@@ -11,6 +11,7 @@
 :hide-uri-scheme:
 :tot:
 :tof:
+:icons: font
 
 
 :sectnums!:
@@ -18,3 +19,7 @@
 :sectnums:
 
 ECMWF Conversational Virtual Assistant
+
+<1> Blabla.
+<2> Foobar.
+<3> Aknathnaratnathgarat.
