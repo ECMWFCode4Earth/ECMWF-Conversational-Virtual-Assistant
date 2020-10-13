@@ -1,8 +1,8 @@
-= ECMWF Conversational Virtual Assistant
-:author: Frank Lieber
-:revnumber: 0.1
-:revdate: 2020-05-27
-:imagesdir: images
+= ECMWF and C3S Conversational Virtual Assistant
+:author: Frank Lieber and Michael Kuhn
+:revnumber: 1.0
+:revdate: 2020-10-13
+:imagesdir: img
 :glossarydir: glossary
 :csvdir: csv
 :definitiondir: definition
@@ -18,7 +18,17 @@
 == Introduction
 :sectnums:
 
-ECMWF Conversational Virtual Assistant
+image::https://github.com/esowc/ECMWF-Conversational-Virtual-Assistant/workflows/ECMWF-virtual-assistant-tests/badge.svg[]
+
+include::intro.adoc[]
+
+=== High-level overview
+
+
+The following diagram provides a high-level overview about the CVA and its components.
+
+.High-level architecture overview
+image::CVA-bot-High-level.png[]
 
 <1> Blabla.
 <2> Foobar.
