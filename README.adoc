@@ -2,26 +2,40 @@
 :icons: font
 :imagesdir: asciidoc/img
 :includedir: asciidoc
-:definitiondir: asciidoc/definition
-include::{definitiondir}/common-definitions.adoc[]
+
 
 image::https://github.com/esowc/ECMWF-Conversational-Virtual-Assistant/workflows/ECMWF-virtual-assistant-tests/badge.svg[]
 
-include::{includedir}/intro.adoc[]
+This is the source code belonging to the Machine Learning and Artificial Intelligence challenge https://github.com/esowc/challenges_2020/issues/9[#25] of the https://esowc.ecmwf.int/[ECMWF Summer of Weather Code 2020] programme.
+
+The goal of https://github.com/esowc/challenges_2020/issues/9[our challenge] is to create Conversational Virtual Assistants (CVA) for the European Centre for Medium-Range Weather Forecasts (ECMWF), Copernicus Climate Change Service (C3S) and the Copernicus Atmosphere Monitoring Service (CAMS) websites. 
+
+Each Conversational Virtual Assistant will provide users an intuitive and easy to use self-service chat-like interface to get their questions answered without the need to contact the dedicated support services.
+
+To achieve this, we are using natural language processing and machine learning technologies and have implemented a basic knowledge graph connecting to the various relevant content sources. Content sources are for instance the dataset and applications of the Copernicus Climate Datastore, published news articles and press releases, help pages of the support wiki, support forums and so on.
+
+Users who will make use of our chatbot will hopefully find answers faster than before, and ECMWF and C3S's support teams gets more time to focus on critical support cases.
+
+NOTE: Currently, the CVAs are not yet embedded on the public ECMWF, C3S and CAMS websites, but are used _only_ on a testing environment.
+
 
 == High-level overview
-
-{ecmwf}
 
 The following diagram provides a high-level overview about the CVA and its components.
 
 .High-level architecture overview
 image::CVA-bot-High-level.png[]
 
-<1> Blabla.
-<2> Foobar.
-<3> Aknathnaratnathgarat.
+<1> *External Users*: The external users make use of the CVA by using its chat-like interface.
+<2> *Conversational Virtual Assistant (CVA)*: The CVAs should be embedded on the ECMWF, C3S and CAMS websites. Users will see a small CVA icon in the bottom right corner of the website. Clicking on the CVA icon will open the CVA chat window.
+<3> *Dialogflow AI*: We are making use of Google's https://cloud.google.com/dialogflow/es/docs[Dialogflow] natural language understanding (NLP) platform. This NLP tool analyses the user input and checks if any of the configured intent and its training sentences match the user input. For each input request, a probability score is returned. Once Dialogflow has selected the best `intent` for a given input based on the probability, Dialogflow will forward the user request, including the input analysis to the fulfilment pipeline.
+<4> *Fulfilment pipeline*: The fulfilment pipeline is responsible for looking up all additional information required to send a response for a given intent back to the user. In addition to that, the fulfilment pipeline is providing user input logging and monitoring mechanisms.
+<5> *Knowledge base*: The knowledge base contains cached ECMWF, C3S and CAMS information to provide fast content lookup mechanisms for the fulfilment.
+<6> *ECMWF /C3S Websites, Confluence & Jira Service Desk Sites*: Content sources used by the fulfilment pipeline.
+<7> *Retrieval & Ingestion pipeline*: The retrieval and ingestion pipeline handles a) the scheduled crawling of content sources to be cached in the knowledge base and b) the scheduled crawling of entity related metadata to be used for the configuration as Dialogflow entities.
+<8> *ECMWF/C3S-CVA admin & monitoring interface*: The CVA admin and monitoring interface is used to verify the overall consistency of the Dialogflow configuration and helps CVA admins to monitor CVA usage.
+<9> *ECMWF/C3S CVA Admins*: The ECMWF/C3S CVA admins are use the CVA admin and monitoring interface.
 
 == Documentation
 
-NOTE: 
+

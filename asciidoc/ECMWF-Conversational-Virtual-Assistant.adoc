@@ -7,17 +7,14 @@
 :glossarydir: glossary
 :definitiondir: definition
 :sectiondir: section
+:sectnums:
 include::{definitiondir}/common-definitions.adoc[]
 
-
-:sectnums!:
 == Introduction
-:sectnums:
-
 
 include::{includedir}/intro.adoc[]
 
-=== High-level overview
+== High-level overview
 
 {ecmwf}
 
