@@ -1,0 +1,9 @@
+:sectanchors:
+:toclevels: 10
+:linkattrs:
+:numbered:
+:tot:
+:tof:
+:icons: font
+:ECMWF: European Centre for Medium-Range Weather Forecasts
+:EWC: European Weather Cloud

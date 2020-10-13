@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Frank Lieber">
-<title>ECMWF Conversational Virtual Assistant</title>
+<meta name="author" content="Frank Lieber and Michael Kuhn">
+<title>ECMWF and C3S Conversational Virtual Assistant</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,25 +440,55 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>ECMWF Conversational Virtual Assistant</h1>
+<h1>ECMWF and C3S Conversational Virtual Assistant</h1>
 <div class="details">
-<span id="author" class="author">Frank Lieber</span><br>
-<span id="revnumber">version 0.1,</span>
-<span id="revdate">2020-05-27</span>
+<span id="author" class="author">Frank Lieber and Michael Kuhn</span><br>
+<span id="revnumber">version 1.0,</span>
+<span id="revdate">2020-10-13</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#introduction">Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#high-level-overview">.1. High-level overview</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="introduction">Introduction</h2>
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ECMWF Conversational Virtual Assistant</p>
+<p>This is the source code belonging to the Machine Learning and Artificial Intelligence challenge <a href="https://github.com/esowc/challenges_2020/issues/9">#25</a> of the <a href="https://esowc.ecmwf.int/">ECMWF Summer of Weather Code 2020</a> programme.</p>
+</div>
+<div class="paragraph">
+<p>The goal of <a href="https://github.com/esowc/challenges_2020/issues/9">our challenge</a> is to create a Conversational Virtual Assistant (CVA).</p>
+</div>
+<div class="paragraph">
+<p>This Conversational Virtual Assistant will provide users of the European Centre for Medium-Range Weather Forecasts (ECMWF), Copernicus Climate Change Service (C3S) and the Copernicus Atmosphere Monitoring Service (CAMS) an intuitive and easy to use self-service chat-like interface to get their questions answered without the need to contact the dedicated support services.</p>
+</div>
+<div class="paragraph">
+<p>To achieve this, we are using natural language processing and machine learning technologies and have implemented a basic knowledge graph connecting to the various relevant content sources. Content sources are for instance the dataset and applications of the Copernicus Climate Datastore, published news articles and press releases, help pages of the support wiki, support forums and so on.</p>
+</div>
+<div class="paragraph">
+<p>Users who will make use of our chatbot will hopefully find answers faster than before, and ECMWF and C3S&#8217;s support teams gets more time to focus on critical support cases.</p>
+</div>
+<div class="sect2">
+<h3 id="high-level-overview"><a class="anchor" href="#high-level-overview"></a>.1. High-level overview</h3>
+<div class="paragraph">
+<p>European Centre for Medium-Range Weather Forecasts</p>
+</div>
+<div class="paragraph">
+<p>The following diagram provides a high-level overview about the CVA and its components.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/CVA-bot-High-level.png" alt="CVA bot High level">
+</div>
+<div class="title">Figure 1. High-level architecture overview</div>
 </div>
 <div class="colist arabic">
 <table>
@@ -479,10 +509,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1<br>
-Last updated 2020-10-13 10:44:02 +0700
+Version 1.0<br>
+Last updated 2020-10-13 12:07:46 +0700
 </div>
 </div>
 </body>

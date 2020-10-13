@@ -1,13 +1,17 @@
 = ECMWF and C3S Conversational Virtual Assistant
 :icons: font
 :imagesdir: asciidoc/img
-:includedir: asciidoc/section
+:includedir: asciidoc
+:definitiondir: asciidoc/definition
+include::{definitiondir}/common-definitions.adoc[]
 
 image::https://github.com/esowc/ECMWF-Conversational-Virtual-Assistant/workflows/ECMWF-virtual-assistant-tests/badge.svg[]
 
-include::asciidoc/section/intro.adoc[]
+include::{includedir}/intro.adoc[]
 
 == High-level overview
+
+{ecmwf}
 
 The following diagram provides a high-level overview about the CVA and its components.
 

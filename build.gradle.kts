@@ -53,8 +53,18 @@ tasks {
 
         setOutputDir(file("docs"))
 
+        baseDirFollowsSourceDir()
+
         sources(delegateClosureOf<PatternSet> {
             include("ECMWF-Conversational-Virtual-Assistant.adoc")
+        })
+
+        resources(delegateClosureOf<CopySpec> {
+            from("asciidoc") {
+                include("img/**/*.png")
+            }
+
+            into("./")
         })
 
         options(
@@ -96,7 +106,7 @@ tasks {
                 "definitiondir" to "$path/asciidoc/definition",
                 "glossarydir" to "$path/asciidoc/glossary",
                 "sectiondir" to "$path/asciidoc/section",
-                "includedir" to "$path/asciidoc/section",
+                "includedir" to "$path/asciidoc",
 
                 "source-highlighter" to "coderay",
                 "toc" to "left",

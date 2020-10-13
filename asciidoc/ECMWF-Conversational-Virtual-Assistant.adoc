@@ -3,16 +3,11 @@
 :revnumber: 1.0
 :revdate: 2020-10-13
 :imagesdir: img
-:includedir: ./section
+:includedir: ./
 :glossarydir: glossary
-:csvdir: csv
 :definitiondir: definition
 :sectiondir: section
-:show-link-uri:
-:hide-uri-scheme:
-:tot:
-:tof:
-:icons: font
+include::{definitiondir}/common-definitions.adoc[]
 
 
 :sectnums!:
@@ -24,6 +19,7 @@ include::{includedir}/intro.adoc[]
 
 === High-level overview
 
+{ecmwf}
 
 The following diagram provides a high-level overview about the CVA and its components.
 
