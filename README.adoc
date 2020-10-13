@@ -1,10 +1,11 @@
 = ECMWF and C3S Conversational Virtual Assistant
 :icons: font
 :imagesdir: asciidoc/img
+:includedir: asciidoc/section
 
 image::https://github.com/esowc/ECMWF-Conversational-Virtual-Assistant/workflows/ECMWF-virtual-assistant-tests/badge.svg[]
 
-include::asciidoc/intro.adoc[]
+include::{includedir}/intro.adoc[]
 
 == High-level overview
 

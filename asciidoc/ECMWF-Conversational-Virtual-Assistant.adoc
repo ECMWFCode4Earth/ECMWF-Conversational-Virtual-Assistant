@@ -3,6 +3,7 @@
 :revnumber: 1.0
 :revdate: 2020-10-13
 :imagesdir: img
+:includedir: ./section
 :glossarydir: glossary
 :csvdir: csv
 :definitiondir: definition
@@ -18,9 +19,8 @@
 == Introduction
 :sectnums:
 
-image::https://github.com/esowc/ECMWF-Conversational-Virtual-Assistant/workflows/ECMWF-virtual-assistant-tests/badge.svg[]
 
-include::intro.adoc[]
+include::{includedir}/intro.adoc[]
 
 === High-level overview
 

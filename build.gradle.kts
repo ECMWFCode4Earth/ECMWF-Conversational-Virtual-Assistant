@@ -96,6 +96,7 @@ tasks {
                 "definitiondir" to "$path/asciidoc/definition",
                 "glossarydir" to "$path/asciidoc/glossary",
                 "sectiondir" to "$path/asciidoc/section",
+                "includedir" to "$path/asciidoc/section",
 
                 "source-highlighter" to "coderay",
                 "toc" to "left",
